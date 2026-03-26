@@ -57,4 +57,10 @@ public class Adventurer {
     {
         return damage;
     }
+
+    @Override
+    public String toString()
+    {
+        return String.format("Nam: %s, Stm: %d, Per: %d, HC: %d, Pay: %d", name, maxStamina, perception, hiringCost, pay);
+    }
 }
