@@ -1,4 +1,4 @@
-package seng201.team0;
+package seng201.team0.gui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +8,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
+import seng201.team0.services.WindowSwitchService;
 
 public class MainScreenController {
     @FXML
@@ -27,29 +27,19 @@ public class MainScreenController {
     @FXML
     private Button goOnExpeditionButton;
 
+    WindowSwitchService windowSwitchService = new WindowSwitchService();
+
     @FXML
     private void goToGuildHallButtonClicked() throws IOException {
-        FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/guild_hall.fxml"));
-        Parent root = baseLoader.load();
-        Stage window = (Stage) goToGuildHallButton.getScene().getWindow();
-        Scene scene = new Scene(root, 600, 400);
-        window.setScene(scene);
+        windowSwitchService.switchWindow((Stage) goToGuildHallButton.getScene().getWindow(), "/fxml/guild_hall.fxml");
     }
     @FXML
     private void goToGuildOverviewButtonClicked() throws IOException {
-        FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/guild_overview.fxml"));
-        Parent root = baseLoader.load();
-        Stage window = (Stage) goToGuildOverviewButton.getScene().getWindow();
-        Scene scene = new Scene(root, 600, 400);
-        window.setScene(scene);
+        windowSwitchService.switchWindow((Stage) goToGuildOverviewButton.getScene().getWindow(), "/fxml/guild_overview.fxml");
     }
     @FXML
     private void goToMarketButtonClicked() throws IOException {
-        FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/market.fxml"));
-        Parent root = baseLoader.load();
-        Stage window = (Stage) goToMarketButton.getScene().getWindow();
-        Scene scene = new Scene(root, 600, 400);
-        window.setScene(scene);
+        windowSwitchService.switchWindow((Stage) goToMarketButton.getScene().getWindow(), "/fxml/market.fxml");
     }
     @FXML
     private void goOnExpeditionButtonClicked()

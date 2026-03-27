@@ -1,4 +1,4 @@
-package seng201.team0;
+package seng201.team0.gui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +8,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
+import seng201.team0.services.WindowSwitchService;
 
 public class MarketController {
     @FXML
@@ -17,13 +17,11 @@ public class MarketController {
     @FXML
     private Button buyItemButton;
 
+    WindowSwitchService windowSwitchService = new WindowSwitchService();
+
     @FXML
     private void backButtonClicked() throws IOException {
-        FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/main_screen.fxml"));
-        Parent root = baseLoader.load();
-        Stage window = (Stage) backButton.getScene().getWindow();
-        Scene scene = new Scene(root, 600, 400);
-        window.setScene(scene);
+        windowSwitchService.switchWindow((Stage) backButton.getScene().getWindow(), "/fxml/main_screen.fxml");
     }
     @FXML
     private void buyItemButtonClicked()

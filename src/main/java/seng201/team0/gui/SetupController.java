@@ -12,6 +12,7 @@ import java.util.List;
 
 import seng201.team0.Adventurer;
 import seng201.team0.services.SetupService;
+import seng201.team0.services.WindowSwitchService;
 
 public class SetupController {
     @FXML
@@ -40,6 +41,7 @@ public class SetupController {
     private Button fillListButton;
 
     private SetupService setupService = new SetupService();
+    WindowSwitchService windowSwitchService = new WindowSwitchService();
 
     @FXML
     private void onFillListButtonClicked()          //need to randomly generate some adventurers here
@@ -54,7 +56,7 @@ public class SetupController {
     private void onButtonClicked() throws IOException {
         if (setupService.checkInputs(expeditionInputTextField.getText(), guildInputTextField.getText(), difficultyMenuButton.getText(), chosenAdventurersListView.getItems()))
         {
-            setupService.switchToMainWindow((Stage) startButton.getScene().getWindow());
+            windowSwitchService.switchWindow((Stage) startButton.getScene().getWindow(), "/fxml/main_screen.fxml");
         }
 
     }
