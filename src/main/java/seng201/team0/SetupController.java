@@ -90,7 +90,7 @@ public class SetupController {
                         //SWITCH WINDOW
                         FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/main_screen.fxml"));
                         Parent root = baseLoader.load();
-                        Stage window = (Stage) fillListButton.getScene().getWindow();
+                        Stage window = (Stage) startButton.getScene().getWindow();
                         Scene scene = new Scene(root, 600, 400);
                         window.setScene(scene);
                     }
