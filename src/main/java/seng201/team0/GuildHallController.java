@@ -28,6 +28,6 @@ public class GuildHallController {
     @FXML
     private void hireAdventurerButtonClicked()
     {
-        System.out.println("goToGuildOverview");
+        System.out.println("hireAdventurerButtonClicked() not yet implemented");
     }
 }

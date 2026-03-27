@@ -1,8 +1,13 @@
 package seng201.team0;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,24 +28,30 @@ public class MainScreenController {
     private Button goOnExpeditionButton;
 
     @FXML
-    private void goToGuildHallButtonClicked()
-    {
-        System.out.println("goToGuildHall");
+    private void goToGuildHallButtonClicked() throws IOException {
+        FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/guild_hall.fxml"));
+        Parent root = baseLoader.load();
+        Stage window = (Stage) goToGuildHallButton.getScene().getWindow();
+        Scene scene = new Scene(root, 600, 400);
+        window.setScene(scene);
     }
     @FXML
     private void goToGuildOverviewButtonClicked()
     {
-        System.out.println("goToGuildOverview");
+        System.out.println("goToGuildOverviewButtonClicked() not yet implemented");
     }
     @FXML
-    private void goToMarketButtonClicked()
-    {
-        System.out.println("goToMarket");
+    private void goToMarketButtonClicked() throws IOException {
+        FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/market.fxml"));
+        Parent root = baseLoader.load();
+        Stage window = (Stage) goToMarketButton.getScene().getWindow();
+        Scene scene = new Scene(root, 600, 400);
+        window.setScene(scene);
     }
     @FXML
     private void goOnExpeditionButtonClicked()
     {
-        System.out.println("goOnExpedition");
+        System.out.println("goOnExpeditionButtonClicked() not yet implemented");
     }
 }
 

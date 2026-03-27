@@ -28,6 +28,6 @@ public class MarketController {
     @FXML
     private void buyItemButtonClicked()
     {
-        System.out.println("buyItem");
+        System.out.println("buyItemButtonClicked() not yet implemented");
     }
 }
