@@ -68,7 +68,7 @@ public class SetupController {
             }
             else
             {
-                if (difficultyMenuButton.getText() == "Difficulty")//this is not working (not matching "Difficulty" with "Difficulty" for some reason)
+                if (difficultyMenuButton.getText().equals("Difficulty"))
                 {
                     System.out.println("Please select a difficulty");
                 }
