@@ -10,12 +10,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import seng201.team0.services.WindowSwitchService;
+import seng201.team0.Item;
 
 public class MarketController {
     @FXML
     private Button backButton;
     @FXML
     private Button buyItemButton;
+    @FXML
+    private ListView<Item> itemListView;
 
     WindowSwitchService windowSwitchService = new WindowSwitchService();
 

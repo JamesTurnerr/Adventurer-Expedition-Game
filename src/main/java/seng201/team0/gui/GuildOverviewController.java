@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import seng201.team0.Adventurer;
 import seng201.team0.services.WindowSwitchService;
+import seng201.team0.Item;
 
 public class GuildOverviewController {
     @FXML
@@ -26,7 +27,7 @@ public class GuildOverviewController {
     @FXML
     private ListView<Adventurer> mainPartyListView;
     @FXML
-    private ListView itemsListView;//-----------------------------Need to add item class for this
+    private ListView<Item> itemsListView;
 
     WindowSwitchService windowSwitchService = new WindowSwitchService();
 
