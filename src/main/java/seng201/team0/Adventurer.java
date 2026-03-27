@@ -1,5 +1,8 @@
 package seng201.team0;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Adventurer {
     private final String name;
     private int stamina;
@@ -21,6 +24,7 @@ public class Adventurer {
         this.pay = pay;
         this.damage = damage;
     }
+    //Getters
     public int getHealth()
     {
         return health;
