@@ -10,6 +10,9 @@ import seng201.team0.services.CounterService;
  * Controller for the main.fxml window
  * @author seng201 teaching team
  */
+/*########################################################################################
+        THIS CLASS IS NOT USED IN THE PROGRAM, I'M JUST USING IT AS A REFERENCE
+ #########################################################################################*/
 public class MainController {
 
     @FXML

@@ -12,6 +12,9 @@ import java.io.IOException;
  * Class starts the javaFX application window
  * @author seng201 teaching team
  */
+/*########################################################################################
+        THIS CLASS IS NOT USED IN THE PROGRAM, I'M JUST USING IT AS A REFERENCE
+ #########################################################################################*/
 public class MainWindow extends Application {
 
     /**
