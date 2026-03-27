@@ -36,9 +36,12 @@ public class MainScreenController {
         window.setScene(scene);
     }
     @FXML
-    private void goToGuildOverviewButtonClicked()
-    {
-        System.out.println("goToGuildOverviewButtonClicked() not yet implemented");
+    private void goToGuildOverviewButtonClicked() throws IOException {
+        FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/guild_overview.fxml"));
+        Parent root = baseLoader.load();
+        Stage window = (Stage) goToGuildOverviewButton.getScene().getWindow();
+        Scene scene = new Scene(root, 600, 400);
+        window.setScene(scene);
     }
     @FXML
     private void goToMarketButtonClicked() throws IOException {
