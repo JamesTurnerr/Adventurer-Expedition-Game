@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import seng201.team0.Adventurer;
+import seng201.team0.Item;
 
 public class SetupService {
 
@@ -21,13 +22,28 @@ public class SetupService {
         return adventurerList;
     }
 
+    public List<Item> getTestItemList(int size)
+    {
+        List<Item> itemList = new ArrayList<Item>();
+        for (int i = 0; i < size; i++) {
+            itemList.add(new Item("Item " + Integer.toString(i)));
+        }
+        return itemList;
+    }
+
     public void switchToMainWindow(Stage window) throws IOException {
         FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/main_screen.fxml"));
         Parent root = baseLoader.load();
         Scene scene = new Scene(root, 600, 400);
         window.setScene(scene);
     }
-
+    /**
+     * Checks all inputs to make sure they are valid before starting the game
+     * @param expeditionInputTextField the amount of expeditions the user wants to go on
+     * @param guildInputTextField the chosen guild name
+     * @param difficultyMenuButton the string of the selected difficulty
+     * @param chosenAdventurersListView a list of the chosen adventurers
+     */
     public boolean checkInputs(String expeditionInputTextField, String guildInputTextField, String difficultyMenuButton, List<Adventurer> chosenAdventurersListView) {
         int numberOfExpeditions;
         try {
