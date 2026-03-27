@@ -83,6 +83,7 @@ public class SetupController {
                         System.out.println(String.format("%s guild is going on %d %s expeditions with %s",
                                 guildInputTextField.getText(), numberOfExpeditions, difficultyMenuButton.getText(), adventurerListString));
                     }
+
                 }
             }
         }
