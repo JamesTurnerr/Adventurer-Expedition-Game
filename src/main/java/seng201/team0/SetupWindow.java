@@ -20,7 +20,7 @@ public class SetupWindow extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/setup.fxml"));
+        FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/market.fxml"));
         Parent root = baseLoader.load();
         Scene scene = new Scene(root, 600, 400);
         primaryStage.setTitle("SENG201 Project");
