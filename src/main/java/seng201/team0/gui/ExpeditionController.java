@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 import seng201.team0.services.WindowSwitchService;
 import seng201.team0.services.SetupService;
 import seng201.team0.Adventurer;
+import seng201.team0.services.ExpeditionService;
 
 public class ExpeditionController implements Initializable {
     @FXML
@@ -47,11 +48,14 @@ public class ExpeditionController implements Initializable {
 
     private WindowSwitchService windowSwitchService = new WindowSwitchService();
     private SetupService setupService = new SetupService();
+    private ExpeditionService expeditionService;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
-        expeditionTextArea.setText("aa");
+        expeditionService = new ExpeditionService(expeditionTextArea);//'initialize' is called after 'expeditionTextArea' is created so 'new ExpeditionService' has to go here
+        expeditionService.writeLine("Text line 1");
+        expeditionService.writeLine("Text line 2");
     }
 
     @FXML
