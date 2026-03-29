@@ -95,7 +95,7 @@ public class SetupController implements Initializable {
     }
     @FXML
     private void unchooseAdventurerClicked() {
-        Adventurer selectedAdventurer = availableAdventurersListView.getSelectionModel().getSelectedItem();
+        Adventurer selectedAdventurer = chosenAdventurersListView.getSelectionModel().getSelectedItem();
         if (selectedAdventurer != null && party.removeFromParty(selectedAdventurer)) {
             availableAdventurersListView.getItems().add(chosenAdventurersListView.getSelectionModel().getSelectedItem());
             chosenAdventurersListView.getItems().remove(chosenAdventurersListView.getSelectionModel().getSelectedItem());

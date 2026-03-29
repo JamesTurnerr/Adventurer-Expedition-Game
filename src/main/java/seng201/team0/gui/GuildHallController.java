@@ -30,11 +30,6 @@ public class GuildHallController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
-        /*List<Adventurer> adventurerList = setupService.getAllAdventurerList(3);
-        for (Adventurer adventurer : adventurerList)
-        {
-            adventurerListView.getItems().add(adventurer);
-        }*/
         party = Party.getInstance();
         AdventurerListViewService.fill(hireableAdventurersListView);
 
@@ -44,10 +39,22 @@ public class GuildHallController implements Initializable {
     private void backButtonClicked() throws IOException {
         windowSwitchService.switchWindow((Stage) backButton.getScene().getWindow(), "/fxml/main_screen.fxml");
     }
+
+    // this is similar to the other button in setupcontroller.
+    // should merge with the 2 listviews as the parameters
     @FXML
     private void hireAdventurerButtonClicked()
     {
-        //System.out.println("hireAdventurerButtonClicked() not yet implemented");
-
+        Adventurer selectedAdventurer = hireableAdventurersListView.getSelectionModel().getSelectedItem();
+        if (selectedAdventurer != null && party.addToParty(selectedAdventurer)){
+            //lose moolah
+            System.out.println("added "+selectedAdventurer+" to party");
+            hireableAdventurersListView.getItems().remove(selectedAdventurer);
+            //need to add an undo + way to see party
+            // need to add a test case for party full
+        }
+        else{
+            System.out.println("your party might be full gang");
+        }
     }
 }
