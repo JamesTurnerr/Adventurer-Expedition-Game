@@ -73,4 +73,5 @@ public enum Adventurer {
     {
         return String.format("Name: %s, Stm: %d, Per: %d, HC: %d, Pay: %d", name, maxStamina, perception, hiringCost, pay);
     }
+
 }

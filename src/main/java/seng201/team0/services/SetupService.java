@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import seng201.team0.Adventurer;
 import seng201.team0.Item;
@@ -14,12 +15,16 @@ import seng201.team0.Item;
 public class SetupService {
 
 
-    public List<Adventurer> getTestAdventurerList(int size) {
-        List<Adventurer> adventurerList = new ArrayList<Adventurer>();
+    public List<Adventurer> getAllAdventurerList() {
+        List<Adventurer> adventurerList = new ArrayList<>();
         for (Adventurer adventurer : Adventurer.values()) {
             adventurerList.add(adventurer);
         }
         return adventurerList;
+    }
+
+    public void addAllAdventurersToListView(ListView<Adventurer> listView){
+        listView.getItems().setAll(getAllAdventurerList());
     }
 
     public List<Item> getTestItemList(int size)
@@ -58,6 +63,7 @@ public class SetupService {
             return false;
         }
 
+        // need to add guild parameters
         if (guildInputTextField == "") {
             System.out.println("Please enter a guild name");
             return false;

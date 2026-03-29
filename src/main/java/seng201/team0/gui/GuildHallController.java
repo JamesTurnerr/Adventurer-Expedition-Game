@@ -1,10 +1,7 @@
 package seng201.team0.gui;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
@@ -31,11 +28,8 @@ public class GuildHallController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
-        List<Adventurer> adventurerList = setupService.getTestAdventurerList(3);
-        for (Adventurer adventurer : adventurerList)
-        {
-            adventurerListView.getItems().add(adventurer);
-        }
+        setupService.addAllAdventurersToListView(adventurerListView);
+
     }
 
     @FXML

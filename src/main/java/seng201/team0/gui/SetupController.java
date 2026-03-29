@@ -1,10 +1,7 @@
 package seng201.team0.gui;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
@@ -14,6 +11,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import seng201.team0.Adventurer;
+import seng201.team0.Party;
 import seng201.team0.services.SetupService;
 import seng201.team0.services.WindowSwitchService;
 
@@ -35,6 +33,8 @@ public class SetupController implements Initializable {
     @FXML
     private ListView<Adventurer> chosenAdventurersListView;
     @FXML
+    private Party party;
+    @FXML
     private ListView<Adventurer> availableAdventurersListView;
     @FXML
     private Button chooseAdventurerButton;
@@ -49,22 +49,21 @@ public class SetupController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
-        List<Adventurer> adventurerList = setupService.getTestAdventurerList(3);
+        party = new Party();
+        setupService.addAllAdventurersToListView(availableAdventurersListView);
+    }
+
+    //currently useless
+    @FXML
+    private void onFillListButtonClicked()          //need to randomly generate some adventurers here
+    {
+        List<Adventurer> adventurerList = setupService.getAllAdventurerList();
         for (Adventurer adventurer : adventurerList)
         {
             availableAdventurersListView.getItems().add(adventurer);
         }
     }
 
-    @FXML
-    private void onFillListButtonClicked()          //need to randomly generate some adventurers here
-    {
-        List<Adventurer> adventurerList = setupService.getTestAdventurerList(3);
-        for (Adventurer adventurer : adventurerList)
-        {
-            availableAdventurersListView.getItems().add(adventurer);
-        }
-    }
     @FXML
     private void onButtonClicked() throws IOException {
         if (setupService.checkInputs(expeditionInputTextField.getText(), guildInputTextField.getText(), difficultyMenuButton.getText(), chosenAdventurersListView.getItems()))
@@ -87,14 +86,16 @@ public class SetupController implements Initializable {
     }
     @FXML
     private void chooseAdventurerClicked() {
-        if (availableAdventurersListView.getSelectionModel().getSelectedItem() != null)
-        {
-            chosenAdventurersListView.getItems().add(availableAdventurersListView.getSelectionModel().getSelectedItem());
-            availableAdventurersListView.getItems().remove(availableAdventurersListView.getSelectionModel().getSelectedItem());
+        Adventurer selectedAdventurer = availableAdventurersListView.getSelectionModel().getSelectedItem();
+        if (selectedAdventurer != null && party.addToParty(selectedAdventurer)){
+            chosenAdventurersListView.getItems().add(selectedAdventurer);
+            availableAdventurersListView.getItems().remove(selectedAdventurer);
         }
     }
     @FXML
     private void unchooseAdventurerClicked() {
+        Adventurer selectedAdventurer = availableAdventurersListView.getSelectionModel().getSelectedItem();
+        System.out.println("bahahahahsda");
         if (chosenAdventurersListView.getSelectionModel().getSelectedItem() != null)
         {
             availableAdventurersListView.getItems().add(chosenAdventurersListView.getSelectionModel().getSelectedItem());
