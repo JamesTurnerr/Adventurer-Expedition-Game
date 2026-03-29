@@ -3,7 +3,13 @@ package seng201.team0;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Adventurer {
+public enum Adventurer {
+    WILSON("Wilson", 100, 100, 70, 40, 20, 40),
+    PUNJAB("Pubjab", 40, 40, 60, 10, 10, 30),
+    MIKE_TYSON("Tyson", 80, 60, 60, 60, 40, 90),
+    FREDDY_FAZBEAR("Freddy", 20, 70, 20, 50, 20, 70)
+    ;
+
     private final String name;
     private int stamina;
     private int maxStamina;
@@ -14,7 +20,7 @@ public class Adventurer {
     private final int pay;
     private int damage;
 
-    public Adventurer(String name, int maxStamina, int maxHealth, int perception, int hiringCost, int pay, int damage)
+    private Adventurer(String name, int maxStamina, int maxHealth, int perception, int hiringCost, int pay, int damage)
     {
         this.name = name;
         this. maxStamina = maxStamina;
@@ -65,6 +71,6 @@ public class Adventurer {
     @Override
     public String toString()
     {
-        return String.format("Nam: %s, Stm: %d, Per: %d, HC: %d, Pay: %d", name, maxStamina, perception, hiringCost, pay);
+        return String.format("Name: %s, Stm: %d, Per: %d, HC: %d, Pay: %d", name, maxStamina, perception, hiringCost, pay);
     }
 }

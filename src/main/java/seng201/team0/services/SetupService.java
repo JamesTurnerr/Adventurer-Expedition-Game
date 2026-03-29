@@ -16,8 +16,8 @@ public class SetupService {
 
     public List<Adventurer> getTestAdventurerList(int size) {
         List<Adventurer> adventurerList = new ArrayList<Adventurer>();
-        for (int i = 0; i < size; i++) {
-            adventurerList.add(new Adventurer(Integer.toString(i), 100, 100, 100, 15, 10, 2));
+        for (Adventurer adventurer : Adventurer.values()) {
+            adventurerList.add(adventurer);
         }
         return adventurerList;
     }
