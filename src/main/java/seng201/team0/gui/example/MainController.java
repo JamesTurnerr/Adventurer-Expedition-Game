@@ -1,4 +1,4 @@
-package seng201.team0.gui;
+package seng201.team0.gui.example;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

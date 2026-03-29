@@ -15,17 +15,13 @@ import seng201.team0.Item;
 public class SetupService {
 
 
-    public List<Adventurer> getAllAdventurerList() {
-        List<Adventurer> adventurerList = new ArrayList<>();
-        for (Adventurer adventurer : Adventurer.values()) {
-            adventurerList.add(adventurer);
-        }
-        return adventurerList;
+    /*public List<Adventurer> getAllAdventurerList() {
+        return List.of(Adventurer.values());
     }
 
     public void addAllAdventurersToListView(ListView<Adventurer> listView){
         listView.getItems().setAll(getAllAdventurerList());
-    }
+    }*/
 
     public List<Item> getTestItemList(int size)
     {

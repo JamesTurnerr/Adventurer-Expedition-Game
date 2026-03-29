@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 
 import seng201.team0.Adventurer;
 import seng201.team0.Party;
+import seng201.team0.services.AdventurerListViewService;
 import seng201.team0.services.SetupService;
 import seng201.team0.services.WindowSwitchService;
 
@@ -49,19 +50,20 @@ public class SetupController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
-        party = new Party();
-        setupService.addAllAdventurersToListView(availableAdventurersListView);
+        //party = new Party();
+        party = Party.getInstance();
+        AdventurerListViewService.fill(availableAdventurersListView);
     }
 
     //currently useless
     @FXML
     private void onFillListButtonClicked()          //need to randomly generate some adventurers here
     {
-        List<Adventurer> adventurerList = setupService.getAllAdventurerList();
+        /*List<Adventurer> adventurerList = setupService.getAllAdventurerList();
         for (Adventurer adventurer : adventurerList)
         {
             availableAdventurersListView.getItems().add(adventurer);
-        }
+        }*/
     }
 
     @FXML
