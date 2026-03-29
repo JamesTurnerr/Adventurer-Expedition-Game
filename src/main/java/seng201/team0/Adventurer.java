@@ -7,8 +7,11 @@ public enum Adventurer {
     WILSON("Wilson", 100, 100, 70, 40, 20, 40),
     PUNJAB("Pubjab", 40, 40, 60, 10, 10, 30),
     MIKE_TYSON("Tyson", 80, 60, 60, 60, 40, 90),
-    FREDDY_FAZBEAR("Freddy", 20, 70, 20, 50, 20, 70)
-    ;
+    FREDDY_FAZBEAR("Freddy", 20, 70, 20, 50, 20, 70),
+    WILSO2N("Wiladson", 100, 100, 70, 40, 20, 40),
+    PUNJA2B("Pubjasdab", 40, 40, 60, 10, 10, 30),
+
+            ;
 
     private final String name;
     private int stamina;

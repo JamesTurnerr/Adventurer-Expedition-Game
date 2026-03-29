@@ -21,7 +21,7 @@ public class GuildHallController implements Initializable {
     @FXML
     private Button hireAdventurerButton;
     @FXML
-    private ListView<Adventurer> HireableAdventurersListView;
+    private ListView<Adventurer> hireableAdventurersListView;
 
     private Party party;
     private WindowSwitchService windowSwitchService = new WindowSwitchService();
@@ -36,7 +36,7 @@ public class GuildHallController implements Initializable {
             adventurerListView.getItems().add(adventurer);
         }*/
         party = Party.getInstance();
-        AdventurerListViewService.fill(HireableAdventurersListView);
+        AdventurerListViewService.fill(hireableAdventurersListView);
 
     }
 
