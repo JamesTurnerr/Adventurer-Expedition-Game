@@ -11,6 +11,11 @@ import java.io.IOException;
 
 import seng201.team0.services.WindowSwitchService;
 
+
+/**
+ * Controller for the main_screen.fxml window
+ * From here the user can go to the Guild Hall, Market, Guild Overview, or Expeditions
+ */
 public class MainScreenController {
     @FXML
     private Label goldAmountLabel;
@@ -42,9 +47,8 @@ public class MainScreenController {
         windowSwitchService.switchWindow((Stage) goToMarketButton.getScene().getWindow(), "/fxml/market.fxml");
     }
     @FXML
-    private void goOnExpeditionButtonClicked()
-    {
-        System.out.println("goOnExpeditionButtonClicked() not yet implemented");
+    private void goOnExpeditionButtonClicked() throws IOException {
+        windowSwitchService.switchWindow((Stage) goOnExpeditionButton.getScene().getWindow(), "/fxml/expedition.fxml");
     }
 }
 
