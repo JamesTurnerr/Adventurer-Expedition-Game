@@ -50,12 +50,11 @@ public class SetupController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
-        //party = new Party();
         party = Party.getInstance();
         AdventurerListViewService.fill(availableAdventurersListView);
     }
 
-    //currently useless
+    //currently functionless
     @FXML
     private void onFillListButtonClicked()          //need to randomly generate some adventurers here
     {
@@ -96,8 +95,8 @@ public class SetupController implements Initializable {
     }
     @FXML
     private void unchooseAdventurerClicked() {
+        //havent yet added party.remove(...)
         Adventurer selectedAdventurer = availableAdventurersListView.getSelectionModel().getSelectedItem();
-        System.out.println("bahahahahsda");
         if (chosenAdventurersListView.getSelectionModel().getSelectedItem() != null)
         {
             availableAdventurersListView.getItems().add(chosenAdventurersListView.getSelectionModel().getSelectedItem());

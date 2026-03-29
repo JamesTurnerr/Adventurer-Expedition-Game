@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import seng201.team0.Party;
@@ -22,7 +21,7 @@ public class GuildHallController implements Initializable {
     @FXML
     private Button hireAdventurerButton;
     @FXML
-    private ListView<Adventurer> adventurerListView;
+    private ListView<Adventurer> HireableAdventurersListView;
 
     private Party party;
     private WindowSwitchService windowSwitchService = new WindowSwitchService();
@@ -37,7 +36,7 @@ public class GuildHallController implements Initializable {
             adventurerListView.getItems().add(adventurer);
         }*/
         party = Party.getInstance();
-        AdventurerListViewService.fill(adventurerListView);
+        AdventurerListViewService.fill(HireableAdventurersListView);
 
     }
 
@@ -48,6 +47,7 @@ public class GuildHallController implements Initializable {
     @FXML
     private void hireAdventurerButtonClicked()
     {
-        System.out.println("hireAdventurerButtonClicked() not yet implemented");
+        //System.out.println("hireAdventurerButtonClicked() not yet implemented");
+
     }
 }

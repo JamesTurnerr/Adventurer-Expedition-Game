@@ -7,14 +7,17 @@ import seng201.team0.Party;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//potentially make subclass of a listview service - include items in other subclass
 public class AdventurerListViewService {
+    // will populate the list view with all characters not already in party
     public static void fill(ListView<Adventurer> listView){
-        //List.of(Adventurer.values())
         Party party = Party.getInstance();
         listView.getItems().setAll(notInPartyList(party));
 
     }
 
+    //returns all characters not in party
     private static List<Adventurer> notInPartyList(Party party){
         List<Adventurer> notInPartyList = new ArrayList<>();
         for (Adventurer adventurer : Adventurer.values()){

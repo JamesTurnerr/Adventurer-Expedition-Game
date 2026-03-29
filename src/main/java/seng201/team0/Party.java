@@ -28,10 +28,14 @@ public class Party {
         return partyList.size() >= maxSize;
     }
 
+    //creates a single instance of party - kinda like global variable
     public static Party getInstance(){
         if (party == null){
             party = new Party();
         }
         return party;
     }
+
+    //party.remove()
+    //party.clear() ?
 }

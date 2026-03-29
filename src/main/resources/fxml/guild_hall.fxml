@@ -31,7 +31,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <ListView fx:id="adventurerListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
+      <ListView fx:id="HirableAdventurersListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
          <GridPane.margin>
             <Insets bottom="20.0" />
          </GridPane.margin>
