@@ -24,6 +24,14 @@ public class Party {
         return false;
     }
 
+    public boolean removeFromParty(Adventurer adventurer){
+        if (partyList.size() != 0 && partyList.contains(adventurer)){
+            partyList.remove(adventurer);
+            return true;
+        }
+        return false;
+    }
+
     public boolean isFull(){
         return partyList.size() >= maxSize;
     }
@@ -36,6 +44,5 @@ public class Party {
         return party;
     }
 
-    //party.remove()
     //party.clear() ?
 }
