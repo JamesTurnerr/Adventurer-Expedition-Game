@@ -15,7 +15,8 @@ import java.util.ResourceBundle;
 
 import seng201.team0.services.GuiService;
 import seng201.team0.services.SetupService;
-import seng201.team0.Item;
+import seng201.team0.models.Item;
+import seng201.team0.models.UserData;
 
 public class MarketController implements Initializable {
     @FXML
@@ -32,10 +33,7 @@ public class MarketController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1)
     {
         List<Item> itemList = setupService.getTestItemList(3);
-        for (Item item : itemList)
-        {
-            itemListView.getItems().add(item);
-        }
+        guiService.populateListView(itemListView, itemList);
     }
 
     @FXML
@@ -45,6 +43,7 @@ public class MarketController implements Initializable {
     @FXML
     private void buyItemButtonClicked()
     {
-        System.out.println("buyItemButtonClicked() not yet implemented");
+        UserData.addItem(itemListView.getSelectionModel().getSelectedItem());
+        itemListView.getItems().remove(itemListView.getSelectionModel().getSelectedItem());
     }
 }

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import seng201.team0.Adventurer;
-import seng201.team0.Item;
+import seng201.team0.models.Item;
 import seng201.team0.Party;
 import seng201.team0.services.AdventurerListViewService;
 import seng201.team0.services.SetupService;
@@ -55,14 +55,14 @@ public class SetupController implements Initializable {
         AdventurerListViewService.fill(availableAdventurersListView);
     }
     @FXML
-    private void onButtonClicked() throws IOException {
+    private void startButtonClicked() throws IOException {
         if (setupService.checkInputs(expeditionInputTextField.getText(), guildInputTextField.getText(), difficultyMenuButton.getText(), chosenAdventurersListView.getItems()))
         {
             ArrayList<Adventurer> chosenAdventurersList = new ArrayList<Adventurer>(chosenAdventurersListView.getItems());
             UserData userData = new UserData(chosenAdventurersList, difficultyMenuButton.getText(), guildInputTextField.getText(), Integer.parseInt(expeditionInputTextField.getText()));
+            userData.addItem(Item.HEALTH_POTION);
 
             Stage stage = (Stage) startButton.getScene().getWindow();
-            stage.setUserData(userData);
             guiService.switchWindow(stage, "/fxml/main_screen.fxml");
         }
 

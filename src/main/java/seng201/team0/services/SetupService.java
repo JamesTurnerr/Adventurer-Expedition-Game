@@ -7,10 +7,9 @@ import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import seng201.team0.Adventurer;
-import seng201.team0.Item;
+import seng201.team0.models.Item;
 
 public class SetupService {
 
@@ -27,7 +26,7 @@ public class SetupService {
     {
         List<Item> itemList = new ArrayList<Item>();
         for (int i = 0; i < size; i++) {
-            itemList.add(new Item("Item " + Integer.toString(i), 10));
+            itemList.add(Item.HEALTH_POTION);
         }
         return itemList;
     }

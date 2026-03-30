@@ -51,7 +51,7 @@
             <MenuItem fx:id="hardMenuItem" mnemonicParsing="false" onAction="#hardModeSelected" text="Hard" />
         </items>
       </MenuButton>
-      <Button fx:id="startButton" mnemonicParsing="false" onAction="#onButtonClicked" text="Start" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonClicked" text="Start" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <ListView fx:id="availableAdventurersListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2" />
       <ListView fx:id="chosenAdventurersListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.rowSpan="2" />
       <Button fx:id="chooseAdventurerButton" mnemonicParsing="false" onAction="#chooseAdventurerClicked" text="&gt;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">

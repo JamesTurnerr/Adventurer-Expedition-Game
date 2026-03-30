@@ -1,6 +1,6 @@
 package seng201.team0.models;
 import seng201.team0.Adventurer;
-import seng201.team0.Item;
+import seng201.team0.models.Item;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ public class UserData {
     private static final int MAX_PARTY_SIZE = 5;
     private static List<Adventurer> mainParty;
     private List<Adventurer> reserveParty = new ArrayList<Adventurer>();
-    private List<Item> items = new ArrayList<Item>();
+    private static List<Item> items = new ArrayList<Item>();
     private static int gold;
     private String difficulty;
     private String guildName;
@@ -58,8 +58,13 @@ public class UserData {
     }
 
     //Add data
-    public void addItem(Item item)
+    public static void addItem(Item item)
     {
+        if (item == null)
+        {
+            System.out.println("Warning: Item is null");
+            return;
+        }
         items.add(item);
     }
     public boolean addToMainParty(Adventurer adventurer)
