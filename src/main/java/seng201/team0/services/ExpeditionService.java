@@ -12,7 +12,7 @@ public class ExpeditionService {
     }
     public void writeLine(String string)
     {
-        if (expeditionTextArea.getText() == "")
+        if (expeditionTextArea.getText().isEmpty())
         {
             expeditionTextArea.setText(string);
         }

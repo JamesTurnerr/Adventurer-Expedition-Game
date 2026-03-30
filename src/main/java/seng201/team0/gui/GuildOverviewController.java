@@ -1,10 +1,7 @@
 package seng201.team0.gui;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
@@ -27,8 +24,8 @@ public class GuildOverviewController implements Initializable {
     @FXML
     private ListView<Item> itemsListView;
 
-    GuiService guiService = new GuiService();
-    UserData userData = UserData.getInstance();
+    private final GuiService guiService = new GuiService();
+    private final UserData userData = UserData.getInstance();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)

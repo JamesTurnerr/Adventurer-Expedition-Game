@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import seng201.team0.Adventurer;
@@ -37,8 +36,8 @@ public class SetupController implements Initializable {
     @FXML
     private Button chooseAdventurerButton, unchooseAdventurerButton;
 
-    private SetupService setupService = new SetupService();
-    private GuiService guiService = new GuiService();
+    private final SetupService setupService = new SetupService();
+    private final GuiService guiService = new GuiService();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)

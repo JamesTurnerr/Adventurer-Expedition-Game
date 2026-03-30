@@ -1,6 +1,5 @@
 package seng201.team0.models;
 import seng201.team0.Adventurer;
-import seng201.team0.models.Item;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -154,15 +153,23 @@ public class UserData {
     }
     public static boolean buyItem(Item item)
     {
-        if (item.getCost() <= gold)
+        if (item != null)
         {
-            addItem(item);
-            gold -= item.getCost();
-            System.out.println(String.format("Item bought, %d gold remaining", getGold()));
-            return true;
+            if (item.getCost() <= gold)
+            {
+                addItem(item);
+                gold -= item.getCost();
+                System.out.println(String.format("Item bought, %d gold remaining", getGold()));
+                return true;
+            }
+            else {
+                System.out.println("Warning: Not enough gold, could not buy item");
+                return false;
+            }
         }
-        else {
-            System.out.println("Warning: Not enough gold, could not buy item");
+        else
+        {
+            System.out.println("Warning: Item is null");
             return false;
         }
     }

@@ -22,8 +22,8 @@ public class GuildHallController implements Initializable {
     private ListView<Adventurer> hireableAdventurersListView;
 
     private Party party;
-    private GuiService guiService = new GuiService();
-    private SetupService setupService = new SetupService();
+    private final GuiService guiService = new GuiService();
+    private final SetupService setupService = new SetupService();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)

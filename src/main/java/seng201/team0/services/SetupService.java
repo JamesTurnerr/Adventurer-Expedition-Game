@@ -3,7 +3,6 @@ package seng201.team0.services;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +24,6 @@ public class SetupService {
 
     public List<Item> getTestItemList(int size)
     {
-        Random random = new Random();
         List<Item> itemList = new ArrayList<Item>();
         for (int i = 0; i < size; i++) {
             itemList.add(Item.getRandomItem());
@@ -61,7 +59,7 @@ public class SetupService {
         }
 
         // need to add guild parameters
-        if (guildInputTextField == "") {
+        if (guildInputTextField.isEmpty()) {
             System.out.println("Please enter a guild name");
             return false;
         }

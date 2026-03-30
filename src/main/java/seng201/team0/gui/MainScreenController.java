@@ -1,16 +1,12 @@
 package seng201.team0.gui;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import seng201.team0.services.GuiService;
@@ -27,14 +23,14 @@ public class MainScreenController implements Initializable {
     @FXML
     private Button goToGuildHallButton, goToGuildOverviewButton, goToMarketButton, goOnExpeditionButton;
 
-    GuiService guiService = new GuiService();
+    private final GuiService guiService = new GuiService();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
-        goldAmountLabel.setText("Gold: " + String.valueOf(UserData.getGold()));
-        currentExpeditionLabel.setText("Current Expedition: " + String.valueOf(UserData.getCurrentExpeditionNumber()));
-        expeditionsRemainingLabel.setText("Expeditions Remaining: " + String.valueOf(UserData.getExpeditionsRemaining()));
+        goldAmountLabel.setText("Gold: " + UserData.getGold());
+        currentExpeditionLabel.setText("Current Expedition: " + UserData.getCurrentExpeditionNumber());
+        expeditionsRemainingLabel.setText("Expeditions Remaining: " + UserData.getExpeditionsRemaining());
     }
     @FXML
     private void goToGuildHallButtonClicked() throws IOException {
