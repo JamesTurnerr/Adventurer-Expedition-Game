@@ -79,7 +79,7 @@ public class UserData {
     {
         if (mainParty.size() >= MAX_PARTY_SIZE)
         {
-            System.out.println("Warning: Party already full");
+            System.out.println("Warning: Main party at maximum capacity");
             return false;
         }
         else
@@ -88,9 +88,15 @@ public class UserData {
             return true;
         }
     }
-    public void addToReserveParty(Adventurer adventurer)
+    public boolean addToReserveParty(Adventurer adventurer)
     {
+        if (reserveParty.size() >= 5)
+        {
+            System.out.println("Warning: Reserve party at maximum capacity");
+            return false;
+        }
         reserveParty.add(adventurer);
+        return true;
     }
 
     //Remove data
@@ -120,21 +126,43 @@ public class UserData {
     {
         if (adventurer.getHiringCost() < gold)
         {
-            addToReserveParty(adventurer);
-            return true;
+            if (addToReserveParty(adventurer))//Try to add new adventurer to reserves
+            {
+                gold -= adventurer.getHiringCost();
+                return true;
+            }
+            else//Try to add new adventurer to main party
+            {
+                System.out.println("Warning: Reserve party full, attempting to add to main party");
+                if (addToMainParty(adventurer))
+                {
+                    gold -= adventurer.getHiringCost();
+                    return true;
+                }
+                else
+                {
+                    System.out.println("Warning: Main party full, could not hire new adventurer");
+                    return false;
+                }
+
+            }
         }
         else {
+            System.out.println("Warning: Not enough gold, could not hire new adventurer");
             return false;
         }
     }
-    public boolean buyItem(Item item)
+    public static boolean buyItem(Item item)
     {
-        if (item.getCost() < gold)
+        if (item.getCost() <= gold)
         {
             addItem(item);
+            gold -= item.getCost();
+            System.out.println(String.format("Item bought, %d gold remaining", getGold()));
             return true;
         }
         else {
+            System.out.println("Warning: Not enough gold, could not buy item");
             return false;
         }
     }
@@ -164,8 +192,7 @@ public class UserData {
         }
         if (removeFromMainParty(adventurer))
         {
-            addToReserveParty(adventurer);
-            return true;
+            return addToReserveParty(adventurer);
         }
         else {
             return false;

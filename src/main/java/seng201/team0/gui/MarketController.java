@@ -41,7 +41,9 @@ public class MarketController implements Initializable {
     @FXML
     private void buyItemButtonClicked()
     {
-        UserData.addItem(itemListView.getSelectionModel().getSelectedItem());
-        itemListView.getItems().remove(itemListView.getSelectionModel().getSelectedItem());
+        if(UserData.buyItem(itemListView.getSelectionModel().getSelectedItem()))
+        {
+            itemListView.getItems().remove(itemListView.getSelectionModel().getSelectedItem());
+        }
     }
 }
