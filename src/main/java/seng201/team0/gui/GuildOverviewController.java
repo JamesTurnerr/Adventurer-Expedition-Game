@@ -19,13 +19,7 @@ import seng201.team0.services.GuiService;
 
 public class GuildOverviewController implements Initializable {
     @FXML
-    private Button backButton;
-    @FXML
-    private Button moveToMainButton;
-    @FXML
-    private Button moveFromMainButton;
-    @FXML
-    private Button useItemButton;
+    private Button backButton, moveToMainButton, moveFromMainButton, useItemButton;
     @FXML
     private ListView<Adventurer> reservePartyListView;
     @FXML

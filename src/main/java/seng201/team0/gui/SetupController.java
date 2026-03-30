@@ -21,19 +21,13 @@ import seng201.team0.models.UserData;
 
 public class SetupController implements Initializable {
     @FXML
-    private TextField guildInputTextField;
-    @FXML
-    private TextField expeditionInputTextField;
+    private TextField guildInputTextField, expeditionInputTextField;
     @FXML
     private Button startButton;
     @FXML
     private MenuButton difficultyMenuButton;
     @FXML
-    private MenuItem easyMenuItem;
-    @FXML
-    private MenuItem normalMenuItem;
-    @FXML
-    private MenuItem hardMenuItem;
+    private MenuItem easyMenuItem, normalMenuItem, hardMenuItem;
     @FXML
     private ListView<Adventurer> chosenAdventurersListView;
     @FXML
@@ -41,9 +35,7 @@ public class SetupController implements Initializable {
     @FXML
     private ListView<Adventurer> availableAdventurersListView;
     @FXML
-    private Button chooseAdventurerButton;
-    @FXML
-    private Button unchooseAdventurerButton;
+    private Button chooseAdventurerButton, unchooseAdventurerButton;
 
     private SetupService setupService = new SetupService();
     private GuiService guiService = new GuiService();

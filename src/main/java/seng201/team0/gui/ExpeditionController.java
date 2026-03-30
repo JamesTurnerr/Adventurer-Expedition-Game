@@ -20,31 +20,15 @@ import seng201.team0.services.ExpeditionService;
 
 public class ExpeditionController implements Initializable {
     @FXML
-    private Button expeditionOption1Button;
-    @FXML
-    private Button expeditionOption2Button;
+    private Button expeditionOption1Button, expeditionOption2Button;
     @FXML
     private TextArea expeditionTextArea;
     @FXML
-    private Label adventurerNameLabel1;
-    @FXML
-    private Label adventurerStaminaLabel1;
-    @FXML
-    private Label adventurerNameLabel2;
-    @FXML
-    private Label adventurerStaminaLabel2;
-    @FXML
-    private Label adventurerNameLabel3;
-    @FXML
-    private Label adventurerStaminaLabel3;
-    @FXML
-    private Label adventurerNameLabel4;
-    @FXML
-    private Label adventurerStaminaLabel4;
-    @FXML
-    private Label adventurerNameLabel5;
-    @FXML
-    private Label adventurerStaminaLabel5;
+    private Label   adventurerNameLabel1, adventurerStaminaLabel1,
+                    adventurerNameLabel2, adventurerStaminaLabel2,
+                    adventurerNameLabel3, adventurerStaminaLabel3,
+                    adventurerNameLabel4, adventurerStaminaLabel4,
+                    adventurerNameLabel5, adventurerStaminaLabel5;
 
     private GuiService guiService = new GuiService();
     private SetupService setupService = new SetupService();

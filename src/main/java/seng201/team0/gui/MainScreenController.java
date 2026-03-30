@@ -23,19 +23,9 @@ import seng201.team0.models.UserData;
  */
 public class MainScreenController implements Initializable {
     @FXML
-    private Label goldAmountLabel;
+    private Label goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel;
     @FXML
-    private Label currentExpeditionLabel;
-    @FXML
-    private Label expeditionsRemainingLabel;
-    @FXML
-    private Button goToGuildHallButton;
-    @FXML
-    private Button goToGuildOverviewButton;
-    @FXML
-    private Button goToMarketButton;
-    @FXML
-    private Button goOnExpeditionButton;
+    private Button goToGuildHallButton, goToGuildOverviewButton, goToMarketButton, goOnExpeditionButton;
 
     GuiService guiService = new GuiService();
 

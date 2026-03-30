@@ -17,9 +17,7 @@ import seng201.team0.Adventurer;
 
 public class GuildHallController implements Initializable {
     @FXML
-    private Button backButton;
-    @FXML
-    private Button hireAdventurerButton;
+    private Button backButton, hireAdventurerButton;
     @FXML
     private ListView<Adventurer> hireableAdventurersListView;
 

@@ -20,9 +20,7 @@ import seng201.team0.models.UserData;
 
 public class MarketController implements Initializable {
     @FXML
-    private Button backButton;
-    @FXML
-    private Button buyItemButton;
+    private Button backButton, buyItemButton;
     @FXML
     private ListView<Item> itemListView;
 
