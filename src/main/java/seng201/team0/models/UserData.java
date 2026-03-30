@@ -6,15 +6,18 @@ import java.util.ArrayList;
 
 public class UserData {
     private static final int MAX_PARTY_SIZE = 5;
-    private List<Adventurer> mainParty;
+    private static List<Adventurer> mainParty;
     private List<Adventurer> reserveParty = new ArrayList<Adventurer>();
     private List<Item> items = new ArrayList<Item>();
-    private int gold;
+    private static int gold;
     private String difficulty;
     private String guildName;
     private int currentExpeditionNumber;
     private int expeditionsRemaining;
 
+    private static UserData userData;
+
+    private UserData() {}
     public UserData(ArrayList<Adventurer> mainParty, String difficulty, String guildName, int numberOfExpeditions)
     {
         this.mainParty = mainParty;
@@ -40,7 +43,8 @@ public class UserData {
         this.expeditionsRemaining = numberOfExpeditions;
     }
     //Getters
-    public List<Adventurer> getMainParty()
+    public int getGold(){return gold;}
+    public static List<Adventurer> getMainParty()
     {
         return mainParty;
     }
@@ -187,5 +191,11 @@ public class UserData {
         System.out.println("useItem not yet implemented");
     }
 
-
+    public static UserData getInstance()
+    {
+        if (userData == null){
+            userData = new UserData();
+        }
+        return userData;
+    }
 }

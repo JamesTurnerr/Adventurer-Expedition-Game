@@ -36,16 +36,27 @@ public class GuildOverviewController implements Initializable {
     private ListView<Item> itemsListView;
 
     WindowSwitchService windowSwitchService = new WindowSwitchService();
+    UserData userData = UserData.getInstance();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
+        for (Adventurer adventurer : userData.getMainParty())
+        {
+            mainPartyListView.getItems().add(adventurer);
 
+        }
+        for (Adventurer adventurer : userData.getReserveParty())
+        {
+            reservePartyListView.getItems().add(adventurer);
+        }
+        for (Item item : userData.getItems())
+        {
+            itemsListView.getItems().add(item);
+        }
     }
     @FXML
     private void loadButtonClicked() throws IOException {//load user data into main party list view
-        Stage stage = (Stage) mainPartyListView.getScene().getWindow();
-        UserData userData = (UserData)stage.getUserData();
         mainPartyListView.getItems().clear();
         reservePartyListView.getItems().clear();
         itemsListView.getItems().clear();
@@ -64,19 +75,12 @@ public class GuildOverviewController implements Initializable {
     }
     @FXML
     private void backButtonClicked() throws IOException {
-        //Set user data
-        Stage stage = (Stage) mainPartyListView.getScene().getWindow();
-        UserData userData = (UserData)stage.getUserData();
-        stage.setUserData(userData);
         //Switch windows
         windowSwitchService.switchWindow((Stage) backButton.getScene().getWindow(), "/fxml/main_screen.fxml");
     }
     @FXML
     private void moveToMainButtonClicked()
     {
-        Stage stage = (Stage) mainPartyListView.getScene().getWindow();
-        UserData userData = (UserData)stage.getUserData();
-
         userData.moveAdventurerToMain(reservePartyListView.getSelectionModel().getSelectedItem());//Move adventurer to main
         //Update ListViews
         mainPartyListView.getItems().clear();
@@ -93,9 +97,6 @@ public class GuildOverviewController implements Initializable {
     @FXML
     private void moveFromMainButtonClicked()
     {
-        Stage stage = (Stage) mainPartyListView.getScene().getWindow();
-        UserData userData = (UserData)stage.getUserData();
-
         userData.moveAdventurerToReserve(mainPartyListView.getSelectionModel().getSelectedItem());//Move adventurer to reserve
         //Update ListViews
         mainPartyListView.getItems().clear();
