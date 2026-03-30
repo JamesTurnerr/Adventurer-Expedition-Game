@@ -15,6 +15,7 @@ import seng201.team0.Party;
 import seng201.team0.services.AdventurerListViewService;
 import seng201.team0.services.SetupService;
 import seng201.team0.services.WindowSwitchService;
+import seng201.team0.models.UserData;
 
 public class SetupController implements Initializable {
     @FXML
@@ -46,6 +47,7 @@ public class SetupController implements Initializable {
 
     private SetupService setupService = new SetupService();
     private WindowSwitchService windowSwitchService = new WindowSwitchService();
+    private UserData userData = new UserData();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
@@ -69,7 +71,14 @@ public class SetupController implements Initializable {
     private void onButtonClicked() throws IOException {
         if (setupService.checkInputs(expeditionInputTextField.getText(), guildInputTextField.getText(), difficultyMenuButton.getText(), chosenAdventurersListView.getItems()))
         {
-            windowSwitchService.switchWindow((Stage) startButton.getScene().getWindow(), "/fxml/main_screen.fxml");
+            for (Adventurer adventurer : chosenAdventurersListView.getItems())
+            {
+                userData.adventurers.add(adventurer);
+            }
+
+            Stage stage = (Stage) startButton.getScene().getWindow();
+            stage.setUserData(userData);
+            windowSwitchService.switchWindow(stage, "/fxml/main_screen.fxml");
         }
 
     }
