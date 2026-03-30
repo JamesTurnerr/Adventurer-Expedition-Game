@@ -62,7 +62,7 @@ public class UserData {
     {
         if (mainParty.size() >= MAX_PARTY_SIZE)
         {
-            System.out.println("Error: Party already full");
+            System.out.println("Warning: Party already full");
             return false;
         }
         else
@@ -85,7 +85,7 @@ public class UserData {
     {
         if (mainParty.size() == MAX_PARTY_SIZE)
         {
-            System.out.println("Error: Removing this adventurer will cause main party to be empty");
+            System.out.println("Warning: Removing this adventurer will cause main party to be empty");
             return false;
         }
         else {
@@ -125,19 +125,24 @@ public class UserData {
     //Moving adventurers
     public boolean moveAdventurerToReserve(Adventurer adventurer)
     {
+        if (adventurer == null)
+        {
+            System.out.println("Warning: No adventurer selected");
+            return false;
+        }
         if (reserveParty.contains(adventurer))
         {
-            System.out.println("Error: Reserve party already contains this adventurer");
+            System.out.println("Warning: Reserve party already contains this adventurer");
             return false;
         }
         if (!mainParty.contains(adventurer))
         {
-            System.out.println("Error: Adventurer not found in main party");
+            System.out.println("Warning: Adventurer not found in main party");
             return false;
         }
         if (mainParty.size() == 1)
         {
-            System.out.println("Error: Removing this adventurer will cause main party to be empty");
+            System.out.println("Warning: Removing this adventurer will cause main party to be empty");
             return false;
         }
         if (removeFromMainParty(adventurer))
@@ -151,14 +156,19 @@ public class UserData {
     }
     public boolean moveAdventurerToMain(Adventurer adventurer)
     {
+        if (adventurer == null)
+        {
+            System.out.println("Warning: No adventurer selected");
+            return false;
+        }
         if (mainParty.contains(adventurer))
         {
-            System.out.println("Error: Main party already contains this adventurer");
+            System.out.println("Warning: Main party already contains this adventurer");
             return false;
         }
         if (!reserveParty.contains(adventurer))
         {
-            System.out.println("Error: Adventurer not found in reserve party");
+            System.out.println("Warning: Adventurer not found in reserve party");
             return false;
         }
         if (addToMainParty(adventurer))
