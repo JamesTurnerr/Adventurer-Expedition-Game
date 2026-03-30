@@ -47,15 +47,15 @@ public class GuildOverviewController implements Initializable {
     private void loadButtonClicked() throws IOException {//load user data into main party list view
         this.stage = (Stage) mainPartyListView.getScene().getWindow();
         UserData userData = (UserData)stage.getUserData();
-        for (Adventurer adventurer : userData.mainParty)
+        for (Adventurer adventurer : userData.getMainParty())
         {
             mainPartyListView.getItems().add(adventurer);
         }
-        for (Adventurer adventurer : userData.reserveParty)
+        for (Adventurer adventurer : userData.getReserveParty())
         {
             reservePartyListView.getItems().add(adventurer);
         }
-        for (Item item : userData.items)
+        for (Item item : userData.getItems())
         {
             itemsListView.getItems().add(item);
         }

@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -48,7 +49,6 @@ public class SetupController implements Initializable {
 
     private SetupService setupService = new SetupService();
     private WindowSwitchService windowSwitchService = new WindowSwitchService();
-    private UserData userData = new UserData();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
@@ -72,11 +72,8 @@ public class SetupController implements Initializable {
     private void onButtonClicked() throws IOException {
         if (setupService.checkInputs(expeditionInputTextField.getText(), guildInputTextField.getText(), difficultyMenuButton.getText(), chosenAdventurersListView.getItems()))
         {
-            for (Adventurer adventurer : chosenAdventurersListView.getItems())
-            {
-                userData.mainParty.add(adventurer);
-            }
-            userData.items.add(new Item("Test_Item"));
+            ArrayList<Adventurer> chosenAdventurersList = new ArrayList<Adventurer>(chosenAdventurersListView.getItems());
+            UserData userData = new UserData(chosenAdventurersList, difficultyMenuButton.getText(), guildInputTextField.getText(), Integer.parseInt(expeditionInputTextField.getText()));
 
             Stage stage = (Stage) startButton.getScene().getWindow();
             stage.setUserData(userData);

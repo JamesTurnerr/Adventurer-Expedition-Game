@@ -27,7 +27,7 @@ public class SetupService {
     {
         List<Item> itemList = new ArrayList<Item>();
         for (int i = 0; i < size; i++) {
-            itemList.add(new Item("Item " + Integer.toString(i)));
+            itemList.add(new Item("Item " + Integer.toString(i), 10));
         }
         return itemList;
     }
