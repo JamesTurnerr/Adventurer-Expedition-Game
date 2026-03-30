@@ -44,8 +44,6 @@ public class SetupController implements Initializable {
     private Button chooseAdventurerButton;
     @FXML
     private Button unchooseAdventurerButton;
-    @FXML
-    private Button fillListButton;
 
     private SetupService setupService = new SetupService();
     private GuiService guiService = new GuiService();
@@ -56,18 +54,6 @@ public class SetupController implements Initializable {
         party = Party.getInstance();
         AdventurerListViewService.fill(availableAdventurersListView);
     }
-
-    //currently functionless
-    @FXML
-    private void onFillListButtonClicked()          //need to randomly generate some adventurers here
-    {
-        /*List<Adventurer> adventurerList = setupService.getAllAdventurerList();
-        for (Adventurer adventurer : adventurerList)
-        {
-            availableAdventurersListView.getItems().add(adventurer);
-        }*/
-    }
-
     @FXML
     private void onButtonClicked() throws IOException {
         if (setupService.checkInputs(expeditionInputTextField.getText(), guildInputTextField.getText(), difficultyMenuButton.getText(), chosenAdventurersListView.getItems()))

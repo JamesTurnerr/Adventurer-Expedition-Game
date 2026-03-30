@@ -75,6 +75,5 @@
          </GridPane.margin>
       </ListView>
       <Button fx:id="useItemButton" mnemonicParsing="false" onAction="#useItemButtonClicked" text="&lt;" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-      <Button fx:id="loadButton" mnemonicParsing="false" onAction="#loadButtonClicked" text="Load" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
    </children>
 </GridPane>

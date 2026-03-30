@@ -64,6 +64,5 @@
             <Insets bottom="45.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="fillListButton" mnemonicParsing="false" onAction="#onFillListButtonClicked" text="Fill List" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
    </children>
 </GridPane>

@@ -27,8 +27,6 @@ public class GuildOverviewController implements Initializable {
     @FXML
     private Button useItemButton;
     @FXML
-    private Button loadButton;
-    @FXML
     private ListView<Adventurer> reservePartyListView;
     @FXML
     private ListView<Adventurer> mainPartyListView;
@@ -41,12 +39,6 @@ public class GuildOverviewController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
-        guiService.populateListView(mainPartyListView, userData.getMainParty());
-        guiService.populateListView(reservePartyListView, userData.getReserveParty());
-        guiService.populateListView(itemsListView, userData.getItems());
-    }
-    @FXML
-    private void loadButtonClicked() throws IOException {//load user data into main party list view
         guiService.populateListView(mainPartyListView, userData.getMainParty());
         guiService.populateListView(reservePartyListView, userData.getReserveParty());
         guiService.populateListView(itemsListView, userData.getItems());
