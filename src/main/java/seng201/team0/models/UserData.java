@@ -12,8 +12,8 @@ public class UserData {
     private static int gold;
     private String difficulty;
     private String guildName;
-    private int currentExpeditionNumber;
-    private int expeditionsRemaining;
+    private static int currentExpeditionNumber;
+    private static int expeditionsRemaining;
 
     private static UserData userData;
 
@@ -43,7 +43,7 @@ public class UserData {
         this.expeditionsRemaining = numberOfExpeditions;
     }
     //Getters
-    public int getGold(){return gold;}
+    public static int getGold(){return gold;}
     public static List<Adventurer> getMainParty()
     {
         return mainParty;
@@ -55,6 +55,14 @@ public class UserData {
     public List<Item> getItems()
     {
         return items;
+    }
+    public static int getCurrentExpeditionNumber()
+    {
+        return currentExpeditionNumber;
+    }
+    public static int getExpeditionsRemaining()
+    {
+        return expeditionsRemaining;
     }
 
     //Add data
