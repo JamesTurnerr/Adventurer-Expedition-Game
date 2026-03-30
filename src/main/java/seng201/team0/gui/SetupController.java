@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import seng201.team0.Adventurer;
+import seng201.team0.Item;
 import seng201.team0.Party;
 import seng201.team0.services.AdventurerListViewService;
 import seng201.team0.services.SetupService;
@@ -73,8 +74,9 @@ public class SetupController implements Initializable {
         {
             for (Adventurer adventurer : chosenAdventurersListView.getItems())
             {
-                userData.adventurers.add(adventurer);
+                userData.mainParty.add(adventurer);
             }
+            userData.items.add(new Item("Test_Item"));
 
             Stage stage = (Stage) startButton.getScene().getWindow();
             stage.setUserData(userData);
