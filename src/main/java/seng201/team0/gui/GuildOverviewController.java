@@ -36,7 +36,6 @@ public class GuildOverviewController implements Initializable {
     private ListView<Item> itemsListView;
 
     WindowSwitchService windowSwitchService = new WindowSwitchService();
-    private Stage stage;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
@@ -45,8 +44,11 @@ public class GuildOverviewController implements Initializable {
     }
     @FXML
     private void loadButtonClicked() throws IOException {//load user data into main party list view
-        this.stage = (Stage) mainPartyListView.getScene().getWindow();
+        Stage stage = (Stage) mainPartyListView.getScene().getWindow();
         UserData userData = (UserData)stage.getUserData();
+        mainPartyListView.getItems().clear();
+        reservePartyListView.getItems().clear();
+        itemsListView.getItems().clear();
         for (Adventurer adventurer : userData.getMainParty())
         {
             mainPartyListView.getItems().add(adventurer);
@@ -62,17 +64,50 @@ public class GuildOverviewController implements Initializable {
     }
     @FXML
     private void backButtonClicked() throws IOException {
+        //Set user data
+        Stage stage = (Stage) mainPartyListView.getScene().getWindow();
+        UserData userData = (UserData)stage.getUserData();
+        stage.setUserData(userData);
+        //Switch windows
         windowSwitchService.switchWindow((Stage) backButton.getScene().getWindow(), "/fxml/main_screen.fxml");
     }
     @FXML
     private void moveToMainButtonClicked()
     {
-        System.out.println("moveToMainButtonClicked() not yet implemented");
+        Stage stage = (Stage) mainPartyListView.getScene().getWindow();
+        UserData userData = (UserData)stage.getUserData();
+
+        userData.moveAdventurerToMain(reservePartyListView.getSelectionModel().getSelectedItem());//Move adventurer to main
+        //Update ListViews
+        mainPartyListView.getItems().clear();
+        for (Adventurer adventurer : userData.getMainParty())
+        {
+            mainPartyListView.getItems().add(adventurer);
+        }
+        reservePartyListView.getItems().clear();
+        for (Adventurer adventurer : userData.getReserveParty())
+        {
+            reservePartyListView.getItems().add(adventurer);
+        }
     }
     @FXML
     private void moveFromMainButtonClicked()
     {
-        System.out.println("moveFromMainButtonClicked() not yet implemented");
+        Stage stage = (Stage) mainPartyListView.getScene().getWindow();
+        UserData userData = (UserData)stage.getUserData();
+
+        userData.moveAdventurerToReserve(mainPartyListView.getSelectionModel().getSelectedItem());//Move adventurer to reserve
+        //Update ListViews
+        mainPartyListView.getItems().clear();
+        for (Adventurer adventurer : userData.getMainParty())
+        {
+            mainPartyListView.getItems().add(adventurer);
+        }
+        reservePartyListView.getItems().clear();
+        for (Adventurer adventurer : userData.getReserveParty())
+        {
+            reservePartyListView.getItems().add(adventurer);
+        }
     }
     @FXML
     private void useItemButtonClicked()
