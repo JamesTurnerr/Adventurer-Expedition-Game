@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 
 import seng201.team0.Party;
 import seng201.team0.services.AdventurerListViewService;
-import seng201.team0.services.WindowSwitchService;
+import seng201.team0.services.GuiService;
 import seng201.team0.services.SetupService;
 import seng201.team0.Adventurer;
 
@@ -24,7 +24,7 @@ public class GuildHallController implements Initializable {
     private ListView<Adventurer> hireableAdventurersListView;
 
     private Party party;
-    private WindowSwitchService windowSwitchService = new WindowSwitchService();
+    private GuiService guiService = new GuiService();
     private SetupService setupService = new SetupService();
 
     @Override
@@ -37,7 +37,7 @@ public class GuildHallController implements Initializable {
 
     @FXML
     private void backButtonClicked() throws IOException {
-        windowSwitchService.switchWindow((Stage) backButton.getScene().getWindow(), "/fxml/main_screen.fxml");
+        guiService.switchWindow((Stage) backButton.getScene().getWindow(), "/fxml/main_screen.fxml");
     }
 
     // this is similar to the other button in setupcontroller.

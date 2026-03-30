@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import seng201.team0.services.WindowSwitchService;
+import seng201.team0.services.GuiService;
 import seng201.team0.services.SetupService;
 import seng201.team0.Item;
 
@@ -25,7 +25,7 @@ public class MarketController implements Initializable {
     @FXML
     private ListView<Item> itemListView;
 
-    private WindowSwitchService windowSwitchService = new WindowSwitchService();
+    private GuiService guiService = new GuiService();
     private SetupService setupService = new SetupService();
 
     @Override
@@ -40,7 +40,7 @@ public class MarketController implements Initializable {
 
     @FXML
     private void backButtonClicked() throws IOException {
-        windowSwitchService.switchWindow((Stage) backButton.getScene().getWindow(), "/fxml/main_screen.fxml");
+        guiService.switchWindow((Stage) backButton.getScene().getWindow(), "/fxml/main_screen.fxml");
     }
     @FXML
     private void buyItemButtonClicked()

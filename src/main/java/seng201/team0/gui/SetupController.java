@@ -16,7 +16,7 @@ import seng201.team0.Item;
 import seng201.team0.Party;
 import seng201.team0.services.AdventurerListViewService;
 import seng201.team0.services.SetupService;
-import seng201.team0.services.WindowSwitchService;
+import seng201.team0.services.GuiService;
 import seng201.team0.models.UserData;
 
 public class SetupController implements Initializable {
@@ -48,7 +48,7 @@ public class SetupController implements Initializable {
     private Button fillListButton;
 
     private SetupService setupService = new SetupService();
-    private WindowSwitchService windowSwitchService = new WindowSwitchService();
+    private GuiService guiService = new GuiService();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
@@ -77,7 +77,7 @@ public class SetupController implements Initializable {
 
             Stage stage = (Stage) startButton.getScene().getWindow();
             stage.setUserData(userData);
-            windowSwitchService.switchWindow(stage, "/fxml/main_screen.fxml");
+            guiService.switchWindow(stage, "/fxml/main_screen.fxml");
         }
 
     }

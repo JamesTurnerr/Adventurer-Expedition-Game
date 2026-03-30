@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import seng201.team0.services.WindowSwitchService;
+import seng201.team0.services.GuiService;
 
 
 /**
@@ -32,23 +32,23 @@ public class MainScreenController {
     @FXML
     private Button goOnExpeditionButton;
 
-    WindowSwitchService windowSwitchService = new WindowSwitchService();
+    GuiService guiService = new GuiService();
 
     @FXML
     private void goToGuildHallButtonClicked() throws IOException {
-        windowSwitchService.switchWindow((Stage) goToGuildHallButton.getScene().getWindow(), "/fxml/guild_hall.fxml");
+        guiService.switchWindow((Stage) goToGuildHallButton.getScene().getWindow(), "/fxml/guild_hall.fxml");
     }
     @FXML
     private void goToGuildOverviewButtonClicked() throws IOException {
-        windowSwitchService.switchWindow((Stage) goToGuildOverviewButton.getScene().getWindow(), "/fxml/guild_overview.fxml");
+        guiService.switchWindow((Stage) goToGuildOverviewButton.getScene().getWindow(), "/fxml/guild_overview.fxml");
     }
     @FXML
     private void goToMarketButtonClicked() throws IOException {
-        windowSwitchService.switchWindow((Stage) goToMarketButton.getScene().getWindow(), "/fxml/market.fxml");
+        guiService.switchWindow((Stage) goToMarketButton.getScene().getWindow(), "/fxml/market.fxml");
     }
     @FXML
     private void goOnExpeditionButtonClicked() throws IOException {
-        windowSwitchService.switchWindow((Stage) goOnExpeditionButton.getScene().getWindow(), "/fxml/expedition.fxml");
+        guiService.switchWindow((Stage) goOnExpeditionButton.getScene().getWindow(), "/fxml/expedition.fxml");
     }
 }
 

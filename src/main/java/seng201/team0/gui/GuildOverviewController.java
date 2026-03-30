@@ -13,9 +13,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import seng201.team0.Adventurer;
-import seng201.team0.services.WindowSwitchService;
 import seng201.team0.Item;
 import seng201.team0.models.UserData;
+import seng201.team0.services.GuiService;
 
 public class GuildOverviewController implements Initializable {
     @FXML
@@ -35,80 +35,41 @@ public class GuildOverviewController implements Initializable {
     @FXML
     private ListView<Item> itemsListView;
 
-    WindowSwitchService windowSwitchService = new WindowSwitchService();
+    GuiService guiService = new GuiService();
     UserData userData = UserData.getInstance();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
-        for (Adventurer adventurer : userData.getMainParty())
-        {
-            mainPartyListView.getItems().add(adventurer);
-
-        }
-        for (Adventurer adventurer : userData.getReserveParty())
-        {
-            reservePartyListView.getItems().add(adventurer);
-        }
-        for (Item item : userData.getItems())
-        {
-            itemsListView.getItems().add(item);
-        }
+        guiService.populateListView(mainPartyListView, userData.getMainParty());
+        guiService.populateListView(reservePartyListView, userData.getReserveParty());
+        guiService.populateListView(itemsListView, userData.getItems());
     }
     @FXML
     private void loadButtonClicked() throws IOException {//load user data into main party list view
-        mainPartyListView.getItems().clear();
-        reservePartyListView.getItems().clear();
-        itemsListView.getItems().clear();
-        for (Adventurer adventurer : userData.getMainParty())
-        {
-            mainPartyListView.getItems().add(adventurer);
-        }
-        for (Adventurer adventurer : userData.getReserveParty())
-        {
-            reservePartyListView.getItems().add(adventurer);
-        }
-        for (Item item : userData.getItems())
-        {
-            itemsListView.getItems().add(item);
-        }
+        guiService.populateListView(mainPartyListView, userData.getMainParty());
+        guiService.populateListView(reservePartyListView, userData.getReserveParty());
+        guiService.populateListView(itemsListView, userData.getItems());
     }
     @FXML
     private void backButtonClicked() throws IOException {
         //Switch windows
-        windowSwitchService.switchWindow((Stage) backButton.getScene().getWindow(), "/fxml/main_screen.fxml");
+        guiService.switchWindow((Stage) backButton.getScene().getWindow(), "/fxml/main_screen.fxml");
     }
     @FXML
     private void moveToMainButtonClicked()
     {
         userData.moveAdventurerToMain(reservePartyListView.getSelectionModel().getSelectedItem());//Move adventurer to main
         //Update ListViews
-        mainPartyListView.getItems().clear();
-        for (Adventurer adventurer : userData.getMainParty())
-        {
-            mainPartyListView.getItems().add(adventurer);
-        }
-        reservePartyListView.getItems().clear();
-        for (Adventurer adventurer : userData.getReserveParty())
-        {
-            reservePartyListView.getItems().add(adventurer);
-        }
+        guiService.populateListView(mainPartyListView, userData.getMainParty());
+        guiService.populateListView(reservePartyListView, userData.getReserveParty());
     }
     @FXML
     private void moveFromMainButtonClicked()
     {
         userData.moveAdventurerToReserve(mainPartyListView.getSelectionModel().getSelectedItem());//Move adventurer to reserve
-        //Update ListViews
-        mainPartyListView.getItems().clear();
-        for (Adventurer adventurer : userData.getMainParty())
-        {
-            mainPartyListView.getItems().add(adventurer);
-        }
-        reservePartyListView.getItems().clear();
-        for (Adventurer adventurer : userData.getReserveParty())
-        {
-            reservePartyListView.getItems().add(adventurer);
-        }
+        guiService.populateListView(mainPartyListView, userData.getMainParty());
+        guiService.populateListView(reservePartyListView, userData.getReserveParty());
     }
     @FXML
     private void useItemButtonClicked()

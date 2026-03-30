@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import seng201.team0.services.WindowSwitchService;
+import seng201.team0.services.GuiService;
 import seng201.team0.services.SetupService;
 import seng201.team0.Adventurer;
 import seng201.team0.services.ExpeditionService;
@@ -46,7 +46,7 @@ public class ExpeditionController implements Initializable {
     @FXML
     private Label adventurerStaminaLabel5;
 
-    private WindowSwitchService windowSwitchService = new WindowSwitchService();
+    private GuiService guiService = new GuiService();
     private SetupService setupService = new SetupService();
     private ExpeditionService expeditionService;
 
