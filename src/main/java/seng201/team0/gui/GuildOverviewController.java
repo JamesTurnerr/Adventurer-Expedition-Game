@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import seng201.team0.Adventurer;
+import seng201.team0.models.Adventurer;
 import seng201.team0.models.Item;
 import seng201.team0.models.UserData;
 import seng201.team0.services.GuiService;

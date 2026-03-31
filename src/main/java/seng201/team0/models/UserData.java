@@ -1,12 +1,11 @@
 package seng201.team0.models;
-import seng201.team0.Adventurer;
 import java.util.List;
 import java.util.ArrayList;
 
 public class UserData {
     private static final int MAX_PARTY_SIZE = 5;
     private static List<Adventurer> mainParty;
-    private List<Adventurer> reserveParty = new ArrayList<Adventurer>();
+    private static List<Adventurer> reserveParty = new ArrayList<Adventurer>();
     private static List<Item> items = new ArrayList<Item>();
     private static int gold;
     private String difficulty;
@@ -74,7 +73,7 @@ public class UserData {
         }
         items.add(item);
     }
-    public boolean addToMainParty(Adventurer adventurer)
+    private static boolean addToMainParty(Adventurer adventurer)
     {
         if (mainParty.size() >= MAX_PARTY_SIZE)
         {
@@ -87,7 +86,7 @@ public class UserData {
             return true;
         }
     }
-    public boolean addToReserveParty(Adventurer adventurer)
+    private static boolean addToReserveParty(Adventurer adventurer)
     {
         if (reserveParty.size() >= 5)
         {
@@ -99,13 +98,13 @@ public class UserData {
     }
 
     //Remove data
-    public void removeItem(Item item)
+    private void removeItem(Item item)
     {
         items.remove(item);
     }
-    public boolean removeFromMainParty(Adventurer adventurer)
+    private boolean removeFromMainParty(Adventurer adventurer)
     {
-        if (mainParty.size() == MAX_PARTY_SIZE)
+        if (mainParty.size() == 1)
         {
             System.out.println("Warning: Removing this adventurer will cause main party to be empty");
             return false;
@@ -115,39 +114,46 @@ public class UserData {
             return true;
         }
     }
-    public void removeFromReserveParty(Adventurer adventurer)
+    private void removeFromReserveParty(Adventurer adventurer)
     {
         reserveParty.remove(adventurer);
     }
 
     //Buying
-    public boolean hireAdventurer(Adventurer adventurer)
+    public static boolean hireAdventurer(Adventurer adventurer)
     {
-        if (adventurer.getHiringCost() < gold)
+        if (adventurer != null)
         {
-            if (addToReserveParty(adventurer))//Try to add new adventurer to reserves
+            if (adventurer.getHiringCost() <= gold)
             {
-                gold -= adventurer.getHiringCost();
-                return true;
-            }
-            else//Try to add new adventurer to main party
-            {
-                System.out.println("Warning: Reserve party full, attempting to add to main party");
-                if (addToMainParty(adventurer))
+                if (addToReserveParty(adventurer))//Try to add new adventurer to reserves
                 {
                     gold -= adventurer.getHiringCost();
                     return true;
                 }
-                else
+                else//Try to add new adventurer to main party
                 {
-                    System.out.println("Warning: Main party full, could not hire new adventurer");
-                    return false;
-                }
+                    System.out.println("Warning: Reserve party full, attempting to add to main party");
+                    if (addToMainParty(adventurer))
+                    {
+                        gold -= adventurer.getHiringCost();
+                        return true;
+                    }
+                    else
+                    {
+                        System.out.println("Warning: Main party full, could not hire new adventurer");
+                        return false;
+                    }
 
+                }
+            }
+            else {
+                System.out.println("Warning: Not enough gold, could not hire new adventurer");
+                return false;
             }
         }
         else {
-            System.out.println("Warning: Not enough gold, could not hire new adventurer");
+            System.out.println("Warning: Adventurer is null");
             return false;
         }
     }

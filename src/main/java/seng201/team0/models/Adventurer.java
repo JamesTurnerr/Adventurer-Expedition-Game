@@ -1,17 +1,14 @@
-package seng201.team0;
+package seng201.team0.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public enum Adventurer {
-    WILSON("Wilson", 100, 100, 70, 40, 20, 40),
+public class Adventurer {
+    /*WILSON("Wilson", 100, 100, 70, 40, 20, 40),
     PUNJAB("Pubjab", 40, 40, 60, 10, 10, 30),
     MIKE_TYSON("Tyson", 80, 60, 60, 60, 40, 90),
     FREDDY_FAZBEAR("Freddy", 20, 70, 20, 50, 20, 70),
     DIDDY("Colms", 100, 40, 30, 70, 60, 80),
     EPSTEIN("Jeff", 70, 30, 60, 70, 50, 70),
     PETER_GRIFFIN("Peter", 90, 90, 10, 40, 40, 50)
-    ;
+    ;*/
 
     private final String name;
     private int stamina;
@@ -23,7 +20,7 @@ public enum Adventurer {
     private final int pay;
     private int damage;
 
-    private Adventurer(String name, int maxStamina, int maxHealth, int perception, int hiringCost, int pay, int damage)
+    public Adventurer(String name, int maxStamina, int maxHealth, int perception, int hiringCost, int pay, int damage)
     {
         this.name = name;
         this. maxStamina = maxStamina;
@@ -76,5 +73,4 @@ public enum Adventurer {
     {
         return String.format("Name: %s, Stm: %d, Per: %d, HC: %d, Pay: %d", name, maxStamina, perception, hiringCost, pay);
     }
-
 }

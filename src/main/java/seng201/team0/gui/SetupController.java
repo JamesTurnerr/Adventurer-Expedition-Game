@@ -10,10 +10,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import seng201.team0.Adventurer;
+import seng201.team0.models.Adventurer;
 import seng201.team0.models.Item;
-import seng201.team0.Party;
-import seng201.team0.services.AdventurerListViewService;
 import seng201.team0.services.SetupService;
 import seng201.team0.services.GuiService;
 import seng201.team0.models.UserData;
@@ -30,8 +28,6 @@ public class SetupController implements Initializable {
     @FXML
     private ListView<Adventurer> chosenAdventurersListView;
     @FXML
-    private Party party;
-    @FXML
     private ListView<Adventurer> availableAdventurersListView;
     @FXML
     private Button chooseAdventurerButton, unchooseAdventurerButton;
@@ -42,8 +38,19 @@ public class SetupController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
-        party = Party.getInstance();
-        AdventurerListViewService.fill(availableAdventurersListView);
+        setupService.fillStarterAdventurerList(availableAdventurersListView, 5);
+    }
+    @FXML
+    private void easyModeSelected() {
+        difficultyMenuButton.setText("Easy");
+    }
+    @FXML
+    private void normalModeSelected() {
+        difficultyMenuButton.setText("Normal");
+    }
+    @FXML
+    private void hardModeSelected() {
+        difficultyMenuButton.setText("Hard");
     }
     @FXML
     private void startButtonClicked() throws IOException {
@@ -59,21 +66,9 @@ public class SetupController implements Initializable {
 
     }
     @FXML
-    private void easyModeSelected() {
-        difficultyMenuButton.setText("Easy");
-    }
-    @FXML
-    private void normalModeSelected() {
-        difficultyMenuButton.setText("Normal");
-    }
-    @FXML
-    private void hardModeSelected() {
-        difficultyMenuButton.setText("Hard");
-    }
-    @FXML
     private void chooseAdventurerClicked() {
         Adventurer selectedAdventurer = availableAdventurersListView.getSelectionModel().getSelectedItem();
-        if (selectedAdventurer != null && party.addToParty(selectedAdventurer)){
+        if (selectedAdventurer != null) {
             chosenAdventurersListView.getItems().add(selectedAdventurer);
             availableAdventurersListView.getItems().remove(selectedAdventurer);
         }
@@ -81,7 +76,7 @@ public class SetupController implements Initializable {
     @FXML
     private void unchooseAdventurerClicked() {
         Adventurer selectedAdventurer = chosenAdventurersListView.getSelectionModel().getSelectedItem();
-        if (selectedAdventurer != null && party.removeFromParty(selectedAdventurer)) {
+        if (selectedAdventurer != null) {
             availableAdventurersListView.getItems().add(chosenAdventurersListView.getSelectionModel().getSelectedItem());
             chosenAdventurersListView.getItems().remove(chosenAdventurersListView.getSelectionModel().getSelectedItem());
         }

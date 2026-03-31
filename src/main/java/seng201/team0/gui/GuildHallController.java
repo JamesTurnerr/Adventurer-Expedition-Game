@@ -9,11 +9,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import seng201.team0.Party;
-import seng201.team0.services.AdventurerListViewService;
+import seng201.team0.models.UserData;
 import seng201.team0.services.GuiService;
-import seng201.team0.services.SetupService;
-import seng201.team0.Adventurer;
+import seng201.team0.services.GuildHallService;
+import seng201.team0.models.Adventurer;
 
 public class GuildHallController implements Initializable {
     @FXML
@@ -21,16 +20,13 @@ public class GuildHallController implements Initializable {
     @FXML
     private ListView<Adventurer> hireableAdventurersListView;
 
-    private Party party;
     private final GuiService guiService = new GuiService();
-    private final SetupService setupService = new SetupService();
+    private final GuildHallService guildHallService = new GuildHallService();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
-        party = Party.getInstance();
-        AdventurerListViewService.fill(hireableAdventurersListView);
-
+        guildHallService.fillAdventurerList(hireableAdventurersListView, 5);
     }
 
     @FXML
@@ -44,15 +40,9 @@ public class GuildHallController implements Initializable {
     private void hireAdventurerButtonClicked()
     {
         Adventurer selectedAdventurer = hireableAdventurersListView.getSelectionModel().getSelectedItem();
-        if (selectedAdventurer != null && party.addToParty(selectedAdventurer)){
-            //lose moolah
-            System.out.println("added "+selectedAdventurer+" to party");
+        if (UserData.hireAdventurer(selectedAdventurer))
+        {
             hireableAdventurersListView.getItems().remove(selectedAdventurer);
-            //need to add an undo + way to see party
-            // need to add a test case for party full
-        }
-        else{
-            System.out.println("your party might be full gang");
         }
     }
 }

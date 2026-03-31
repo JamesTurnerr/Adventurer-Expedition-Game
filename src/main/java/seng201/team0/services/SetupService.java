@@ -7,8 +7,9 @@ import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
-import seng201.team0.Adventurer;
+import seng201.team0.models.Adventurer;
 import seng201.team0.models.Item;
 
 public class SetupService {
@@ -80,5 +81,14 @@ public class SetupService {
         System.out.println(String.format("%s guild is going on %d %s expeditions with %s",
                 guildInputTextField, numberOfExpeditions, difficultyMenuButton, adventurerListString));
         return true;
+    }
+
+    public void fillStarterAdventurerList(ListView<Adventurer> listView, int numberOfAdventurers)
+    {
+        listView.getItems().clear();
+        for (int i = 0; i < numberOfAdventurers; i++)
+        {
+            listView.getItems().add(AdventurerCreationService.createRandomAdventurer());
+        }
     }
 }
