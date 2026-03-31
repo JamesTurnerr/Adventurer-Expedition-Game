@@ -13,17 +13,19 @@
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.SetupController">
   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="67.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.0" minWidth="10.0" prefWidth="170.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="10.0" prefWidth="89.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="193.0" minWidth="10.0" prefWidth="173.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.0" minWidth="10.0" prefWidth="223.0" />
+      <ColumnConstraints hgrow="NEVER" minWidth="40.0" prefWidth="40.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="170.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="30.0" prefWidth="89.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="173.0" />
+    <ColumnConstraints hgrow="NEVER" maxWidth="223.0" minWidth="150.0" prefWidth="223.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="80.0" prefHeight="80.0" vgrow="NEVER" />
+    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="80.0" prefHeight="80.0" vgrow="NEVER" />
+    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="80.0" prefHeight="80.0" vgrow="NEVER" />
+    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="80.0" prefHeight="80.0" vgrow="NEVER" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="80.0" prefHeight="80.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
   </rowConstraints>
    <children>
       <TextField fx:id="guildInputTextField" GridPane.columnIndex="4" GridPane.valignment="BOTTOM">
@@ -38,10 +40,13 @@
          <GridPane.margin>
             <Insets bottom="25.0" />
          </GridPane.margin></Label>
-      <Label text="Choose number of expeditions 3-15" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+      <Label text="Number of expeditions 3-15" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets top="20.0" />
+         </GridPane.margin></Label>
       <TextField fx:id="expeditionInputTextField" maxWidth="40.0" prefWidth="160.0" text="3" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>
-            <Insets bottom="45.0" />
+            <Insets bottom="10.0" />
          </GridPane.margin>
       </TextField>
       <MenuButton fx:id="difficultyMenuButton" mnemonicParsing="false" text="Difficulty" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2">
@@ -52,14 +57,14 @@
         </items>
       </MenuButton>
       <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonClicked" text="Start" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-      <ListView fx:id="availableAdventurersListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2" />
-      <ListView fx:id="chosenAdventurersListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.rowSpan="2" />
-      <Button fx:id="chooseAdventurerButton" mnemonicParsing="false" onAction="#chooseAdventurerClicked" text="&gt;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <ListView fx:id="availableAdventurersListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="4" />
+      <ListView fx:id="chosenAdventurersListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.rowSpan="4" />
+      <Button fx:id="chooseAdventurerButton" mnemonicParsing="false" onAction="#chooseAdventurerClicked" text="&gt;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets top="45.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="unchooseAdventurerButton" mnemonicParsing="false" onAction="#unchooseAdventurerClicked" text="&lt;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Button fx:id="unchooseAdventurerButton" mnemonicParsing="false" onAction="#unchooseAdventurerClicked" text="&lt;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets bottom="45.0" />
          </GridPane.margin>
