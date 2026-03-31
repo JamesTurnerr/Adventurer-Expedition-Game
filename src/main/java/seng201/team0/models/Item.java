@@ -8,25 +8,25 @@ public enum Item {
 
     private final String name;
     private final int cost;
-    private final int amount;
-    Item(String name, int amount, int cost)
+    private final int modifier;
+    Item(String name, int modifier, int cost)
     {
         this.name = name;
         this.cost = cost;
-        this.amount = amount;
+        this.modifier = modifier;
     }
     @Override
     public String toString()
     {
-        return String.format("%s +%d %sGold", name, amount, cost);
+        return String.format("%s +%d %sGold", name, modifier, cost);
     }
     public String getName()
     {
         return name;
     }
-    public int getAmount()
+    public int getModifier()
     {
-        return amount;
+        return modifier;
     }
     public int getCost()
     {

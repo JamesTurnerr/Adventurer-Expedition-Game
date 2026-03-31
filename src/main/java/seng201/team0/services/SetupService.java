@@ -13,16 +13,6 @@ import seng201.team0.models.Adventurer;
 import seng201.team0.models.Item;
 
 public class SetupService {
-
-
-    /*public List<Adventurer> getAllAdventurerList() {
-        return List.of(Adventurer.values());
-    }
-
-    public void addAllAdventurersToListView(ListView<Adventurer> listView){
-        listView.getItems().setAll(getAllAdventurerList());
-    }*/
-
     public List<Item> getTestItemList(int size)
     {
         List<Item> itemList = new ArrayList<Item>();
@@ -30,13 +20,6 @@ public class SetupService {
             itemList.add(Item.getRandomItem());
         }
         return itemList;
-    }
-
-    public void switchToMainWindow(Stage window) throws IOException {
-        FXMLLoader baseLoader = new FXMLLoader(getClass().getResource("/fxml/main_screen.fxml"));
-        Parent root = baseLoader.load();
-        Scene scene = new Scene(root, 600, 400);
-        window.setScene(scene);
     }
     /**
      * Checks all inputs to make sure they are valid before starting the game
@@ -69,14 +52,14 @@ public class SetupService {
             return false;
         }
 
-        if (chosenAdventurersListView.size() < 3) {
-            System.out.println("Please choose at least 3 adventurers");
+        if (chosenAdventurersListView.size() != 3) {
+            System.out.println("Please choose exactly 3 starter adventurers");
             return false;
         }
 
         String adventurerListString = "";
         for (Adventurer adv : chosenAdventurersListView) {
-            adventurerListString += adv.toString() + " ";
+            adventurerListString += adv.getName() + " ";
         }
         System.out.println(String.format("%s guild is going on %d %s expeditions with %s",
                 guildInputTextField, numberOfExpeditions, difficultyMenuButton, adventurerListString));
