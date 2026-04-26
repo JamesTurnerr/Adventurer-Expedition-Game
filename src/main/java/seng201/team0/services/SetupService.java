@@ -47,6 +47,16 @@ public class SetupService {
             System.out.println("Please enter a guild name");
             return false;
         }
+        //check for special characters
+        for (int i = 0; i < guildInputTextField.length(); i++)
+        {
+            char c = guildInputTextField.charAt(i);
+            if (!Character.isLetterOrDigit(c) && !Character.isWhitespace(c))
+            {
+                return false;
+            }
+        }
+
         if (difficultyMenuButton.equals("Difficulty")) {
             System.out.println("Please select a difficulty");
             return false;
