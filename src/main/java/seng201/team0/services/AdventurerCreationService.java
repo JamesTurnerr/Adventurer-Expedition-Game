@@ -26,13 +26,16 @@ public class AdventurerCreationService {
     EPSTEIN("Jeff", 70, 30, 60, 70, 50, 70),
     PETER_GRIFFIN("Peter", 90, 90, 10, 40, 40, 50)
     ;*/
-    private static final List<String> namesList = new ArrayList<String>(Arrays.asList(names));
+    private static List<String> namesList = new ArrayList<String>(Arrays.asList(names));
 
     public static Adventurer createRandomAdventurer()
     {
         Random random = new Random();
         String name = namesList.get(random.nextInt(namesList.size()));
         namesList.remove(name);
+        // check to see if the name list is empty - if so repopulate
+        if (namesList.size() == 0){
+            namesList = new ArrayList<String>(Arrays.asList(names));
         return new Adventurer(name, 100, 100, 100, 10, 10, 3);
     }
 }
