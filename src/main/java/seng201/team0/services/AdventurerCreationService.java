@@ -36,6 +36,7 @@ public class AdventurerCreationService {
         // check to see if the name list is empty - if so repopulate
         if (namesList.size() == 0){
             namesList = new ArrayList<String>(Arrays.asList(names));
+        }
         return new Adventurer(name, 100, 100, 100, 10, 10, 3);
     }
 }
