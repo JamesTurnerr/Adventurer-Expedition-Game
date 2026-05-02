@@ -20,6 +20,10 @@ public class Adventurer {
         this.hiringCost = hiringCost;
         this.pay = pay;
         this.damage = damage;
+
+        //set stats
+        this.stamina = maxStamina;
+        this.health = maxHealth;
     }
     //Getters
     public int getHealth()
@@ -62,6 +66,7 @@ public class Adventurer {
     @Override
     public String toString()
     {
-        return String.format("Name: %s, Stm: %d, Per: %d, HC: %d, Pay: %d", name, maxStamina, perception, hiringCost, pay);
+        //return String.format("Name: %s, Stm: %d, Per: %d, HC: %d, Pay: %d", name, maxStamina, perception, hiringCost, pay);
+        return String.format(name);
     }
 }

@@ -56,9 +56,13 @@ public class SetupController implements Initializable {
 
             selectedAdventurerButtons.get(i).setOnAction(e -> {
                 selectedSlotIndex = index;
+
                 System.out.println("Selected slot: " + selectedSlotIndex);
 
-                updateStats(mainParty.get(selectedSlotIndex));
+                Adventurer adv = mainParty.get(selectedSlotIndex);
+                if (adv != null) {
+                    updateStats(adv);
+                }
             });
         }
 
@@ -82,6 +86,11 @@ public class SetupController implements Initializable {
 
     @FXML
     private void startButtonClicked() throws IOException {
+        if (mainParty.contains(null)) {
+            System.out.println("please select 3");
+            return;
+        }
+
         if (!setupService.checkInputs(
                 expeditionInputTextField.getText(),
                 guildInputTextField.getText(),
@@ -112,10 +121,18 @@ public class SetupController implements Initializable {
         System.out.println(selectedAdventurer);
 
 
-
+        // if player doesnt select slot, auto select
         if (selectedSlotIndex == -1) {
-            System.out.println("nothing selected");
-            return;
+            for (int i = 0; i < mainParty.size(); i++) {
+                if (mainParty.get(i) == null) {
+                    selectedSlotIndex = i;
+                    break;
+                }
+            }
+            if (selectedSlotIndex == -1) {
+                System.out.println("party is full");
+                return;
+            }
         }
 
         if (mainParty.size() >= selectedSlotIndex){
@@ -149,7 +166,6 @@ public class SetupController implements Initializable {
 
     private void updateStats(Adventurer adventurer) {
         nameLabel.setText(adventurer.getName());
-
         healthLabel.setText(String.valueOf(adventurer.getHealth()));
         staminaLabel.setText(String.valueOf(adventurer.getStamina()));
         perceptionLabel.setText(String.valueOf(adventurer.getPerception()));
