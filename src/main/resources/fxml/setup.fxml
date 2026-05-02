@@ -33,17 +33,17 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Button">
+            <Button fx:id="slot1Button" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Button">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Button" GridPane.columnIndex="1">
+            <Button fx:id="slot2Button" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Button" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Button" GridPane.columnIndex="2">
+            <Button fx:id="slot3Button" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Button" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
@@ -97,7 +97,7 @@
                               <Insets left="10.0" right="10.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="unchooseAdventurer" mnemonicParsing="false" onAction="#unchooseAdventurerClicked" prefHeight="26.0" prefWidth="149.0" text="Remove" GridPane.columnIndex="1">
+                        <Button fx:id="unchooseAdventurerButton" mnemonicParsing="false" onAction="#unchooseAdventurerClicked" prefHeight="26.0" prefWidth="149.0" text="Remove" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets left="10.0" right="10.0" />
                            </GridPane.margin>
@@ -172,9 +172,9 @@
                   </GridPane>
                   <MenuButton fx:id="difficultyMenuButton" mnemonicParsing="false" text="Difficulty" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Easy" />
-                      <MenuItem mnemonicParsing="false" text="Normal" />
-                        <MenuItem mnemonicParsing="false" text="hard" />
+                      <MenuItem mnemonicParsing="false" text="Easy" onAction="#easyModeSelected"/>
+                      <MenuItem mnemonicParsing="false" text="Normal" onAction="#normalModeSelected"/>
+                        <MenuItem mnemonicParsing="false" text="hard" onAction="#hardModeSelected"/>
                     </items>
                   </MenuButton>
                </children>
