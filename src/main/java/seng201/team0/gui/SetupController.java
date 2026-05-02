@@ -27,6 +27,14 @@ public class SetupController implements Initializable {
     private final SetupService setupService = new SetupService();
     private final GuiService guiService = new GuiService();
 
+    @FXML private Label nameLabel;
+    @FXML private Label healthLabel;
+    @FXML private Label staminaLabel;
+    @FXML private Label perceptionLabel;
+    @FXML private Label costLabel;
+    @FXML private Label payLabel;
+    @FXML private Label damageLabel;
+
     @FXML private Button slot1Button;
     @FXML private Button slot2Button;
     @FXML private Button slot3Button;
@@ -49,8 +57,19 @@ public class SetupController implements Initializable {
             selectedAdventurerButtons.get(i).setOnAction(e -> {
                 selectedSlotIndex = index;
                 System.out.println("Selected slot: " + selectedSlotIndex);
+
+                updateStats(mainParty.get(selectedSlotIndex));
             });
         }
+
+        // updates stats for list
+        availableAdventurersListView.getSelectionModel().selectedItemProperty().addListener(
+                (obs, oldVal, newVal) -> {
+                    if (newVal != null) {
+                        updateStats(newVal);
+                    }
+                }
+        );
 
         mainParty = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
@@ -128,8 +147,15 @@ public class SetupController implements Initializable {
         selectedSlotIndex = -1;
     }
 
-    private void UpdateStats(Adventurer adventurer){
+    private void updateStats(Adventurer adventurer) {
+        nameLabel.setText(adventurer.getName());
 
+        healthLabel.setText(String.valueOf(adventurer.getHealth()));
+        staminaLabel.setText(String.valueOf(adventurer.getStamina()));
+        perceptionLabel.setText(String.valueOf(adventurer.getPerception()));
+        costLabel.setText(String.valueOf(adventurer.getHiringCost()));
+        payLabel.setText(String.valueOf(adventurer.getPay()));
+        damageLabel.setText(String.valueOf(adventurer.getDamage()));
     }
 
     private void updateSlotButton(int index, Adventurer adventurer) {
@@ -138,7 +164,7 @@ public class SetupController implements Initializable {
         if (adventurer == null) {
             button.setText("Empty");
         } else {
-            button.setText(adventurer.toString());
+            button.setText(adventurer.getName());
         }
     }
 
