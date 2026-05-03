@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -12,46 +13,45 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.Label?>
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seng201.team0.gui.SetupController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="282.3999938964844" minHeight="10.0" prefHeight="282.3999938964844" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="195.59998168945313" minHeight="10.0" prefHeight="117.60000610351562" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="282.3999938964844" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="117.60000610351562" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <GridPane GridPane.rowIndex="1">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="slot1Button" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Empty">
+            <Button fx:id="slot1Button" maxHeight="600.0" maxWidth="600.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Empty">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="slot2Button" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Empty" GridPane.columnIndex="1">
+            <Button fx:id="slot2Button" maxHeight="600.0" maxWidth="600.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Empty" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="slot3Button" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Empty" GridPane.columnIndex="2">
+            <Button fx:id="slot3Button" maxHeight="600.0" maxWidth="600.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Empty" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonClicked" prefHeight="108.0" prefWidth="161.0" text="Start" GridPane.columnIndex="3" GridPane.columnSpan="2">
+            <Button fx:id="startButton" maxHeight="500.0" maxWidth="1000.0" mnemonicParsing="false" onAction="#startButtonClicked" prefHeight="108.0" prefWidth="161.0" text="Start" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER">
                <GridPane.margin>
-                  <Insets bottom="15.0" left="30.0" top="15.0" />
+                  <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
                </GridPane.margin>
             </Button>
          </children>
@@ -61,13 +61,13 @@
       </GridPane>
       <GridPane>
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="367.20001220703125" minWidth="10.0" prefWidth="161.40003662109376" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="367.20001220703125" minWidth="10.0" prefWidth="208.59996337890624" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.20001220703125" minWidth="10.0" prefWidth="233.79999999999995" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="161.40003662109376" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="208.59996337890624" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="233.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="136.60001220703126" minHeight="10.0" prefHeight="36.8" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="248.0000061035156" minHeight="10.0" prefHeight="246.39999999999998" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="36.8" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="246.39999999999998" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <GridPane GridPane.rowIndex="1">
@@ -75,8 +75,8 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="226.80002059936524" minHeight="10.0" prefHeight="222.3999816894531" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="226.80002059936524" minHeight="10.0" prefHeight="48.000018310546835" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="222.3999816894531" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="48.000018310546835" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <ListView fx:id="availableAdventurersListView" prefHeight="200.0" prefWidth="200.0">
@@ -122,7 +122,7 @@
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <GridPane>
@@ -134,8 +134,14 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your Guild Name" GridPane.halignment="CENTER" />
-                        <TextField fx:id="guildInputTextField" GridPane.rowIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your Guild Name" GridPane.halignment="CENTER">
+                           <GridPane.margin>
+                              <Insets right="20.0" />
+                           </GridPane.margin></Text>
+                        <TextField fx:id="guildInputTextField" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets right="20.0" />
+                           </GridPane.margin></TextField>
                      </children>
                   </GridPane>
                   <GridPane GridPane.rowIndex="1">
@@ -147,22 +153,31 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Expeditions (3-15):" GridPane.halignment="CENTER" />
-                        <TextField fx:id="expeditionInputTextField" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Expeditions (3-15):" GridPane.halignment="CENTER">
+                           <GridPane.margin>
+                              <Insets right="20.0" />
+                           </GridPane.margin></Text>
+                        <TextField fx:id="expeditionInputTextField" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets right="20.0" />
+                           </GridPane.margin></TextField>
                      </children>
                   </GridPane>
-                  <MenuButton fx:id="difficultyMenuButton" mnemonicParsing="false" text="Difficulty" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <MenuButton fx:id="difficultyMenuButton" maxHeight="200.0" maxWidth="800.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Difficulty" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#easyModeSelected" text="Easy" />
                       <MenuItem mnemonicParsing="false" onAction="#normalModeSelected" text="Normal" />
                         <MenuItem mnemonicParsing="false" onAction="#hardModeSelected" text="hard" />
                     </items>
+                     <GridPane.margin>
+                        <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+                     </GridPane.margin>
                   </MenuButton>
                </children>
             </GridPane>
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
@@ -194,6 +209,9 @@
                   <Label fx:id="payLabel" text="None" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <Label fx:id="damageLabel" text="None" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
             </GridPane>
          </children>
       </GridPane>
