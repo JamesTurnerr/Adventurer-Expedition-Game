@@ -30,27 +30,27 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button maxHeight="300.0" maxWidth="300.0" minHeight="70.0" minWidth="70.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Button" GridPane.columnIndex="2">
+            <Button fx:id="slot1Button" maxHeight="300.0" maxWidth="300.0" minHeight="70.0" minWidth="70.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Empty" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button maxHeight="300.0" maxWidth="300.0" minHeight="70.0" minWidth="70.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Button" GridPane.columnIndex="1">
+            <Button fx:id="slot2Button" maxHeight="300.0" maxWidth="300.0" minHeight="70.0" minWidth="70.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Empty" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button maxHeight="300.0" maxWidth="300.0" minHeight="70.0" minWidth="70.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Button">
+            <Button fx:id="slot3Button" maxHeight="300.0" maxWidth="300.0" minHeight="70.0" minWidth="70.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Empty">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button maxHeight="300.0" maxWidth="300.0" minHeight="70.0" minWidth="70.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Button" GridPane.columnIndex="3">
+            <Button fx:id="slot4Button" maxHeight="300.0" maxWidth="300.0" minHeight="70.0" minWidth="70.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Empty" GridPane.columnIndex="3">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button maxHeight="300.0" maxWidth="300.0" minHeight="70.0" minWidth="70.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Button" GridPane.columnIndex="4">
+            <Button fx:id="slot5Button" maxHeight="300.0" maxWidth="300.0" minHeight="70.0" minWidth="70.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Empty" GridPane.columnIndex="4">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>

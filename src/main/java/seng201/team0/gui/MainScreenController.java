@@ -7,8 +7,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import seng201.team0.models.Adventurer;
 import seng201.team0.services.GuiService;
 import seng201.team0.models.UserData;
 
@@ -18,19 +20,31 @@ import seng201.team0.models.UserData;
  * From here the user can go to the Guild Hall, Market, Guild Overview, or Expeditions
  */
 public class MainScreenController implements Initializable {
-    @FXML
-    private Label goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel;
-    @FXML
-    private Button goToGuildHallButton, goToGuildOverviewButton, goToMarketButton, goOnExpeditionButton;
+    @FXML private Label goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel;
+    @FXML private Button
+            goToGuildHallButton,
+            goToGuildOverviewButton,
+            goToMarketButton,
+            goOnExpeditionButton;
+    @FXML private Button slot1Button;
+    @FXML private Button slot2Button;
+    @FXML private Button slot3Button;
+    @FXML private Button slot4Button;
+    @FXML private Button slot5Button;
+    private List<Button> adventurerSlots;
 
     private final GuiService guiService = new GuiService();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
-        goldAmountLabel.setText("Gold: " + UserData.getGold());
-        currentExpeditionLabel.setText("Current Expedition: " + UserData.getCurrentExpeditionNumber());
-        expeditionsRemainingLabel.setText("Expeditions Remaining: " + UserData.getExpeditionsRemaining());
+        // could this be simplified to a function
+        goldAmountLabel.setText(String.valueOf(UserData.getGold()));
+        currentExpeditionLabel.setText(String.valueOf(UserData.getCurrentExpeditionNumber()));
+        expeditionsRemainingLabel.setText(String.valueOf(UserData.getExpeditionsRemaining()));
+
+        adventurerSlots = List.of(slot1Button, slot2Button, slot3Button, slot4Button, slot5Button);
+        populateAdventurerSlots();
     }
     @FXML
     private void goToGuildHallButtonClicked() throws IOException {
@@ -47,6 +61,18 @@ public class MainScreenController implements Initializable {
     @FXML
     private void goOnExpeditionButtonClicked() throws IOException {
         guiService.switchWindow((Stage) goOnExpeditionButton.getScene().getWindow(), "/fxml/expedition.fxml");
+    }
+    private void populateAdventurerSlots() {
+        List<Adventurer> mainParty = UserData.getMainParty();
+
+        for (int i = 0; i < 5; i++) {
+            Button slot = adventurerSlots.get(i);
+            if (mainParty != null && i < mainParty.size() && mainParty.get(i) != null) {
+                slot.setText(mainParty.get(i).getName());
+            } else {
+                slot.setText("Empty");
+            }
+        }
     }
 }
 
