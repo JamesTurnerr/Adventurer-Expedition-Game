@@ -62,6 +62,7 @@ public class UserData {
     {
         return expeditionsRemaining;
     }
+    //public static void setGold(int goldAmount) {gold = goldAmount;}
 
     //Add data
     public static void addItem(Item item)

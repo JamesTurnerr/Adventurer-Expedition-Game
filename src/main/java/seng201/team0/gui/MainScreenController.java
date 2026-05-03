@@ -38,13 +38,13 @@ public class MainScreenController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1)
     {
-        // could this be simplified to a function
-        goldAmountLabel.setText(String.valueOf(UserData.getGold()));
-        currentExpeditionLabel.setText(String.valueOf(UserData.getCurrentExpeditionNumber()));
-        expeditionsRemainingLabel.setText(String.valueOf(UserData.getExpeditionsRemaining()));
-
+        guiService.updateTopLabels(
+                goldAmountLabel,
+                currentExpeditionLabel,
+                expeditionsRemainingLabel
+        );
         adventurerSlots = List.of(slot1Button, slot2Button, slot3Button, slot4Button, slot5Button);
-        populateAdventurerSlots();
+        guiService.populateAdventurerSlots(adventurerSlots);
     }
     @FXML
     private void goToGuildHallButtonClicked() throws IOException {
@@ -61,18 +61,6 @@ public class MainScreenController implements Initializable {
     @FXML
     private void goOnExpeditionButtonClicked() throws IOException {
         guiService.switchWindow((Stage) goOnExpeditionButton.getScene().getWindow(), "/fxml/expedition.fxml");
-    }
-    private void populateAdventurerSlots() {
-        List<Adventurer> mainParty = UserData.getMainParty();
-
-        for (int i = 0; i < 5; i++) {
-            Button slot = adventurerSlots.get(i);
-            if (mainParty != null && i < mainParty.size() && mainParty.get(i) != null) {
-                slot.setText(mainParty.get(i).getName());
-            } else {
-                slot.setText("Empty");
-            }
-        }
     }
 }
 

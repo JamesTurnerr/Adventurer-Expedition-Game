@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import seng201.team0.models.Adventurer;
 import seng201.team0.models.Item;
 import seng201.team0.models.UserData;
+import seng201.team0.services.DisplayStatsService;
 import seng201.team0.services.GuiService;
 import seng201.team0.services.SetupService;
 
@@ -39,6 +40,7 @@ public class SetupController implements Initializable {
     @FXML private Button slot2Button;
     @FXML private Button slot3Button;
     private List<Button> selectedAdventurerButtons;
+    private final DisplayStatsService displayStatsService = new DisplayStatsService();
 
     private List<Adventurer> mainParty;
 
@@ -61,7 +63,17 @@ public class SetupController implements Initializable {
 
                 Adventurer adv = mainParty.get(selectedSlotIndex);
                 if (adv != null) {
-                    updateStats(adv);
+                    //updateStats(adv);
+                    displayStatsService.updateStats(
+                            adv,
+                            nameLabel,
+                            healthLabel,
+                            staminaLabel,
+                            perceptionLabel,
+                            costLabel,
+                            payLabel,
+                            damageLabel
+                    );
                 }
             });
         }
@@ -70,7 +82,17 @@ public class SetupController implements Initializable {
         availableAdventurersListView.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldVal, newVal) -> {
                     if (newVal != null) {
-                        updateStats(newVal);
+                        //updateStats(newVal);
+                        displayStatsService.updateStats(
+                                newVal,
+                                nameLabel,
+                                healthLabel,
+                                staminaLabel,
+                                perceptionLabel,
+                                costLabel,
+                                payLabel,
+                                damageLabel
+                        );
                     }
                 }
         );
@@ -164,7 +186,7 @@ public class SetupController implements Initializable {
         selectedSlotIndex = -1;
     }
 
-    private void updateStats(Adventurer adventurer) {
+    /*private void updateStats(Adventurer adventurer) {
         nameLabel.setText(adventurer.getName());
         healthLabel.setText(String.valueOf(adventurer.getHealth()));
         staminaLabel.setText(String.valueOf(adventurer.getStamina()));
@@ -172,7 +194,7 @@ public class SetupController implements Initializable {
         costLabel.setText(String.valueOf(adventurer.getHiringCost()));
         payLabel.setText(String.valueOf(adventurer.getPay()));
         damageLabel.setText(String.valueOf(adventurer.getDamage()));
-    }
+    }*/
 
     private void updateSlotButton(int index, Adventurer adventurer) {
         Button button = selectedAdventurerButtons.get(index);
