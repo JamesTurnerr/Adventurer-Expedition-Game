@@ -23,7 +23,6 @@ public class ExpeditionScreenController extends ScreenController {
     private final GuiService guiService = new GuiService(getGameEnvironment());
     private final SetupService setupService = new SetupService();
     private ExpeditionService expeditionService;
-
     public ExpeditionScreenController(GameEnvironment gameEnvironment) {super(gameEnvironment);}
 
     @Override
@@ -38,9 +37,7 @@ public class ExpeditionScreenController extends ScreenController {
 
     public void initialize()
     {
-        expeditionService = new ExpeditionService(expeditionTextArea);//'initialize' is called after 'expeditionTextArea' is created so 'new ExpeditionService' has to go here
-        expeditionService.writeLine("Text line 1");
-        expeditionService.writeLine("Text line 2");
+        expeditionService = new ExpeditionService(expeditionTextArea, 5);
     }
 
     @FXML
