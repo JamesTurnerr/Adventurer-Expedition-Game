@@ -1,22 +1,18 @@
 package seng201.team0.gui;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
-import seng201.team0.models.UserData;
+import seng201.team0.GameEnvironment;
 import seng201.team0.services.DisplayStatsService;
 import seng201.team0.services.GuiService;
 import seng201.team0.services.GuildHallService;
 import seng201.team0.models.Adventurer;
 
-public class GuildHallController implements Initializable {
+public class GuildHallScreenController extends ScreenController {
     @FXML private Button backButton, hireAdventurerButton;
     @FXML private ListView<Adventurer> hireableAdventurersListView;
     @FXML private ListView<Adventurer> reservePartyListView;
@@ -42,20 +38,35 @@ public class GuildHallController implements Initializable {
 
     private final GuiService guiService = new GuiService();
     private final GuildHallService guildHallService = new GuildHallService();
-    private List<Adventurer> mainParty = UserData.getMainParty();
+    private List<Adventurer> mainParty = getGameEnvironment().getMainParty();
+
+    public GuildHallScreenController(GameEnvironment gameEnvironment)
+    {
+        super(gameEnvironment);
+    }
 
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1)
+    protected String getFxmlFile() {
+        return "/fxml/guild_hall.fxml";
+    }
+
+    @Override
+    protected String getTitle() {
+        return "Guild Hall";
+    }
+
+    public void initialize()
     {
         guildHallService.fillAdventurerList(hireableAdventurersListView, 5);
 
         guiService.updateTopLabels(
                 goldAmountLabel,
                 currentExpeditionLabel,
-                expeditionsRemainingLabel
+                expeditionsRemainingLabel,
+                getGameEnvironment()
         );
         adventurerSlots = List.of(slot1Button, slot2Button, slot3Button, slot4Button, slot5Button);
-        guiService.populateAdventurerSlots(adventurerSlots);
+        guiService.populateAdventurerSlots(adventurerSlots, getGameEnvironment());
 
         // updates stats for list
         adventurerSelection(reservePartyListView);
@@ -89,7 +100,7 @@ public class GuildHallController implements Initializable {
 
     @FXML
     private void backButtonClicked() throws IOException {
-        guiService.switchWindow((Stage) backButton.getScene().getWindow(), "/fxml/main_screen.fxml");
+        getGameEnvironment().goToMainScreen();
     }
 
     // this is similar to the other button in setupcontroller.
@@ -98,16 +109,16 @@ public class GuildHallController implements Initializable {
     private void hireAdventurerButtonClicked()
     {
         Adventurer selectedAdventurer = hireableAdventurersListView.getSelectionModel().getSelectedItem();
-        if (UserData.hireAdventurer(selectedAdventurer))
+        if (getGameEnvironment().hireAdventurer(selectedAdventurer))
         {
             hireableAdventurersListView.getItems().remove(selectedAdventurer);
             reservePartyListView.getItems().add(selectedAdventurer);
 
             //update balance
-            //int newGold = UserData.getGold() - selectedAdventurer.getHiringCost();
-            //System.out.println("previous gold:"+UserData.getGold()+ " new gold:"+newGold);
-            //UserData.setGold(newGold);
-            goldAmountLabel.setText(String.valueOf(UserData.getGold()));
+            //int newGold = getGameEnvironment().getGold() - selectedAdventurer.getHiringCost();
+            //System.out.println("previous gold:"+getGameEnvironment().getGold()+ " new gold:"+newGold);
+            //getGameEnvironment().setGold(newGold);
+            goldAmountLabel.setText(String.valueOf(getGameEnvironment().getGold()));
         }
     }
 

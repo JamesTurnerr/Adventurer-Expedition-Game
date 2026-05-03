@@ -1,20 +1,16 @@
 package seng201.team0.gui;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
+import seng201.team0.GameEnvironment;
 import seng201.team0.services.GuiService;
 import seng201.team0.services.SetupService;
 import seng201.team0.models.Item;
-import seng201.team0.models.UserData;
 
-public class MarketController implements Initializable {
+public class MarketScreenController extends ScreenController {
     @FXML
     private Button backButton, buyItemButton;
     @FXML
@@ -23,20 +19,31 @@ public class MarketController implements Initializable {
     private final GuiService guiService = new GuiService();
     private final SetupService setupService = new SetupService();
 
+    MarketScreenController(GameEnvironment gameEnvironment) {super(gameEnvironment);}
+
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1)
+    protected String getFxmlFile() {
+        return "/fxml/market.fxml";
+    }
+
+    @Override
+    protected String getTitle() {
+        return "Market";
+    }
+
+    public void initialize()
     {
         guiService.populateListView(itemListView, setupService.getTestItemList(3));
     }
 
     @FXML
     private void backButtonClicked() throws IOException {
-        guiService.switchWindow((Stage) backButton.getScene().getWindow(), "/fxml/main_screen.fxml");
+        getGameEnvironment().goToMainScreen();
     }
     @FXML
     private void buyItemButtonClicked()
     {
-        if(UserData.buyItem(itemListView.getSelectionModel().getSelectedItem()))
+        if(getGameEnvironment().buyItem(itemListView.getSelectionModel().getSelectedItem()))
         {
             itemListView.getItems().remove(itemListView.getSelectionModel().getSelectedItem());
         }

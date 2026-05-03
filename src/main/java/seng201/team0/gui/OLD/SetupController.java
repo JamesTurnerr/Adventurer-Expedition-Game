@@ -17,7 +17,7 @@ import seng201.team0.services.SetupService;
 import seng201.team0.services.GuiService;
 import seng201.team0.models.UserData;
 
-public class SetupController implements Initializable {
+public class SetupScreenController implements Initializable {
     @FXML
     private TextField guildInputTextField, expeditionInputTextField;
     @FXML

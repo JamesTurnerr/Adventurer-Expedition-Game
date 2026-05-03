@@ -1,17 +1,14 @@
 package seng201.team0.gui;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
+import seng201.team0.GameEnvironment;
 import seng201.team0.services.GuiService;
 import seng201.team0.services.SetupService;
 import seng201.team0.services.ExpeditionService;
 
-public class ExpeditionController implements Initializable {
+public class ExpeditionScreenController extends ScreenController {
     @FXML
     private Button expeditionOption1Button, expeditionOption2Button;
     @FXML
@@ -27,8 +24,19 @@ public class ExpeditionController implements Initializable {
     private final SetupService setupService = new SetupService();
     private ExpeditionService expeditionService;
 
+    public ExpeditionScreenController(GameEnvironment gameEnvironment) {super(gameEnvironment);}
+
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1)
+    protected String getFxmlFile() {
+        return "/fxml/expedition.fxml";
+    }
+
+    @Override
+    protected String getTitle() {
+        return "Expedition";
+    }
+
+    public void initialize()
     {
         expeditionService = new ExpeditionService(expeditionTextArea);//'initialize' is called after 'expeditionTextArea' is created so 'new ExpeditionService' has to go here
         expeditionService.writeLine("Text line 1");

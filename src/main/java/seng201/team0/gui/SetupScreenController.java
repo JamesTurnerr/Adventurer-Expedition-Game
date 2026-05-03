@@ -1,23 +1,18 @@
 package seng201.team0.gui;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
+import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
-import seng201.team0.models.Item;
-import seng201.team0.models.UserData;
 import seng201.team0.services.DisplayStatsService;
 import seng201.team0.services.GuiService;
 import seng201.team0.services.SetupService;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
-public class SetupController implements Initializable {
+public class SetupScreenController extends ScreenController {
     @FXML private TextField guildInputTextField, expeditionInputTextField;
     @FXML private Button startButton;
     @FXML private MenuButton difficultyMenuButton;
@@ -46,8 +41,19 @@ public class SetupController implements Initializable {
 
     private int selectedSlotIndex = -1;
 
+    SetupScreenController(GameEnvironment gameEnvironment) {super(gameEnvironment);}
+
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    protected String getFxmlFile() {
+        return "/fxml/setup.fxml";
+    }
+
+    @Override
+    protected String getTitle() {
+        return "Setup";
+    }
+
+    public void initialize() {
         setupService.fillStarterAdventurerList(availableAdventurersListView, 5);
 
         selectedAdventurerButtons = List.of(slot1Button, slot2Button, slot3Button);
@@ -124,17 +130,10 @@ public class SetupController implements Initializable {
         ArrayList<Adventurer> chosenAdventurersList =
                 new ArrayList<>(mainParty);
 
-        UserData userData = new UserData(
-                chosenAdventurersList,
+        getGameEnvironment().onSetupComplete(chosenAdventurersList,
                 difficultyMenuButton.getText(),
                 guildInputTextField.getText(),
-                Integer.parseInt(expeditionInputTextField.getText())
-        );
-
-        userData.addItem(Item.HEALTH_POTION);
-
-        Stage stage = (Stage) startButton.getScene().getWindow();
-        guiService.switchWindow(stage, "/fxml/main_screen.fxml");
+                Integer.parseInt(expeditionInputTextField.getText()));
     }
 
     @FXML
