@@ -14,6 +14,11 @@ import java.io.IOException;
 import java.util.List;
 
 public class GuiService {
+    GameEnvironment gameEnvironment;
+    public GuiService(GameEnvironment gameEnvironment)
+    {
+        this.gameEnvironment = gameEnvironment;
+    }
     public <T> void populateListView(ListView<T> listView, List<T> data)//Must be same type
     {
         listView.getItems().clear();
@@ -28,13 +33,13 @@ public class GuiService {
         Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
     }
-    public void updateTopLabels(Label gold, Label expedition, Label remaining, GameEnvironment gameEnvironment) {
+    public void updateTopLabels(Label gold, Label expedition, Label remaining) {
         gold.setText(String.valueOf(gameEnvironment.getGold()));
         expedition.setText(String.valueOf(gameEnvironment.getCurrentExpeditionNumber()));
         remaining.setText(String.valueOf(gameEnvironment.getExpeditionsRemaining()));
     }
 
-    public void populateAdventurerSlots(List<Button> slots, GameEnvironment gameEnvironment) {
+    public void populateAdventurerSlots(List<Button> slots) {
         List<Adventurer> party = gameEnvironment.getMainParty();
 
         for (int i = 0; i < slots.size(); i++) {

@@ -16,7 +16,7 @@ public class MarketScreenController extends ScreenController {
     @FXML
     private ListView<Item> itemListView;
 
-    private final GuiService guiService = new GuiService();
+    private final GuiService guiService = new GuiService(getGameEnvironment());
     private final SetupService setupService = new SetupService();
 
     MarketScreenController(GameEnvironment gameEnvironment) {super(gameEnvironment);}

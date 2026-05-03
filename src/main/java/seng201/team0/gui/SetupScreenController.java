@@ -21,22 +21,14 @@ public class SetupScreenController extends ScreenController {
     @FXML private Button chooseAdventurerButton, unchooseAdventurerButton;
 
     private final SetupService setupService = new SetupService();
-    private final GuiService guiService = new GuiService();
-
-    @FXML private Label nameLabel;
-    @FXML private Label healthLabel;
-    @FXML private Label staminaLabel;
-    @FXML private Label perceptionLabel;
-    @FXML private Label costLabel;
-    @FXML private Label payLabel;
-    @FXML private Label damageLabel;
-
-    @FXML private Button slot1Button;
-    @FXML private Button slot2Button;
-    @FXML private Button slot3Button;
-    private List<Button> selectedAdventurerButtons;
+    private final GuiService guiService = new GuiService(getGameEnvironment());
     private final DisplayStatsService displayStatsService = new DisplayStatsService();
 
+    //Character stat labels
+    @FXML private Label nameLabel, healthLabel, staminaLabel, perceptionLabel, costLabel, payLabel, damageLabel;
+    @FXML private Button slot1Button, slot2Button, slot3Button;
+
+    private List<Button> selectedAdventurerButtons;
     private List<Adventurer> mainParty;
 
     private int selectedSlotIndex = -1;

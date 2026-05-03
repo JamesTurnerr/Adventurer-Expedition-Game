@@ -16,28 +16,15 @@ public class GuildHallScreenController extends ScreenController {
     @FXML private Button backButton, hireAdventurerButton;
     @FXML private ListView<Adventurer> hireableAdventurersListView;
     @FXML private ListView<Adventurer> reservePartyListView;
-    @FXML private Button slot1Button;
-    @FXML private Button slot2Button;
-    @FXML private Button slot3Button;
-    @FXML private Button slot4Button;
-    @FXML private Button slot5Button;
+    @FXML private Button slot1Button, slot2Button, slot3Button, slot4Button, slot5Button;
     private List<Button> adventurerSlots;
-    @FXML private Label goldAmountLabel;
-    @FXML private Label currentExpeditionLabel;
-    @FXML private Label expeditionsRemainingLabel;
+    @FXML private Label goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel;
+    //Character stat labels
+    @FXML private Label nameLabel, healthLabel, staminaLabel, perceptionLabel, costLabel, payLabel, damageLabel;
 
-    private final DisplayStatsService displayStatsService = new DisplayStatsService();
-
-    @FXML private Label nameLabel;
-    @FXML private Label healthLabel;
-    @FXML private Label staminaLabel;
-    @FXML private Label perceptionLabel;
-    @FXML private Label costLabel;
-    @FXML private Label payLabel;
-    @FXML private Label damageLabel;
-
-    private final GuiService guiService = new GuiService();
+    private final GuiService guiService = new GuiService(getGameEnvironment());
     private final GuildHallService guildHallService = new GuildHallService();
+    private final DisplayStatsService displayStatsService = new DisplayStatsService();
     private List<Adventurer> mainParty = getGameEnvironment().getMainParty();
 
     public GuildHallScreenController(GameEnvironment gameEnvironment)
@@ -62,11 +49,10 @@ public class GuildHallScreenController extends ScreenController {
         guiService.updateTopLabels(
                 goldAmountLabel,
                 currentExpeditionLabel,
-                expeditionsRemainingLabel,
-                getGameEnvironment()
+                expeditionsRemainingLabel
         );
         adventurerSlots = List.of(slot1Button, slot2Button, slot3Button, slot4Button, slot5Button);
-        guiService.populateAdventurerSlots(adventurerSlots, getGameEnvironment());
+        guiService.populateAdventurerSlots(adventurerSlots);
 
         // updates stats for list
         adventurerSelection(reservePartyListView);

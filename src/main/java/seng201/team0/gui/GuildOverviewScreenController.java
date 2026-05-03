@@ -20,7 +20,7 @@ public class GuildOverviewScreenController extends ScreenController {
     @FXML
     private ListView<Item> itemsListView;
 
-    private final GuiService guiService = new GuiService();
+    private final GuiService guiService = new GuiService(getGameEnvironment());
 
     GuildOverviewScreenController(GameEnvironment gameEnvironment) {super(gameEnvironment);}
 

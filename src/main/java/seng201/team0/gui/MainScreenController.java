@@ -21,14 +21,10 @@ public class MainScreenController extends ScreenController {
             goToGuildOverviewButton,
             goToMarketButton,
             goOnExpeditionButton;
-    @FXML private Button slot1Button;
-    @FXML private Button slot2Button;
-    @FXML private Button slot3Button;
-    @FXML private Button slot4Button;
-    @FXML private Button slot5Button;
+    @FXML private Button slot1Button, slot2Button, slot3Button, slot4Button, slot5Button;
     private List<Button> adventurerSlots;
 
-    private final GuiService guiService = new GuiService();
+    private final GuiService guiService = new GuiService(getGameEnvironment());
 
     MainScreenController(GameEnvironment gameEnvironment) {super(gameEnvironment);}
 
@@ -47,11 +43,10 @@ public class MainScreenController extends ScreenController {
         guiService.updateTopLabels(
                 goldAmountLabel,
                 currentExpeditionLabel,
-                expeditionsRemainingLabel,
-                getGameEnvironment()
+                expeditionsRemainingLabel
         );
         adventurerSlots = List.of(slot1Button, slot2Button, slot3Button, slot4Button, slot5Button);
-        guiService.populateAdventurerSlots(adventurerSlots, getGameEnvironment());
+        guiService.populateAdventurerSlots(adventurerSlots);
     }
     @FXML
     private void goToGuildHallButtonClicked() throws IOException {

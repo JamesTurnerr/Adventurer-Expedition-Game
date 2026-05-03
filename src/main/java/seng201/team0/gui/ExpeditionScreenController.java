@@ -20,7 +20,7 @@ public class ExpeditionScreenController extends ScreenController {
                     adventurerNameLabel4, adventurerStaminaLabel4,
                     adventurerNameLabel5, adventurerStaminaLabel5;
 
-    private final GuiService guiService = new GuiService();
+    private final GuiService guiService = new GuiService(getGameEnvironment());
     private final SetupService setupService = new SetupService();
     private ExpeditionService expeditionService;
 
