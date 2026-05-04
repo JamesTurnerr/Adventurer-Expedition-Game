@@ -55,6 +55,7 @@ public class GuildHallScreenController extends ScreenController {
         guiService.populateAdventurerSlots(adventurerSlots);
 
         // updates stats for list
+        reservePartyListView.getItems().addAll(getGameEnvironment().getReserveParty());//initialize reservePartyListView with current reserve party
         adventurerSelection(reservePartyListView);
         adventurerSelection(hireableAdventurersListView);
 
