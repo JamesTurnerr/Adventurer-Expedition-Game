@@ -1,43 +1,24 @@
 package seng201.team0.models;
 
-public class Adventurer {
-    private final String name;
-    private int stamina;
+public class Adventurer extends Entity {
     private int maxStamina;
-    private int health;
-    private int maxHealth;
+    private int stamina;
     private int perception;
     private final int hiringCost;
     private final int pay;
-    private int damage;
 
     public Adventurer(String name, int maxStamina, int maxHealth, int perception, int hiringCost, int pay, int damage)
     {
-        this.name = name;
-        this. maxStamina = maxStamina;
-        this.maxHealth = maxHealth;
+        super(name, maxHealth, damage);
+        this.maxStamina = maxStamina;
         this.perception = perception;
         this.hiringCost = hiringCost;
         this.pay = pay;
-        this.damage = damage;
 
         //set stats
         this.stamina = maxStamina;
-        this.health = maxHealth;
     }
     //Getters
-    public int getHealth()
-    {
-        return health;
-    }
-    public void setHealth(int health)
-    {
-        this.health = health;
-    }
-    public String getName()
-    {
-        return name;
-    }
     public int getStamina()
     {
         return stamina;
@@ -57,10 +38,6 @@ public class Adventurer {
     public int getPay()
     {
         return pay;
-    }
-    public int getDamage()
-    {
-        return damage;
     }
 
     @Override
