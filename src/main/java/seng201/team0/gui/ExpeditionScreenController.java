@@ -38,6 +38,7 @@ public class ExpeditionScreenController extends ScreenController {
     public void initialize()
     {
         expeditionService = new ExpeditionService(expeditionTextArea, 5);
+        expeditionService.nextEvent();
     }
 
     @FXML
