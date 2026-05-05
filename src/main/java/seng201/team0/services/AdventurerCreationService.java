@@ -32,10 +32,30 @@ public class AdventurerCreationService {
     private static List<String> namesList = new ArrayList<String>(Arrays.asList(names));
 
     /**
-     * Generate an adventurer with a random name
+     * Generate an adventurer with a random name and random stats
      * @return Returns randomly generated adventurer
      */
     public static Adventurer createRandomAdventurer()
+    {
+        String name = generateName();
+        int averageStatValue = 100;//Average value of Health, Stamina, Perception. Value bound to 33% greater or less than this number
+        Random random = new Random();
+        int health = random.nextInt(averageStatValue-averageStatValue/3, averageStatValue+averageStatValue/3);
+        int stamina = random.nextInt(averageStatValue-averageStatValue/3, averageStatValue+averageStatValue/3);
+        int perception = random.nextInt(averageStatValue-averageStatValue/3, averageStatValue+averageStatValue/3);
+        return new Adventurer(name, stamina, health, perception, 10, 10, 3);
+    }
+    /**
+     * Generate an adventurer with given stats
+     * @return Returns randomly generated adventurer
+     */
+    public static Adventurer createAdventurer(int stamina, int health, int perception, int hiringCost, int pay, int damage)
+    {
+        String name = generateName();
+        return new Adventurer(name, stamina, health, perception, hiringCost, pay, damage);
+    }
+
+    private static String generateName()
     {
         Random random = new Random();
         String name = namesList.get(random.nextInt(namesList.size()));
@@ -44,6 +64,6 @@ public class AdventurerCreationService {
         if (namesList.isEmpty()){
             namesList = new ArrayList<String>(Arrays.asList(names));
         }
-        return new Adventurer(name, 100, 100, 100, 10, 10, 3);
+        return name;
     }
 }
