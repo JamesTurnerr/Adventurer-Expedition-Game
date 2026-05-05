@@ -12,7 +12,14 @@ import javafx.stage.Stage;
 import seng201.team0.models.Adventurer;
 import seng201.team0.models.Item;
 
+/**
+ * Service class for the games setup screen
+ */
 public class SetupService {
+    /**
+     * Create a List of given containing randomly generated items
+     * @param size the size of the list
+     */
     public List<Item> getTestItemList(int size)
     {
         List<Item> itemList = new ArrayList<Item>();
@@ -76,6 +83,11 @@ public class SetupService {
         return true;
     }
 
+    /**
+     * Fills a ListView of type Adventurer with x amount of randomly generated adventurers
+     * @param listView the ListView to be filled
+     * @param numberOfAdventurers the amount of adventurers to be added
+     */
     public void fillStarterAdventurerList(ListView<Adventurer> listView, int numberOfAdventurers)
     {
         listView.getItems().clear();

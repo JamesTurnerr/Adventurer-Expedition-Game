@@ -279,32 +279,44 @@ public class GameEnvironment {
         this.expeditionsRemaining = numberOfExpeditions;
         goToMainScreen();
     }
-
+    /**
+     * Switch to the expedition screen
+     */
     public void goToExpeditionScreen()
     {
         navigator.launchExpeditionScreen(this);
     }
-
+    /**
+     * Switch to the guild hall screen
+     */
     public void goToGuildHallScreen()
     {
         navigator.launchGuildHallScreen(this);
     }
-
+    /**
+     * Switch to the guild overview screen
+     */
     public void goToGuildOverviewScreen()
     {
         navigator.launchGuildOverviewScreen(this);
     }
-
+    /**
+     * Switch to the market screen
+     */
     public void goToMarketScreen()
     {
         navigator.launchMarketScreen(this);
     }
-
+    /**
+     * Switch to the main screen
+     */
     public void goToMainScreen()
     {
         navigator.launchMainScreen(this);
     }
-
+    /**
+     * Exit the game
+     */
     public void onQuitRequested() {
         System.exit(0);
     }

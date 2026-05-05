@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Class used to create adventurers
+ */
 public class AdventurerCreationService {
     private static final String[] names = {"Olivia", "Emma", "Charlotte", "Amelia", "Sophia",
             "Isabella", "Ava", "Mia", "Evelyn", "Luna",
@@ -28,13 +31,17 @@ public class AdventurerCreationService {
     ;*/
     private static List<String> namesList = new ArrayList<String>(Arrays.asList(names));
 
+    /**
+     * Generate an adventurer with a random name
+     * @return Returns randomly generated adventurer
+     */
     public static Adventurer createRandomAdventurer()
     {
         Random random = new Random();
         String name = namesList.get(random.nextInt(namesList.size()));
         namesList.remove(name);
         // check to see if the name list is empty - if so repopulate
-        if (namesList.size() == 0){
+        if (namesList.isEmpty()){
             namesList = new ArrayList<String>(Arrays.asList(names));
         }
         return new Adventurer(name, 100, 100, 100, 10, 10, 3);
