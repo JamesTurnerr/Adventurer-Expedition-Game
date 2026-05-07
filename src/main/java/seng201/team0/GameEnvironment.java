@@ -9,7 +9,7 @@ import java.util.List;
 
 public class GameEnvironment {
     private final ScreenNavigator navigator;
-    private final int MAX_PARTY_SIZE = 5;
+    public final int MAX_PARTY_SIZE = 5;
     private List<Adventurer> mainParty;
     private List<Adventurer> reserveParty = new ArrayList<Adventurer>();
     private List<Item> items = new ArrayList<Item>();
