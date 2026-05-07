@@ -84,6 +84,10 @@ public class GameEnvironment {
         }
         items.add(item);
     }
+    public boolean addAdventurer(Adventurer adventurer)
+    {
+        return addToMainParty(adventurer);
+    }
     private boolean addToMainParty(Adventurer adventurer)
     {
         if (mainParty.size() >= MAX_PARTY_SIZE)

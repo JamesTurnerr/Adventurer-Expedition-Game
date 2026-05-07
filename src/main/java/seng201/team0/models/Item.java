@@ -4,7 +4,8 @@ import java.util.Random;
 
 public enum Item {
     STAMINA_POTION("Stamina Potion", 5, 10),
-    HEALTH_POTION("Health Potion", 5, 10);
+    HEALTH_POTION("Health Potion", 5, 10),
+    RUSTY_SWORD("Rusty Sword", 5, 0);
 
     private final String name;
     private final int cost;

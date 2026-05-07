@@ -40,21 +40,25 @@ public class ExpeditionScreenController extends ScreenController {
 
     public void initialize()
     {
-        expeditionService = new ExpeditionService(expeditionTextArea, 5);
+        expeditionService = new ExpeditionService(getGameEnvironment(), expeditionTextArea, 5);
         updateLabels();
     }
 
     @FXML
     private void expeditionOption1ButtonClicked() {
-        System.out.println("option1ButtonClicked");
+        expeditionService.button1Clicked();
+        updateLabels();
     }
     @FXML
     private void expeditionOption2ButtonClicked() {
-        System.out.println("option2ButtonClicked");
+        expeditionService.button2Clicked();
+        updateLabels();
     }
 
     private void updateLabels()
     {
+        expeditionOption1Button.setText(expeditionService.getButton1Text());
+        expeditionOption2Button.setText(expeditionService.getButton2Text());
         List<Label> adventurerNameLabels = List.of(adventurerNameLabel1, adventurerNameLabel2, adventurerNameLabel3, adventurerNameLabel4, adventurerNameLabel5);
         List<Label> adventurerStaminaLabels = List.of(adventurerStaminaLabel1, adventurerStaminaLabel2, adventurerStaminaLabel3, adventurerStaminaLabel4, adventurerStaminaLabel5);
         List<Label> adventurerHealthLabels = List.of(adventurerHealthLabel1, adventurerHealthLabel2, adventurerHealthLabel3, adventurerHealthLabel4, adventurerHealthLabel5);
