@@ -27,6 +27,8 @@ public class ExpeditionService {
     private Item currentLootItem;
     private Adventurer currentLostAdventurer;
     private List<Enemy> currentEnemyList;
+
+    private String currentEnemy;
     /**
      * Creates a new expedition with a given amount of areas
      * @param expeditionTextArea reference to the TextArea that will have information about the expedition written to
@@ -77,7 +79,13 @@ public class ExpeditionService {
         button2Text = "Defense";
         int randInt = rand.nextInt(4);
         ArrayList<Enemy> entities = expedition.generateEnemies(randInt);
-        writeLine(String.format("You see %d %s ", randInt, entities.getFirst().getName()));
+        //plural
+        currentEnemy = entities.getFirst().getName();
+        if (randInt > 1){
+            currentEnemy += "s";
+        }
+
+        writeLine(String.format("You see %d %s ", randInt, currentEnemy ));
     }
     /**
      * Start a loot event where the player will loot the area
@@ -87,7 +95,7 @@ public class ExpeditionService {
         currentEvent = "Loot";
         button1Text = "Pick Up";
         button2Text = "Leave";
-        currentLootItem = Item.RUSTY_SWORD;
+        currentLootItem = expedition.getRandomLoot();
         writeLine(String.format("You see a %s", currentLootItem.getName()));
     }
     /**
@@ -130,6 +138,9 @@ public class ExpeditionService {
         {
             case "Combat":
                 //attack;
+                writeLine("Your party slimed out the "+currentEnemy);
+                // add - generate random values to lose for each adventurer
+                nextArea();
                 break;
             case "Loot":
                 gameEnvironment.addItem(currentLootItem);
@@ -155,9 +166,14 @@ public class ExpeditionService {
         {
             case "Combat":
                 //defend;
+                writeLine("The "+currentEnemy+" lowkey plundered yo homeboys bunz");
+                // need to add each damage assigned to each enemy
+                gameEnvironment.takeDamage(40);
+                nextArea();
                 break;
+
             case "Loot":
-                writeLine("You decide not to pick up the item");
+                writeLine("You decide not to pick up the "+ currentLootItem);
                 nextArea();
                 break;
             case "Adventurer":

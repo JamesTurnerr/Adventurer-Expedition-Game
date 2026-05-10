@@ -6,6 +6,7 @@ import seng201.team0.models.Item;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class GameEnvironment {
     private final ScreenNavigator navigator;
@@ -18,6 +19,7 @@ public class GameEnvironment {
     private String guildName;
     private int currentExpeditionNumber;
     private int expeditionsRemaining;
+    private final Random random = new Random();
 
 
     public GameEnvironment(ScreenNavigator navigator)
@@ -323,6 +325,22 @@ public class GameEnvironment {
      */
     public void onQuitRequested() {
         System.exit(0);
+    }
+
+    public void takeDamage(int damage){
+        // each party member loses health based on dmg and defense
+        // (since there no defense ill do perception)
+        for (Adventurer member : mainParty){
+
+            // damage range
+            double modifier = 0.8 + random.nextDouble() * 0.4;
+            int randomizedDamage = (int) (damage * modifier);
+
+            int damageTaken = (int) (damage * (100.0 / (100 + member.getPerception())));
+
+            int health = member.getHealth() - damageTaken;
+            member.setHealth(Math.max(0, health));
+        }
     }
 }
 

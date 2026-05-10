@@ -19,6 +19,12 @@ public class Expedition {
     private final String[] EnemyTypes = {"Skeleton", "Goblin"};
     private final String[] EnemyPrefixes = {"Small", "Big", "Large", "Normal", "SUS"};
 
+    private final Item[] lootPool = {
+            Item.RUSTY_SWORD,
+            Item.HEALTH_POTION,
+            Item.STAMINA_POTION,
+    };
+
     public Expedition(int length)
     {
         this.numberOfAreas = length;
@@ -33,6 +39,10 @@ public class Expedition {
             case "Jungle" -> JungleAreas;
             default -> null;
         };
+    }
+    //can add location variety to this
+    public Item getRandomLoot() {
+        return lootPool[rand.nextInt(lootPool.length)];
     }
 
     private ArrayList<String> getEnemyNameArray(int amount)
