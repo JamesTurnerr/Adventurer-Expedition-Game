@@ -110,6 +110,13 @@ public class GuildHallScreenController extends ScreenController {
         }
     }
 
+    @FXML
+    private void retireAdventurerButtonClicked(){
+        Adventurer selectedAdventurer = reservePartyListView.getSelectionModel().getSelectedItem();
+        reservePartyListView.getItems().remove(selectedAdventurer);
+        getGameEnvironment().getReserveParty().remove(selectedAdventurer);
+    }
+
     //updates stats for items in list on selection
     private void adventurerSelection(ListView<Adventurer> listView) {
         listView.getSelectionModel().selectedItemProperty().addListener(
@@ -129,16 +136,4 @@ public class GuildHallScreenController extends ScreenController {
                 }
         );
     }
-
-    // logic behind old or new list
-    // replaced with the version in GUI service
-    /*private void populateList(){
-        if (getGameEnvironment().getDoUpdateHall() == true){
-            guildHallService.fillNewAdventurerList(hireableAdventurersListView, 5);
-            getGameEnvironment().setDoUpdateHall(false);
-        }
-        else {
-            guildHallService.fillOldAdventurerList(hireableAdventurersListView);
-        }
-    }*/
 }
