@@ -34,6 +34,7 @@ public class MarketScreenController extends ScreenController {
 
     public void initialize()
     {
+
         guiService.populateListView(itemListView, marketService.getTestItemList(3));
     }
 

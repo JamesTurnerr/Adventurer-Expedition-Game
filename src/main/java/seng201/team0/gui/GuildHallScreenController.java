@@ -44,7 +44,7 @@ public class GuildHallScreenController extends ScreenController {
 
     public void initialize()
     {
-        populateList();
+        guiService.populateListView(hireableAdventurersListView, guildHallService.getAdventurerList());
 
         guiService.updateTopLabels(
                 goldAmountLabel,
@@ -131,8 +131,8 @@ public class GuildHallScreenController extends ScreenController {
     }
 
     // logic behind old or new list
-    // there is an existing populatelist in gui service. this can simplify it
-    private void populateList(){
+    // replaced with the version in GUI service
+    /*private void populateList(){
         if (getGameEnvironment().getDoUpdateHall() == true){
             guildHallService.fillNewAdventurerList(hireableAdventurersListView, 5);
             getGameEnvironment().setDoUpdateHall(false);
@@ -140,5 +140,5 @@ public class GuildHallScreenController extends ScreenController {
         else {
             guildHallService.fillOldAdventurerList(hireableAdventurersListView);
         }
-    }
+    }*/
 }
