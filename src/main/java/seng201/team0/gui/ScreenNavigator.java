@@ -98,6 +98,12 @@ public class ScreenNavigator {
         launchScreen(controller);
     }
 
+    // the launch of the expedition locqation selction
+    public void launchExpeditionLocationScreen(GameEnvironment gameEnvironment){
+        seng201.team0.gui.ScreenController controller = new ExpeditionSelectController(gameEnvironment);
+        launchScreen(controller);
+    }
+
     /**
      * Replaces the root border pane's center component with the screen defined by the given
      * {@link seng201.team0.gui.ScreenController}.

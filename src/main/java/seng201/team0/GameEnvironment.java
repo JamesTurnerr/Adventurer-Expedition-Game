@@ -321,6 +321,9 @@ public class GameEnvironment {
         this.expeditionsRemaining = numberOfExpeditions;
         goToMainScreen();
     }
+    public void goToExpeditionSelectScreen(){
+        navigator.launchExpeditionLocationScreen(this);
+    }
     /**
      * Switch to the expedition screen
      */
@@ -345,17 +348,11 @@ public class GameEnvironment {
     /**
      * Switch to the market screen
      */
-    public void goToMarketScreen()
-    {
-        navigator.launchMarketScreen(this);
-    }
+    public void goToMarketScreen() {navigator.launchMarketScreen(this);}
     /**
      * Switch to the main screen
      */
-    public void goToMainScreen()
-    {
-        navigator.launchMainScreen(this);
-    }
+    public void goToMainScreen() {navigator.launchMainScreen(this);}
     /**
      * Exit the game
      */
