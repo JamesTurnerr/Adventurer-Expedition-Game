@@ -30,7 +30,7 @@ public class AdventurerCreationService {
     PETER_GRIFFIN("Peter", 90, 90, 10, 40, 40, 50)
     ;*/
     private static List<String> namesList = new ArrayList<String>(Arrays.asList(names));
-
+    private static int averageStatValue = 100;
     /**
      * Generate an adventurer with a random name and random stats
      * @return Returns randomly generated adventurer
@@ -38,7 +38,7 @@ public class AdventurerCreationService {
     public static Adventurer createRandomAdventurer()
     {
         String name = generateName();
-        int averageStatValue = 100;//Average value of Health, Stamina, Perception. Value bound to 33% greater or less than this number
+        //int averageStatValue = 100;//Average value of Health, Stamina, Perception. Value bound to 33% greater or less than this number
         Random random = new Random();
         int health = random.nextInt(averageStatValue-averageStatValue/3, averageStatValue+averageStatValue/3);
         int stamina = random.nextInt(averageStatValue-averageStatValue/3, averageStatValue+averageStatValue/3);
@@ -66,4 +66,8 @@ public class AdventurerCreationService {
         }
         return name;
     }
+
+    public static int getStatValue(){return averageStatValue;}
+    // this can be used for increasing stats with difficulty
+    public static void setAverageStatValue(int newVal){averageStatValue = newVal;}
 }

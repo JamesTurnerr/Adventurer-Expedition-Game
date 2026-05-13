@@ -21,6 +21,10 @@ public class GameEnvironment {
     private int expeditionsRemaining;
     private final Random random = new Random();
 
+    // store the hireable list and a bool to keep track of when to update
+    // initialize as true so it makes initial list
+    private List<Adventurer> hireableAdventurers = new ArrayList<>();
+    public boolean expeditionCompleted = true;
 
     public GameEnvironment(ScreenNavigator navigator)
     {
@@ -75,6 +79,12 @@ public class GameEnvironment {
     {
         return expeditionsRemaining;
     }
+    public List<Adventurer> getHireableAdventurers() {return hireableAdventurers;}
+    public boolean getExpeditionCompleted() {return expeditionCompleted;}
+
+
+    //setters
+    public void setExpeditionCompleted(boolean expeditionCompleted) {this.expeditionCompleted = expeditionCompleted;}
 
     //Add data
     public void addItem(Item item)
@@ -90,8 +100,7 @@ public class GameEnvironment {
     {
         return addToMainParty(adventurer);
     }
-    private boolean addToMainParty(Adventurer adventurer)
-    {
+    private boolean addToMainParty(Adventurer adventurer) {
         if (mainParty.size() >= MAX_PARTY_SIZE)
         {
             System.out.println("Warning: Main party at maximum capacity");
@@ -342,6 +351,7 @@ public class GameEnvironment {
             member.setHealth(Math.max(0, health));
         }
     }
+
 }
 
 

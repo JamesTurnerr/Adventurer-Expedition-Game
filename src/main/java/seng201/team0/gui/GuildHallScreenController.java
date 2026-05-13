@@ -23,7 +23,7 @@ public class GuildHallScreenController extends ScreenController {
     @FXML private Label nameLabel, healthLabel, staminaLabel, perceptionLabel, costLabel, payLabel, damageLabel;
 
     private final GuiService guiService = new GuiService(getGameEnvironment());
-    private final GuildHallService guildHallService = new GuildHallService();
+    private final GuildHallService guildHallService = new GuildHallService(getGameEnvironment());
     private final DisplayStatsService displayStatsService = new DisplayStatsService();
     private List<Adventurer> mainParty = getGameEnvironment().getMainParty();
 
@@ -44,7 +44,7 @@ public class GuildHallScreenController extends ScreenController {
 
     public void initialize()
     {
-        guildHallService.fillAdventurerList(hireableAdventurersListView, 5);
+        populateList();
 
         guiService.updateTopLabels(
                 goldAmountLabel,
@@ -100,6 +100,7 @@ public class GuildHallScreenController extends ScreenController {
         {
             hireableAdventurersListView.getItems().remove(selectedAdventurer);
             reservePartyListView.getItems().add(selectedAdventurer);
+            getGameEnvironment().getHireableAdventurers().remove(selectedAdventurer);
 
             //update balance
             //int newGold = getGameEnvironment().getGold() - selectedAdventurer.getHiringCost();
@@ -109,6 +110,7 @@ public class GuildHallScreenController extends ScreenController {
         }
     }
 
+    //updates stats for items in list on selection
     private void adventurerSelection(ListView<Adventurer> listView) {
         listView.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldVal, newVal) -> {
@@ -126,5 +128,16 @@ public class GuildHallScreenController extends ScreenController {
                     }
                 }
         );
+    }
+
+    // logic behind old or new list
+    private void populateList(){
+        if (getGameEnvironment().getExpeditionCompleted() == true){
+            guildHallService.fillNewAdventurerList(hireableAdventurersListView, 5);
+            getGameEnvironment().setExpeditionCompleted(false);
+        }
+        else {
+            guildHallService.fillOldAdventurerList(hireableAdventurersListView);
+        }
     }
 }

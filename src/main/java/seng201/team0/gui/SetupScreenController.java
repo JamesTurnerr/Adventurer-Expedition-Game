@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
+import seng201.team0.services.AdventurerCreationService;
 import seng201.team0.services.DisplayStatsService;
 import seng201.team0.services.GuiService;
 import seng201.team0.services.SetupService;
@@ -100,9 +101,14 @@ public class SetupScreenController extends ScreenController {
             mainParty.add(null);
         }
     }
-    @FXML private void easyModeSelected() {difficultyMenuButton.setText("Easy");}
-    @FXML private void normalModeSelected() {difficultyMenuButton.setText("Normal");}
-    @FXML private void hardModeSelected() {difficultyMenuButton.setText("Hard");}
+
+    // difficulty affects the base state range for adventurers (excluding already generated)
+    @FXML private void easyModeSelected() {difficultyMenuButton.setText("Easy");
+        AdventurerCreationService.setAverageStatValue(125);}
+    @FXML private void normalModeSelected() {difficultyMenuButton.setText("Normal");
+        AdventurerCreationService.setAverageStatValue(100);}
+    @FXML private void hardModeSelected() {difficultyMenuButton.setText("Hard");
+        AdventurerCreationService.setAverageStatValue(75);}
 
     @FXML
     private void startButtonClicked() throws IOException {
