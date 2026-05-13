@@ -131,10 +131,11 @@ public class GuildHallScreenController extends ScreenController {
     }
 
     // logic behind old or new list
+    // there is an existing populatelist in gui service. this can simplify it
     private void populateList(){
-        if (getGameEnvironment().getExpeditionCompleted() == true){
+        if (getGameEnvironment().getDoUpdateHall() == true){
             guildHallService.fillNewAdventurerList(hireableAdventurersListView, 5);
-            getGameEnvironment().setExpeditionCompleted(false);
+            getGameEnvironment().setDoUpdateHall(false);
         }
         else {
             guildHallService.fillOldAdventurerList(hireableAdventurersListView);

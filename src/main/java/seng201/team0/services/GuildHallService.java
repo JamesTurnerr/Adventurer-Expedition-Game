@@ -4,6 +4,8 @@ import javafx.scene.control.ListView;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
 
+import java.util.List;
+
 /**
  * Service class for functionality for the guild hall area where the player can buy adventurers
  */
@@ -28,12 +30,17 @@ public class GuildHallService {
         }
     }
 
+
     //puts in existing list
     public void fillOldAdventurerList(ListView<Adventurer> listView){
         listView.getItems().clear();
         for (Adventurer adventurer : gameEnvironment.getHireableAdventurers()){
             listView.getItems().add(adventurer);
         }
+    }
+
+    public List<Adventurer> getAdventurerList(){
+        return gameEnvironment.getHireableAdventurers();
     }
 
 }

@@ -20,14 +20,15 @@ public class SetupService {
      * Create a List of given containing randomly generated items
      * @param size the size of the list
      */
-    public List<Item> getTestItemList(int size)
+    // moving TS to its own service
+    /*public List<Item> getTestItemList(int size)
     {
         List<Item> itemList = new ArrayList<Item>();
         for (int i = 0; i < size; i++) {
             itemList.add(Item.getRandomItem());
         }
         return itemList;
-    }
+    }*/
     /**
      * Checks all inputs to make sure they are valid before starting the game
      * @param expeditionInputTextField the amount of expeditions the user wants to go on

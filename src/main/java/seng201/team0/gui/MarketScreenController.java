@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import seng201.team0.GameEnvironment;
 import seng201.team0.services.GuiService;
+import seng201.team0.services.MarketService;
 import seng201.team0.services.SetupService;
 import seng201.team0.models.Item;
 
@@ -17,7 +18,7 @@ public class MarketScreenController extends ScreenController {
     private ListView<Item> itemListView;
 
     private final GuiService guiService = new GuiService(getGameEnvironment());
-    private final SetupService setupService = new SetupService();
+    private final MarketService marketService = new MarketService(getGameEnvironment());
 
     MarketScreenController(GameEnvironment gameEnvironment) {super(gameEnvironment);}
 
@@ -33,19 +34,19 @@ public class MarketScreenController extends ScreenController {
 
     public void initialize()
     {
-        guiService.populateListView(itemListView, setupService.getTestItemList(3));
+        guiService.populateListView(itemListView, marketService.getTestItemList(3));
     }
 
     @FXML
-    private void backButtonClicked() throws IOException {
-        getGameEnvironment().goToMainScreen();
-    }
+    private void backButtonClicked() throws IOException {getGameEnvironment().goToMainScreen();}
     @FXML
     private void buyItemButtonClicked()
     {
         if(getGameEnvironment().buyItem(itemListView.getSelectionModel().getSelectedItem()))
         {
-            itemListView.getItems().remove(itemListView.getSelectionModel().getSelectedItem());
+            Item item = itemListView.getSelectionModel().getSelectedItem();
+            itemListView.getItems().remove(item);
+            getGameEnvironment().getMarketItems().remove(item);
         }
     }
 }

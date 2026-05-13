@@ -194,6 +194,9 @@ public class ExpeditionService {
         else
         {
             //expedition finished
+            //return to main place
+            // get gold based on amount of stuff picked up
+            // refresh guild hall and market
         }
     }
 }

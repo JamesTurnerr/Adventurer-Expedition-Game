@@ -23,10 +23,6 @@ public class Adventurer extends Entity {
     {
         return stamina;
     }
-    public void setStamina(int stamina)
-    {
-        this.stamina = stamina;
-    }
     public int getPerception()
     {
         return perception;
@@ -38,6 +34,12 @@ public class Adventurer extends Entity {
     public int getPay()
     {
         return pay;
+    }
+
+    // setter
+    public void setStamina(int stamina)
+    {
+        this.stamina = stamina;
     }
 
     @Override

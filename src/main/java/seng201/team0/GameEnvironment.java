@@ -24,7 +24,9 @@ public class GameEnvironment {
     // store the hireable list and a bool to keep track of when to update
     // initialize as true so it makes initial list
     private List<Adventurer> hireableAdventurers = new ArrayList<>();
-    public boolean expeditionCompleted = true;
+    private List<Item> marketItems = new ArrayList<>();
+    public boolean doUpdateHall = true;
+    public boolean doUpdateMarket = true;
 
     public GameEnvironment(ScreenNavigator navigator)
     {
@@ -79,12 +81,17 @@ public class GameEnvironment {
     {
         return expeditionsRemaining;
     }
+
     public List<Adventurer> getHireableAdventurers() {return hireableAdventurers;}
-    public boolean getExpeditionCompleted() {return expeditionCompleted;}
+    public List<Item> getMarketItems(){return marketItems;}
+    public boolean getDoUpdateHall() {return doUpdateHall;}
+    public boolean getDoUpdateMarket() {return doUpdateMarket;}
 
 
     //setters
-    public void setExpeditionCompleted(boolean expeditionCompleted) {this.expeditionCompleted = expeditionCompleted;}
+    public void setDoUpdateHall(boolean doUpdateHall) {this.doUpdateHall = doUpdateHall;}
+    public void setDoUpdateMarket(boolean doUpdateMarket) {this.doUpdateMarket = doUpdateMarket;}
+
 
     //Add data
     public void addItem(Item item)
