@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.util.List;
 
 import seng201.team0.GameEnvironment;
 import seng201.team0.services.GuiService;
@@ -12,10 +13,9 @@ import seng201.team0.services.SetupService;
 import seng201.team0.models.Item;
 
 public class MarketScreenController extends ScreenController {
-    @FXML
-    private Button backButton, buyItemButton;
-    @FXML
-    private ListView<Item> itemListView;
+    @FXML private Button backButton, buyItemButton;
+    @FXML private ListView<Item> itemListView;
+    @FXML private ListView<Item> inventoryListView;
 
     private final GuiService guiService = new GuiService(getGameEnvironment());
     private final MarketService marketService = new MarketService(getGameEnvironment());
@@ -36,6 +36,7 @@ public class MarketScreenController extends ScreenController {
     {
 
         guiService.populateListView(itemListView, marketService.getTestItemList(3));
+        guiService.populateListView(inventoryListView, getGameEnvironment().getItems());
     }
 
     @FXML
@@ -46,8 +47,11 @@ public class MarketScreenController extends ScreenController {
         if(getGameEnvironment().buyItem(itemListView.getSelectionModel().getSelectedItem()))
         {
             Item item = itemListView.getSelectionModel().getSelectedItem();
+            // surely can simplify
             itemListView.getItems().remove(item);
             getGameEnvironment().getMarketItems().remove(item);
+
+            inventoryListView.getItems().add(item);
         }
     }
 }
