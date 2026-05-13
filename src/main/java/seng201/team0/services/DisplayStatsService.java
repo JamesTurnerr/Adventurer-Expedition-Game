@@ -2,6 +2,7 @@ package seng201.team0.services;
 
 import javafx.scene.control.Label;
 import seng201.team0.models.Adventurer;
+import seng201.team0.models.Item;
 
 /**
  * Service class to update the UI labels containing adventurer stats
@@ -36,5 +37,11 @@ public class DisplayStatsService {
         costLabel.setText(String.valueOf(adventurer.getHiringCost()));
         payLabel.setText(String.valueOf(adventurer.getPay()));
         damageLabel.setText(String.valueOf(adventurer.getDamage()));
+    }
+
+    public void updateItemStats(Item item, Label nameLabel, Label effectLabel, Label costLabel){
+        nameLabel.setText(item.getName());
+        effectLabel.setText(item.getModifier());
+        costLabel.setText(String.valueOf(item.getCost()));
     }
 }

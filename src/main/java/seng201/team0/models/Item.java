@@ -3,14 +3,14 @@ package seng201.team0.models;
 import java.util.Random;
 
 public enum Item {
-    STAMINA_POTION("Stamina Potion", 5, 10),
-    HEALTH_POTION("Health Potion", 5, 10),
-    RUSTY_SWORD("Rusty Sword", 5, 0);
+    STAMINA_POTION("Stamina Potion", "Moderately increases stamina", 10),
+    HEALTH_POTION("Health Potion", "Moderately increases health", 10),
+    RUSTY_SWORD("Rusty Sword", "Increases attack damage", 0);
 
     private final String name;
     private final int cost;
-    private final int modifier;
-    Item(String name, int modifier, int cost)
+    private final String modifier;
+    Item(String name, String modifier, int cost)
     {
         this.name = name;
         this.cost = cost;
@@ -19,13 +19,13 @@ public enum Item {
     @Override
     public String toString()
     {
-        return String.format("%s +%d %sGold", name, modifier, cost);
+        return String.format(name);
     }
     public String getName()
     {
         return name;
     }
-    public int getModifier()
+    public String getModifier()
     {
         return modifier;
     }

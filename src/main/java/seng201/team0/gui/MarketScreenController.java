@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.List;
 
 import seng201.team0.GameEnvironment;
+import seng201.team0.models.Adventurer;
+import seng201.team0.services.DisplayStatsService;
 import seng201.team0.services.GuiService;
 import seng201.team0.services.MarketService;
 import seng201.team0.services.SetupService;
@@ -17,8 +19,17 @@ public class MarketScreenController extends ScreenController {
     @FXML private ListView<Item> itemListView;
     @FXML private ListView<Item> inventoryListView;
 
+    @FXML private Label goldAmountLabel;
+    @FXML private Label currentExpeditionLabel;
+    @FXML private Label expeditionsRemainingLabel;
+
+    @FXML private Label nameLabel;
+    @FXML private Label effectLabel;
+    @FXML private Label costLabel;
+
     private final GuiService guiService = new GuiService(getGameEnvironment());
     private final MarketService marketService = new MarketService(getGameEnvironment());
+    private final DisplayStatsService displayStatsService = new DisplayStatsService();
 
     MarketScreenController(GameEnvironment gameEnvironment) {super(gameEnvironment);}
 
@@ -34,9 +45,15 @@ public class MarketScreenController extends ScreenController {
 
     public void initialize()
     {
+        guiService.updateTopLabels(goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel);
 
+        // inintialize the list views
         guiService.populateListView(itemListView, marketService.getTestItemList(3));
         guiService.populateListView(inventoryListView, getGameEnvironment().getItems());
+
+        // checks for if item in lists is selected
+        itemSelection(itemListView);
+        itemSelection(inventoryListView);
     }
 
     @FXML
@@ -52,6 +69,24 @@ public class MarketScreenController extends ScreenController {
             getGameEnvironment().getMarketItems().remove(item);
 
             inventoryListView.getItems().add(item);
+
+            guiService.updateTopLabels(goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel);
         }
+    }
+
+    //updates stats for items in list on selection
+    private void itemSelection(ListView<Item> listView) {
+        listView.getSelectionModel().selectedItemProperty().addListener(
+                (obs, oldVal, newVal) -> {
+                    if (newVal != null) {
+                        displayStatsService.updateItemStats(
+                                newVal,
+                                nameLabel,
+                                effectLabel,
+                                costLabel
+                        );
+                    }
+                }
+        );
     }
 }

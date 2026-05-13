@@ -143,17 +143,17 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Item Name:" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Effect" GridPane.rowIndex="1" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cost" GridPane.rowIndex="2" />
-                  <Label text="None" GridPane.columnIndex="1">
+                  <Label fx:id="nameLabel" text="None" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="None" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="effectLabel"  wrapText="true" text="None" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="None" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="costLabel" text="None" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
