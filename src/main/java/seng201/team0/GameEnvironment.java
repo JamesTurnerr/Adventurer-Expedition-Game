@@ -274,7 +274,27 @@ public class GameEnvironment {
     //Other
     public void useItem(Adventurer adventurer, Item item)
     {
-        System.out.println("useItem not yet implemented");
+        if (adventurer == null || item == null) {
+            System.out.println("Warning: adventurer or item is null");
+            return;
+        }
+
+        switch (item) {
+            case RUSTY_SWORD:
+                System.out.println("you gave "+ adventurer + " the "+ item);
+                break;
+            case STAMINA_POTION:
+                adventurer.setStamina(adventurer.getStamina()+20);
+                System.out.println("you used the "+item+" on "+adventurer);
+                break;
+            case HEALTH_POTION:
+                adventurer.setHealth(adventurer.getHealth()+30);
+                System.out.println("you used the "+item+" on "+adventurer);
+                break;
+
+        }
+        getItems().remove(item);
+        //System.out.println("useItem not yet implemented");
     }
 
     public void onSetupComplete(ArrayList<Adventurer> mainParty, String difficulty, String guildName, int numberOfExpeditions) {

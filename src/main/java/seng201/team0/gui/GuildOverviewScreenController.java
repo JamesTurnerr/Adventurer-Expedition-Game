@@ -62,6 +62,10 @@ public class GuildOverviewScreenController extends ScreenController {
     @FXML
     private void useItemButtonClicked()
     {
-        System.out.println("useItemButtonClicked() not yet implemented");
+        Adventurer adventurer = mainPartyListView.getSelectionModel().getSelectedItem();
+        Item item = itemsListView.getSelectionModel().getSelectedItem();
+        getGameEnvironment().useItem(adventurer, item);
+        guiService.populateListView(itemsListView, getGameEnvironment().getItems());
+        //System.out.println("useItemButtonClicked() not yet implemented");
     }
 }

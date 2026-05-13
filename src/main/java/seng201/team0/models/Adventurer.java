@@ -37,10 +37,7 @@ public class Adventurer extends Entity {
     }
 
     // setter
-    public void setStamina(int stamina)
-    {
-        this.stamina = stamina;
-    }
+    public void setStamina(int stamina) {this.stamina = stamina;}
 
     @Override
     public String toString()
