@@ -1,0 +1,807 @@
+1. Abandoned Mine
+    Cave-In
+    A section of the tunnel collapses ahead.
+        Clear the rubble — High stamina cost, possible ore reward
+        Search for another route — Perception check
+        Retreat temporarily — Safe but lose progress
+    Toxic Gas Leak
+    A green cloud spreads through the tunnel.
+        Run through quickly — Health damage
+        Move slowly with caution — Stamina loss, reduced damage
+        Search for ventilation shafts — Perception check
+    Hidden Ore Vein
+    Rare minerals glitter in the rock.
+        Mine aggressively — Huge stamina cost, large reward
+        Take only surface ore — Small reward
+        Inspect for hidden deposits — Perception check
+    Underground Lake
+    A dark lake blocks the path.
+        Swim across — Health risk
+        Walk around it — Heavy stamina cost
+        Search for a hidden crossing — Perception check
+    Strange Scratching Sounds
+    Something moves behind the walls.
+        Investigate — Possible loot or danger
+        Stay quiet and continue — Lower encounter risk
+        Set a trap — Stamina cost, possible reward
+    Broken Minecart Tracks
+    Rusty rails disappear into darkness.
+        Repair the tracks — Stamina cost, faster travel
+        Continue on foot — Safe but slow
+        Search for alternate tunnels — Perception check
+    Abandoned Supply Crate
+    A dusty crate sits untouched.
+        Open it immediately — Chance for loot or trap
+        Inspect carefully — Perception check
+        Ignore it — Safe option
+    Unstable Ceiling
+    Dust falls from cracks overhead.
+        Sprint through — Injury risk
+        Move carefully — Slower but safer
+        Search for supports — Perception check
+2. Dense Fog Marsh
+    Rotting Bridge
+    An old bridge creaks over dark water.
+        Cross quickly — Collapse risk
+        Reinforce the bridge — Stamina cost
+        Search for another crossing — Perception check
+    Swarm of Insects
+    Clouds of insects surround the party.
+        Push through — Health damage
+        Use supplies as repellent — Resource cost
+        Search for cleaner ground — Perception check
+    Sunken Treasure
+    Something glitters underwater.
+        Dive for it — Health risk
+        Use tools to retrieve it — Stamina cost
+        Inspect the water first — Perception check
+    Strange Lights
+    Small glowing lights drift through the fog.
+        Follow them — Possible treasure or danger
+        Avoid them — Safe option
+        Observe carefully — Perception check
+    Deep Mud Field
+    Every step becomes exhausting.
+        Force through — Huge stamina drain
+        Move slowly together — Slower but safer
+        Search for solid ground — Perception check
+    Poison Water Source
+    The nearby water smells foul.
+        Drink it anyway — Health risk
+        Boil and filter it — Stamina/resource cost
+        Search for cleaner water — Perception check
+    Hidden Predator
+    Something large moves beneath the water.
+        Attack first — Health risk
+        Retreat quietly — Lose progress
+        Track its movement — Perception check
+    Fog Split Path
+    The trail divides in heavy fog.
+        Choose left randomly — Risky
+        Stay put until fog clears — Lose time
+        Search for footprints — Perception check
+3. Ancient Ruins
+    Pressure Plate Trap
+    A click echoes beneath your feet.
+        Jump away — Stamina cost
+        Brace for impact — Health damage
+        Search for the trigger — Perception check
+    Golden Idol
+    A valuable idol rests on a pedestal.
+        Grab it immediately — Trap risk
+        Take smaller valuables — Small reward
+        Inspect the room first — Perception check
+    Crumbling Staircase
+    Loose stones crack beneath you.
+        Climb quickly — Injury risk
+        Move carefully — Slow but safer
+        Search for another route — Perception check
+    Locked Stone Door
+    A massive stone door blocks the path.
+        Force it open — Stamina cost
+        Wait for help/tools — Lose time
+        Search for a mechanism — Perception check
+    Ancient Library
+    Dusty shelves fill the chamber.
+        Search thoroughly — Chance for rare loot
+        Take visible valuables only — Small reward
+        Look for hidden compartments — Perception check
+    Hidden Wall Symbols
+    Faded symbols cover the walls.
+        Ignore them — Safe option
+        Trace the symbols — Random effect
+        Study them carefully — Perception check
+    Collapsing Hallway
+    The floor shakes violently.
+        Run through — Injury risk
+        Move carefully — Slower but safer
+        Search for support beams — Perception check
+    Buried Treasure Chamber
+    A hidden room filled with treasure appears.
+        Loot everything — Heavy stamina cost
+        Take only essentials — Moderate reward
+        Search for traps first — Perception check
+4. Frozen Pass
+Blizzard Approaching
+
+A snowstorm races toward the party.
+
+Push through it — Huge stamina drain
+Build shelter — Lose time but stay safe
+Search for a cave — Perception check
+Thin Ice
+
+Cracks spread beneath your feet.
+
+Run across — Fall risk
+Move slowly — Safer but slower
+Search for another path — Perception check
+Starving Wolves
+
+A pack of wolves surrounds the group.
+
+Fight them — Health risk
+Scare them away — Stamina cost
+Sneak around them — Perception check
+Frozen Supplies
+
+Your food has frozen solid.
+
+Eat it frozen — Stamina penalty
+Warm it by fire — Lose time
+Search for fresh food — Perception check
+Ice Cave Entrance
+
+A dark cave opens in the glacier.
+
+Explore it — Possible treasure or danger
+Rest nearby — Recover stamina
+Inspect tracks around it — Perception check
+Avalanche Rumbling
+
+Snow shifts loudly above.
+
+Sprint for cover — Stamina cost
+Stay completely still — Risky
+Search for protected terrain — Perception check
+Bitter Winds
+
+Freezing wind tears through the pass.
+
+Push onward — Health damage
+Stop to warm up — Lose time
+Search for natural shelter — Perception check
+Frozen Corpse
+
+A body lies trapped in ice.
+
+Search the corpse — Loot chance
+Leave it alone — Safe option
+Inspect surroundings first — Perception check
+5. Bandit Territory
+Road Ambush
+
+Bandits attack from the trees.
+
+Fight — Health risk, possible loot
+Flee — Heavy stamina loss
+Look for weak points — Perception check
+Fake Merchant
+
+A suspicious trader offers supplies.
+
+Buy from him — Scam risk
+Threaten him — Health/combat risk
+Inspect the goods carefully — Perception check
+Captured Traveler
+
+An injured traveler begs for help.
+
+Help them — Resource cost, reward chance
+Ignore them — Safe option
+Question them carefully — Perception check
+Suspicious Campfire
+
+Smoke rises nearby.
+
+Approach openly — Possible trade or danger
+Avoid the area — Safe option
+Sneak closer quietly — Perception check
+Hidden Archer
+
+An arrow lands nearby.
+
+Charge the attacker — Health risk
+Take cover — Slow progress
+Locate the shooter — Perception check
+Stolen Caravan
+
+An overturned caravan blocks the road.
+
+Loot the remains — Reward chance
+Search for survivors — Possible ally
+Inspect for traps — Perception check
+Enemy Patrol
+
+Bandits patrol the area ahead.
+
+Fight through — Health risk
+Wait for them to leave — Lose time
+Sneak around them — Perception check
+Blocked Canyon
+
+A barricade seals the canyon.
+
+Break through — Heavy stamina cost
+Negotiate passage — Lose gold/resources
+Search for hidden paths — Perception check
+6. Crystal Caverns
+Crystal Resonance
+
+The crystals emit strange vibrations.
+
+Touch them — Random effect
+Ignore them — Safe option
+Study the vibrations — Perception check
+Fragile Crystal Bridge
+
+A glowing bridge spans a deep pit.
+
+Cross quickly — Collapse risk
+Move slowly — Safer but slower
+Search for another route — Perception check
+Hidden Gem Pocket
+
+Gems sparkle in the rock.
+
+Mine aggressively — Huge stamina cost
+Collect surface gems — Small reward
+Inspect deeper cracks — Perception check
+Echoing Tunnel
+
+Voices echo through the cavern.
+
+Follow the sound — Possible reward or danger
+Ignore it — Safe option
+Determine the source — Perception check
+Sharp Crystal Fields
+
+Razor-sharp crystals block the way.
+
+Push through — Health damage
+Break the crystals — Stamina cost
+Search for safer footing — Perception check
+Crystal Reflection Maze
+
+Reflections distort the tunnel.
+
+Guess the correct path — Risky
+Mark the route manually — Stamina cost
+Use reflections to navigate — Perception check
+Underground Spring
+
+A glowing spring bubbles nearby.
+
+Drink from it — Random effect
+Rest beside it — Recover stamina
+Test the water first — Perception check
+Crystal Collapse
+
+The cavern begins shaking.
+
+Run for safety — Stamina cost
+Hide beneath rocks — Risky
+Search for stable ground — Perception check
+7. Burning Wasteland
+Heatwave
+
+The heat becomes unbearable.
+
+Push onward — Health damage
+Rest in shade — Recover stamina
+Search for shelter — Perception check
+Mirage
+
+A distant oasis appears ahead.
+
+Travel toward it — Real or fake
+Ignore it — Safe option
+Observe carefully — Perception check
+Sandstorm
+
+A wall of sand approaches.
+
+Run through it — Health/stamina loss
+Take cover — Lose time
+Navigate around it — Perception check
+Scorched Caravan
+
+A burned caravan lies abandoned.
+
+Search it quickly — Loot chance
+Salvage useful parts — Stamina cost
+Inspect the area first — Perception check
+Sun Exposure
+
+The sun drains the group rapidly.
+
+Keep moving — Health loss
+Stop and recover — Lose time
+Search for shade — Perception check
+Volcanic Vent
+
+Steam erupts from the ground.
+
+Sprint across — Injury risk
+Wait for it to calm — Lose time
+Search for stable terrain — Perception check
+Dry Oasis
+
+A dried oasis offers little relief.
+
+Dig for water — Stamina cost
+Continue onward — Safe but exhausting
+Search surrounding rocks — Perception check
+Ash Storm
+
+Hot ash fills the air.
+
+Push forward — Health damage
+Take shelter — Slower progress
+Navigate by landmarks — Perception check
+8. Overgrown Jungle
+Jungle Predator
+
+A predator stalks the expedition.
+
+Fight it — Health risk
+Scare it away — Stamina cost
+Track its movement — Perception check
+Poisonous Spores
+
+The air fills with glowing spores.
+
+Rush through — Health damage
+Cover your faces — Stamina cost
+Search for clean air — Perception check
+River Crossing
+
+A strong river blocks the trail.
+
+Swim across — Health/stamina risk
+Build a raft — Stamina cost
+Search for shallow water — Perception check
+Hanging Vines
+
+Thick vines block movement.
+
+Cut through them — Stamina cost
+Push through slowly — Safer but slower
+Search for side paths — Perception check
+Ancient Stone Archway
+
+Ruins rise from the jungle.
+
+Explore immediately — Possible danger/reward
+Camp nearby first — Recover stamina
+Inspect for traps — Perception check
+Tropical Rainstorm
+
+Heavy rain floods the trail.
+
+Continue onward — Huge stamina drain
+Wait it out — Lose time
+Search for shelter — Perception check
+Hidden Fruit Grove
+
+Fruit trees grow nearby.
+
+Eat immediately — Random effect
+Gather supplies — Stamina cost
+Inspect the fruit first — Perception check
+Tree Collapse
+
+A giant tree begins falling.
+
+Run away — Stamina cost
+Brace under cover — Risky
+Predict the fall direction — Perception check
+9. Haunted Battlefield
+Ghostly Whispers
+
+Voices echo across the battlefield.
+
+Follow the whispers — Loot or danger
+Stay near camp — Safe option
+Investigate carefully — Perception check
+Cursed Relic
+
+A relic pulses with dark energy.
+
+Take it — Big reward, health risk
+Destroy it — Stamina cost
+Study it carefully — Perception check
+Skeletal Soldiers
+
+Undead warriors rise from the ground.
+
+Fight them — Health risk
+Retreat — Lose progress
+Search for weaknesses — Perception check
+Haunted Trenches
+
+Dark trenches stretch ahead.
+
+Walk through them — Health risk
+Move around them — Stamina drain
+Search for hidden routes — Perception check
+Phantom Cavalry
+
+Ghost riders charge through the mist.
+
+Stand your ground — Health risk
+Hide immediately — Lose time
+Predict their path — Perception check
+Rusted Armory
+
+Broken weapons litter the area.
+
+Search everything — Loot chance
+Take useful items only — Small reward
+Inspect for hidden compartments — Perception check
+Battlefield Explosion
+
+Old explosives begin detonating.
+
+Sprint through — Injury risk
+Wait for silence — Lose time
+Search for safe terrain — Perception check
+Fallen Commander
+
+An armored corpse lies nearby.
+
+Loot the armor — Heavy stamina cost
+Bury the body — Small morale bonus
+Inspect the area carefully — Perception check
+10. Sunken Temple
+Flooded Corridor
+
+Water rises through the hallway.
+
+Swim through — Stamina loss
+Move carefully — Slower but safer
+Search for drainage controls — Perception check
+Golden Altar
+
+Treasure rests on an ancient altar.
+
+Take everything — Trap risk
+Take small valuables — Moderate reward
+Inspect the altar — Perception check
+Underwater Tunnel
+
+A tunnel disappears underwater.
+
+Dive immediately — Health risk
+Rest before diving — Recover stamina
+Search for air pockets — Perception check
+Ancient Mechanism
+
+Large stone gears still move.
+
+Force it open — Stamina cost
+Wait for proper timing — Lose time
+Study how it works — Perception check
+Cracked Pillar
+
+The ceiling shakes violently.
+
+Sprint past — Injury risk
+Support the structure — Stamina cost
+Search for another path — Perception check
+Flooding Chamber
+
+Water pours into the room.
+
+Escape quickly — Stamina cost
+Climb higher ground — Slower but safer
+Search for drainage levers — Perception check
+Sacred Statue
+
+A massive statue watches silently.
+
+Search behind it — Possible reward
+Ignore it — Safe option
+Inspect for hidden switches — Perception check
+Hidden Drain Passage
+
+A narrow tunnel slopes downward.
+
+Crawl through it — Health risk
+Avoid it — Safe option
+Inspect airflow and markings — Perception check
+11. Volcanic Crater
+Lava Vent
+
+Molten lava erupts nearby.
+
+Sprint across — Injury risk
+Wait for it to settle — Lose time
+Search for stable terrain — Perception check
+Ash Storm
+
+Ash fills the sky.
+
+Continue moving — Health damage
+Take shelter — Slower progress
+Navigate using landmarks — Perception check
+Crumbling Lava Bridge
+
+A thin bridge crosses molten rock.
+
+Cross quickly — Collapse risk
+Move carefully — Slower but safer
+Search for another crossing — Perception check
+Heat Exhaustion
+
+The group struggles in the heat.
+
+Push onward — Health loss
+Rest in shade — Recover stamina
+Search for underground tunnels — Perception check
+Obsidian Deposit
+
+Rare volcanic glass covers the ground.
+
+Harvest everything — Huge stamina cost
+Collect easy pieces — Small reward
+Search for high-value deposits — Perception check
+Magma Tremor
+
+The ground shakes violently.
+
+Run immediately — Stamina cost
+Stay low and brace — Risky
+Search for stable ground — Perception check
+Erupting Geyser
+
+Steam bursts from cracks in the earth.
+
+Dash through — Injury risk
+Wait for calm — Lose time
+Observe eruption patterns — Perception check
+Burning Winds
+
+Scorching winds sweep the crater.
+
+Continue onward — Health damage
+Take temporary shelter — Lose time
+Search for cooler paths — Perception check
+12. Deserted Fortress
+Rusted Gate
+
+A giant gate blocks the entrance.
+
+Force it open — Stamina cost
+Climb over it — Injury risk
+Search for side entrances — Perception check
+Hidden Armory
+
+A concealed weapons room appears.
+
+Loot everything — Heavy stamina cost
+Take essentials only — Moderate reward
+Inspect for traps — Perception check
+Watchtower Movement
+
+Something moves in the tower.
+
+Investigate — Possible combat
+Avoid the tower — Safe option
+Observe carefully — Perception check
+Empty Barracks
+
+Dusty beds line the room.
+
+Search thoroughly — Supply chance
+Take visible items only — Small reward
+Search for hidden compartments — Perception check
+Collapsing Courtyard
+
+The ground cracks beneath you.
+
+Sprint across — Injury risk
+Move slowly — Safer but slower
+Search for stable footing — Perception check
+Broken Ballista
+
+An old siege weapon remains intact.
+
+Salvage parts — Stamina cost
+Ignore it — Safe option
+Inspect for hidden storage — Perception check
+Underground Prison
+
+Cells stretch beneath the fortress.
+
+Explore the prison — Possible danger/reward
+Seal the entrance — Safe option
+Search for hidden passages — Perception check
+Trapped Vault
+
+A treasure vault sits unopened.
+
+Force it open — Trap risk
+Leave it alone — Safe option
+Search for the unlocking mechanism — Perception check
+13. Crystal Canyon
+Narrow Cliff Path
+
+A steep drop lines the trail.
+
+Move quickly — Fall risk
+Move carefully — Slower but safer
+Search for climbing anchors — Perception check
+Crystal Reflection Maze
+
+Light reflects endlessly around you.
+
+Guess the correct route — Risky
+Mark the path — Stamina cost
+Use reflections to navigate — Perception check
+Fragile Crystal Bridge
+
+A translucent bridge spans the canyon.
+
+Cross immediately — Collapse risk
+Test every step — Safer but slower
+Search for another route — Perception check
+Hidden Gem Pocket
+
+Rare gems sparkle nearby.
+
+Mine aggressively — Huge stamina cost
+Take surface gems only — Small reward
+Search for deeper veins — Perception check
+Resonating Walls
+
+The canyon vibrates loudly.
+
+Touch the walls — Random effect
+Ignore them — Safe option
+Study the vibrations — Perception check
+Falling Crystal Spikes
+
+Sharp crystals fall from above.
+
+Sprint through — Injury risk
+Hide under cover — Lose time
+Predict the falling pattern — Perception check
+Canyon Echoes
+
+Strange echoes confuse the group.
+
+Follow the sounds — Possible reward/danger
+Ignore them — Safe option
+Determine their source — Perception check
+Shimmering Cave Entrance
+
+A glowing cave appears nearby.
+
+Explore it — Possible reward or danger
+Camp outside — Recover stamina
+Inspect tracks and markings — Perception check
+14. Desert Tombs
+Sand-Covered Entrance
+
+A buried doorway emerges from the sand.
+
+Dig it open — Stamina cost
+Wait for wind to clear sand — Lose time
+Search for another entrance — Perception check
+Poison Dart Trap
+
+Tiny holes line the walls.
+
+Sprint through — Injury risk
+Use shields or cover — Stamina cost
+Search for trap triggers — Perception check
+Ancient Sarcophagus
+
+A massive coffin rests in the chamber.
+
+Open it immediately — Curse/trap risk
+Leave it untouched — Safe option
+Inspect the carvings — Perception check
+Shifting Sand Hallway
+
+Sand pours into the corridor.
+
+Force through — Huge stamina cost
+Retreat temporarily — Lose progress
+Search for stable paths — Perception check
+Hidden Burial Chamber
+
+A hidden chamber lies beneath the floor.
+
+Loot everything — Heavy stamina cost
+Take only valuables — Moderate reward
+Search for hidden dangers — Perception check
+Collapsing Ceiling
+
+Dust rains from above.
+
+Run through quickly — Injury risk
+Brace beneath pillars — Risky
+Search for support structures — Perception check
+Scarab Swarm
+
+Thousands of insects rush forward.
+
+Push through — Health damage
+Burn them away — Stamina/resource cost
+Search for higher ground — Perception check
+False Treasure Room
+
+A room filled with fake treasure appears.
+
+Grab valuables quickly — Trap risk
+Ignore the room — Safe option
+Inspect the treasure carefully — Perception check
+15. Storm Coast
+Shipwreck Discovery
+
+A broken ship lies on the shore.
+
+Search the wreck — Possible loot
+Salvage useful materials — Stamina cost
+Inspect for danger first — Perception check
+Lightning Storm
+
+Lightning strikes nearby cliffs.
+
+Continue moving — Health risk
+Take shelter — Lose time
+Search for safer terrain — Perception check
+Tidal Cave
+
+A cave floods with seawater.
+
+Enter quickly — Drowning risk
+Wait for low tide — Lose time
+Study tide patterns — Perception check
+Rogue Wave
+
+A massive wave crashes toward shore.
+
+Run inland — Stamina cost
+Hold your ground — Health risk
+Search for elevated terrain — Perception check
+Abandoned Lighthouse
+
+A ruined lighthouse stands nearby.
+
+Explore inside — Possible reward/danger
+Camp nearby — Recover stamina
+Inspect the structure carefully — Perception check
+Slippery Cliffs
+
+Wet rocks line the coastline.
+
+Climb quickly — Fall risk
+Move slowly — Safer but slower
+Search for climbing holds — Perception check
+Smuggler Hideout
+
+A hidden cave contains supplies.
+
+Loot everything — Ambush risk
+Take only essentials — Small reward
+Search for hidden exits — Perception check
+Washed-Up Cargo Crates
+
+Crates drift onto shore.
+
+Open them immediately — Possible loot/trap
+Drag them to safety — Stamina cost
+Inspect the markings first — Perception check
