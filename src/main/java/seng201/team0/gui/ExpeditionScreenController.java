@@ -57,8 +57,6 @@ public class ExpeditionScreenController extends ScreenController {
 
     private void updateLabels()
     {
-        expeditionOption1Button.setText(expeditionService.getButton1Text());
-        expeditionOption2Button.setText(expeditionService.getButton2Text());
         List<Label> adventurerNameLabels = List.of(adventurerNameLabel1, adventurerNameLabel2, adventurerNameLabel3, adventurerNameLabel4, adventurerNameLabel5);
         List<Label> adventurerStaminaLabels = List.of(adventurerStaminaLabel1, adventurerStaminaLabel2, adventurerStaminaLabel3, adventurerStaminaLabel4, adventurerStaminaLabel5);
         List<Label> adventurerHealthLabels = List.of(adventurerHealthLabel1, adventurerHealthLabel2, adventurerHealthLabel3, adventurerHealthLabel4, adventurerHealthLabel5);

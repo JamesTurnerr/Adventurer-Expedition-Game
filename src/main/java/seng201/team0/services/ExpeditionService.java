@@ -43,7 +43,8 @@ public class ExpeditionService {
         this.expeditionTextArea = expeditionTextArea;
         location = expedition.ExpeditionLocation[randInt];
         areas = expedition.getAreas(location);
-        writeLine(String.format("You start your expedition in the %s at a %s", location, areas[randInt]));
+        writeLine(String.format("You start your expedition in the %s", expedition.getAreaName(0)));
+        writeLine(expedition.getAreaDescription(0));
         nextArea();
     }
     /**
@@ -56,17 +57,13 @@ public class ExpeditionService {
     {
         currentArea++;
         int randInt = rand.nextInt(100);
-        if (randInt <= 66)
+        Event currEvent = expedition.areaEvents[currentArea];
+        writeLine("-------------");
+        writeLine(currEvent.getEventDescription());
+        writeLine("What do you do?");
+        for(Choice choice : currEvent.getChoices())
         {
-            combatEvent();
-        }
-        else if(randInt <= 98)
-        {
-            lootEvent();
-        }
-        else
-        {
-            newAdventurerEvent();
+            writeLine(choice.getChoice());
         }
     }
     /**
@@ -134,7 +131,7 @@ public class ExpeditionService {
     }
     public void button1Clicked()
     {
-        switch (currentEvent)
+        /*switch (currentEvent)
         {
             case "Combat":
                 //attack;
@@ -158,11 +155,20 @@ public class ExpeditionService {
                 }
                 nextArea();
                 break;
+        }*/
+        if(currentArea < 7)
+        {
+            nextArea();
         }
+        else
+        {
+            //expedition finished
+        }
+
     }
     public void button2Clicked()
     {
-        switch (currentEvent)
+        /*switch (currentEvent)
         {
             case "Combat":
                 //defend;
@@ -180,6 +186,14 @@ public class ExpeditionService {
                 writeLine("You decide not to leave the adventurer");
                 nextArea();
                 break;
+        }*/
+        if(currentArea < 7)
+        {
+            nextArea();
+        }
+        else
+        {
+            //expedition finished
         }
     }
 }
