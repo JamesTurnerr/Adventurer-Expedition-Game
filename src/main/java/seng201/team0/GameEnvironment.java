@@ -81,6 +81,8 @@ public class GameEnvironment {
     public void setDoUpdateHall(boolean doUpdateHall) {this.doUpdateHall = doUpdateHall;}
     public void setDoUpdateMarket(boolean doUpdateMarket) {this.doUpdateMarket = doUpdateMarket;}
     public void setSelectedExpeditionLocation(String location){this.selectedExpeditionLocation = location;}
+    public void setRemainingExpeditionNumber(int remaining){this.expeditionsRemaining = remaining;}
+    public void setCurrentExpeditionNumber(int current){this.currentExpeditionNumber = current;}
 
     //Add data
     public void addItem(Item item)

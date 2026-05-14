@@ -63,7 +63,9 @@ public class MainScreenController extends ScreenController {
     @FXML
     private void goOnExpeditionButtonClicked() throws IOException {
         //getGameEnvironment().goToExpeditionScreen();
-        getGameEnvironment().goToExpeditionSelectScreen();
+        if (getGameEnvironment().getExpeditionsRemaining() > 0){
+            getGameEnvironment().goToExpeditionSelectScreen();
+        }
     }
 }
 

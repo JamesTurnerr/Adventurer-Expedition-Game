@@ -2,6 +2,7 @@ package seng201.team0.services;
 
 import javafx.scene.control.TextArea;
 import seng201.team0.GameEnvironment;
+import seng201.team0.gui.MainScreenController;
 import seng201.team0.models.*;
 
 import java.util.ArrayList;
@@ -171,10 +172,7 @@ public class ExpeditionService {
         {
             nextArea();
         }
-        else
-        {
-            //expedition finished
-        }
+        else {expeditionOver();}
 
     }
     public void button2Clicked()
@@ -202,12 +200,41 @@ public class ExpeditionService {
         {
             nextArea();
         }
-        else
-        {
-            //expedition finished
-            //return to main place
-            // get gold based on amount of stuff picked up
-            // refresh guild hall and market
+        else {expeditionOver();}
+    }
+
+    // not yet implemented
+    public void button3Clicked()
+    {
+        if(currentArea < 7){
+        nextArea();
         }
+        else {expeditionOver();}
+    }
+
+    public void itemCollected(Item item){
+        int cost=item.getCost();
+        Random rand = new Random();
+
+        int min = (int) Math.ceil(cost * 0.25);  // 25% of cost
+        int max = (int) Math.ceil(cost * 1.25);  // 125% of cost
+
+        // more likely to receive bad items
+        int sellValue = rand.nextInt(max - min + 1) + min;
+
+        System.out.println("item collected: " + item.getName() + ", sell value: " + sellValue);
+    }
+
+    //expedition finished
+    public void expeditionOver(){
+        // get gold based on amount of stuff picked up
+        // update remaining
+        gameEnvironment.setCurrentExpeditionNumber(gameEnvironment.getCurrentExpeditionNumber()+1);
+        gameEnvironment.setRemainingExpeditionNumber(gameEnvironment.getExpeditionsRemaining()-1);
+        // refresh guild hall and market
+        gameEnvironment.setDoUpdateHall(true);
+        gameEnvironment.setDoUpdateMarket(true);
+        //return to main place
+        gameEnvironment.goToMainScreen();
     }
 }
