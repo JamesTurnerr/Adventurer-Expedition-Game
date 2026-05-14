@@ -17,7 +17,7 @@ public class GameEnvironment {
     private int gold;
     private String difficulty;
     private String guildName;
-    private int currentExpeditionNumber;
+    private int expeditionsCompleted;
     private int expeditionsRemaining;
     private final Random random = new Random();
 
@@ -58,7 +58,7 @@ public class GameEnvironment {
                 break;
         }
         this.guildName = guildName;
-        this.currentExpeditionNumber = 1;
+        this.expeditionsCompleted = 0;
         this.expeditionsRemaining = numberOfExpeditions;
     }
 
@@ -67,7 +67,7 @@ public class GameEnvironment {
     public List<Adventurer> getMainParty() {return mainParty;}
     public List<Adventurer> getReserveParty() {return reserveParty;}
     public List<Item> getItems() {return items;}
-    public int getCurrentExpeditionNumber() {return currentExpeditionNumber;}
+    public int getExpeditionsCompleted() {return expeditionsCompleted;}
     public int getExpeditionsRemaining() {return expeditionsRemaining;}
 
     public List<Adventurer> getHireableAdventurers() {return hireableAdventurers;}
@@ -82,7 +82,7 @@ public class GameEnvironment {
     public void setDoUpdateMarket(boolean doUpdateMarket) {this.doUpdateMarket = doUpdateMarket;}
     public void setSelectedExpeditionLocation(String location){this.selectedExpeditionLocation = location;}
     public void setRemainingExpeditionNumber(int remaining){this.expeditionsRemaining = remaining;}
-    public void setCurrentExpeditionNumber(int current){this.currentExpeditionNumber = current;}
+    public void setExpeditionsCompleted(int current){this.expeditionsCompleted = current;}
 
     //Add data
     public void addItem(Item item)
@@ -308,7 +308,7 @@ public class GameEnvironment {
                 break;
         }
         this.guildName = guildName;
-        this.currentExpeditionNumber = 1;
+        this.expeditionsCompleted = 0;
         this.expeditionsRemaining = numberOfExpeditions;
         goToMainScreen();
     }

@@ -58,7 +58,7 @@ public class GuiService {
      */
     public void updateTopLabels(Label gold, Label expedition, Label remaining) {
         gold.setText(String.valueOf(gameEnvironment.getGold()));
-        expedition.setText(String.valueOf(gameEnvironment.getCurrentExpeditionNumber()));
+        expedition.setText(String.valueOf(gameEnvironment.getExpeditionsCompleted()));
         remaining.setText(String.valueOf(gameEnvironment.getExpeditionsRemaining()));
     }
     /**

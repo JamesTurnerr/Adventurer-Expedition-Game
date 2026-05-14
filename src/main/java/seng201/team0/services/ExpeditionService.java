@@ -2,7 +2,6 @@ package seng201.team0.services;
 
 import javafx.scene.control.TextArea;
 import seng201.team0.GameEnvironment;
-import seng201.team0.gui.MainScreenController;
 import seng201.team0.models.*;
 
 import java.util.ArrayList;
@@ -230,7 +229,7 @@ public class ExpeditionService {
     public void expeditionOver(){
         // get gold based on amount of stuff picked up
         // update remaining
-        gameEnvironment.setCurrentExpeditionNumber(gameEnvironment.getCurrentExpeditionNumber()+1);
+        gameEnvironment.setExpeditionsCompleted(gameEnvironment.getExpeditionsCompleted()+1);
         gameEnvironment.setRemainingExpeditionNumber(gameEnvironment.getExpeditionsRemaining()-1);
         // refresh guild hall and market
         gameEnvironment.setDoUpdateHall(true);
