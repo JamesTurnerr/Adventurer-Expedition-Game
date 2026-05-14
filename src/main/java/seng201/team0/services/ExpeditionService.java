@@ -46,6 +46,17 @@ public class ExpeditionService {
         writeLine(String.format("You start your expedition in the %s", expedition.getAreaName(0)));
         writeLine(expedition.getAreaDescription(0));
         nextArea();
+        // attempting to get Expedition to take parameters
+        /*
+        this.gameEnvironment = gameEnvironment;
+        this.numberOfAreas = numberOfAreas;
+        this.expeditionTextArea = expeditionTextArea;
+        this.location = gameEnvironment.getSelectedExpeditionLocation();
+        this.expedition = new Expedition(numberOfAreas, THE LOCATION SELECTEd);
+        this.areas = expedition.getAreas(location);
+        writeLine(String.format("You start your expedition at %s", location));
+        writeLine(expedition.getAreaDescription(0));
+        nextArea();*/
     }
     /**
      * Go to the next area in the expedition and pick a random event to happen in that area

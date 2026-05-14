@@ -28,6 +28,9 @@ public class GameEnvironment {
     public boolean doUpdateHall = true;
     public boolean doUpdateMarket = true;
 
+    //store start location for player to set themselves
+    private String selectedExpeditionLocation;
+
     public GameEnvironment(ScreenNavigator navigator)
     {
         this.navigator = navigator;
@@ -61,37 +64,23 @@ public class GameEnvironment {
 
     //Getters
     public int getGold(){return gold;}
-    public List<Adventurer> getMainParty()
-    {
-        return mainParty;
-    }
-    public List<Adventurer> getReserveParty()
-    {
-        return reserveParty;
-    }
-    public List<Item> getItems()
-    {
-        return items;
-    }
-    public int getCurrentExpeditionNumber()
-    {
-        return currentExpeditionNumber;
-    }
-    public int getExpeditionsRemaining()
-    {
-        return expeditionsRemaining;
-    }
+    public List<Adventurer> getMainParty() {return mainParty;}
+    public List<Adventurer> getReserveParty() {return reserveParty;}
+    public List<Item> getItems() {return items;}
+    public int getCurrentExpeditionNumber() {return currentExpeditionNumber;}
+    public int getExpeditionsRemaining() {return expeditionsRemaining;}
 
     public List<Adventurer> getHireableAdventurers() {return hireableAdventurers;}
     public List<Item> getMarketItems(){return marketItems;}
     public boolean getDoUpdateHall() {return doUpdateHall;}
     public boolean getDoUpdateMarket() {return doUpdateMarket;}
 
+    public String getSelectedExpeditionLocation(){return selectedExpeditionLocation;}
 
     //setters
     public void setDoUpdateHall(boolean doUpdateHall) {this.doUpdateHall = doUpdateHall;}
     public void setDoUpdateMarket(boolean doUpdateMarket) {this.doUpdateMarket = doUpdateMarket;}
-
+    public void setSelectedExpeditionLocation(String location){this.selectedExpeditionLocation = location;}
 
     //Add data
     public void addItem(Item item)

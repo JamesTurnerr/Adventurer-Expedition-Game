@@ -100,7 +100,7 @@ public class ScreenNavigator {
 
     // the launch of the expedition locqation selction
     public void launchExpeditionLocationScreen(GameEnvironment gameEnvironment){
-        seng201.team0.gui.ScreenController controller = new ExpeditionSelectController(gameEnvironment);
+        seng201.team0.gui.ScreenController controller = new ExpeditionSelectScreenController(gameEnvironment);
         launchScreen(controller);
     }
 
