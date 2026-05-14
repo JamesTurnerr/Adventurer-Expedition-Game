@@ -129,7 +129,8 @@ public class ExpeditionService {
         }
         else
         {
-            expeditionTextArea.setText(expeditionTextArea.getText() + "\n" + string);
+            // this will append text, keeping position
+            expeditionTextArea.appendText("\n" + string);
         }
     }
 
