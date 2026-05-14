@@ -24,29 +24,32 @@ public class ExpeditionSelectScreenController extends ScreenController {
     //made up thing to get some start locations
     private final Expedition tempExpedition = new Expedition(5);
 
+    int locCount = 2;//currently only 2 expeditions implemented so far. Increase as more implemented until max reached of tempExpedition.areaNames.length
+    int firstExpeditionIndex = rand.nextInt(locCount);
+    int secondExpeditionIndex = rand.nextInt(locCount);
+    int thirdExpeditionIndex = rand.nextInt(locCount);
+
 
     public void initialize(){
         // give 3 different locations
-        int locCount = tempExpedition.ExpeditionLocation.length;
-
-        location1Button.setText(tempExpedition.ExpeditionLocation[rand.nextInt(locCount)]);
-        location2Button.setText(tempExpedition.ExpeditionLocation[rand.nextInt(locCount)]);
-        location3Button.setText(tempExpedition.ExpeditionLocation[rand.nextInt(locCount)]);
+        location1Button.setText(tempExpedition.getAreaNames(firstExpeditionIndex));
+        location2Button.setText(tempExpedition.getAreaNames(secondExpeditionIndex));
+        location3Button.setText(tempExpedition.getAreaNames(thirdExpeditionIndex));
     }
 
     @FXML
     private void location1Pressed() {
-        selectLocation(location1Button.getText());
+        selectLocation(location1Button.getText(), firstExpeditionIndex);
     }
 
     @FXML
     private void location2Pressed() {
-        selectLocation(location2Button.getText());
+        selectLocation(location2Button.getText(), secondExpeditionIndex);
     }
 
     @FXML
     private void location3Pressed() {
-        selectLocation(location3Button.getText());
+        selectLocation(location3Button.getText(), thirdExpeditionIndex);
     }
 
     @FXML
@@ -54,9 +57,9 @@ public class ExpeditionSelectScreenController extends ScreenController {
         getGameEnvironment().goToMainScreen();
     }
 
-    private void selectLocation(String location) {
+    private void selectLocation(String location, int index) {
         System.out.println("Selected location: " + location);
-        getGameEnvironment().setSelectedExpeditionLocation(location);
+        getGameEnvironment().setSelectedExpeditionLocation(location, index);
         getGameEnvironment().goToExpeditionScreen();
     }
 }

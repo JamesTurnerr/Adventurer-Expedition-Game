@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Expedition {
     Random rand = new Random();
-    int numberOfAreas;
+    int expeditionIndex;
 
     public final String[] ExpeditionLocation = {"Plains", "Cave", "Mountain", "Jungle"};
 
@@ -114,9 +114,9 @@ public class Expedition {
             }
     };
 
-    public Expedition(int length)
+    public Expedition(int expeditionIndex)
     {
-        this.numberOfAreas = length;
+        this.expeditionIndex = expeditionIndex;
     }
 
     public String[] getAreas(String location)
@@ -167,5 +167,10 @@ public class Expedition {
     public String getAreaDescription(int areaIndex)
     {
         return areaDescriptions[areaIndex];
+    }
+
+    public String getAreaNames(int index)
+    {
+        return areaNames[index];
     }
 }

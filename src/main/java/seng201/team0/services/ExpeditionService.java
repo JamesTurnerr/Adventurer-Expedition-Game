@@ -18,7 +18,7 @@ public class ExpeditionService {
     String location;
     String[] areas;
     TextArea expeditionTextArea;
-    private final int numberOfAreas;
+    private final int expeditionIndex;
     private int currentArea = 0;
     private String button1Text = "";
     private String button2Text = "";
@@ -34,13 +34,13 @@ public class ExpeditionService {
     /**
      * Creates a new expedition with a given amount of areas
      * @param expeditionTextArea reference to the TextArea that will have information about the expedition written to
-     * @param numberOfAreas the number of areas that will be played through in this expedition
+     * @param expeditionIndex the different expedition that the player has chosen
      */
-    public ExpeditionService(GameEnvironment gameEnvironment, TextArea expeditionTextArea, int numberOfAreas)
+    public ExpeditionService(GameEnvironment gameEnvironment, TextArea expeditionTextArea, int expeditionIndex)
     {
         this.gameEnvironment = gameEnvironment;
-        this.numberOfAreas = numberOfAreas;
-        expedition = new Expedition(numberOfAreas);
+        this.expeditionIndex = expeditionIndex;
+        expedition = new Expedition(expeditionIndex);
         int randInt = rand.nextInt(expedition.ExpeditionLocation.length);
         this.expeditionTextArea = expeditionTextArea;
         location = expedition.ExpeditionLocation[randInt];
@@ -70,7 +70,7 @@ public class ExpeditionService {
     {
         currentArea++;
         int randInt = rand.nextInt(100);
-        Event currEvent = expedition.areaEvents[currentArea];
+        Event currEvent = expedition.areaEvents[expeditionIndex][currentArea];
         writeLine("-------------");
         writeLine(currEvent.getEventDescription());
         writeLine("What do you do?");

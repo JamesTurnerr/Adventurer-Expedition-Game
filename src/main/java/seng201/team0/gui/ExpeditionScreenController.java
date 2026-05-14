@@ -40,7 +40,7 @@ public class ExpeditionScreenController extends ScreenController {
 
     public void initialize()
     {
-        expeditionService = new ExpeditionService(getGameEnvironment(), expeditionTextArea, 5);
+        expeditionService = new ExpeditionService(getGameEnvironment(), expeditionTextArea, getGameEnvironment().getExpeditionIndex());
         updateLabels();
     }
 

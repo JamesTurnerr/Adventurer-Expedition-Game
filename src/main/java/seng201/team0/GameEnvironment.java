@@ -32,6 +32,7 @@ public class GameEnvironment {
 
     //store start location for player to set themselves
     private String selectedExpeditionLocation;
+    private int selectedExpeditionIndex;
 
     public GameEnvironment(ScreenNavigator navigator)
     {
@@ -46,6 +47,7 @@ public class GameEnvironment {
     public List<Item> getItems() {return items;}
     public int getExpeditionsCompleted() {return expeditionsCompleted;}
     public int getExpeditionsRemaining() {return expeditionsRemaining;}
+    public int getExpeditionIndex(){return selectedExpeditionIndex;}
 
     public List<Adventurer> getHireableAdventurers() {return hireableAdventurers;}
     public List<Item> getMarketItems(){return marketItems;}
@@ -58,7 +60,7 @@ public class GameEnvironment {
     //setters
     public void setDoUpdateHall(boolean doUpdateHall) {this.doUpdateHall = doUpdateHall;}
     public void setDoUpdateMarket(boolean doUpdateMarket) {this.doUpdateMarket = doUpdateMarket;}
-    public void setSelectedExpeditionLocation(String location){this.selectedExpeditionLocation = location;}
+    public void setSelectedExpeditionLocation(String location, int index){this.selectedExpeditionLocation = location; this.selectedExpeditionIndex = index;}
     public void setRemainingExpeditionNumber(int remaining){this.expeditionsRemaining = remaining;}
     public void setExpeditionsCompleted(int current){this.expeditionsCompleted = current;}
 
