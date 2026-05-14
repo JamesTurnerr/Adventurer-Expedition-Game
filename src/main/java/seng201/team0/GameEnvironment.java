@@ -25,8 +25,10 @@ public class GameEnvironment {
     // initialize as true so it makes initial list
     private List<Adventurer> hireableAdventurers = new ArrayList<>();
     private List<Item> marketItems = new ArrayList<>();
-    public boolean doUpdateHall = true;
-    public boolean doUpdateMarket = true;
+    private boolean doUpdateHall = true;
+    private boolean doUpdateMarket = true;
+    private int eventChance;
+
 
     //store start location for player to set themselves
     private String selectedExpeditionLocation;
@@ -35,31 +37,6 @@ public class GameEnvironment {
     {
         this.navigator = navigator;
         navigator.launchSetupScreen(this);
-    }
-
-    public void init(ArrayList<Adventurer> mainParty, String difficulty, String guildName, int numberOfExpeditions)
-    {
-        this.mainParty = mainParty;
-        switch (difficulty)
-        {
-            case "Easy":
-                this.gold = 20;
-                this.difficulty = "Easy";
-                break;
-
-            case "Normal":
-                this.gold = 10;
-                this.difficulty = "Normal";
-                break;
-
-            case "Hard":
-                this.gold = 0;
-                this.difficulty = "Hard";
-                break;
-        }
-        this.guildName = guildName;
-        this.expeditionsCompleted = 0;
-        this.expeditionsRemaining = numberOfExpeditions;
     }
 
     //Getters
@@ -74,8 +51,9 @@ public class GameEnvironment {
     public List<Item> getMarketItems(){return marketItems;}
     public boolean getDoUpdateHall() {return doUpdateHall;}
     public boolean getDoUpdateMarket() {return doUpdateMarket;}
-
+    public int getEventChance() {System.out.println("the chance is"+ eventChance); return eventChance;}
     public String getSelectedExpeditionLocation(){return selectedExpeditionLocation;}
+
 
     //setters
     public void setDoUpdateHall(boolean doUpdateHall) {this.doUpdateHall = doUpdateHall;}
@@ -295,16 +273,19 @@ public class GameEnvironment {
             case "Easy":
                 this.gold = 20;
                 this.difficulty = "Easy";
+                eventChance = 70;
                 break;
 
             case "Normal":
                 this.gold = 10;
                 this.difficulty = "Normal";
+                eventChance = 50;
                 break;
 
             case "Hard":
                 this.gold = 0;
                 this.difficulty = "Hard";
+                eventChance = 30;
                 break;
         }
         this.guildName = guildName;
@@ -312,6 +293,7 @@ public class GameEnvironment {
         this.expeditionsRemaining = numberOfExpeditions;
         goToMainScreen();
     }
+    public void goToEventScreen(){navigator.launchEventScreen(this);}
     public void goToExpeditionSelectScreen(){
         navigator.launchExpeditionLocationScreen(this);
     }
@@ -366,7 +348,6 @@ public class GameEnvironment {
             member.setHealth(Math.max(0, health));
         }
     }
-
 }
 
 

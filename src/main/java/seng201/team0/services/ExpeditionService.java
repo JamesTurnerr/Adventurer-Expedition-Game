@@ -29,6 +29,8 @@ public class ExpeditionService {
     private List<Enemy> currentEnemyList;
 
     private String currentEnemy;
+
+    private boolean expeditionFinished;
     /**
      * Creates a new expedition with a given amount of areas
      * @param expeditionTextArea reference to the TextArea that will have information about the expedition written to
@@ -227,14 +229,20 @@ public class ExpeditionService {
 
     //expedition finished
     public void expeditionOver(){
+        // add bool to prevent multiple checks
+        if (expeditionFinished) {return;}
+        expeditionFinished = true;
+
         // get gold based on amount of stuff picked up
+
         // update remaining
         gameEnvironment.setExpeditionsCompleted(gameEnvironment.getExpeditionsCompleted()+1);
         gameEnvironment.setRemainingExpeditionNumber(gameEnvironment.getExpeditionsRemaining()-1);
         // refresh guild hall and market
         gameEnvironment.setDoUpdateHall(true);
         gameEnvironment.setDoUpdateMarket(true);
-        //return to main place
-        gameEnvironment.goToMainScreen();
+        //return to main place, or special event first (based on difficulty)
+        if (rand.nextInt(100) < gameEnvironment.getEventChance()) {gameEnvironment.goToEventScreen();}
+        else{gameEnvironment.goToMainScreen();}
     }
 }
