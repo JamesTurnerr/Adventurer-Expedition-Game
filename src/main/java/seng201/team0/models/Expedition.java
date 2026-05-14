@@ -43,7 +43,8 @@ public class Expedition {
             "A massive canyon lined with glowing crystal formations, narrow cliffs, and hidden gem deposits.",
             "Buried tombs beneath shifting sands containing ancient curses, traps, and hidden chambers.",
             "A violent coastline battered by storms, shipwrecks, cliffs, tidal caves, and smuggler hideouts."};
-    public final Event[] areaEvents = {
+    public final Event[][] areaEvents = {
+            {
             new Event("A section of the tunnel collapses ahead.", new Choice[]{
                     new Choice("Clear the rubble", "stamina"),
                     new Choice("Search for another route", "perception"),
@@ -76,6 +77,41 @@ public class Expedition {
                     new Choice("Sprint through", "stamina"),
                     new Choice("Move carefully", "health"),
                     new Choice("Search for supports", "perception")}),
+            },
+            {
+            new Event("An old bridge creaks over dark water.", new Choice[]{
+                    new Choice("Cross quickly", "stamina"),
+                    new Choice("Reinforce the bridge", "stamina"),
+                    new Choice("Search for another crossing", "progress")}),
+            new Event("Clouds of insects surround the party.", new Choice[]{
+                    new Choice("Push through", "health"),
+                    new Choice("Repel them", "stamina"),
+                    new Choice("Search for cleaner ground", "perception")}),
+            new Event("Something glitters underwater.", new Choice[]{
+                    new Choice("Dive straight to it", "health"),
+                    new Choice("Use tools to retrieve it", "stamina"),
+                    new Choice("Inspect the water first", "perception")}),
+            new Event("Small glowing lights drift through the fog.", new Choice[]{
+                    new Choice("Follow them", "perception"),
+                    new Choice("Avoid them", "none"),
+                    new Choice("Observe them", "perception")}),
+            new Event("Every step becomes exhausting.", new Choice[]{
+                    new Choice("Force through", "stamina"),
+                    new Choice("Move slowly together", "stamina"),
+                    new Choice("Search for solid ground", "perception")}),
+            new Event("The nearby water smells foul.", new Choice[]{
+                    new Choice("Drink it anyway", "health"),
+                    new Choice("Boil and filter it", "stamina"),
+                    new Choice("Search for cleaner water", "perception")}),
+            new Event("Something large moves beneath the water.", new Choice[]{//
+                    new Choice("Attack first", "health"),
+                    new Choice("Retreat quietly", "progress"),
+                    new Choice("Observe and track its movement", "perception")}),
+            new Event("The trail divides in heavy fog.", new Choice[]{
+                    new Choice("Go left", "stamina"),
+                    new Choice("Go right", "health"),
+                    new Choice("Search for footprints", "perception")}),
+            }
     };
 
     public Expedition(int length)
