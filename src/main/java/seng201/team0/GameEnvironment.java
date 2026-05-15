@@ -370,8 +370,14 @@ public class GameEnvironment {
         }
     }
 
-    public boolean isDoUpdateLocations() {
-        return doUpdateLocations;
+    public void payMainParty(){
+        for (Adventurer adventurer : mainParty){
+            gold -= adventurer.getPay();
+            if (gold < 0) {
+                System.out.println("you owe "+adventurer.getName()+" money!");
+                //gold = 0;
+            }
+        }
     }
 }
 

@@ -130,6 +130,8 @@ public class ExpeditionService {
 
         // get gold based on amount of stuff picked up
 
+        // pay the main party
+        gameEnvironment.payMainParty();
         // update remaining
         gameEnvironment.setExpeditionsCompleted(gameEnvironment.getExpeditionsCompleted()+1);
         gameEnvironment.setRemainingExpeditionNumber(gameEnvironment.getExpeditionsRemaining()-1);
