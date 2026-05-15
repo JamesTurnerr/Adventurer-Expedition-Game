@@ -29,6 +29,8 @@ public class GameEnvironment {
     private boolean doUpdateMarket = true;
     private int eventChance;
 
+    //difficulty (higher the number the worse)
+    double difficultyModifier;
 
     //store start location for player to set themselves
     private String selectedExpeditionLocation;
@@ -55,7 +57,7 @@ public class GameEnvironment {
     public boolean getDoUpdateMarket() {return doUpdateMarket;}
     public int getEventChance() {System.out.println("the chance is"+ eventChance); return eventChance;}
     public String getSelectedExpeditionLocation(){return selectedExpeditionLocation;}
-
+    public double getDifficultyModifier(){return difficultyModifier;}
 
     //setters
     public void setDoUpdateHall(boolean doUpdateHall) {this.doUpdateHall = doUpdateHall;}
@@ -276,18 +278,21 @@ public class GameEnvironment {
                 this.gold = 20;
                 this.difficulty = "Easy";
                 eventChance = 70;
+                difficultyModifier = .8;
                 break;
 
             case "Normal":
                 this.gold = 10;
                 this.difficulty = "Normal";
                 eventChance = 50;
+                difficultyModifier = 1;
                 break;
 
             case "Hard":
                 this.gold = 0;
                 this.difficulty = "Hard";
                 eventChance = 30;
+                difficultyModifier = 1.2;
                 break;
         }
         this.guildName = guildName;

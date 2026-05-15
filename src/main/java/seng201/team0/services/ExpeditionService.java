@@ -6,6 +6,7 @@ import seng201.team0.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 /**
@@ -89,10 +90,9 @@ public class ExpeditionService {
         else {expeditionOver();}
     }
 
-    // not yet implemented
     public void button3Clicked()
     {
-        writeLine(String.format("You %s causing you to %s", getChoiceText(2), getChoiceResult(2)));
+        writeLine(String.format("You %s causing you to %s", getChoiceText(2).toLowerCase(Locale.ROOT), getChoiceResult(2)));
         if(currentArea < 7){
         nextArea();
         }

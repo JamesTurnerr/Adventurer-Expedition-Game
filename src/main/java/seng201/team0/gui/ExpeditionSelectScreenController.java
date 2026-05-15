@@ -6,6 +6,7 @@ import seng201.team0.GameEnvironment;
 import seng201.team0.models.Expedition;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 
 
@@ -26,16 +27,30 @@ public class ExpeditionSelectScreenController extends ScreenController {
     private final Expedition tempExpedition = new Expedition(5);
 
     int locCount = 3;//currently only 3 expeditions implemented so far. Increase as more implemented until max reached of tempExpedition.areaNames.length
-    int firstExpeditionIndex = rand.nextInt(locCount);
-    int secondExpeditionIndex = rand.nextInt(locCount);
-    int thirdExpeditionIndex = rand.nextInt(locCount);
+    int firstExpeditionIndex;
+    int secondExpeditionIndex;
+    int thirdExpeditionIndex;
 
 
     public void initialize(){
+        randomLocations();
+
         // give 3 different locations
         location1Button.setText(tempExpedition.getAreaNames(firstExpeditionIndex));
         location2Button.setText(tempExpedition.getAreaNames(secondExpeditionIndex));
         location3Button.setText(tempExpedition.getAreaNames(thirdExpeditionIndex));
+    }
+
+    // generates the random locations and prevents duplicates
+    private void randomLocations() {
+        Integer[] indices = new Integer[locCount];
+        for (int i = 0; i < locCount; i++) {
+            indices[i] = i;
+        }
+        Collections.shuffle(Arrays.asList(indices));
+        firstExpeditionIndex = indices[0];
+        secondExpeditionIndex = indices[1];
+        thirdExpeditionIndex = indices[2];
     }
 
     @FXML
