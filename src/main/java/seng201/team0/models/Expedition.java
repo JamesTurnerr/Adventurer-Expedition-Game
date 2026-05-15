@@ -101,6 +101,40 @@ public class Expedition {
                     new Choice("Go left", "stamina"),
                     new Choice("Go right", "health"),
                     new Choice("Search for footprints", "perception")}),
+            },
+            {
+            new Event("A click echoes beneath your feet.", new Choice[]{
+                    new Choice("Jump away", "stamina"),
+                    new Choice("Brace for impact", "health"),
+                    new Choice("Search for the trigger", "perception")}),
+            new Event("A valuable idol rests on a pedestal.", new Choice[]{
+                    new Choice("Grab it immediately", "health"),
+                    new Choice("Take smaller valuables", "none"),
+                    new Choice("Inspect the room first", "perception")}),
+            new Event("Loose stones crack beneath you.", new Choice[]{
+                    new Choice("Climb quickly", "health"),
+                    new Choice("Move carefully", "none"),
+                    new Choice("Search for another route", "perception")}),
+            new Event("A massive stone door blocks the path.", new Choice[]{
+                    new Choice("Force it open", "stamina"),
+                    new Choice("Wait for help/tools", "progress"),
+                    new Choice("Search for a mechanism", "perception")}),
+            new Event("Dusty shelves fill the chamber.", new Choice[]{
+                    new Choice("Search thoroughly", "perception"),
+                    new Choice("Take visible valuables only", "small_loot"),
+                    new Choice("Look for hidden compartments", "perception")}),
+            new Event("Faded symbols cover the walls.", new Choice[]{
+                    new Choice("Ignore them", "none"),
+                    new Choice("Trace the symbols", "random"),
+                    new Choice("Study them carefully", "perception")}),
+            new Event("The floor shakes violently.", new Choice[]{//
+                    new Choice("Run through", "stamina"),
+                    new Choice("Move carefully", "health"),
+                    new Choice("Search for support beams", "perception")}),
+            new Event("A hidden room filled with treasure appears.", new Choice[]{
+                    new Choice("Loot everything", "stamina"),
+                    new Choice("Take only essentials", "medium_loot"),
+                    new Choice("Search for traps first", "perception")}),
             }
     };
 
@@ -129,5 +163,10 @@ public class Expedition {
     public String getAreaNames(int index)
     {
         return areaNames[index];
+    }
+
+    public String[] getAllAreaNames(int numAreas)
+    {
+        return Arrays.copyOfRange(areaNames, 0, numAreas);
     }
 }

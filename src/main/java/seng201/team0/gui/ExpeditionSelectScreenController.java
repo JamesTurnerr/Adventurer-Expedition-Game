@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Expedition;
 
+import java.util.Arrays;
 import java.util.Random;
 
 
@@ -24,7 +25,7 @@ public class ExpeditionSelectScreenController extends ScreenController {
     //made up thing to get some start locations
     private final Expedition tempExpedition = new Expedition(5);
 
-    int locCount = 2;//currently only 2 expeditions implemented so far. Increase as more implemented until max reached of tempExpedition.areaNames.length
+    int locCount = 3;//currently only 3 expeditions implemented so far. Increase as more implemented until max reached of tempExpedition.areaNames.length
     int firstExpeditionIndex = rand.nextInt(locCount);
     int secondExpeditionIndex = rand.nextInt(locCount);
     int thirdExpeditionIndex = rand.nextInt(locCount);
