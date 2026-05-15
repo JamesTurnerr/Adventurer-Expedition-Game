@@ -37,7 +37,7 @@ public class Adventurer extends Entity {
     }
 
     // setter
-    public void setStamina(int stamina) {this.stamina = stamina;}
+    public void setStamina(int stamina) {this.stamina = Math.max(0, Math.min(stamina, maxStamina));}
 
     public void takeHealthDamage(int healthDamageToTake)
     {

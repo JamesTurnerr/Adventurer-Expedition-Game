@@ -7,6 +7,7 @@ import seng201.team0.models.Expedition;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 
@@ -33,39 +34,53 @@ public class ExpeditionSelectScreenController extends ScreenController {
 
 
     public void initialize(){
+        // give 3 different locations
         randomLocations();
 
-        // give 3 different locations
-        location1Button.setText(tempExpedition.getAreaNames(firstExpeditionIndex));
-        location2Button.setText(tempExpedition.getAreaNames(secondExpeditionIndex));
-        location3Button.setText(tempExpedition.getAreaNames(thirdExpeditionIndex));
+        List<Integer> locations =
+                getGameEnvironment().getExpeditionLocations();
+
+        location1Button.setText(tempExpedition.getAreaNames(locations.get(0)));
+        location2Button.setText(tempExpedition.getAreaNames(locations.get(1)));
+        location3Button.setText(tempExpedition.getAreaNames(locations.get(2)));
     }
 
     // generates the random locations and prevents duplicates
     private void randomLocations() {
-        Integer[] indices = new Integer[locCount];
-        for (int i = 0; i < locCount; i++) {
-            indices[i] = i;
+
+        if (getGameEnvironment().getDoUpdateLocations()) {
+
+            getGameEnvironment().setDoUpdateLocations(false);
+
+            Integer[] indices = new Integer[locCount];
+
+            for (int i = 0; i < locCount; i++) {
+                indices[i] = i;
+            }
+
+            Collections.shuffle(Arrays.asList(indices));
+
+            getGameEnvironment().getExpeditionLocations().clear();
+
+            for (int i = 0; i < 3; i++) {
+                getGameEnvironment().getExpeditionLocations().add(indices[i]);
+            }
         }
-        Collections.shuffle(Arrays.asList(indices));
-        firstExpeditionIndex = indices[0];
-        secondExpeditionIndex = indices[1];
-        thirdExpeditionIndex = indices[2];
     }
 
     @FXML
     private void location1Pressed() {
-        selectLocation(location1Button.getText(), firstExpeditionIndex);
+        selectLocation(0);
     }
 
     @FXML
     private void location2Pressed() {
-        selectLocation(location2Button.getText(), secondExpeditionIndex);
+        selectLocation(1);
     }
 
     @FXML
     private void location3Pressed() {
-        selectLocation(location3Button.getText(), thirdExpeditionIndex);
+        selectLocation(2);
     }
 
     @FXML
@@ -73,10 +88,13 @@ public class ExpeditionSelectScreenController extends ScreenController {
         getGameEnvironment().goToMainScreen();
     }
 
-    private void selectLocation(String location, int index) {
+    private void selectLocation(int index) {
+        int expeditionIndex = getGameEnvironment().getExpeditionLocations().get(index);
+        String location = tempExpedition.getAreaNames(expeditionIndex);
         System.out.println("Selected location: " + location);
-        getGameEnvironment().setSelectedExpeditionLocation(location, index);
+        getGameEnvironment().setSelectedExpeditionLocation(location, expeditionIndex);
         getGameEnvironment().goToExpeditionScreen();
+
     }
 }
 

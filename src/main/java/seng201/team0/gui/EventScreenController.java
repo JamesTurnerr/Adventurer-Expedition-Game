@@ -98,7 +98,10 @@ public class EventScreenController extends ScreenController{
     // retirement events increase based on lack of health
     private void retirementEvent(Adventurer adventurer) {
         int health = adventurer.getHealth();
-        if (health < 15* modifier){
+        int stamina = adventurer.getStamina();
+        int value = (health + stamina)/2;
+
+        if (value < 20* modifier){
             getGameEnvironment().getMainParty().remove(adventurer);
             eventTextArea.setText(
                     adventurer.getName() +

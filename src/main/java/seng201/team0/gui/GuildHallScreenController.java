@@ -22,10 +22,13 @@ public class GuildHallScreenController extends ScreenController {
     //Character stat labels
     @FXML private Label nameLabel, healthLabel, staminaLabel, perceptionLabel, costLabel, payLabel, damageLabel;
 
-    private final GuiService guiService = new GuiService(getGameEnvironment());
-    private final GuildHallService guildHallService = new GuildHallService(getGameEnvironment());
+
+    private GameEnvironment game = getGameEnvironment();
+    private final GuiService guiService = new GuiService(game);
+    private final GuildHallService guildHallService = new GuildHallService(game);
     private final DisplayStatsService displayStatsService = new DisplayStatsService();
-    private List<Adventurer> mainParty = getGameEnvironment().getMainParty();
+    private List<Adventurer> mainParty = game.getMainParty();
+
 
     public GuildHallScreenController(GameEnvironment gameEnvironment)
     {
@@ -55,7 +58,7 @@ public class GuildHallScreenController extends ScreenController {
         guiService.populateAdventurerSlots(adventurerSlots);
 
         // updates stats for list
-        reservePartyListView.getItems().addAll(getGameEnvironment().getReserveParty());//initialize reservePartyListView with current reserve party
+        reservePartyListView.getItems().addAll(game.getReserveParty());//initialize reservePartyListView with current reserve party
         adventurerSelection(reservePartyListView);
         adventurerSelection(hireableAdventurersListView);
 
@@ -87,7 +90,7 @@ public class GuildHallScreenController extends ScreenController {
 
     @FXML
     private void backButtonClicked() throws IOException {
-        getGameEnvironment().goToMainScreen();
+        game.goToMainScreen();
     }
 
     // this is similar to the other button in setupcontroller.
@@ -96,17 +99,13 @@ public class GuildHallScreenController extends ScreenController {
     private void hireAdventurerButtonClicked()
     {
         Adventurer selectedAdventurer = hireableAdventurersListView.getSelectionModel().getSelectedItem();
-        if (getGameEnvironment().hireAdventurer(selectedAdventurer))
+        if (game.hireAdventurer(selectedAdventurer))
         {
             hireableAdventurersListView.getItems().remove(selectedAdventurer);
             reservePartyListView.getItems().add(selectedAdventurer);
-            getGameEnvironment().getHireableAdventurers().remove(selectedAdventurer);
+            game.getHireableAdventurers().remove(selectedAdventurer);
 
-            //update balance
-            //int newGold = getGameEnvironment().getGold() - selectedAdventurer.getHiringCost();
-            //System.out.println("previous gold:"+getGameEnvironment().getGold()+ " new gold:"+newGold);
-            //getGameEnvironment().setGold(newGold);
-            goldAmountLabel.setText(String.valueOf(getGameEnvironment().getGold()));
+            goldAmountLabel.setText(String.valueOf(game.getGold()));
         }
     }
 
@@ -114,7 +113,7 @@ public class GuildHallScreenController extends ScreenController {
     private void retireAdventurerButtonClicked(){
         Adventurer selectedAdventurer = reservePartyListView.getSelectionModel().getSelectedItem();
         reservePartyListView.getItems().remove(selectedAdventurer);
-        getGameEnvironment().getReserveParty().remove(selectedAdventurer);
+        game.getReserveParty().remove(selectedAdventurer);
     }
 
     //updates stats for items in list on selection
