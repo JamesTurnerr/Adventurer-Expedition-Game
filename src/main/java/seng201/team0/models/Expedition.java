@@ -38,7 +38,7 @@ public class Expedition {
             new Event("A section of the tunnel collapses ahead.", new Choice[]{
                     new Choice("Clear the rubble", "stamina"),
                     new Choice("Search for another route", "perception"),
-                    new Choice("Search for another route", "progress")}),
+                    new Choice("Retreat temporarily", "progress")}),
             new Event("A green cloud spreads through the tunnel.", new Choice[]{
                     new Choice("Run through quickly", "stamina"),
                     new Choice("Move slowly with caution", "health"),

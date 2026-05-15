@@ -92,6 +92,7 @@ public class ExpeditionService {
     // not yet implemented
     public void button3Clicked()
     {
+        writeLine(String.format("You %s causing you to %s", getChoiceText(2), getChoiceResult(2)));
         if(currentArea < 7){
         nextArea();
         }

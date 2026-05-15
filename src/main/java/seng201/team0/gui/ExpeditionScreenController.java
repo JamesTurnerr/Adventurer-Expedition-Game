@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ExpeditionScreenController extends ScreenController {
     @FXML
-    private Button expeditionOption1Button, expeditionOption2Button;
+    private Button expeditionOption1Button, expeditionOption2Button, expeditionOption3Button;
     @FXML
     private TextArea expeditionTextArea;
     @FXML
@@ -52,6 +52,12 @@ public class ExpeditionScreenController extends ScreenController {
     @FXML
     private void expeditionOption2ButtonClicked() {
         expeditionService.button2Clicked();
+        updateLabels();
+    }
+
+    @FXML
+    private void expeditionOption3ButtonClicked() {
+        expeditionService.button3Clicked();
         updateLabels();
     }
 
