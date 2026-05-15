@@ -17,7 +17,7 @@ public class ExpeditionService {
     Expedition expedition;
     TextArea expeditionTextArea;
     private final int expeditionIndex;
-    private int currentArea = 0;
+    private int currentArea = -1;
     private String button1Text = "";
     private String button2Text = "";
     private String currentEvent = "";
@@ -39,15 +39,11 @@ public class ExpeditionService {
         nextArea();
     }
     /**
-     * Go to the next area in the expedition and pick a random event to happen in that area
-     * 66% chance of combat event
-     * 33% chance of loot event
-     * 1% chance of new adventurer event
+     * Go to the next area in the expedition and give the player a selection of choices to make
      */
     public void nextArea()
     {
         currentArea++;
-        int randInt = rand.nextInt(100);
         Event currEvent = expedition.areaEvents[expeditionIndex][currentArea];
         writeLine("-------------");
         writeLine(currEvent.getEventDescription());
@@ -75,6 +71,7 @@ public class ExpeditionService {
     }
     public void button1Clicked()
     {
+        writeLine(String.format("You %s causing you to %s", getChoiceText(0), getChoiceResult(0)));
         if(currentArea < 7)
         {
             nextArea();
@@ -84,6 +81,7 @@ public class ExpeditionService {
     }
     public void button2Clicked()
     {
+        writeLine(String.format("You %s causing you to %s", getChoiceText(1), getChoiceResult(1)));
         if(currentArea < 7)
         {
             nextArea();
@@ -98,6 +96,16 @@ public class ExpeditionService {
         nextArea();
         }
         else {expeditionOver();}
+    }
+
+    private String getChoiceText(int choiceIndex)
+    {
+        return expedition.areaEvents[expeditionIndex][currentArea].getChoices()[choiceIndex].getChoice();
+    }
+
+    private String getChoiceResult(int choiceIndex)
+    {
+        return expedition.areaEvents[expeditionIndex][currentArea].getChoices()[choiceIndex].getStat();
     }
 
     public void itemCollected(Item item){

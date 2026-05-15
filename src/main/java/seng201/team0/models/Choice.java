@@ -12,4 +12,15 @@ public class Choice {
     {
         return choiceDescription;
     }
+    public String getStat()
+    {
+        return switch (statChecked) {
+            case "health" -> "lose health";
+            case "stamina" -> "lose stamina";
+            case "progress" -> "lose progress";
+            case "none" -> "continue your expedition";
+            case "perception" -> "IMPLEMENT PERCEPTION CHECK HERE";
+            default -> "ERROR";
+        };
+    }
 }
