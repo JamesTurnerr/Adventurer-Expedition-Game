@@ -46,6 +46,7 @@ public class GameEnvironment {
     public int getGold(){return gold;}
     public List<Adventurer> getMainParty() {return mainParty;}
     public List<Adventurer> getReserveParty() {return reserveParty;}
+    public Adventurer getRandomAdventurerFromParty(){return mainParty.get(random.nextInt(mainParty.size()));}
     public List<Item> getItems() {return items;}
     public int getExpeditionsCompleted() {return expeditionsCompleted;}
     public int getExpeditionsRemaining() {return expeditionsRemaining;}

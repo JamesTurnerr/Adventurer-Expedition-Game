@@ -39,6 +39,30 @@ public class Adventurer extends Entity {
     // setter
     public void setStamina(int stamina) {this.stamina = stamina;}
 
+    public void takeHealthDamage(int healthDamageToTake)
+    {
+        if (healthDamageToTake > getHealth())
+        {
+            setHealth(0);
+        }
+        else
+        {
+            setHealth(getHealth() - healthDamageToTake);
+        }
+    }
+
+    public void takeStaminaDamage(int staminaDamageToTake)
+    {
+        if (staminaDamageToTake > getStamina())
+        {
+            setStamina(0);
+        }
+        else
+        {
+            setStamina(getStamina() - staminaDamageToTake);
+        }
+    }
+
     @Override
     public String toString()
     {
