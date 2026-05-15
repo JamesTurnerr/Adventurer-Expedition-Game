@@ -133,9 +133,12 @@ public class ExpeditionService {
         // update remaining
         gameEnvironment.setExpeditionsCompleted(gameEnvironment.getExpeditionsCompleted()+1);
         gameEnvironment.setRemainingExpeditionNumber(gameEnvironment.getExpeditionsRemaining()-1);
-        // refresh guild hall and market
+        // refresh guild hall and market and expedition locations
         gameEnvironment.setDoUpdateHall(true);
         gameEnvironment.setDoUpdateMarket(true);
+        gameEnvironment.setDoUpdateLocations(true);
+        //recover the reserve party
+        gameEnvironment.recoverReserveParty();
         //return to main place, or special event first (based on difficulty)
         if (rand.nextInt(100) < gameEnvironment.getEventChance()) {gameEnvironment.goToEventScreen();}
         else{gameEnvironment.goToMainScreen();}

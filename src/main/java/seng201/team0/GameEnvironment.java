@@ -23,10 +23,12 @@ public class GameEnvironment {
 
     // store the hireable list and a bool to keep track of when to update
     // initialize as true so it makes initial list
-    private List<Adventurer> hireableAdventurers = new ArrayList<>();
-    private List<Item> marketItems = new ArrayList<>();
+    private final List<Adventurer> hireableAdventurers = new ArrayList<>();
+    private final List<Item> marketItems = new ArrayList<>();
+    private final List<Integer> expeditionLocations = new ArrayList<>();
     private boolean doUpdateHall = true;
     private boolean doUpdateMarket = true;
+    private boolean doUpdateLocations = true;
     private int eventChance;
 
     //difficulty (higher the number the worse)
@@ -35,6 +37,7 @@ public class GameEnvironment {
     //store start location for player to set themselves
     private String selectedExpeditionLocation;
     private int selectedExpeditionIndex;
+
 
     public GameEnvironment(ScreenNavigator navigator)
     {
@@ -53,8 +56,10 @@ public class GameEnvironment {
 
     public List<Adventurer> getHireableAdventurers() {return hireableAdventurers;}
     public List<Item> getMarketItems(){return marketItems;}
+    public List<Integer> getExpeditionLocations(){return expeditionLocations;}
     public boolean getDoUpdateHall() {return doUpdateHall;}
     public boolean getDoUpdateMarket() {return doUpdateMarket;}
+    public boolean getDoUpdateLocations(){return doUpdateLocations;}
     public int getEventChance() {System.out.println("the chance is"+ eventChance); return eventChance;}
     public String getSelectedExpeditionLocation(){return selectedExpeditionLocation;}
     public double getDifficultyModifier(){return difficultyModifier;}
@@ -65,6 +70,7 @@ public class GameEnvironment {
     public void setSelectedExpeditionLocation(String location, int index){this.selectedExpeditionLocation = location; this.selectedExpeditionIndex = index;}
     public void setRemainingExpeditionNumber(int remaining){this.expeditionsRemaining = remaining;}
     public void setExpeditionsCompleted(int current){this.expeditionsCompleted = current;}
+    public void setDoUpdateLocations(boolean doUpdateLocations) {this.doUpdateLocations = doUpdateLocations;}
 
     //Add data
     public void addItem(Item item)
@@ -354,6 +360,18 @@ public class GameEnvironment {
             int health = member.getHealth() - damageTaken;
             member.setHealth(Math.max(0, health));
         }
+    }
+
+    public void recoverReserveParty(){
+        for (Adventurer adventurer : reserveParty){
+            int currentStam = adventurer.getStamina();
+            int newStam = (int) (currentStam + 20/difficultyModifier);
+            adventurer.setStamina(newStam);
+        }
+    }
+
+    public boolean isDoUpdateLocations() {
+        return doUpdateLocations;
     }
 }
 
