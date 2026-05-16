@@ -6,13 +6,12 @@ import seng201.team0.models.Inventory;
 import seng201.team0.models.Item;
 import seng201.team0.services.AdventurerCreationService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class GameEnvironment {
     private final ScreenNavigator navigator;
     public final int MAX_PARTY_SIZE = 5;
+    private final int LOCATION_COUNT = 3;//currently only 3 expeditions implemented so far. Increase as more implemented until max reached of tempExpedition.areaNames.length
     private List<Adventurer> mainParty;
     private List<Adventurer> reserveParty = new ArrayList<Adventurer>();
     private Inventory playerInventory = new Inventory();
@@ -97,6 +96,21 @@ public class GameEnvironment {
     }
 
     /**
+     * Initializes/updates the list of available expeditions the player can go on after setup or expedition completion
+     */
+    public void updateAvailableExpeditionLocations() {
+        Integer[] indices = new Integer[LOCATION_COUNT];
+        for (int i = 0; i < LOCATION_COUNT; i++) {
+            indices[i] = i;
+        }
+        Collections.shuffle(Arrays.asList(indices));
+        getExpeditionLocations().clear();
+        for (int i = 0; i < 3; i++) {
+            getExpeditionLocations().add(indices[i]);
+        }
+    }
+
+    /**
      * Called after player has gone through game setup, it will set initial values
      * @param mainParty an ArrayList of the adventurers the player has chosen
      * @param difficulty difficultly the player chose
@@ -133,6 +147,7 @@ public class GameEnvironment {
         this.expeditionsRemaining = numberOfExpeditions;
         updateMarketInventory();
         updateBuyableAdventurers();
+        updateAvailableExpeditionLocations();
         goToMainScreen();
     }
     /**

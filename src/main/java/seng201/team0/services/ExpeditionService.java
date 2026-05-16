@@ -177,8 +177,8 @@ public class ExpeditionService {
         gameEnvironment.setRemainingExpeditionNumber(gameEnvironment.getExpeditionsRemaining()-1);
         // refresh guild hall and market and expedition locations
         gameEnvironment.updateBuyableAdventurers();
-        gameEnvironment.updateMarketInventory();//gameEnvironment.setDoUpdateMarket(true);
-        gameEnvironment.setDoUpdateLocations(true);
+        gameEnvironment.updateMarketInventory();
+        gameEnvironment.updateAvailableExpeditionLocations();
         //recover the reserve party
         gameEnvironment.recoverReserveParty();
         //to go game over screen if there are no expeditions left

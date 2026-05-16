@@ -1,5 +1,7 @@
 package seng201.team0.models;
 
+import seng201.team0.GameEnvironment;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -138,10 +140,19 @@ public class Expedition {
             }
     };
 
+    /**
+     * Create a specific expedition
+     * @param expeditionIndex the index for the expedition eg. 0 = Abandoned mine, 1 = Dense Fog Marsh...
+     */
     public Expedition(int expeditionIndex)
     {
         this.expeditionIndex = expeditionIndex;
     }
+
+    /**
+     * Expedition constructor with no parameters for creating a reference to get expedition data
+     */
+    public Expedition(){}
 
     //can add location variety to this
     public Item getRandomLoot() {
@@ -149,7 +160,11 @@ public class Expedition {
     }
 
 
-
+    /**
+     * returns the name of the expedition based on its index in the areaNames array
+     * @param areaIndex the index in {@link #areaNames} of the expedition name
+     * @return the name of the expedition
+     */
     public String getAreaName(int areaIndex)
     {
         return areaNames[areaIndex];
