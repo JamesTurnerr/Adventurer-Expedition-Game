@@ -48,8 +48,7 @@ public class MarketScreenController extends ScreenController {
         guiService.updateTopLabels(goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel);
 
         // inintialize the list views
-        guiService.populateListView(itemListView, marketService.getTestItemList(3));
-        guiService.populateListView(inventoryListView, getGameEnvironment().getPlayerInventory().getAllItems());
+        updateListViews();
 
         // checks for if item in lists is selected
         itemSelection(itemListView);
@@ -64,14 +63,16 @@ public class MarketScreenController extends ScreenController {
         if(marketService.buyItem(itemListView.getSelectionModel().getSelectedItem()))
         {
             Item item = itemListView.getSelectionModel().getSelectedItem();
-            // surely can simplify
-            itemListView.getItems().remove(item);
-            getGameEnvironment().getMarketItems().remove(item);
-
-            inventoryListView.getItems().add(item);
-
+            getGameEnvironment().getMarketInventory().removeItem(item);
+            updateListViews();
             guiService.updateTopLabels(goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel);
         }
+    }
+
+    void updateListViews()
+    {
+        guiService.populateListView(itemListView, getGameEnvironment().getMarketInventory().getAllItems());
+        guiService.populateListView(inventoryListView, getGameEnvironment().getPlayerInventory().getAllItems());
     }
 
     //updates stats for items in list on selection

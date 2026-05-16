@@ -15,6 +15,7 @@ public class GameEnvironment {
     private List<Adventurer> mainParty;
     private List<Adventurer> reserveParty = new ArrayList<Adventurer>();
     private Inventory playerInventory = new Inventory();
+    private Inventory marketInventory = new Inventory();
     private int gold;
     private String difficulty;
     private String guildName;
@@ -25,10 +26,8 @@ public class GameEnvironment {
     // store the hireable list and a bool to keep track of when to update
     // initialize as true so it makes initial list
     private final List<Adventurer> hireableAdventurers = new ArrayList<>();
-    private final List<Item> marketItems = new ArrayList<>();
     private final List<Integer> expeditionLocations = new ArrayList<>();
     private boolean doUpdateHall = true;
-    private boolean doUpdateMarket = true;
     private boolean doUpdateLocations = true;
     private int eventChance;
 
@@ -57,10 +56,9 @@ public class GameEnvironment {
     public Inventory getPlayerInventory() {return playerInventory;}
 
     public List<Adventurer> getHireableAdventurers() {return hireableAdventurers;}
-    public List<Item> getMarketItems(){return marketItems;}
+    public Inventory getMarketInventory() {return marketInventory;}
     public List<Integer> getExpeditionLocations(){return expeditionLocations;}
     public boolean getDoUpdateHall() {return doUpdateHall;}
-    public boolean getDoUpdateMarket() {return doUpdateMarket;}
     public boolean getDoUpdateLocations(){return doUpdateLocations;}
     public int getEventChance() {System.out.println("the chance is"+ eventChance); return eventChance;}
     public String getSelectedExpeditionLocation(){return selectedExpeditionLocation;}
@@ -69,7 +67,6 @@ public class GameEnvironment {
     //setters
     public void setGold(int gold){this.gold = gold;}
     public void setDoUpdateHall(boolean doUpdateHall) {this.doUpdateHall = doUpdateHall;}
-    public void setDoUpdateMarket(boolean doUpdateMarket) {this.doUpdateMarket = doUpdateMarket;}
     public void setSelectedExpeditionLocation(String location, int index){this.selectedExpeditionLocation = location; this.selectedExpeditionIndex = index;}
     public void setRemainingExpeditionNumber(int remaining){this.expeditionsRemaining = remaining;}
     public void setExpeditionsCompleted(int current){this.expeditionsCompleted = current;}
@@ -219,9 +216,30 @@ public class GameEnvironment {
     }
 
     //Other
+
+    /**
+     * Initializes/updates the market inventory after setup or expedition completion
+     */
+    public void initializeMarketInventory()
+    {
+        //generate 3 - 5 items
+        int numberOfItems = random.nextInt(3)+3;
+        for (int i = 0; i < numberOfItems; i++)
+        {
+            marketInventory.addItem(Item.getRandomItem());
+        }
+    }
+
+    /**
+     * Called after player has gone through game setup, it will set initial values
+     * @param mainParty an ArrayList of the adventurers the player has chosen
+     * @param difficulty difficultly the player chose
+     * @param guildName the suitable guild name the player has chosen
+     * @param numberOfExpeditions the number of expeditions the player wants their game to last
+     */
     public void onSetupComplete(ArrayList<Adventurer> mainParty, String difficulty, String guildName, int numberOfExpeditions) {
         this.mainParty = mainParty;
-        switch (difficulty)
+        switch (difficulty)//set difficulty modifiers
         {
             case "Easy":
                 this.gold = 20;
@@ -247,6 +265,7 @@ public class GameEnvironment {
         this.guildName = guildName;
         this.expeditionsCompleted = 0;
         this.expeditionsRemaining = numberOfExpeditions;
+        initializeMarketInventory();
         goToMainScreen();
     }
     public void goToEventScreen(){navigator.launchEventScreen(this);}

@@ -179,7 +179,7 @@ public class ExpeditionService {
         gameEnvironment.setRemainingExpeditionNumber(gameEnvironment.getExpeditionsRemaining()-1);
         // refresh guild hall and market and expedition locations
         gameEnvironment.setDoUpdateHall(true);
-        gameEnvironment.setDoUpdateMarket(true);
+        gameEnvironment.initializeMarketInventory();//gameEnvironment.setDoUpdateMarket(true);
         gameEnvironment.setDoUpdateLocations(true);
         //recover the reserve party
         gameEnvironment.recoverReserveParty();
