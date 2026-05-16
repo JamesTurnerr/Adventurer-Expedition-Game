@@ -27,7 +27,6 @@ public class GameEnvironment {
     // initialize as true so it makes initial list
     private final List<Adventurer> hireableAdventurers = new ArrayList<>();
     private final List<Integer> expeditionLocations = new ArrayList<>();
-    private boolean doUpdateLocations = true;
     private int eventChance;
 
     //difficulty (higher the number the worse)
@@ -57,7 +56,6 @@ public class GameEnvironment {
     public List<Adventurer> getHireableAdventurers() {return hireableAdventurers;}
     public Inventory getMarketInventory() {return marketInventory;}
     public List<Integer> getExpeditionLocations(){return expeditionLocations;}
-    public boolean getDoUpdateLocations(){return doUpdateLocations;}
     public int getEventChance() {System.out.println("the chance is"+ eventChance); return eventChance;}
     public String getSelectedExpeditionLocation(){return selectedExpeditionLocation;}
     public double getDifficultyModifier(){return difficultyModifier;}
@@ -67,7 +65,6 @@ public class GameEnvironment {
     public void setSelectedExpeditionLocation(String location, int index){this.selectedExpeditionLocation = location; this.selectedExpeditionIndex = index;}
     public void setRemainingExpeditionNumber(int remaining){this.expeditionsRemaining = remaining;}
     public void setExpeditionsCompleted(int current){this.expeditionsCompleted = current;}
-    public void setDoUpdateLocations(boolean doUpdateLocations) {this.doUpdateLocations = doUpdateLocations;}
 
     /**
      * Initializes/updates the market inventory after setup or expedition completion
@@ -153,7 +150,7 @@ public class GameEnvironment {
     /**
      * Switch to the post expedition event screen
      */
-    public void goToEventScreen(){navigator.launchEventScreen(this);}
+    public void goToRandomEventScreen(){navigator.launchRandomEventScreen(this);}
     /**
      * Switch to the expedition selection screen
      */

@@ -189,7 +189,7 @@ public class ExpeditionService {
         else//return to main place, or special event first (based on difficulty)
         {
             if (rand.nextInt(100) < gameEnvironment.getEventChance()) {
-                gameEnvironment.goToEventScreen();
+                gameEnvironment.goToRandomEventScreen();
             }
             else
             {

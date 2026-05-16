@@ -115,8 +115,8 @@ public class ScreenNavigator {
     }
 
     // launch the random event at end of expedition
-    public void launchEventScreen(GameEnvironment gameEnvironment){
-        ScreenController controller = new EventScreenController(gameEnvironment);
+    public void launchRandomEventScreen(GameEnvironment gameEnvironment){
+        ScreenController controller = new RandomEventScreenController(gameEnvironment);
         launchScreen(controller);
     }
 
