@@ -4,8 +4,6 @@ import javafx.scene.control.TextArea;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
@@ -178,8 +176,8 @@ public class ExpeditionService {
         gameEnvironment.setExpeditionsCompleted(gameEnvironment.getExpeditionsCompleted()+1);
         gameEnvironment.setRemainingExpeditionNumber(gameEnvironment.getExpeditionsRemaining()-1);
         // refresh guild hall and market and expedition locations
-        gameEnvironment.setDoUpdateHall(true);
-        gameEnvironment.initializeMarketInventory();//gameEnvironment.setDoUpdateMarket(true);
+        gameEnvironment.updateBuyableAdventurers();
+        gameEnvironment.updateMarketInventory();//gameEnvironment.setDoUpdateMarket(true);
         gameEnvironment.setDoUpdateLocations(true);
         //recover the reserve party
         gameEnvironment.recoverReserveParty();

@@ -4,6 +4,7 @@ import seng201.team0.gui.ScreenNavigator;
 import seng201.team0.models.Adventurer;
 import seng201.team0.models.Inventory;
 import seng201.team0.models.Item;
+import seng201.team0.services.AdventurerCreationService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,6 @@ public class GameEnvironment {
     // initialize as true so it makes initial list
     private final List<Adventurer> hireableAdventurers = new ArrayList<>();
     private final List<Integer> expeditionLocations = new ArrayList<>();
-    private boolean doUpdateHall = true;
     private boolean doUpdateLocations = true;
     private int eventChance;
 
@@ -58,7 +58,6 @@ public class GameEnvironment {
     public List<Adventurer> getHireableAdventurers() {return hireableAdventurers;}
     public Inventory getMarketInventory() {return marketInventory;}
     public List<Integer> getExpeditionLocations(){return expeditionLocations;}
-    public boolean getDoUpdateHall() {return doUpdateHall;}
     public boolean getDoUpdateLocations(){return doUpdateLocations;}
     public int getEventChance() {System.out.println("the chance is"+ eventChance); return eventChance;}
     public String getSelectedExpeditionLocation(){return selectedExpeditionLocation;}
@@ -66,167 +65,34 @@ public class GameEnvironment {
 
     //setters
     public void setGold(int gold){this.gold = gold;}
-    public void setDoUpdateHall(boolean doUpdateHall) {this.doUpdateHall = doUpdateHall;}
     public void setSelectedExpeditionLocation(String location, int index){this.selectedExpeditionLocation = location; this.selectedExpeditionIndex = index;}
     public void setRemainingExpeditionNumber(int remaining){this.expeditionsRemaining = remaining;}
     public void setExpeditionsCompleted(int current){this.expeditionsCompleted = current;}
     public void setDoUpdateLocations(boolean doUpdateLocations) {this.doUpdateLocations = doUpdateLocations;}
 
-    //Add data
-    public boolean addAdventurer(Adventurer adventurer)
-    {
-        return addToMainParty(adventurer);
-    }
-    private boolean addToMainParty(Adventurer adventurer) {
-        if (mainParty.size() >= MAX_PARTY_SIZE)
-        {
-            System.out.println("Warning: Main party at maximum capacity");
-            return false;
-        }
-        else
-        {
-            mainParty.add(adventurer);
-            return true;
-        }
-    }
-    private boolean addToReserveParty(Adventurer adventurer)
-    {
-        if (reserveParty.size() >= 5)
-        {
-            System.out.println("Warning: Reserve party at maximum capacity");
-            return false;
-        }
-        reserveParty.add(adventurer);
-        return true;
-    }
-
-    //Remove data
-    private boolean removeFromMainParty(Adventurer adventurer)
-    {
-        if (mainParty.size() == 1)
-        {
-            System.out.println("Warning: Removing this adventurer will cause main party to be empty");
-            return false;
-        }
-        else {
-            mainParty.remove(adventurer);
-            return true;
-        }
-    }
-    private void removeFromReserveParty(Adventurer adventurer)
-    {
-        reserveParty.remove(adventurer);
-    }
-
-    //Buying
-    public boolean hireAdventurer(Adventurer adventurer)
-    {
-        if (adventurer != null)
-        {
-            if (adventurer.getHiringCost() <= gold)
-            {
-                if (addToReserveParty(adventurer))//Try to add new adventurer to reserves
-                {
-                    gold -= adventurer.getHiringCost();
-                    return true;
-                }
-                else//Try to add new adventurer to main party
-                {
-                    System.out.println("Warning: Reserve party full, attempting to add to main party");
-                    if (addToMainParty(adventurer))
-                    {
-                        gold -= adventurer.getHiringCost();
-                        return true;
-                    }
-                    else
-                    {
-                        System.out.println("Warning: Main party full, could not hire new adventurer");
-                        return false;
-                    }
-
-                }
-            }
-            else {
-                System.out.println("Warning: Not enough gold, could not hire new adventurer");
-                return false;
-            }
-        }
-        else {
-            System.out.println("Warning: Adventurer is null");
-            return false;
-        }
-    }
-
-    //Moving adventurers
-    public boolean moveAdventurerToReserve(Adventurer adventurer)
-    {
-        if (adventurer == null)
-        {
-            System.out.println("Warning: No adventurer selected");
-            return false;
-        }
-        if (reserveParty.contains(adventurer))
-        {
-            System.out.println("Warning: Reserve party already contains this adventurer");
-            return false;
-        }
-        if (!mainParty.contains(adventurer))
-        {
-            System.out.println("Warning: Adventurer not found in main party");
-            return false;
-        }
-        if (mainParty.size() == 1)
-        {
-            System.out.println("Warning: Removing this adventurer will cause main party to be empty");
-            return false;
-        }
-        if (removeFromMainParty(adventurer))
-        {
-            return addToReserveParty(adventurer);
-        }
-        else {
-            return false;
-        }
-    }
-    public boolean moveAdventurerToMain(Adventurer adventurer)
-    {
-        if (adventurer == null)
-        {
-            System.out.println("Warning: No adventurer selected");
-            return false;
-        }
-        if (mainParty.contains(adventurer))
-        {
-            System.out.println("Warning: Main party already contains this adventurer");
-            return false;
-        }
-        if (!reserveParty.contains(adventurer))
-        {
-            System.out.println("Warning: Adventurer not found in reserve party");
-            return false;
-        }
-        if (addToMainParty(adventurer))
-        {
-            reserveParty.remove(adventurer);
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    //Other
-
     /**
      * Initializes/updates the market inventory after setup or expedition completion
      */
-    public void initializeMarketInventory()
+    public void updateMarketInventory()
     {
+        marketInventory.clear();
         //generate 3 - 5 items
         int numberOfItems = random.nextInt(3)+3;
         for (int i = 0; i < numberOfItems; i++)
         {
             marketInventory.addItem(Item.getRandomItem());
+        }
+    }
+
+    /**
+     * Initializes/updates the list of buyable adventurers after setup or expedition completion
+     */
+    public void updateBuyableAdventurers()
+    {
+        hireableAdventurers.clear();
+        for (int i = 0; i < 5; i++) {//generate 5 adventurers
+            Adventurer adventurer = AdventurerCreationService.createRandomAdventurer();
+            hireableAdventurers.add(adventurer);
         }
     }
 
@@ -265,34 +131,30 @@ public class GameEnvironment {
         this.guildName = guildName;
         this.expeditionsCompleted = 0;
         this.expeditionsRemaining = numberOfExpeditions;
-        initializeMarketInventory();
+        updateMarketInventory();
+        updateBuyableAdventurers();
         goToMainScreen();
     }
+    /**
+     * Switch to the post expedition event screen
+     */
     public void goToEventScreen(){navigator.launchEventScreen(this);}
-    public void goToExpeditionSelectScreen(){
-        navigator.launchExpeditionLocationScreen(this);
-    }
+    /**
+     * Switch to the expedition selection screen
+     */
+    public void goToExpeditionSelectScreen(){navigator.launchExpeditionLocationScreen(this);}
     /**
      * Switch to the expedition screen
      */
-    public void goToExpeditionScreen()
-    {
-        navigator.launchExpeditionScreen(this);
-    }
+    public void goToExpeditionScreen() {navigator.launchExpeditionScreen(this);}
     /**
      * Switch to the guild hall screen
      */
-    public void goToGuildHallScreen()
-    {
-        navigator.launchGuildHallScreen(this);
-    }
+    public void goToGuildHallScreen() {navigator.launchGuildHallScreen(this);}
     /**
      * Switch to the guild overview screen
      */
-    public void goToGuildOverviewScreen()
-    {
-        navigator.launchGuildOverviewScreen(this);
-    }
+    public void goToGuildOverviewScreen() {navigator.launchGuildOverviewScreen(this);}
     /**
      * Switch to the market screen
      */
@@ -304,9 +166,7 @@ public class GameEnvironment {
     /**
      * Exit the game
      */
-    public void onQuitRequested() {
-        System.exit(0);
-    }
+    public void onQuitRequested() {System.exit(0);}
 
     public void takeDamage(int damage){
         // each party member loses health based on dmg and defense

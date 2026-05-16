@@ -9,7 +9,6 @@ import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
 import seng201.team0.models.Item;
 import seng201.team0.services.GuiService;
-import seng201.team0.services.GuildHallService;
 import seng201.team0.services.GuildOverviewService;
 
 public class GuildOverviewScreenController extends ScreenController {
@@ -39,9 +38,7 @@ public class GuildOverviewScreenController extends ScreenController {
 
     public void initialize()
     {
-        guiService.populateListView(mainPartyListView, getGameEnvironment().getMainParty());
-        guiService.populateListView(reservePartyListView, getGameEnvironment().getReserveParty());
-        guiService.populateListView(itemsListView, getGameEnvironment().getPlayerInventory().getAllItems());
+        updateListViews();
     }
     @FXML
     private void backButtonClicked() throws IOException {
@@ -50,17 +47,14 @@ public class GuildOverviewScreenController extends ScreenController {
     @FXML
     private void moveToMainButtonClicked()
     {
-        getGameEnvironment().moveAdventurerToMain(reservePartyListView.getSelectionModel().getSelectedItem());//Move adventurer to main
-        //Update ListViews
-        guiService.populateListView(mainPartyListView, getGameEnvironment().getMainParty());
-        guiService.populateListView(reservePartyListView, getGameEnvironment().getReserveParty());
+        guildOverviewService.moveAdventurerToMain(reservePartyListView.getSelectionModel().getSelectedItem());//Move adventurer to main
+        updateListViews();
     }
     @FXML
     private void moveFromMainButtonClicked()
     {
-        getGameEnvironment().moveAdventurerToReserve(mainPartyListView.getSelectionModel().getSelectedItem());//Move adventurer to reserve
-        guiService.populateListView(mainPartyListView, getGameEnvironment().getMainParty());
-        guiService.populateListView(reservePartyListView, getGameEnvironment().getReserveParty());
+        guildOverviewService.moveAdventurerToReserve(mainPartyListView.getSelectionModel().getSelectedItem());//Move adventurer to reserve
+        updateListViews();
     }
     @FXML
     private void useItemButtonClicked()
@@ -68,7 +62,13 @@ public class GuildOverviewScreenController extends ScreenController {
         Adventurer adventurer = mainPartyListView.getSelectionModel().getSelectedItem();
         Item item = itemsListView.getSelectionModel().getSelectedItem();
         guildOverviewService.useItem(adventurer, item);
+        updateListViews();
+    }
+
+    private void updateListViews()
+    {
+        guiService.populateListView(mainPartyListView, getGameEnvironment().getMainParty());
+        guiService.populateListView(reservePartyListView, getGameEnvironment().getReserveParty());
         guiService.populateListView(itemsListView, getGameEnvironment().getPlayerInventory().getAllItems());
-        //System.out.println("useItemButtonClicked() not yet implemented");
     }
 }

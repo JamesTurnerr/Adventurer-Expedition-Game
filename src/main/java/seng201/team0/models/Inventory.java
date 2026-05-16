@@ -24,4 +24,9 @@ public class Inventory {
     {
         return inventory;
     }
+
+    public void clear()
+    {
+        inventory.clear();
+    }
 }

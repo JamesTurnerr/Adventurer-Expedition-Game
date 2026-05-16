@@ -29,7 +29,6 @@ public class GuildHallScreenController extends ScreenController {
     private final DisplayStatsService displayStatsService = new DisplayStatsService();
     private List<Adventurer> mainParty = game.getMainParty();
 
-
     public GuildHallScreenController(GameEnvironment gameEnvironment)
     {
         super(gameEnvironment);
@@ -47,7 +46,7 @@ public class GuildHallScreenController extends ScreenController {
 
     public void initialize()
     {
-        guiService.populateListView(hireableAdventurersListView, guildHallService.getAdventurerList());
+        updateGUI();
 
         guiService.updateTopLabels(
                 goldAmountLabel,
@@ -57,8 +56,6 @@ public class GuildHallScreenController extends ScreenController {
         adventurerSlots = List.of(slot1Button, slot2Button, slot3Button, slot4Button, slot5Button);
         guiService.populateAdventurerSlots(adventurerSlots);
 
-        // updates stats for list
-        reservePartyListView.getItems().addAll(game.getReserveParty());//initialize reservePartyListView with current reserve party
         adventurerSelection(reservePartyListView);
         adventurerSelection(hireableAdventurersListView);
 
@@ -89,7 +86,7 @@ public class GuildHallScreenController extends ScreenController {
     }
 
     @FXML
-    private void backButtonClicked() throws IOException {
+    private void backButtonClicked() {
         game.goToMainScreen();
     }
 
@@ -99,21 +96,18 @@ public class GuildHallScreenController extends ScreenController {
     private void hireAdventurerButtonClicked()
     {
         Adventurer selectedAdventurer = hireableAdventurersListView.getSelectionModel().getSelectedItem();
-        if (game.hireAdventurer(selectedAdventurer))
+        if (guildHallService.hireAdventurer(selectedAdventurer))
         {
-            hireableAdventurersListView.getItems().remove(selectedAdventurer);
-            reservePartyListView.getItems().add(selectedAdventurer);
             game.getHireableAdventurers().remove(selectedAdventurer);
-
-            goldAmountLabel.setText(String.valueOf(game.getGold()));
+            updateGUI();
         }
     }
 
     @FXML
     private void retireAdventurerButtonClicked(){
         Adventurer selectedAdventurer = reservePartyListView.getSelectionModel().getSelectedItem();
-        reservePartyListView.getItems().remove(selectedAdventurer);
         game.getReserveParty().remove(selectedAdventurer);
+        updateGUI();
     }
 
     //updates stats for items in list on selection
@@ -134,5 +128,12 @@ public class GuildHallScreenController extends ScreenController {
                     }
                 }
         );
+    }
+
+    private void updateGUI()
+    {
+        guiService.populateListView(hireableAdventurersListView,  game.getHireableAdventurers());
+        guiService.populateListView(reservePartyListView,  game.getReserveParty());
+        goldAmountLabel.setText(String.valueOf(game.getGold()));
     }
 }
