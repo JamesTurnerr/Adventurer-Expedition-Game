@@ -107,7 +107,7 @@ public class ExpeditionService {
 
     private String getChoiceResult(int choiceIndex)
     {
-        return expedition.areaEvents[expeditionIndex][currentArea].getChoices()[choiceIndex].getStat();
+        return expedition.areaEvents[expeditionIndex][currentArea].getChoices()[choiceIndex].getChoiceOutcome();
     }
 
     /**Applies the effect of the choice that the player made
@@ -116,37 +116,72 @@ public class ExpeditionService {
     private void applyEffect(int choiceIndex)
     {
         String effect = getChoiceResult(choiceIndex);
-        switch (effect)
+        EventOutcome[] eventOutcomes = expedition.areaEvents[expeditionIndex][currentArea].getChoices()[choiceIndex].getEventOutcomes();
+        for(EventOutcome eventOutcome : eventOutcomes)
         {
-            case "lose health":
-                gameEnvironment.getRandomAdventurerFromParty().takeHealthDamage(5);
-                break;
-            case "lose stamina":
-                gameEnvironment.getRandomAdventurerFromParty().takeStaminaDamage(5);
-                break;
-            case "lose progress":
-                currentArea-=1;
-                break;
-            case "continue your expedition":
-                //nothing happens
-                break;
-            case "IMPLEMENT PERCEPTION CHECK HERE":
-                int totalPerception = 0;
-                for (Adventurer adventurer : gameEnvironment.getMainParty())
-                {
-                    totalPerception += adventurer.getPerception();
-                }
-                if (totalPerception > (100*gameEnvironment.getMainParty().size()))//average perception of adventurers > 100
-                {
-                    System.out.println("Perception check passed");
-                }
-                else
-                {
-                    System.out.println("Perception check failed");
-                }
-                break;
+            switch (eventOutcome)
+            {
+                /*
 
+
+    LOSE_PROGRESS("lose progress"),
+    NOTHING("have nothing happen to you");
+                 */
+                case SMALL_HEALTH_LOSS:
+                    gameEnvironment.getRandomAdventurerFromParty().takeHealthDamage(5);
+                    break;
+                case MEDIUM_HEALTH_LOSS:
+                    gameEnvironment.getRandomAdventurerFromParty().takeHealthDamage(10);
+                    break;
+                case LARGE_HEALTH_LOSS:
+                    gameEnvironment.getRandomAdventurerFromParty().takeHealthDamage(20);
+                    break;
+                case SMALL_STAMINA_LOSS:
+                    gameEnvironment.getRandomAdventurerFromParty().takeStaminaDamage(5);
+                    break;
+                case MEDIUM_STAMINA_LOSS:
+                    gameEnvironment.getRandomAdventurerFromParty().takeStaminaDamage(10);
+                    break;
+                case LARGE_STAMINA_LOSS:
+                    gameEnvironment.getRandomAdventurerFromParty().takeStaminaDamage(20);
+                    break;
+                case SMALL_GOLD:
+                    gameEnvironment.setGold(gameEnvironment.getGold() + 5);
+                    break;
+                case MEDIUM_GOLD:
+                    gameEnvironment.setGold(gameEnvironment.getGold() + 10);
+                    break;
+                case LARGE_GOLD:
+                    gameEnvironment.setGold(gameEnvironment.getGold() + 20);
+                    break;
+                case RANDOM:
+                    //random expedition event here
+                    break;
+                case LOSE_PROGRESS:
+                    currentArea-=1;
+                    break;
+                case NOTHING:
+                    //nothing happens
+                    break;
+                case PERCEPTION:
+                    int totalPerception = 0;
+                    for (Adventurer adventurer : gameEnvironment.getMainParty())
+                    {
+                        totalPerception += adventurer.getPerception();
+                    }
+                    if (totalPerception > (100*gameEnvironment.getMainParty().size()))//average perception of adventurers > 100
+                    {
+                        System.out.println("Perception check passed");
+                    }
+                    else
+                    {
+                        System.out.println("Perception check failed");
+                    }
+                    break;
+
+            }
         }
+
     }
 
     public void itemCollected(Item item){

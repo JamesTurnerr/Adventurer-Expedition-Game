@@ -1,0 +1,28 @@
+package seng201.team0.models;
+
+public enum EventOutcome {
+    SMALL_HEALTH_LOSS("lose a small amount of health"),
+    MEDIUM_HEALTH_LOSS("lose a moderate amount of health"),
+    LARGE_HEALTH_LOSS("lose a lot of health"),
+    SMALL_STAMINA_LOSS("lose a small amount of stamina"),
+    MEDIUM_STAMINA_LOSS("lose a moderate amount of stamina"),
+    LARGE_STAMINA_LOSS("lose a lot of stamina"),
+    PERCEPTION("PERCEPTION_CHECK"),
+    SMALL_GOLD("find a little bit of gold"),
+    MEDIUM_GOLD("find a substantial amount of gold"),
+    LARGE_GOLD("find 1 million dollar"),
+    RANDOM("RANDOM_EVENT"),
+    LOSE_PROGRESS("lose progress"),
+    NOTHING("have nothing happen to you");
+
+    private final String outcome;
+    EventOutcome(String outcome)
+    {
+        this.outcome = outcome;
+    }
+
+    public String getOutcome()
+    {
+        return outcome;
+    }
+}

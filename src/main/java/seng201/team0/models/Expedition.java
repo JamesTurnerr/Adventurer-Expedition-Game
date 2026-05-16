@@ -38,39 +38,107 @@ public class Expedition {
     public final Event[][] areaEvents = {
             {
             new Event("A section of the tunnel collapses ahead.", new Choice[]{
-                    new Choice("Clear the rubble", "stamina"),
-                    new Choice("Search for another route", "perception"),
-                    new Choice("Retreat temporarily", "progress")}),
+                    new Choice("Clear the rubble", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                    new Choice("Search for another route", new EventOutcome[]{EventOutcome.PERCEPTION}),
+                    new Choice("Retreat temporarily", new EventOutcome[]{EventOutcome.LOSE_PROGRESS})}),
             new Event("A green cloud spreads through the tunnel.", new Choice[]{
-                    new Choice("Run through quickly", "stamina"),
-                    new Choice("Move slowly with caution", "health"),
-                    new Choice("Search for ventilation shafts", "perception")}),
+                    new Choice("Run through quickly", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                    new Choice("Move slowly with caution", new EventOutcome[]{EventOutcome.SMALL_HEALTH_LOSS}),
+                    new Choice("Search for ventilation shafts", new EventOutcome[]{EventOutcome.PERCEPTION}),}),
             new Event("Rare minerals glitter in the rock.", new Choice[]{
-                    new Choice("Mine aggressively", "stamina"),
-                    new Choice("Take only surface ore", "none"),
-                    new Choice("Inspect for hidden deposits", "perception")}),
+                    new Choice("Mine aggressively", new EventOutcome[]{EventOutcome.LARGE_STAMINA_LOSS, EventOutcome.LARGE_GOLD}),
+                    new Choice("Take only surface ore", new EventOutcome[]{EventOutcome.SMALL_GOLD}),
+                    new Choice("Inspect for hidden deposits", new EventOutcome[]{EventOutcome.PERCEPTION, EventOutcome.MEDIUM_STAMINA_LOSS}),}),
             new Event("A dark lake blocks the path.", new Choice[]{
-                    new Choice("Swim across", "health"),
-                    new Choice("Walk around it", "stamina"),
-                    new Choice("Search for a hidden crossing", "perception")}),
+                    new Choice("Swim across", new EventOutcome[]{EventOutcome.SMALL_STAMINA_LOSS,  EventOutcome.SMALL_HEALTH_LOSS}),
+                    new Choice("Walk around it", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                    new Choice("Search for a hidden crossing", new EventOutcome[]{EventOutcome.PERCEPTION}),}),
             new Event("Something moves behind the walls.", new Choice[]{
-                    new Choice("Investigate", "health"),
-                    new Choice("Stay quiet and continue", "none"),
-                    new Choice("Run away", "stamina")}),
+                    new Choice("Investigate", new EventOutcome[]{EventOutcome.MEDIUM_HEALTH_LOSS}),
+                    new Choice("Stay quiet and continue", new EventOutcome[]{EventOutcome.NOTHING}),
+                    new Choice("Run away", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS})}),
             new Event("Rusty rails disappear into darkness.", new Choice[]{
-                    new Choice("Repair the tracks", "stamina"),
-                    new Choice("Continue on foot", "none"),
-                    new Choice("Search for alternate tunnels", "perception")}),
+                    new Choice("Repair the tracks", new EventOutcome[]{EventOutcome.LARGE_STAMINA_LOSS}),
+                    new Choice("Continue on foot", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                    new Choice("Search for alternate tunnels", new EventOutcome[]{EventOutcome.PERCEPTION}),}),
             new Event("A dusty crate sits untouched.", new Choice[]{
-                    new Choice("Open it immediately", "perception"),
-                    new Choice("Inspect carefully", "perception"),
-                    new Choice("Ignore it", "none")}),
+                    new Choice("Open it immediately", new EventOutcome[]{EventOutcome.PERCEPTION}),
+                    new Choice("Inspect carefully", new EventOutcome[]{EventOutcome.PERCEPTION}),
+                    new Choice("Ignore it", new EventOutcome[]{EventOutcome.NOTHING}),}),
             new Event("Dust falls from cracks overhead.", new Choice[]{
-                    new Choice("Sprint through", "stamina"),
-                    new Choice("Move carefully", "health"),
-                    new Choice("Search for supports", "perception")}),
+                    new Choice("Sprint through", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                    new Choice("Move carefully", new EventOutcome[]{EventOutcome.SMALL_HEALTH_LOSS}),
+                    new Choice("Search for supports", new EventOutcome[]{EventOutcome.PERCEPTION}),}),
             },
             {
+                    new Event("A section of the tunnel collapses ahead.", new Choice[]{
+                            new Choice("Clear the rubble", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                            new Choice("Search for another route", new EventOutcome[]{EventOutcome.PERCEPTION}),
+                            new Choice("Retreat temporarily", new EventOutcome[]{EventOutcome.LOSE_PROGRESS})}),
+                    new Event("A green cloud spreads through the tunnel.", new Choice[]{
+                            new Choice("Run through quickly", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                            new Choice("Move slowly with caution", new EventOutcome[]{EventOutcome.SMALL_HEALTH_LOSS}),
+                            new Choice("Search for ventilation shafts", new EventOutcome[]{EventOutcome.PERCEPTION}),}),
+                    new Event("Rare minerals glitter in the rock.", new Choice[]{
+                            new Choice("Mine aggressively", new EventOutcome[]{EventOutcome.LARGE_STAMINA_LOSS, EventOutcome.LARGE_GOLD}),
+                            new Choice("Take only surface ore", new EventOutcome[]{EventOutcome.SMALL_GOLD}),
+                            new Choice("Inspect for hidden deposits", new EventOutcome[]{EventOutcome.PERCEPTION, EventOutcome.MEDIUM_STAMINA_LOSS}),}),
+                    new Event("A dark lake blocks the path.", new Choice[]{
+                            new Choice("Swim across", new EventOutcome[]{EventOutcome.SMALL_STAMINA_LOSS,  EventOutcome.SMALL_HEALTH_LOSS}),
+                            new Choice("Walk around it", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                            new Choice("Search for a hidden crossing", new EventOutcome[]{EventOutcome.PERCEPTION}),}),
+                    new Event("Something moves behind the walls.", new Choice[]{
+                            new Choice("Investigate", new EventOutcome[]{EventOutcome.MEDIUM_HEALTH_LOSS}),
+                            new Choice("Stay quiet and continue", new EventOutcome[]{EventOutcome.NOTHING}),
+                            new Choice("Run away", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS})}),
+                    new Event("Rusty rails disappear into darkness.", new Choice[]{
+                            new Choice("Repair the tracks", new EventOutcome[]{EventOutcome.LARGE_STAMINA_LOSS}),
+                            new Choice("Continue on foot", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                            new Choice("Search for alternate tunnels", new EventOutcome[]{EventOutcome.PERCEPTION}),}),
+                    new Event("A dusty crate sits untouched.", new Choice[]{
+                            new Choice("Open it immediately", new EventOutcome[]{EventOutcome.PERCEPTION}),
+                            new Choice("Inspect carefully", new EventOutcome[]{EventOutcome.PERCEPTION}),
+                            new Choice("Ignore it", new EventOutcome[]{EventOutcome.NOTHING}),}),
+                    new Event("Dust falls from cracks overhead.", new Choice[]{
+                            new Choice("Sprint through", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                            new Choice("Move carefully", new EventOutcome[]{EventOutcome.SMALL_HEALTH_LOSS}),
+                            new Choice("Search for supports", new EventOutcome[]{EventOutcome.PERCEPTION}),}),
+            },
+            {
+                    new Event("A section of the tunnel collapses ahead.", new Choice[]{
+                            new Choice("Clear the rubble", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                            new Choice("Search for another route", new EventOutcome[]{EventOutcome.PERCEPTION}),
+                            new Choice("Retreat temporarily", new EventOutcome[]{EventOutcome.LOSE_PROGRESS})}),
+                    new Event("A green cloud spreads through the tunnel.", new Choice[]{
+                            new Choice("Run through quickly", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                            new Choice("Move slowly with caution", new EventOutcome[]{EventOutcome.SMALL_HEALTH_LOSS}),
+                            new Choice("Search for ventilation shafts", new EventOutcome[]{EventOutcome.PERCEPTION}),}),
+                    new Event("Rare minerals glitter in the rock.", new Choice[]{
+                            new Choice("Mine aggressively", new EventOutcome[]{EventOutcome.LARGE_STAMINA_LOSS, EventOutcome.LARGE_GOLD}),
+                            new Choice("Take only surface ore", new EventOutcome[]{EventOutcome.SMALL_GOLD}),
+                            new Choice("Inspect for hidden deposits", new EventOutcome[]{EventOutcome.PERCEPTION, EventOutcome.MEDIUM_STAMINA_LOSS}),}),
+                    new Event("A dark lake blocks the path.", new Choice[]{
+                            new Choice("Swim across", new EventOutcome[]{EventOutcome.SMALL_STAMINA_LOSS,  EventOutcome.SMALL_HEALTH_LOSS}),
+                            new Choice("Walk around it", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                            new Choice("Search for a hidden crossing", new EventOutcome[]{EventOutcome.PERCEPTION}),}),
+                    new Event("Something moves behind the walls.", new Choice[]{
+                            new Choice("Investigate", new EventOutcome[]{EventOutcome.MEDIUM_HEALTH_LOSS}),
+                            new Choice("Stay quiet and continue", new EventOutcome[]{EventOutcome.NOTHING}),
+                            new Choice("Run away", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS})}),
+                    new Event("Rusty rails disappear into darkness.", new Choice[]{
+                            new Choice("Repair the tracks", new EventOutcome[]{EventOutcome.LARGE_STAMINA_LOSS}),
+                            new Choice("Continue on foot", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                            new Choice("Search for alternate tunnels", new EventOutcome[]{EventOutcome.PERCEPTION}),}),
+                    new Event("A dusty crate sits untouched.", new Choice[]{
+                            new Choice("Open it immediately", new EventOutcome[]{EventOutcome.PERCEPTION}),
+                            new Choice("Inspect carefully", new EventOutcome[]{EventOutcome.PERCEPTION}),
+                            new Choice("Ignore it", new EventOutcome[]{EventOutcome.NOTHING}),}),
+                    new Event("Dust falls from cracks overhead.", new Choice[]{
+                            new Choice("Sprint through", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                            new Choice("Move carefully", new EventOutcome[]{EventOutcome.SMALL_HEALTH_LOSS}),
+                            new Choice("Search for supports", new EventOutcome[]{EventOutcome.PERCEPTION}),}),
+            },
+            /*{
             new Event("An old bridge creaks over dark water.", new Choice[]{
                     new Choice("Cross quickly", "stamina"),
                     new Choice("Reinforce the bridge", "stamina"),
@@ -137,7 +205,7 @@ public class Expedition {
                     new Choice("Loot everything", "stamina"),
                     new Choice("Take only essentials", "medium_loot"),
                     new Choice("Search for traps first", "perception")}),
-            }
+            }*/
     };
 
     /**
