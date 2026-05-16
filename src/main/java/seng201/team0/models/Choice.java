@@ -18,7 +18,7 @@ public class Choice {
         StringBuilder totalOutcome = new StringBuilder();
         for (EventOutcome eventOutcome : eventOutcomes)
         {
-            totalOutcome.append(" ").append(eventOutcome.getOutcome());
+            totalOutcome.append(eventOutcome.getOutcome()).append(" ");
         }
         return totalOutcome.toString();
     }
