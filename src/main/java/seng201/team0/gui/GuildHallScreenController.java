@@ -93,8 +93,6 @@ public class GuildHallScreenController extends ScreenController {
         game.goToMainScreen();
     }
 
-    // this is similar to the other button in setupcontroller.
-    // should merge with the 2 listviews as the parameters
     @FXML
     private void hireAdventurerButtonClicked()
     {

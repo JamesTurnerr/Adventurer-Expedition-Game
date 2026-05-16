@@ -17,6 +17,7 @@ public class GameEnvironment {
     private Inventory playerInventory = new Inventory();
     private Inventory marketInventory = new Inventory();
     private int gold;
+    private int totalGold;
     private String difficulty;
     private String guildName;
     private int expeditionsCompleted;
@@ -59,6 +60,8 @@ public class GameEnvironment {
     public int getEventChance() {System.out.println("the chance is"+ eventChance); return eventChance;}
     public String getSelectedExpeditionLocation(){return selectedExpeditionLocation;}
     public double getDifficultyModifier(){return difficultyModifier;}
+    public String getGuildName(){return guildName;}
+    public int getTotalGold() {return totalGold;}
 
     //setters
     public void setGold(int gold){this.gold = gold;}
