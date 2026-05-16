@@ -32,4 +32,27 @@ public class MarketService {
         }
         return gameEnvironment.getMarketItems();
     }
+
+    public boolean buyItem(Item item)
+    {
+        if (item != null)
+        {
+            if (item.getCost() <= gameEnvironment.getGold())
+            {
+                gameEnvironment.getPlayerInventory().addItem(item);
+                gameEnvironment.setGold(gameEnvironment.getGold()-item.getCost());
+                System.out.println(String.format("Item bought, %d gold remaining", gameEnvironment.getGold()));
+                return true;
+            }
+            else {
+                System.out.println("Warning: Not enough gold, could not buy item");
+                return false;
+            }
+        }
+        else
+        {
+            System.out.println("Warning: Item is null");
+            return false;
+        }
+    }
 }

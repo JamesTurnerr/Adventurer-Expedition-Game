@@ -49,7 +49,7 @@ public class MarketScreenController extends ScreenController {
 
         // inintialize the list views
         guiService.populateListView(itemListView, marketService.getTestItemList(3));
-        guiService.populateListView(inventoryListView, getGameEnvironment().getItems());
+        guiService.populateListView(inventoryListView, getGameEnvironment().getPlayerInventory().getAllItems());
 
         // checks for if item in lists is selected
         itemSelection(itemListView);
@@ -61,7 +61,7 @@ public class MarketScreenController extends ScreenController {
     @FXML
     private void buyItemButtonClicked()
     {
-        if(getGameEnvironment().buyItem(itemListView.getSelectionModel().getSelectedItem()))
+        if(marketService.buyItem(itemListView.getSelectionModel().getSelectedItem()))
         {
             Item item = itemListView.getSelectionModel().getSelectedItem();
             // surely can simplify

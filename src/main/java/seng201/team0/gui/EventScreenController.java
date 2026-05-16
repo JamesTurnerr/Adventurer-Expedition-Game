@@ -77,7 +77,7 @@ public class EventScreenController extends ScreenController{
 
         if (roll < 70/modifier) {
             Item item = Item.getRandomItem();
-            getGameEnvironment().addItem(item);
+            getGameEnvironment().getPlayerInventory().addItem(item);
 
             eventTextArea.setText(
                     adv +

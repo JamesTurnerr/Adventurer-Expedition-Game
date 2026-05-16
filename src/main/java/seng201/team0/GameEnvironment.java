@@ -2,6 +2,7 @@ package seng201.team0;
 
 import seng201.team0.gui.ScreenNavigator;
 import seng201.team0.models.Adventurer;
+import seng201.team0.models.Inventory;
 import seng201.team0.models.Item;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class GameEnvironment {
     public final int MAX_PARTY_SIZE = 5;
     private List<Adventurer> mainParty;
     private List<Adventurer> reserveParty = new ArrayList<Adventurer>();
-    private List<Item> items = new ArrayList<Item>();
+    private Inventory playerInventory = new Inventory();
     private int gold;
     private String difficulty;
     private String guildName;
@@ -50,10 +51,10 @@ public class GameEnvironment {
     public List<Adventurer> getMainParty() {return mainParty;}
     public List<Adventurer> getReserveParty() {return reserveParty;}
     public Adventurer getRandomAdventurerFromParty(){return mainParty.get(random.nextInt(mainParty.size()));}
-    public List<Item> getItems() {return items;}
     public int getExpeditionsCompleted() {return expeditionsCompleted;}
     public int getExpeditionsRemaining() {return expeditionsRemaining;}
     public int getExpeditionIndex(){return selectedExpeditionIndex;}
+    public Inventory getPlayerInventory() {return playerInventory;}
 
     public List<Adventurer> getHireableAdventurers() {return hireableAdventurers;}
     public List<Item> getMarketItems(){return marketItems;}
@@ -66,6 +67,7 @@ public class GameEnvironment {
     public double getDifficultyModifier(){return difficultyModifier;}
 
     //setters
+    public void setGold(int gold){this.gold = gold;}
     public void setDoUpdateHall(boolean doUpdateHall) {this.doUpdateHall = doUpdateHall;}
     public void setDoUpdateMarket(boolean doUpdateMarket) {this.doUpdateMarket = doUpdateMarket;}
     public void setSelectedExpeditionLocation(String location, int index){this.selectedExpeditionLocation = location; this.selectedExpeditionIndex = index;}
@@ -74,15 +76,6 @@ public class GameEnvironment {
     public void setDoUpdateLocations(boolean doUpdateLocations) {this.doUpdateLocations = doUpdateLocations;}
 
     //Add data
-    public void addItem(Item item)
-    {
-        if (item == null)
-        {
-            System.out.println("Warning: Item is null");
-            return;
-        }
-        items.add(item);
-    }
     public boolean addAdventurer(Adventurer adventurer)
     {
         return addToMainParty(adventurer);
@@ -111,10 +104,6 @@ public class GameEnvironment {
     }
 
     //Remove data
-    private void removeItem(Item item)
-    {
-        items.remove(item);
-    }
     private boolean removeFromMainParty(Adventurer adventurer)
     {
         if (mainParty.size() == 1)
@@ -167,28 +156,6 @@ public class GameEnvironment {
         }
         else {
             System.out.println("Warning: Adventurer is null");
-            return false;
-        }
-    }
-    public boolean buyItem(Item item)
-    {
-        if (item != null)
-        {
-            if (item.getCost() <= gold)
-            {
-                addItem(item);
-                gold -= item.getCost();
-                System.out.println(String.format("Item bought, %d gold remaining", getGold()));
-                return true;
-            }
-            else {
-                System.out.println("Warning: Not enough gold, could not buy item");
-                return false;
-            }
-        }
-        else
-        {
-            System.out.println("Warning: Item is null");
             return false;
         }
     }
@@ -252,31 +219,6 @@ public class GameEnvironment {
     }
 
     //Other
-    public void useItem(Adventurer adventurer, Item item)
-    {
-        if (adventurer == null || item == null) {
-            System.out.println("Warning: adventurer or item is null");
-            return;
-        }
-
-        switch (item) {
-            case RUSTY_SWORD:
-                System.out.println("you gave "+ adventurer + " the "+ item);
-                break;
-            case STAMINA_POTION:
-                adventurer.setStamina(adventurer.getStamina()+20);
-                System.out.println("you used the "+item+" on "+adventurer);
-                break;
-            case HEALTH_POTION:
-                adventurer.setHealth(adventurer.getHealth()+30);
-                System.out.println("you used the "+item+" on "+adventurer);
-                break;
-
-        }
-        getItems().remove(item);
-        //System.out.println("useItem not yet implemented");
-    }
-
     public void onSetupComplete(ArrayList<Adventurer> mainParty, String difficulty, String guildName, int numberOfExpeditions) {
         this.mainParty = mainParty;
         switch (difficulty)

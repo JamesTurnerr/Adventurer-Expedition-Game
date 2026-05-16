@@ -9,6 +9,8 @@ import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
 import seng201.team0.models.Item;
 import seng201.team0.services.GuiService;
+import seng201.team0.services.GuildHallService;
+import seng201.team0.services.GuildOverviewService;
 
 public class GuildOverviewScreenController extends ScreenController {
     @FXML
@@ -21,6 +23,7 @@ public class GuildOverviewScreenController extends ScreenController {
     private ListView<Item> itemsListView;
 
     private final GuiService guiService = new GuiService(getGameEnvironment());
+    private final GuildOverviewService guildOverviewService = new GuildOverviewService(getGameEnvironment());
 
     GuildOverviewScreenController(GameEnvironment gameEnvironment) {super(gameEnvironment);}
 
@@ -38,7 +41,7 @@ public class GuildOverviewScreenController extends ScreenController {
     {
         guiService.populateListView(mainPartyListView, getGameEnvironment().getMainParty());
         guiService.populateListView(reservePartyListView, getGameEnvironment().getReserveParty());
-        guiService.populateListView(itemsListView, getGameEnvironment().getItems());
+        guiService.populateListView(itemsListView, getGameEnvironment().getPlayerInventory().getAllItems());
     }
     @FXML
     private void backButtonClicked() throws IOException {
@@ -64,8 +67,8 @@ public class GuildOverviewScreenController extends ScreenController {
     {
         Adventurer adventurer = mainPartyListView.getSelectionModel().getSelectedItem();
         Item item = itemsListView.getSelectionModel().getSelectedItem();
-        getGameEnvironment().useItem(adventurer, item);
-        guiService.populateListView(itemsListView, getGameEnvironment().getItems());
+        guildOverviewService.useItem(adventurer, item);
+        guiService.populateListView(itemsListView, getGameEnvironment().getPlayerInventory().getAllItems());
         //System.out.println("useItemButtonClicked() not yet implemented");
     }
 }
