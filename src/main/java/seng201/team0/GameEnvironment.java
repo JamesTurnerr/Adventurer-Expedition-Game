@@ -164,6 +164,10 @@ public class GameEnvironment {
      */
     public void goToMainScreen() {navigator.launchMainScreen(this);}
     /**
+     * Switch to the game over screen
+     */
+    public void goToGameOverScreen() {navigator.launchGameOverScreen(this);}
+    /**
      * Exit the game
      */
     public void onQuitRequested() {System.exit(0);}

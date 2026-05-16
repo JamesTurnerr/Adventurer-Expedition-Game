@@ -181,8 +181,21 @@ public class ExpeditionService {
         gameEnvironment.setDoUpdateLocations(true);
         //recover the reserve party
         gameEnvironment.recoverReserveParty();
-        //return to main place, or special event first (based on difficulty)
-        if (rand.nextInt(100) < gameEnvironment.getEventChance()) {gameEnvironment.goToEventScreen();}
-        else{gameEnvironment.goToMainScreen();}
+        //to go game over screen if there are no expeditions left
+        if (gameEnvironment.getExpeditionsRemaining() == 0)
+        {
+            gameEnvironment.goToGameOverScreen();
+        }
+        else//return to main place, or special event first (based on difficulty)
+        {
+            if (rand.nextInt(100) < gameEnvironment.getEventChance()) {
+                gameEnvironment.goToEventScreen();
+            }
+            else
+            {
+                gameEnvironment.goToMainScreen();
+            }
+        }
+
     }
 }

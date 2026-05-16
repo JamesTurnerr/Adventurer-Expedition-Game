@@ -10,7 +10,7 @@ import seng201.team0.GameEnvironment;
 import java.io.IOException;
 
 /**
- * Class that handles navigation between various {@link seng201.team0.gui.ScreenController}s. This navigator
+ * Class that handles navigation between various {@link ScreenController}s. This navigator
  * uses a {@link BorderPane} layout for the root pane. A launched screen is placed in the
  * center area of the border pane, replacing the previous screen if any.
  *
@@ -44,7 +44,7 @@ public class ScreenNavigator {
      * @param gameEnvironment The game environment used by the setup screen controller
      */
     public void launchSetupScreen(GameEnvironment gameEnvironment) {
-        seng201.team0.gui.ScreenController controller = new SetupScreenController(gameEnvironment);
+        ScreenController controller = new SetupScreenController(gameEnvironment);
         launchScreen(controller);
     }
 
@@ -54,7 +54,17 @@ public class ScreenNavigator {
      * @param gameEnvironment The game environment used by the main screen controller
      */
     public void launchMainScreen(GameEnvironment gameEnvironment) {
-        seng201.team0.gui.ScreenController controller = new MainScreenController(gameEnvironment);
+        ScreenController controller = new MainScreenController(gameEnvironment);
+        launchScreen(controller);
+    }
+
+    /**
+     * Launches the game over screen.
+     *
+     * @param gameEnvironment The game environment used by the main screen controller
+     */
+    public void launchGameOverScreen(GameEnvironment gameEnvironment) {
+        ScreenController controller = new GameOverScreenController(gameEnvironment);
         launchScreen(controller);
     }
 
@@ -64,7 +74,7 @@ public class ScreenNavigator {
      * @param gameEnvironment The game environment used by the expedition screen controller
      */
     public void launchExpeditionScreen(GameEnvironment gameEnvironment) {
-        seng201.team0.gui.ScreenController controller = new ExpeditionScreenController(gameEnvironment);
+        ScreenController controller = new ExpeditionScreenController(gameEnvironment);
         launchScreen(controller);
     }
 
@@ -74,7 +84,7 @@ public class ScreenNavigator {
      * @param gameEnvironment The game environment used by the guild hall screen controller
      */
     public void launchGuildHallScreen(GameEnvironment gameEnvironment) {
-        seng201.team0.gui.ScreenController controller = new GuildHallScreenController(gameEnvironment);
+        ScreenController controller = new GuildHallScreenController(gameEnvironment);
         launchScreen(controller);
     }
 
@@ -84,7 +94,7 @@ public class ScreenNavigator {
      * @param gameEnvironment The game environment used by the guild overview screen controller
      */
     public void launchGuildOverviewScreen(GameEnvironment gameEnvironment) {
-        seng201.team0.gui.ScreenController controller = new GuildOverviewScreenController(gameEnvironment);
+        ScreenController controller = new GuildOverviewScreenController(gameEnvironment);
         launchScreen(controller);
     }
 
@@ -94,29 +104,29 @@ public class ScreenNavigator {
      * @param gameEnvironment The game environment used by the market screen controller
      */
     public void launchMarketScreen(GameEnvironment gameEnvironment) {
-        seng201.team0.gui.ScreenController controller = new MarketScreenController(gameEnvironment);
+        ScreenController controller = new MarketScreenController(gameEnvironment);
         launchScreen(controller);
     }
 
     // the launch of the expedition location selection
     public void launchExpeditionLocationScreen(GameEnvironment gameEnvironment){
-        seng201.team0.gui.ScreenController controller = new ExpeditionSelectScreenController(gameEnvironment);
+        ScreenController controller = new ExpeditionSelectScreenController(gameEnvironment);
         launchScreen(controller);
     }
 
     // launch the random event at end of expedition
     public void launchEventScreen(GameEnvironment gameEnvironment){
-        seng201.team0.gui.ScreenController controller = new EventScreenController(gameEnvironment);
+        ScreenController controller = new EventScreenController(gameEnvironment);
         launchScreen(controller);
     }
 
     /**
      * Replaces the root border pane's center component with the screen defined by the given
-     * {@link seng201.team0.gui.ScreenController}.
+     * {@link ScreenController}.
      *
      * @param controller The JavaFX screen controller for the screen to be launched
      */
-    private void launchScreen(seng201.team0.gui.ScreenController controller) {
+    private void launchScreen(ScreenController controller) {
         try {
             FXMLLoader setupLoader = new FXMLLoader(getClass().getResource(controller.getFxmlFile()));
             // Set a controller factory that returns the given ScreenController.
