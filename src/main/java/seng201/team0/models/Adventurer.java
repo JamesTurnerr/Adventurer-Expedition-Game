@@ -7,6 +7,16 @@ public class Adventurer extends Entity {
     private final int hiringCost;
     private final int pay;
 
+    /**
+     * Constructor for adventurer class, sets base stats.
+     * @param name the name of the adventurer
+     * @param maxStamina the maximum stamina stat of the adventurer
+     * @param maxHealth the maximum health stat of the adventurer
+     * @param perception the perception stat of the adventurer
+     * @param hiringCost the cost to hire the adventurer
+     * @param pay the amount that must be paid to the adventurer after an expedition
+     * @param damage the amount of damage the adventurer does
+     */
     public Adventurer(String name, int maxStamina, int maxHealth, int perception, int hiringCost, int pay, int damage)
     {
         super(name, maxHealth, damage);
@@ -39,6 +49,10 @@ public class Adventurer extends Entity {
     // setter
     public void setStamina(int stamina) {this.stamina = Math.max(0, Math.min(stamina, maxStamina));}
 
+    /**
+     * Causes the adventurer to lose some health.
+     * @param healthDamageToTake the amount of health the adventurer will lose
+     */
     public void takeHealthDamage(int healthDamageToTake)
     {
         if (healthDamageToTake > getHealth())
@@ -51,6 +65,10 @@ public class Adventurer extends Entity {
         }
     }
 
+    /**
+     * Causes the adventurer to lose some stamina.
+     * @param staminaDamageToTake the amount of stamina the adventurer will lose
+     */
     public void takeStaminaDamage(int staminaDamageToTake)
     {
         if (staminaDamageToTake > getStamina())
@@ -63,6 +81,10 @@ public class Adventurer extends Entity {
         }
     }
 
+    /**
+     * Simply gets the adventurers name
+     * @return the name value of the adventurer
+     */
     @Override
     public String toString()
     {

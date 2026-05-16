@@ -13,6 +13,10 @@ public class Choice {
         return choiceDescription;
     }
 
+    /**
+     * Concatenates all the effects that the players choice has made.
+     * @return A String of effects such as "lose a little bit of health and find a little bit of gold"
+     */
     public String getChoiceOutcome()
     {
         StringBuilder totalOutcome = new StringBuilder();
@@ -23,6 +27,10 @@ public class Choice {
         return totalOutcome.toString();
     }
 
+    /**
+     * Gets all the outcomes of an event
+     * @return An array of the event outcome enums
+     */
     public EventOutcome[] getEventOutcomes()
     {
         return eventOutcomes;

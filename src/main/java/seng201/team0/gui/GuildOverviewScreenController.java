@@ -41,7 +41,7 @@ public class GuildOverviewScreenController extends ScreenController {
         updateListViews();
     }
     @FXML
-    private void backButtonClicked() throws IOException {
+    private void backButtonClicked() {
         getGameEnvironment().goToMainScreen();
     }
     @FXML
@@ -56,6 +56,10 @@ public class GuildOverviewScreenController extends ScreenController {
         guildOverviewService.moveAdventurerToReserve(mainPartyListView.getSelectionModel().getSelectedItem());//Move adventurer to reserve
         updateListViews();
     }
+
+    /**
+     * Use an item on an adventurer removing it from the inventory
+     */
     @FXML
     private void useItemButtonClicked()
     {
@@ -65,6 +69,9 @@ public class GuildOverviewScreenController extends ScreenController {
         updateListViews();
     }
 
+    /**
+     * Update the ListViews when adventurers are being moved between them or items are being used
+     */
     private void updateListViews()
     {
         guiService.populateListView(mainPartyListView, getGameEnvironment().getMainParty());

@@ -108,13 +108,21 @@ public class ScreenNavigator {
         launchScreen(controller);
     }
 
-    // the launch of the expedition location selection
+    /**
+     * Launches the expedition selection screen.
+     *
+     * @param gameEnvironment The game environment used by the market screen controller
+     */
     public void launchExpeditionLocationScreen(GameEnvironment gameEnvironment){
         ScreenController controller = new ExpeditionSelectScreenController(gameEnvironment);
         launchScreen(controller);
     }
 
-    // launch the random event at end of expedition
+    /**
+     * Launches the random event screen at the end of an expedition.
+     *
+     * @param gameEnvironment The game environment used by the market screen controller
+     */
     public void launchRandomEventScreen(GameEnvironment gameEnvironment){
         ScreenController controller = new RandomEventScreenController(gameEnvironment);
         launchScreen(controller);

@@ -25,11 +25,17 @@ public class RandomEventScreenController extends ScreenController{
     @Override
     protected String getTitle() {return "Special Event";}
 
+    /**
+     * Send the player back to the main screen
+     */
     @FXML
     private void onContinueButtonClicked() {
         getGameEnvironment().goToMainScreen();
     }
 
+    /**
+     * Initialize the random event screen with a randomly chosen post expedition event
+     */
     @FXML
     public void initialize()
     {

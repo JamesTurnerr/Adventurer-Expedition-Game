@@ -38,6 +38,9 @@ public class MainScreenController extends ScreenController {
         return "Main Screen";
     }
 
+    /**
+     * Update labels and populate adventurer slots
+     */
     public void initialize()
     {
         guiService.updateTopLabels(
@@ -48,21 +51,36 @@ public class MainScreenController extends ScreenController {
         adventurerSlots = List.of(slot1Button, slot2Button, slot3Button, slot4Button, slot5Button);
         guiService.populateAdventurerSlots(adventurerSlots);
     }
+
+    /**
+     * Switch screens to guild hall screen
+     */
     @FXML
-    private void goToGuildHallButtonClicked() throws IOException {
+    private void goToGuildHallButtonClicked() {
         getGameEnvironment().goToGuildHallScreen();
     }
+
+    /**
+     * Switch screens to guild overview screen
+     */
     @FXML
-    private void goToGuildOverviewButtonClicked() throws IOException {
+    private void goToGuildOverviewButtonClicked() {
         getGameEnvironment().goToGuildOverviewScreen();
     }
+
+    /**
+     * Switch screens to market screen
+     */
     @FXML
-    private void goToMarketButtonClicked() throws IOException {
+    private void goToMarketButtonClicked() {
         getGameEnvironment().goToMarketScreen();
     }
+
+    /**
+     * Switch screens to expedition selection screen
+     */
     @FXML
-    private void goOnExpeditionButtonClicked() throws IOException {
-        //getGameEnvironment().goToExpeditionScreen();
+    private void goOnExpeditionButtonClicked() {
         if (getGameEnvironment().getExpeditionsRemaining() > 0){
             getGameEnvironment().goToExpeditionSelectScreen();
         }

@@ -19,7 +19,7 @@ import java.util.List;
 public class GuiService {
     GameEnvironment gameEnvironment;
     /**
-     * Setup the GUIService class
+     * Set up the GUIService class
      * @param gameEnvironment pass in a reference to the GameEnvironment to be able to link GUI elements to the GameEnvironment
      */
     public GuiService(GameEnvironment gameEnvironment)

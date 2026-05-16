@@ -44,6 +44,9 @@ public class GuildHallScreenController extends ScreenController {
         return "Guild Hall";
     }
 
+    /**
+     * Initialize the guild halls labels, listViews, and buttons
+     */
     public void initialize()
     {
         updateGUI();
@@ -110,7 +113,10 @@ public class GuildHallScreenController extends ScreenController {
         updateGUI();
     }
 
-    //updates stats for items in list on selection
+    /**
+     * Updates stats labels based on the adventurer selected
+     * @param listView the ListView containing adventurers that will have their stats visible on the labels when selected
+     */
     private void adventurerSelection(ListView<Adventurer> listView) {
         listView.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldVal, newVal) -> {
@@ -130,6 +136,9 @@ public class GuildHallScreenController extends ScreenController {
         );
     }
 
+    /**
+     * Update the ListViews when adventurers are being moved between them/removed
+     */
     private void updateGUI()
     {
         guiService.populateListView(hireableAdventurersListView,  game.getHireableAdventurers());

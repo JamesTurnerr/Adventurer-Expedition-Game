@@ -6,28 +6,51 @@ public class Entity {
     private int maxHealth;
     private final int damage;
 
+    /**
+     * Constructor for the entity class, sets base stats
+     * @param name The name of the entity
+     * @param maxHealth The maximum health of the entity
+     * @param damage The damage that the entity can do
+     */
     public Entity(String name, int maxHealth, int damage)
     {
         this.name = name;
         this.maxHealth = maxHealth;
         this.damage = damage;
-
-        //set stats
         this.health = maxHealth;
     }
-    //Getters
+
+    /**
+     * Get the health of the entity
+     * @return The remaining health of the entity
+     */
     public int getHealth()
     {
         return health;
     }
+
+    /**
+     * Set the health of the entity
+     * @param health The amount of health to set the entity to
+     */
     public void setHealth(int health)
     {
         this.health = health;
     }
+
+    /**
+     * Gets the name of the entity
+     * @return Entity name
+     */
     public String getName()
     {
         return name;
     }
+
+    /**
+     * Gets the amount of damage the entity can do
+     * @return Entity damage amount
+     */
     public int getDamage()
     {
         return damage;

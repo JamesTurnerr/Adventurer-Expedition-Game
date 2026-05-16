@@ -25,12 +25,15 @@ public class ExpeditionSelectScreenController extends ScreenController {
     private final ExpeditionSelectService expeditionSelectService = new ExpeditionSelectService(getGameEnvironment());
     private final Expedition expedition = new Expedition();
 
+    /**
+     * Initialize the expedition selection screen with 3 unique expeditions
+     */
     public void initialize(){
         List<Integer> locations = getGameEnvironment().getExpeditionLocations();
 
-        location1Button.setText(expedition.getAreaNames(locations.get(0)));
-        location2Button.setText(expedition.getAreaNames(locations.get(1)));
-        location3Button.setText(expedition.getAreaNames(locations.get(2)));
+        location1Button.setText(expedition.getAreaName(locations.get(0)));
+        location2Button.setText(expedition.getAreaName(locations.get(1)));
+        location3Button.setText(expedition.getAreaName(locations.get(2)));
     }
 
     @FXML

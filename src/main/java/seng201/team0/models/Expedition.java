@@ -170,16 +170,21 @@ public class Expedition {
         return areaNames[areaIndex];
     }
 
+    /**
+     * Gets the description of the area for immersion
+     * @param areaIndex the array index of the area
+     * @return Readable text describing the area
+     */
     public String getAreaDescription(int areaIndex)
     {
         return areaDescriptions[areaIndex];
     }
 
-    public String getAreaNames(int index)
-    {
-        return areaNames[index];
-    }
-
+    /**
+     * Get a sliced array of all possible area names up to the given limit
+     * @param numAreas The limit on the number of area gotten e.g. numAreas=5 will return an array of areas 1,2,3,4,5
+     * @return The sliced array of area name
+     */
     public String[] getAllAreaNames(int numAreas)
     {
         return Arrays.copyOfRange(areaNames, 0, numAreas);

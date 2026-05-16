@@ -43,6 +43,9 @@ public class MarketScreenController extends ScreenController {
         return "Market";
     }
 
+    /**
+     * Initialize top labels and ListViews
+     */
     public void initialize()
     {
         guiService.updateTopLabels(goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel);
@@ -56,26 +59,34 @@ public class MarketScreenController extends ScreenController {
     }
 
     @FXML
-    private void backButtonClicked() throws IOException {getGameEnvironment().goToMainScreen();}
+    private void backButtonClicked() {getGameEnvironment().goToMainScreen();}
+
+    /**
+     * If an item was successfully purchased update the market inventory ListView and update players gold
+     */
     @FXML
     private void buyItemButtonClicked()
     {
         if(marketService.buyItem(itemListView.getSelectionModel().getSelectedItem()))
         {
-            Item item = itemListView.getSelectionModel().getSelectedItem();
-            getGameEnvironment().getMarketInventory().removeItem(item);
             updateListViews();
             guiService.updateTopLabels(goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel);
         }
     }
 
+    /**
+     * Repopulate the market and player inventory ListViews
+     */
     void updateListViews()
     {
         guiService.populateListView(itemListView, getGameEnvironment().getMarketInventory().getAllItems());
         guiService.populateListView(inventoryListView, getGameEnvironment().getPlayerInventory().getAllItems());
     }
 
-    //updates stats for items in list on selection
+    /**
+     * Updates stats for items in list on selection
+     * @param listView The ListView to be modified
+     */
     private void itemSelection(ListView<Item> listView) {
         listView.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldVal, newVal) -> {

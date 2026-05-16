@@ -61,6 +61,9 @@ public class ExpeditionScreenController extends ScreenController {
         updateLabels();
     }
 
+    /**
+     * Update the adventurer stat labels
+     */
     private void updateLabels()
     {
         List<Label> adventurerNameLabels = List.of(adventurerNameLabel1, adventurerNameLabel2, adventurerNameLabel3, adventurerNameLabel4, adventurerNameLabel5);

@@ -8,6 +8,11 @@ public class GuildOverviewService {
     private final GameEnvironment gameEnvironment;
     public GuildOverviewService(GameEnvironment gameEnvironment) {this.gameEnvironment = gameEnvironment;}
 
+    /**
+     * Use an item on an adventurer, removing it from the players inventory
+     * @param adventurer The target adventurer
+     * @param item The item to be used on the target adventurer
+     */
     public void useItem(Adventurer adventurer, Item item)
     {
         if (adventurer == null || item == null) {
@@ -32,6 +37,11 @@ public class GuildOverviewService {
         gameEnvironment.getPlayerInventory().removeItem(item);
     }
 
+    /**
+     * Move an adventurer from the reserve party to the main party
+     * @param adventurer The adventurer to be moved
+     * @return If the moving was successful or not
+     */
     public boolean moveAdventurerToMain(Adventurer adventurer)
     {
         if (adventurer == null)
@@ -59,6 +69,11 @@ public class GuildOverviewService {
         }
     }
 
+    /**
+     * Add an adventurer to the main party
+     * @param adventurer The adventurer to be added
+     * @return If adding the adventurer was successful or not
+     */
     private boolean addToMainParty(Adventurer adventurer) {
         if (gameEnvironment.getMainParty().size() >= gameEnvironment.MAX_PARTY_SIZE)
         {
@@ -72,6 +87,11 @@ public class GuildOverviewService {
         }
     }
 
+    /**
+     * Add an adventurer to the reserve party
+     * @param adventurer The adventurer to be added
+     * @return If adding the adventurer was successful or not
+     */
     private boolean addToReserveParty(Adventurer adventurer)
     {
         if (gameEnvironment.getReserveParty().size() >= 5)
@@ -83,6 +103,11 @@ public class GuildOverviewService {
         return true;
     }
 
+    /**
+     * Remove an adventurer from the main party
+     * @param adventurer The adventurer to be removed
+     * @return If removal was successful or not
+     */
     private boolean removeFromMainParty(Adventurer adventurer)
     {
         if (gameEnvironment.getMainParty().size() == 1)
@@ -96,6 +121,11 @@ public class GuildOverviewService {
         }
     }
 
+    /**
+     * Move an adventurer from the main party to the reserve party
+     * @param adventurer The adventuer to be moved
+     * @return If the moving was successful or not
+     */
     public boolean moveAdventurerToReserve(Adventurer adventurer)
     {
         if (adventurer == null)

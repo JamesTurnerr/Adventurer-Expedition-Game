@@ -46,6 +46,9 @@ public class SetupScreenController extends ScreenController {
         return "Setup";
     }
 
+    /**
+     * Initialize the setup screen fxml elements
+     */
     public void initialize() {
         setupService.fillStarterAdventurerList(availableAdventurersListView, 5);
 
@@ -110,8 +113,11 @@ public class SetupScreenController extends ScreenController {
     @FXML private void hardModeSelected() {difficultyMenuButton.setText("Hard");
         AdventurerCreationService.setAverageStatValue(75);}
 
+    /**
+     * Checks all fields are appropriately set when start button is pressed
+     */
     @FXML
-    private void startButtonClicked() throws IOException {
+    private void startButtonClicked() {
         if (mainParty.contains(null)) {
             System.out.println("please select 3");
             return;
@@ -134,6 +140,9 @@ public class SetupScreenController extends ScreenController {
                 Integer.parseInt(expeditionInputTextField.getText()));
     }
 
+    /**
+     * Attempt to update fxml elements when an adventurer is chosen
+     */
     @FXML
     private void chooseAdventurerClicked() {
         Adventurer selectedAdventurer = availableAdventurersListView.getSelectionModel().getSelectedItem();
@@ -166,6 +175,9 @@ public class SetupScreenController extends ScreenController {
         selectedSlotIndex = -1;
     }
 
+    /**
+     * Attempt to update fxml elements when an adventurer is removed from chosen
+     */
     @FXML
     private void unchooseAdventurerClicked() {
         if (selectedSlotIndex == -1) {
@@ -193,6 +205,9 @@ public class SetupScreenController extends ScreenController {
         damageLabel.setText(String.valueOf(adventurer.getDamage()));
     }*/
 
+    /**
+     * Update the chosen adventurer slots
+     */
     private void updateSlotButton(int index, Adventurer adventurer) {
         Button button = selectedAdventurerButtons.get(index);
 

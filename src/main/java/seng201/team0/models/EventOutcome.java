@@ -18,11 +18,20 @@ public enum EventOutcome {
     NOTHING("have nothing happen to you");
 
     private final String outcome;
+
+    /**
+     * EventOutcome constructor, maps enumerators to readable text
+     * @param outcome The readable text
+     */
     EventOutcome(String outcome)
     {
         this.outcome = outcome;
     }
 
+    /**
+     * Get a readable String of the outcome from its enumerator
+     * @return A readable string of the outcome
+     */
     public String getOutcome()
     {
         return outcome;

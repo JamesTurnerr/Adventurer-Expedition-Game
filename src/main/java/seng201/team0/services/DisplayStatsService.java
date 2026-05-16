@@ -39,6 +39,13 @@ public class DisplayStatsService {
         damageLabel.setText(String.valueOf(adventurer.getDamage()));
     }
 
+    /**
+     * Update a label to the displayed stats of an item
+     * @param item The item to have its stats displayed
+     * @param nameLabel The name of the item
+     * @param effectLabel The effect of the item
+     * @param costLabel The cost of the item
+     */
     public void updateItemStats(Item item, Label nameLabel, Label effectLabel, Label costLabel){
         nameLabel.setText(item.getName());
         effectLabel.setText(item.getModifier());
