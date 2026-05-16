@@ -16,8 +16,8 @@ import seng201.team0.models.Item;
 
 public class MarketScreenController extends ScreenController {
     @FXML private Button backButton, buyItemButton;
-    @FXML private ListView<Item> itemListView;
-    @FXML private ListView<Item> inventoryListView;
+    @FXML private ListView<Item> marketInventoryListView;
+    @FXML private ListView<Item> playerInventoryListView;
 
     @FXML private Label goldAmountLabel;
     @FXML private Label currentExpeditionLabel;
@@ -30,6 +30,8 @@ public class MarketScreenController extends ScreenController {
     private final GuiService guiService = new GuiService(getGameEnvironment());
     private final MarketService marketService = new MarketService(getGameEnvironment());
     private final DisplayStatsService displayStatsService = new DisplayStatsService();
+
+    private boolean buyMode = true;//true is player is buying an item, false if player is selling
 
     MarketScreenController(GameEnvironment gameEnvironment) {super(gameEnvironment);}
 
@@ -54,24 +56,57 @@ public class MarketScreenController extends ScreenController {
         updateListViews();
 
         // checks for if item in lists is selected
-        itemSelection(itemListView);
-        itemSelection(inventoryListView);
+        itemSelection(marketInventoryListView);
+        itemSelection(playerInventoryListView);
     }
 
     @FXML
     private void backButtonClicked() {getGameEnvironment().goToMainScreen();}
 
     /**
+     * Called when the user clicks on the player inventory
+     * Updates the buy/sell button to display 'sell' allowing the user to sell items from their inventory
+     * Also updates the labels displaying the items price, effect and cost
+     */
+    @FXML
+    private void playerInventorySelected()
+    {
+        if (playerInventoryListView.getSelectionModel().getSelectedIndex() != -1)//Make sure an item is selected
+        {
+            buyMode = false;
+            buyItemButton.setText("Sell");
+            itemSelection(playerInventoryListView);
+        }
+
+        System.out.println("Mouse clicked");
+    }
+
+    /**
+     * Called when the user clicks on the market inventory
+     * Updates the buy/sell button to display 'buy' allowing the user to buy items from the market
+     * Also updates the labels displaying the items price, effect and cost
+     */
+    @FXML
+    private void marketInventorySelected()
+    {
+        if (marketInventoryListView.getSelectionModel().getSelectedIndex() != -1)//Make sure an item is selected
+        {
+            buyMode = true;
+            buyItemButton.setText("Buy");
+            itemSelection(marketInventoryListView);
+        }
+        System.out.println("Mouse clicked");
+    }
+    /**
      * If an item was successfully purchased update the market inventory ListView and update players gold
      */
     @FXML
     private void buyItemButtonClicked()
     {
-        if(marketService.buyItem(itemListView.getSelectionModel().getSelectedItem()))
-        {
-            updateListViews();
-            guiService.updateTopLabels(goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel);
-        }
+        if (buyMode) { marketService.buyItem(marketInventoryListView.getSelectionModel().getSelectedItem(), 0.75f); }
+        else { marketService.sellItem(playerInventoryListView.getSelectionModel().getSelectedItem(), 0.75f); }
+        updateListViews();
+        guiService.updateTopLabels(goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel);
     }
 
     /**
@@ -79,8 +114,8 @@ public class MarketScreenController extends ScreenController {
      */
     void updateListViews()
     {
-        guiService.populateListView(itemListView, getGameEnvironment().getMarketInventory().getAllItems());
-        guiService.populateListView(inventoryListView, getGameEnvironment().getPlayerInventory().getAllItems());
+        guiService.populateListView(marketInventoryListView, getGameEnvironment().getMarketInventory().getAllItems());
+        guiService.populateListView(playerInventoryListView, getGameEnvironment().getPlayerInventory().getAllItems());
     }
 
     /**
@@ -88,17 +123,11 @@ public class MarketScreenController extends ScreenController {
      * @param listView The ListView to be modified
      */
     private void itemSelection(ListView<Item> listView) {
-        listView.getSelectionModel().selectedItemProperty().addListener(
-                (obs, oldVal, newVal) -> {
-                    if (newVal != null) {
-                        displayStatsService.updateItemStats(
-                                newVal,
-                                nameLabel,
-                                effectLabel,
-                                costLabel
-                        );
-                    }
-                }
-        );
+        Item item = listView.getSelectionModel().getSelectedItem();
+        if (item != null)
+        {
+            displayStatsService.updateItemStats(listView.getSelectionModel().getSelectedItem(), nameLabel, effectLabel, costLabel);
+        }
+
     }
 }

@@ -8,7 +8,7 @@ public enum Item {
     RUSTY_SWORD("Rusty Sword", "Pretty useless", 3);
 
     private final String name;
-    private final int cost;
+    private int cost;
     private final String modifier;
 
     /**
@@ -60,6 +60,27 @@ public enum Item {
     {
         return cost;
     }
+
+    /**
+     * Change the cost of an item to a set value
+     * @param newValue The new cost to set the item to
+     */
+    private void setCost(int newValue)
+    { cost = newValue; }
+
+    /**
+     * Increase the cost of an item
+     * @param amount The amount of gold to increase the items cost by
+     */
+    public void increaseCost(int amount)
+    { cost += amount; }
+
+    /**
+     * Decrease the cost of an item
+     * @param amount The amount of gold to decrease the items cost by
+     */
+    public void decreaseCost(int amount)
+    { cost -= amount; }
 
     /**
      * Create a random item
