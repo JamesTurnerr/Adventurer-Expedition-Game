@@ -54,6 +54,7 @@ public class MarketService {
         {
             gameEnvironment.getPlayerInventory().removeItem(item);
             gameEnvironment.setGold(gameEnvironment.getGold() + item.getCost());
+            gameEnvironment.addTotalGold(item.getCost());
             item.increaseCost(item.getCost() - (int)(item.getCost() * taxModifier));
             gameEnvironment.getMarketInventory().addItem(item);
             System.out.println(String.format("Item sold, new gold value: %d", gameEnvironment.getGold()));

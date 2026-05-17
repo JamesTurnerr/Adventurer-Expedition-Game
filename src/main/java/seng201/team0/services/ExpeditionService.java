@@ -175,9 +175,15 @@ public class ExpeditionService {
                 case SMALL_STAMINA_LOSS -> gameEnvironment.getRandomAdventurerFromParty().takeStaminaDamage(5);
                 case MEDIUM_STAMINA_LOSS -> gameEnvironment.getRandomAdventurerFromParty().takeStaminaDamage(10);
                 case LARGE_STAMINA_LOSS -> gameEnvironment.getRandomAdventurerFromParty().takeStaminaDamage(20);
-                case SMALL_GOLD -> gameEnvironment.setGold(gameEnvironment.getGold() + 5);
-                case MEDIUM_GOLD -> gameEnvironment.setGold(gameEnvironment.getGold() + 10);
-                case LARGE_GOLD -> gameEnvironment.setGold(gameEnvironment.getGold() + 20);
+                case SMALL_GOLD -> {
+                    gameEnvironment.setGold(gameEnvironment.getGold() + 5);
+                    gameEnvironment.addTotalGold(5);}
+                case MEDIUM_GOLD -> {
+                    gameEnvironment.setGold(gameEnvironment.getGold() + 10);
+                    gameEnvironment.addTotalGold(10);}
+                case LARGE_GOLD -> {
+                    gameEnvironment.setGold(gameEnvironment.getGold() + 20);
+                    gameEnvironment.addTotalGold(20);}
                 case RANDOM -> System.out.println("RANDOM");
                 case LOSE_PROGRESS -> currentArea+=1;//Skip a potential loot room
                 case NOTHING -> System.out.println("NOTHING");
@@ -281,7 +287,8 @@ public class ExpeditionService {
      */
     private void expeditionCompletionReward()
     {
-        int goldReward = (int) (100 * (1 / gameEnvironment.getDifficultyModifier()));
+        int goldReward = (int) (50 * (1 / gameEnvironment.getDifficultyModifier()));
         gameEnvironment.setGold(gameEnvironment.getGold() + goldReward);
+        gameEnvironment.addTotalGold(goldReward);
     }
 }

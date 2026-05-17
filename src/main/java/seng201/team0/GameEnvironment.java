@@ -68,6 +68,7 @@ public class GameEnvironment {
     public void setSelectedExpeditionLocation(String location, int index){this.selectedExpeditionLocation = location; this.selectedExpeditionIndex = index;}
     public void setRemainingExpeditionNumber(int remaining){this.expeditionsRemaining = remaining;}
     public void setExpeditionsCompleted(int current){this.expeditionsCompleted = current;}
+    public void addTotalGold(int i) {totalGold += i;}
 
     /**
      * Initializes/updates the market inventory after setup or expedition completion
@@ -143,6 +144,7 @@ public class GameEnvironment {
                 break;
         }
         this.guildName = guildName;
+        this.totalGold = gold;
         this.expeditionsCompleted = 0;
         this.expeditionsRemaining = numberOfExpeditions;
         updateMarketInventory();
