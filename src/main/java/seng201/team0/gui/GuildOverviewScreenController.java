@@ -21,8 +21,9 @@ public class GuildOverviewScreenController extends ScreenController {
     @FXML
     private ListView<Item> itemsListView;
 
-    private final GuiService guiService = new GuiService(getGameEnvironment());
-    private final GuildOverviewService guildOverviewService = new GuildOverviewService(getGameEnvironment());
+    private final GameEnvironment game = getGameEnvironment();
+    private final GuiService guiService = new GuiService(game);
+    private final GuildOverviewService guildOverviewService = new GuildOverviewService(game);
 
     GuildOverviewScreenController(GameEnvironment gameEnvironment) {super(gameEnvironment);}
 
@@ -54,6 +55,20 @@ public class GuildOverviewScreenController extends ScreenController {
     private void moveFromMainButtonClicked()
     {
         guildOverviewService.moveAdventurerToReserve(mainPartyListView.getSelectionModel().getSelectedItem());//Move adventurer to reserve
+        updateListViews();
+    }
+
+    @FXML
+    private void retireButtonClicked(){
+        Adventurer selectedAdventurer = reservePartyListView.getSelectionModel().getSelectedItem();
+        game.getReserveParty().remove(selectedAdventurer);
+        updateListViews();
+    }
+
+    @FXML
+    private void deleteItemButtonClicked(){
+        Item item = itemsListView.getSelectionModel().getSelectedItem();
+        game.getPlayerInventory().removeItem(item);
         updateListViews();
     }
 
