@@ -3,7 +3,6 @@ package seng201.team0.gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.io.IOException;
 import java.util.List;
 
 import seng201.team0.GameEnvironment;
@@ -23,11 +22,11 @@ public class GuildHallScreenController extends ScreenController {
     @FXML private Label nameLabel, healthLabel, staminaLabel, perceptionLabel, costLabel, payLabel, damageLabel;
 
 
-    private GameEnvironment game = getGameEnvironment();
-    private final GuiService guiService = new GuiService(game);
-    private final GuildHallService guildHallService = new GuildHallService(game);
+    private GameEnvironment gameEnvironment = getGameEnvironment();
+    private final GuiService guiService = new GuiService(gameEnvironment);
+    private final GuildHallService guildHallService = new GuildHallService(gameEnvironment);
     private final DisplayStatsService displayStatsService = new DisplayStatsService();
-    private List<Adventurer> mainParty = game.getMainParty();
+    private List<Adventurer> mainParty = gameEnvironment.getMainParty();
 
     public GuildHallScreenController(GameEnvironment gameEnvironment)
     {
@@ -90,7 +89,7 @@ public class GuildHallScreenController extends ScreenController {
 
     @FXML
     private void backButtonClicked() {
-        game.goToMainScreen();
+        gameEnvironment.goToMainScreen();
     }
 
     @FXML
@@ -99,7 +98,7 @@ public class GuildHallScreenController extends ScreenController {
         Adventurer selectedAdventurer = hireableAdventurersListView.getSelectionModel().getSelectedItem();
         if (guildHallService.hireAdventurer(selectedAdventurer))
         {
-            game.getHireableAdventurers().remove(selectedAdventurer);
+            gameEnvironment.getHireableAdventurers().remove(selectedAdventurer);
             updateGUI();
         }
     }
@@ -107,7 +106,7 @@ public class GuildHallScreenController extends ScreenController {
     @FXML
     private void retireAdventurerButtonClicked(){
         Adventurer selectedAdventurer = reservePartyListView.getSelectionModel().getSelectedItem();
-        game.getReserveParty().remove(selectedAdventurer);
+        gameEnvironment.getReserveParty().remove(selectedAdventurer);
         updateGUI();
     }
 
@@ -139,8 +138,8 @@ public class GuildHallScreenController extends ScreenController {
      */
     private void updateGUI()
     {
-        guiService.populateListView(hireableAdventurersListView,  game.getHireableAdventurers());
-        guiService.populateListView(reservePartyListView,  game.getReserveParty());
-        goldAmountLabel.setText(String.valueOf(game.getGold()));
+        guiService.populateListView(hireableAdventurersListView,  gameEnvironment.getHireableAdventurers());
+        guiService.populateListView(reservePartyListView,  gameEnvironment.getReserveParty());
+        goldAmountLabel.setText(String.valueOf(gameEnvironment.getGold()));
     }
 }

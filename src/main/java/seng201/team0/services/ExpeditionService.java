@@ -245,32 +245,27 @@ public class ExpeditionService {
     /**
      * Function called after all area in the expedition have been explored, this will either send the player to the
      * game over screen, the post expedition random event screen, or back to the main menu.
+     * This method will:
+     * Pay main party members, heal reserve party members,
+     * Refresh the market, guild hall, and expedition locations,
+     * and give the player gold for their expedition completed.
      */
     public void expeditionOver(){
-        // add bool to prevent multiple checks
         if (expeditionFinished) {return;}
         expeditionFinished = true;
-
-        // get gold based on difficulty
         expeditionCompletionReward();
-        // pay the main party
         gameEnvironment.payMainParty();
-        // update remaining
         gameEnvironment.setExpeditionsCompleted(gameEnvironment.getExpeditionsCompleted()+1);
         gameEnvironment.setRemainingExpeditionNumber(gameEnvironment.getExpeditionsRemaining()-1);
-        // refresh guild hall and market and expedition locations
         gameEnvironment.updateBuyableAdventurers();
         gameEnvironment.updateMarketInventory();
         gameEnvironment.updateAvailableExpeditionLocations();
-        //recover the reserve party
         gameEnvironment.recoverReserveParty();
-        //to go game over screen if there are no expeditions left
         if (gameEnvironment.getExpeditionsRemaining() == 0)
         {
             gameEnvironment.goToGameOverScreen();
         }
-        else//return to main place, or special event first (based on difficulty)
-        {
+        else {
             if (rand.nextInt(100) < gameEnvironment.getEventChance()) {
                 gameEnvironment.goToRandomEventScreen();
             }
@@ -283,7 +278,7 @@ public class ExpeditionService {
     }
 
     /**
-     * The reward gained at the end of an expedition based on difficulty
+     * The bonus reward gained at the end of an expedition based on difficulty
      */
     private void expeditionCompletionReward()
     {
