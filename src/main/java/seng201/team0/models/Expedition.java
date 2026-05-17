@@ -137,6 +137,74 @@ public class Expedition {
                         new Choice("Loot everything", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS, EventOutcome.MEDIUM_GOLD}),
                         new Choice("Take only essentials", new EventOutcome[]{EventOutcome.SMALL_GOLD}),
                         new Choice("Search for traps first", new EventOutcome[]{EventOutcome.LARGE_PERCEPTION}),}),
+            },
+            {
+                new Event("A snowstorm races toward the party.", new Choice[]{
+                        new Choice("Push through it", new EventOutcome[]{EventOutcome.LARGE_STAMINA_LOSS}),
+                        new Choice("Build shelter", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                        new Choice("Search for a cave", new EventOutcome[]{EventOutcome.SMALL_PERCEPTION}),}),
+                new Event("Cracks spread beneath your feet.", new Choice[]{
+                        new Choice("Run across", new EventOutcome[]{EventOutcome.SMALL_STAMINA_LOSS}),
+                        new Choice("Move slowly", new EventOutcome[]{EventOutcome.SMALL_STAMINA_LOSS}),
+                        new Choice("Search for another path", new EventOutcome[]{EventOutcome.SMALL_PERCEPTION}),}),
+                new Event("A pack of wolves surrounds the group.", new Choice[]{
+                        new Choice("Fight them", new EventOutcome[]{EventOutcome.MEDIUM_HEALTH_LOSS}),
+                        new Choice("Scare them away", new EventOutcome[]{EventOutcome.SMALL_STAMINA_LOSS}),
+                        new Choice("Sneak around them", new EventOutcome[]{EventOutcome.SMALL_PERCEPTION}),}),
+                new Event("Your food has frozen solid.", new Choice[]{
+                        new Choice("Eat it frozen", new EventOutcome[]{EventOutcome.SMALL_HEALTH_LOSS}),
+                        new Choice("Warm it by fire", new EventOutcome[]{EventOutcome.SMALL_HEALTH_LOSS}),
+                        new Choice("Search for fresh food", new EventOutcome[]{EventOutcome.SMALL_PERCEPTION}),}),
+                new Event("A dark cave opens in the glacier.", new Choice[]{
+                        new Choice("Explore it", new EventOutcome[]{EventOutcome.LARGE_PERCEPTION}),
+                        new Choice("Ignore It", new EventOutcome[]{EventOutcome.NOTHING}),
+                        new Choice("Search around the entrance", new EventOutcome[]{EventOutcome.SMALL_PERCEPTION}),}),
+                new Event("Snow shifts loudly above.", new Choice[]{
+                        new Choice("Sprint for cover", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                        new Choice("Stay completely still", new EventOutcome[]{EventOutcome.LARGE_HEALTH_LOSS}),
+                        new Choice("Search for protected terrain", new EventOutcome[]{EventOutcome.MEDIUM_PERCEPTION}),}),
+                new Event("Freezing wind tears through the pass.", new Choice[]{
+                        new Choice("Push onward", new EventOutcome[]{EventOutcome.MEDIUM_HEALTH_LOSS}),
+                        new Choice("Wait it out", new EventOutcome[]{EventOutcome.MEDIUM_HEALTH_LOSS}),
+                        new Choice("Search for cover", new EventOutcome[]{EventOutcome.SMALL_PERCEPTION})}),
+                new Event("A body lies trapped in ice.", new Choice[]{
+                        new Choice("Search the corpse", new EventOutcome[]{EventOutcome.MEDIUM_GOLD}),
+                        new Choice("Leave it alone", new EventOutcome[]{EventOutcome.NOTHING}),
+                        new Choice("Inspect surroundings first", new EventOutcome[]{EventOutcome.SMALL_PERCEPTION}),}),
+            },
+            {
+                new Event("Bandits attack from the trees.", new Choice[]{
+                        new Choice("Fight", new EventOutcome[]{EventOutcome.MEDIUM_HEALTH_LOSS, EventOutcome.MEDIUM_STAMINA_LOSS, EventOutcome.MEDIUM_GOLD}),
+                        new Choice("Flee", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                        new Choice("Try to reason with them", new EventOutcome[]{EventOutcome.SMALL_PERCEPTION}),}),
+                new Event("A suspicious trader offers supplies.", new Choice[]{
+                        new Choice("Buy from him", new EventOutcome[]{EventOutcome.SMALL_PERCEPTION}),
+                        new Choice("Threaten him", new EventOutcome[]{EventOutcome.MEDIUM_HEALTH_LOSS, EventOutcome.MEDIUM_GOLD}),
+                        new Choice("Decline his offer", new EventOutcome[]{EventOutcome.NOTHING}),}),
+                new Event("An injured traveler begs for help.", new Choice[]{
+                        new Choice("Help them", new EventOutcome[]{EventOutcome.SMALL_STAMINA_LOSS, EventOutcome.SMALL_GOLD}),
+                        new Choice("Ignore them", new EventOutcome[]{EventOutcome.NOTHING}),
+                        new Choice("Question them", new EventOutcome[]{EventOutcome.SMALL_PERCEPTION}),}),
+                new Event("Smoke rises nearby.", new Choice[]{
+                        new Choice("Approach openly", new EventOutcome[]{EventOutcome.SMALL_PERCEPTION}),
+                        new Choice("Avoid the area", new EventOutcome[]{EventOutcome.NOTHING}),
+                        new Choice("Sneak closer quietly", new EventOutcome[]{EventOutcome.SMALL_PERCEPTION}),}),
+                new Event("An arrow lands nearby.", new Choice[]{
+                        new Choice("Charge the attacker", new EventOutcome[]{EventOutcome.MEDIUM_HEALTH_LOSS}),
+                        new Choice("Take cover", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),
+                        new Choice("Locate the shooter", new EventOutcome[]{EventOutcome.MEDIUM_PERCEPTION}),}),
+                new Event("An overturned caravan blocks the road.", new Choice[]{
+                        new Choice("Loot the remains", new EventOutcome[]{EventOutcome.MEDIUM_GOLD, EventOutcome.MEDIUM_HEALTH_LOSS}),
+                        new Choice("Inspect for traps", new EventOutcome[]{EventOutcome.MEDIUM_PERCEPTION}),
+                        new Choice("Take a different route", new EventOutcome[]{EventOutcome.NOTHING}),}),
+                new Event("Bandits patrol the area ahead.", new Choice[]{
+                        new Choice("Fight through", new EventOutcome[]{EventOutcome.MEDIUM_HEALTH_LOSS, EventOutcome.MEDIUM_STAMINA_LOSS}),
+                        new Choice("Wait for them to leave", new EventOutcome[]{EventOutcome.SMALL_STAMINA_LOSS}),
+                        new Choice("Sneak around them", new EventOutcome[]{EventOutcome.MEDIUM_PERCEPTION})}),
+                new Event("A barricade seals the canyon.", new Choice[]{
+                        new Choice("Break through", new EventOutcome[]{EventOutcome.LARGE_STAMINA_LOSS}),
+                        new Choice("Search for hidden paths", new EventOutcome[]{EventOutcome.MEDIUM_PERCEPTION}),
+                        new Choice("Take the long way", new EventOutcome[]{EventOutcome.LARGE_STAMINA_LOSS}),}),
             }
     };
 

@@ -11,7 +11,7 @@ import java.util.*;
 public class GameEnvironment {
     private final ScreenNavigator navigator;
     public final int MAX_PARTY_SIZE = 5;
-    private final int LOCATION_COUNT = 3;//currently only 3 expeditions implemented so far. Increase as more implemented until max reached of tempExpedition.areaNames.length
+    private final int LOCATION_COUNT = 5;//currently only 3 expeditions implemented so far. Increase as more implemented until max reached of tempExpedition.areaNames.length
     private List<Adventurer> mainParty;
     private List<Adventurer> reserveParty = new ArrayList<Adventurer>();
     private Inventory playerInventory = new Inventory();
