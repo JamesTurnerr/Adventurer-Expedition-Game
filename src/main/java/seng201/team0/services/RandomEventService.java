@@ -12,7 +12,6 @@ public class RandomEventService {
     public RandomEventService(GameEnvironment gameEnvironment) { this.gameEnvironment = gameEnvironment; }
 
     private final Random rand = new Random();
-    private final double difficultyModifier = gameEnvironment.getDifficultyModifier();
 
     /**
      * Trigger a random event after an expedition is finished
@@ -63,7 +62,7 @@ public class RandomEventService {
         int roll = rand.nextInt(100);
         String adv = adventurer.getName();
 
-        if (roll < 70 / difficultyModifier) {
+        if (roll < 70 / gameEnvironment.getDifficultyModifier()) {
             Item item = Item.getRandomItem();
             gameEnvironment.getPlayerInventory().addItem(item);
 
@@ -89,8 +88,8 @@ public class RandomEventService {
         double retirementChance = 0;
 
         // increase chances if stamina is very low
-        if (value < 20 * difficultyModifier) {
-            retirementChance += 20*difficultyModifier;}
+        if (value < 20 * gameEnvironment.getDifficultyModifier()) {
+            retirementChance += 20*gameEnvironment.getDifficultyModifier();}
 
         // the higher the streak, the larger the chance of retirement
         switch (streak) {
@@ -109,6 +108,7 @@ public class RandomEventService {
         if (retires) {
 
             gameEnvironment.getMainParty().remove(adventurer);
+            // check if the run is over
 
             return adventurer.getName()
                     + " has retired from adventuring.\n\n"
@@ -120,5 +120,14 @@ public class RandomEventService {
             adventurer.setStamina(adventurer.getStamina() - amount);
             return adventurer.getName() + " considers retirement...\n" + "But the pay is too good of an incentive.\n\n" + "Stamina decreases by " + amount;
         }
+    }
+
+    public void nextScreen(){
+        GameOverService gameOverService = new GameOverService(gameEnvironment);
+
+        if (gameOverService.isGameOver()) {
+            gameEnvironment.goToGameOverScreen();
+        }
+        gameEnvironment.goToMainScreen();
     }
 }

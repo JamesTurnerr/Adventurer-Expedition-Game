@@ -117,4 +117,7 @@ public class ExpeditionOverService {
             }
         }
     }
+
+    // checks if the player has enough money
+
 }

@@ -30,7 +30,7 @@ public class RandomEventScreenController extends ScreenController{
      */
     @FXML
     private void onContinueButtonClicked() {
-        getGameEnvironment().goToMainScreen();
+        randomEventService.nextScreen();
     }
 
     /**
