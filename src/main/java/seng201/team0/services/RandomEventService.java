@@ -12,6 +12,7 @@ public class RandomEventService {
     public RandomEventService(GameEnvironment gameEnvironment) { this.gameEnvironment = gameEnvironment; }
 
     private final Random rand = new Random();
+    private final double difficultyModifier = gameEnvironment.getDifficultyModifier();
 
     /**
      * Trigger a random event after an expedition is finished
@@ -62,7 +63,7 @@ public class RandomEventService {
         int roll = rand.nextInt(100);
         String adv = adventurer.getName();
 
-        if (roll < 70 / gameEnvironment.getDifficultyModifier()) {
+        if (roll < 70 / difficultyModifier) {
             Item item = Item.getRandomItem();
             gameEnvironment.getPlayerInventory().addItem(item);
 
@@ -84,12 +85,38 @@ public class RandomEventService {
         int stamina = adventurer.getStamina();
         int value = (health + stamina) / 2;
 
-        if (value < 20 * gameEnvironment.getDifficultyModifier()){
-            gameEnvironment.getMainParty().remove(adventurer);
-            return adventurer.getName() + " has retired from adventuring.\n\n" + "After suffering too many injuries and exhaustion, they leave the party.";
+        int streak = adventurer.getExpeditionsInARow();
+        double retirementChance = 0;
+
+        // increase chances if stamina is very low
+        if (value < 20 * difficultyModifier) {
+            retirementChance += 20*difficultyModifier;}
+
+        // the higher the streak, the larger the chance of retirement
+        switch (streak) {
+            case 2 -> retirementChance += 15;
+            case 3 -> retirementChance += 35;
+            case 4 -> retirementChance += 65;
+            default -> {
+                if (streak >= 5) {
+                    retirementChance = 80;
+                }
+            }
         }
-        else{
-            int amount = 10;
+
+        boolean retires = rand.nextInt(100) < retirementChance;
+
+        if (retires) {
+
+            gameEnvironment.getMainParty().remove(adventurer);
+
+            return adventurer.getName()
+                    + " has retired from adventuring.\n\n"
+                    + "After too many consecutive expeditions, injuries, and exhaustion, they leave the party.";
+        }
+        else
+        {
+            int amount = rand.nextInt(30);
             adventurer.setStamina(adventurer.getStamina() - amount);
             return adventurer.getName() + " considers retirement...\n" + "But the pay is too good of an incentive.\n\n" + "Stamina decreases by " + amount;
         }

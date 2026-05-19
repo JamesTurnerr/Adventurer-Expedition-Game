@@ -7,6 +7,7 @@ public class Adventurer extends Entity {
     private final int hiringCost;
     private final int pay;
     private String skill;
+    private int expeditionsInARow;
 
     /**
      * Constructor for adventurer class, sets base stats.
@@ -28,6 +29,9 @@ public class Adventurer extends Entity {
 
         //set stats
         this.stamina = maxStamina;
+
+        this.expeditionsInARow = 0;
+        this.skill = "None";
     }
     //Getters
     public int getStamina()
@@ -43,10 +47,18 @@ public class Adventurer extends Entity {
     {
         return pay;
     }
+    public int getExpeditionsInARow() {return expeditionsInARow;}
 
     // setter
     public void setStamina(int stamina) {this.stamina = Math.max(0, Math.min(stamina, maxStamina));}
 
+    public void incrementExpeditionsInARow() {
+        expeditionsInARow++;
+    }
+
+    public void resetExpeditionsInARow() {
+        expeditionsInARow = 0;
+    }
 
     /**
      * Causes the adventurer to lose some health.

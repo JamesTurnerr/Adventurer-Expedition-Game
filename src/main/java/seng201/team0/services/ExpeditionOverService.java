@@ -56,10 +56,13 @@ public class ExpeditionOverService {
 
     /**
      * Pay all adventurers in the main party
+     * Increments the expeditions in a row
      */
     private void payMainParty() {
 
         for (var adventurer : gameEnvironment.getMainParty()) {
+
+            adventurer.incrementExpeditionsInARow();
 
             gameEnvironment.setGold(
                     gameEnvironment.getGold() - adventurer.getPay()
@@ -76,6 +79,7 @@ public class ExpeditionOverService {
 
     /**
      * Recover reserve party stamina
+     * Resets the expeditions in a row
      */
     private void recoverReserveParty() {
 
@@ -86,6 +90,7 @@ public class ExpeditionOverService {
             int newStam = (int) (
                     currentStam + 20 / gameEnvironment.getDifficultyModifier()
             );
+            adventurer.resetExpeditionsInARow();
 
             adventurer.setStamina(newStam);
         }
