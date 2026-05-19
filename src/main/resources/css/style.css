@@ -1,0 +1,97 @@
+GridPane{
+    -fx-background-color:#0D1117;
+}
+.root Text {
+    -fx-fill: #FFFFFF;
+}
+.label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.menu-button {
+    -fx-background-color:#0D1117;
+    -fx-border-color:#AAAAAA;
+    -fx-text-fill: #FFFFFF;
+}
+
+.menu-item {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color:#0D1117;
+    -fx-padding: 10px 72px 10px 10px;
+}
+
+.menu-item:hover {
+    -fx-background-color: #1F2228;
+}
+
+.menu-button .context-menu {
+    -fx-background-color:#0D1117;
+    -fx-border-color:#AAAAAA;
+}
+
+
+.list-view .list-cell {
+    -fx-background-color: #0D1117;
+    -fx-text-fill: #FFFFFF;
+}
+.list-view .list-cell:selected {
+    -fx-background-color: #1F2228;
+}
+.list-view .list-cell:hover {
+    -fx-background-color: #2F3339;
+}
+.list-view .list-cell:empty {
+    -fx-background-color: transparent;
+}
+.list-view {
+    -fx-background-color: #0D1117;
+    -fx-border-color:#AAAAAA;
+}
+.button {
+    -fx-background-color:#0D1117;
+    -fx-border-color:#AAAAAA;
+    -fx-text-fill:#FFFFFF;
+}
+.button:pressed {
+    -fx-background-color: #0C0915;
+}
+.text-field {
+    -fx-background-color:#0D1117;
+    -fx-border-color:#AAAAAA;
+    -fx-border-radius:2px;
+    -fx-text-fill: #FFFFFF;
+}
+
+/*-------Setup screen specific elements---------*/
+
+#chooseAdventurerButton{
+    -fx-background-color:#007700;
+}
+#chooseAdventurerButton:hover{
+    -fx-background-color:#009900;
+}
+#chooseAdventurerButton:pressed{
+    -fx-background-color:#005500;
+}
+
+#unchooseAdventurerButton{
+    -fx-background-color:#AA0000;
+}
+#unchooseAdventurerButton:hover{
+    -fx-background-color:#FF0000;
+}
+#unchooseAdventurerButton:pressed{
+    -fx-background-color:#880000;
+}
+
+#slot1Button:hover{
+    -fx-background-color: #2F3339 !important;
+}
+
+#slot2Button:hover{
+    -fx-background-color: #2F3339 !important;
+}
+
+#slot3Button:hover{
+    -fx-background-color: #2F3339 !important;
+}

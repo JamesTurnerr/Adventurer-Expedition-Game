@@ -210,11 +210,12 @@ public class SetupScreenController extends ScreenController {
      */
     private void updateSlotButton(int index, Adventurer adventurer) {
         Button button = selectedAdventurerButtons.get(index);
-
         if (adventurer == null) {
             button.setText("Empty");
+            button.setStyle("-fx-background-color: #0D1117;");
         } else {
             button.setText(adventurer.getName());
+            button.setStyle("-fx-background-color: #1F2228;");
         }
     }
 
