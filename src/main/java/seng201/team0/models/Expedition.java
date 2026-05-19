@@ -222,11 +222,6 @@ public class Expedition {
      */
     public Expedition(){}
 
-    //can add location variety to this
-    public Item getRandomLoot() {
-        return lootPool[rand.nextInt(lootPool.length)];
-    }
-
 
     /**
      * returns the name of the expedition based on its index in the areaNames array

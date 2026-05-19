@@ -18,7 +18,6 @@ public class GameEnvironment {
     private Inventory marketInventory = new Inventory();
     private int gold;
     private int totalGold;
-    private String difficulty;
     private String guildName;
     private int expeditionsCompleted;
     private int expeditionsRemaining;
@@ -34,8 +33,8 @@ public class GameEnvironment {
     double difficultyModifier;
 
     //store start location for player to set themselves
-    private String selectedExpeditionLocation;
     private int selectedExpeditionIndex;
+    private String selectedExpeditionLocation;
 
 
     public GameEnvironment(ScreenNavigator navigator)
@@ -58,7 +57,6 @@ public class GameEnvironment {
     public Inventory getMarketInventory() {return marketInventory;}
     public List<Integer> getExpeditionLocations(){return expeditionLocations;}
     public int getEventChance() {System.out.println("the chance is"+ eventChance); return eventChance;}
-    public String getSelectedExpeditionLocation(){return selectedExpeditionLocation;}
     public double getDifficultyModifier(){return difficultyModifier;}
     public String getGuildName(){return guildName;}
     public int getTotalGold() {return totalGold;}
@@ -124,21 +122,18 @@ public class GameEnvironment {
         {
             case "Easy":
                 this.gold = 20;
-                this.difficulty = "Easy";
                 eventChance = 70;
                 difficultyModifier = .8;
                 break;
 
             case "Normal":
                 this.gold = 10;
-                this.difficulty = "Normal";
                 eventChance = 50;
                 difficultyModifier = 1;
                 break;
 
             case "Hard":
                 this.gold = 0;
-                this.difficulty = "Hard";
                 eventChance = 30;
                 difficultyModifier = 1.2;
                 break;
@@ -188,40 +183,7 @@ public class GameEnvironment {
      * Exit the game
      */
     public void onQuitRequested() {System.exit(0);}
-
-    public void takeDamage(int damage){
-        // each party member loses health based on dmg and defense
-        // (since there no defense ill do perception)
-        for (Adventurer member : mainParty){
-
-            // damage range
-            double modifier = 0.8 + random.nextDouble() * 0.4;
-            int randomizedDamage = (int) (damage * modifier);
-
-            int damageTaken = (int) (damage * (100.0 / (100 + member.getPerception())));
-
-            int health = member.getHealth() - damageTaken;
-            member.setHealth(Math.max(0, health));
-        }
-    }
-
-    public void recoverReserveParty(){
-        for (Adventurer adventurer : reserveParty){
-            int currentStam = adventurer.getStamina();
-            int newStam = (int) (currentStam + 20/difficultyModifier);
-            adventurer.setStamina(newStam);
-        }
-    }
-
-    public void payMainParty(){
-        for (Adventurer adventurer : mainParty){
-            gold -= adventurer.getPay();
-            if (gold < 0) {
-                System.out.println("you owe "+adventurer.getName()+" money!");
-                //gold = 0;
-            }
-        }
-    }
+    
 }
 
 

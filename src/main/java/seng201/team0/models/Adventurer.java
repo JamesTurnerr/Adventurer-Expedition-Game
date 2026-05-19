@@ -6,6 +6,7 @@ public class Adventurer extends Entity {
     private int perception;
     private final int hiringCost;
     private final int pay;
+    private String skill;
 
     /**
      * Constructor for adventurer class, sets base stats.
@@ -37,10 +38,7 @@ public class Adventurer extends Entity {
     {
         return perception;
     }
-    public int getHiringCost()
-    {
-        return hiringCost;
-    }
+    public int getHiringCost() {return hiringCost;}
     public int getPay()
     {
         return pay;
@@ -48,6 +46,7 @@ public class Adventurer extends Entity {
 
     // setter
     public void setStamina(int stamina) {this.stamina = Math.max(0, Math.min(stamina, maxStamina));}
+
 
     /**
      * Causes the adventurer to lose some health.

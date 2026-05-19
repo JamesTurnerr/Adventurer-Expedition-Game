@@ -250,40 +250,16 @@ public class ExpeditionService {
      * Refresh the market, guild hall, and expedition locations,
      * and give the player gold for their expedition completed.
      */
-    public void expeditionOver(){
-        if (expeditionFinished) {return;}
+    public void expeditionOver() {
+
+        if (expeditionFinished) {
+            return;
+        }
+
         expeditionFinished = true;
-        expeditionCompletionReward();
-        gameEnvironment.payMainParty();
-        gameEnvironment.setExpeditionsCompleted(gameEnvironment.getExpeditionsCompleted()+1);
-        gameEnvironment.setRemainingExpeditionNumber(gameEnvironment.getExpeditionsRemaining()-1);
-        gameEnvironment.updateBuyableAdventurers();
-        gameEnvironment.updateMarketInventory();
-        gameEnvironment.updateAvailableExpeditionLocations();
-        gameEnvironment.recoverReserveParty();
-        if (gameEnvironment.getExpeditionsRemaining() == 0)
-        {
-            gameEnvironment.goToGameOverScreen();
-        }
-        else {
-            if (rand.nextInt(100) < gameEnvironment.getEventChance()) {
-                gameEnvironment.goToRandomEventScreen();
-            }
-            else
-            {
-                gameEnvironment.goToMainScreen();
-            }
-        }
 
-    }
+        ExpeditionOverService expeditionOverService = new ExpeditionOverService(gameEnvironment);
 
-    /**
-     * The bonus reward gained at the end of an expedition based on difficulty
-     */
-    private void expeditionCompletionReward()
-    {
-        int goldReward = (int) (50 * (1 / gameEnvironment.getDifficultyModifier()));
-        gameEnvironment.setGold(gameEnvironment.getGold() + goldReward);
-        gameEnvironment.addTotalGold(goldReward);
+        expeditionOverService.completeExpedition();
     }
 }
