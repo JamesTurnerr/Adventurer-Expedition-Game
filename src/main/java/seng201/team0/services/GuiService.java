@@ -63,6 +63,7 @@ public class GuiService {
     }
     /**
      * Populates the buttons containing the current adventurer party names
+     * Sets the color of filled and unfilled adventurer slots
      * @param slots a reference to a list of the buttons containing the adventurers names
      */
     public void populateAdventurerSlots(List<Button> slots) {
@@ -73,8 +74,10 @@ public class GuiService {
 
             if (party != null && i < party.size() && party.get(i) != null) {
                 slot.setText(party.get(i).getName());
+                slot.setStyle("-fx-background-color:#1F2228");
             } else {
                 slot.setText("Empty");
+                slot.setStyle("-fx-background-color:#0D1117");
             }
         }
     }

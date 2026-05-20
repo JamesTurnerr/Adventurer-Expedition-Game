@@ -3,8 +3,6 @@ package seng201.team0.gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.io.IOException;
-
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
 import seng201.team0.models.Item;
@@ -16,8 +14,6 @@ public class GuildOverviewScreenController extends ScreenController {
     private Button backButton, moveToMainButton, moveFromMainButton, useItemButton;
     @FXML
     private ListView<Adventurer> reservePartyListView;
-    @FXML
-    private ListView<Adventurer> mainPartyListView;
     @FXML
     private ListView<Item> itemsListView;
 
@@ -54,7 +50,7 @@ public class GuildOverviewScreenController extends ScreenController {
     @FXML
     private void moveFromMainButtonClicked()
     {
-        guildOverviewService.moveAdventurerToReserve(mainPartyListView.getSelectionModel().getSelectedItem());//Move adventurer to reserve
+        //guildOverviewService.moveAdventurerToReserve(mainPartyListView.getSelectionModel().getSelectedItem());//Move adventurer to reserve
         updateListViews();
     }
 
@@ -78,10 +74,10 @@ public class GuildOverviewScreenController extends ScreenController {
     @FXML
     private void useItemButtonClicked()
     {
-        Adventurer adventurer = mainPartyListView.getSelectionModel().getSelectedItem();
-        Item item = itemsListView.getSelectionModel().getSelectedItem();
-        guildOverviewService.useItem(adventurer, item);
-        updateListViews();
+        //Adventurer adventurer = mainPartyListView.getSelectionModel().getSelectedItem();
+        //Item item = itemsListView.getSelectionModel().getSelectedItem();
+        //guildOverviewService.useItem(adventurer, item);
+        //updateListViews();
     }
 
     /**
@@ -89,7 +85,7 @@ public class GuildOverviewScreenController extends ScreenController {
      */
     private void updateListViews()
     {
-        guiService.populateListView(mainPartyListView, getGameEnvironment().getMainParty());
+
         guiService.populateListView(reservePartyListView, getGameEnvironment().getReserveParty());
         guiService.populateListView(itemsListView, getGameEnvironment().getPlayerInventory().getAllItems());
     }

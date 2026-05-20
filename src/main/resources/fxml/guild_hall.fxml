@@ -129,18 +129,6 @@
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
-                     <children>
-                        <Button fx:id="hireAdventurerButton" maxHeight="180.0" maxWidth="800.0" mnemonicParsing="false" onAction="#hireAdventurerButtonClicked" prefHeight="192.0" prefWidth="373.0" text="Hire">
-                           <GridPane.margin>
-                              <Insets right="20.0" top="10.0" />
-                           </GridPane.margin>
-                        </Button>
-                        <Button fx:id="retireAdventurerButton" maxHeight="180.0" maxWidth="800.0" mnemonicParsing="false" onAction="#retireAdventurerButtonClicked" prefHeight="192.0" prefWidth="373.0" text="Retire" GridPane.columnIndex="1">
-                           <GridPane.margin>
-                              <Insets right="20.0" top="10.0" />
-                           </GridPane.margin>
-                        </Button>
-                     </children>
                   </GridPane>
                </children>
                <padding>
@@ -149,9 +137,9 @@
             </GridPane>
             <GridPane prefHeight="282.0" prefWidth="402.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="117.6000244140625" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="110.3999755859375" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="177.59996032714844" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="125.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="125.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="150.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
@@ -159,6 +147,44 @@
                 <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="210.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
+                  <GridPane GridPane.columnSpan="2" GridPane.rowIndex="2">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="170.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ListView fx:id="reservePartyListView" prefHeight="200.0" prefWidth="200.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets left="20.0" right="5.0" />
+                           </GridPane.margin>
+                        </ListView>
+                        <ListView fx:id="hireableAdventurersListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="5.0" right="15.0" />
+                           </GridPane.margin>
+                        </ListView>
+                        <Button fx:id="hireAdventurerButton" maxHeight="60.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#hireAdventurerButtonClicked" text="Hire" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                           <GridPane.margin>
+                              <Insets bottom="20.0" left="5.0" right="15.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="retireAdventurerButton" maxHeight="60.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#retireAdventurerButtonClicked" text="Retire" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                           <GridPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="5.0" />
+                           </GridPane.margin>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </GridPane>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Guild Hall" textAlignment="RIGHT" GridPane.halignment="LEFT" GridPane.valignment="TOP">
                      <GridPane.margin>
                         <Insets left="20.0" top="10.0" />
@@ -167,19 +193,6 @@
                         <Font size="30.0" />
                      </font>
                   </Text>
-                  <ListView fx:id="reservePartyListView" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <GridPane.margin>
-                        <Insets bottom="10.0" left="20.0" right="5.0" />
-                     </GridPane.margin>
-                  </ListView>
-                  <ListView fx:id="hireableAdventurersListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets bottom="10.0" left="5.0" right="10.0" />
-                     </GridPane.margin>
-                  </ListView>
                   <GridPane fx:id="borderedGridPane" GridPane.columnIndex="2" GridPane.rowIndex="2">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -233,12 +246,12 @@
                         <Label fx:id="damageLabel" text="None" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                      </children>
                      <GridPane.margin>
-                        <Insets left="5.0" />
+                        <Insets />
                      </GridPane.margin>
                   </GridPane>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hireable:" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
-                        <Insets left="10.0" />
+                        <Insets left="5.0" />
                      </GridPane.margin>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve Party:" GridPane.rowIndex="1">
