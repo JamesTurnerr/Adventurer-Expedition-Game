@@ -49,16 +49,7 @@ public class GuildOverviewScreenController extends ScreenController {
     ChangeListener<Adventurer> selectionListener = (obs, oldVal, newVal) -> {
         if (newVal != null) {
             selectedAdventurerSlot = -1;
-            displayStatsService.updateStats(
-                    newVal,
-                    nameLabel,
-                    healthLabel,
-                    staminaLabel,
-                    perceptionLabel,
-                    costLabel,
-                    payLabel,
-                    damageLabel
-            );
+            updateAdventurerStatLabels(newVal);
         }
         updateSelectedAdventurerBorder();
     };
@@ -113,6 +104,20 @@ public class GuildOverviewScreenController extends ScreenController {
     @FXML
     private void useItemButtonClicked()
     {
+        Item item = itemsListView.getSelectionModel().getSelectedItem();
+        Adventurer adventurer;
+        if (selectedAdventurerSlot == -1)//Then selected adventurer is in reserve party
+        {
+            adventurer = reservePartyListView.getSelectionModel().getSelectedItem();
+        }
+        else
+        {
+            adventurer = gameEnvironment.getMainParty().get(selectedAdventurerSlot);
+
+        }
+        guildOverviewService.useItem(adventurer, item);
+        updateAdventurerStatLabels(adventurer);
+        updateGUI();
         //Adventurer adventurer = mainPartyListView.getSelectionModel().getSelectedItem();
         //Item item = itemsListView.getSelectionModel().getSelectedItem();
         //guildOverviewService.useItem(adventurer, item);
@@ -154,16 +159,7 @@ public class GuildOverviewScreenController extends ScreenController {
                 Adventurer adv = mainParty.get(index);
                 if (adv != null) {
                     updateGUI();
-                    displayStatsService.updateStats(
-                            adv,
-                            nameLabel,
-                            healthLabel,
-                            staminaLabel,
-                            perceptionLabel,
-                            costLabel,
-                            payLabel,
-                            damageLabel
-                    );
+                    updateAdventurerStatLabels(adv);
                 }
             });
         }
@@ -177,9 +173,7 @@ public class GuildOverviewScreenController extends ScreenController {
         if (selectedAdventurerSlot != -1)
         {
             adventurerSlots.get(selectedAdventurerSlot).setStyle("-fx-border-width: 3px; -fx-background-color:#1F2228;");
-            displayStatsService.updateStats(
-                    gameEnvironment.getMainParty().get(selectedAdventurerSlot), nameLabel, healthLabel, staminaLabel,
-                    perceptionLabel, costLabel, payLabel, damageLabel);
+            updateAdventurerStatLabels(gameEnvironment.getMainParty().get(selectedAdventurerSlot));
         }
         else
         {
@@ -192,6 +186,16 @@ public class GuildOverviewScreenController extends ScreenController {
                 }
             }
         }
+    }
+
+    /**
+     * Updates the stat labels to the stats of the given adventurer
+     */
+    void updateAdventurerStatLabels(Adventurer adventurer)
+    {
+        displayStatsService.updateStats(
+                adventurer, nameLabel, healthLabel, staminaLabel,
+                perceptionLabel, costLabel, payLabel, damageLabel);
     }
 
 }
