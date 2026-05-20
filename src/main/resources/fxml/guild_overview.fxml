@@ -184,7 +184,7 @@
                                     <Insets bottom="20.0" left="20.0" />
                                  </GridPane.margin>
                               </Button>
-                              <Button fx:id="retireButton" maxHeight="60.0" maxWidth="1.7976931348623157E308" minWidth="55.0" mnemonicParsing="false" onAction="#retireButtonClicked" prefWidth="55.0" text="Remove" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+                              <Button fx:id="moveFromMainButton" maxHeight="60.0" maxWidth="1.7976931348623157E308" minWidth="55.0" mnemonicParsing="false" onAction="#moveFromMainButtonClicked" prefWidth="55.0" text="Remove" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
                                  <font>
                                     <Font size="10.0" />
                                  </font>
