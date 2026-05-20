@@ -75,6 +75,12 @@ GridPane{
     -fx-border-width:2px;
 }
 
+.text-area{
+    -fx-control-inner-background:#0D1117;
+    -fx-border-color:#AAAAAA;
+    -fx-text-fill: #FFFFFF;
+}
+
 #borderedGridPane{
     -fx-border-color: #1F2329;
 }
