@@ -11,7 +11,7 @@
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="282.3999938964844" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="117.60000610351562" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <GridPane GridPane.rowIndex="1">
@@ -26,43 +26,55 @@
           <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="slot1Button" maxHeight="600.0" maxWidth="600.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Empty">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Button>
-            <Button fx:id="slot2Button" maxHeight="600.0" maxWidth="600.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Empty" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Button>
-            <Button fx:id="slot3Button" maxHeight="600.0" maxWidth="600.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Empty" GridPane.columnIndex="2">
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Button>
             <Button fx:id="startButton" maxHeight="500.0" maxWidth="1000.0" mnemonicParsing="false" onAction="#startButtonClicked" prefHeight="108.0" prefWidth="161.0" text="Start" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER">
                <GridPane.margin>
-                  <Insets bottom="15.0" left="30.0" right="30.0" top="15.0" />
+                  <Insets bottom="5.0" left="30.0" right="30.0" top="15.0" />
                </GridPane.margin>
             </Button>
+            <GridPane fx:id="borderedGridPane" prefHeight="106.0" prefWidth="300.0" GridPane.columnSpan="3">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="slot1Button" maxHeight="600.0" maxWidth="600.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Empty">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button fx:id="slot3Button" maxHeight="600.0" maxWidth="600.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Empty" GridPane.columnIndex="2">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button fx:id="slot2Button" maxHeight="600.0" maxWidth="600.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" text="Empty" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Button>
+               </children>
+            </GridPane>
          </children>
          <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" />
+            <Insets bottom="10.0" left="15.0" right="10.0" />
          </GridPane.margin>
       </GridPane>
       <GridPane>
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="161.40003662109376" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="180.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="208.59996337890624" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="233.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="36.8" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="246.39999999999998" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <GridPane GridPane.rowIndex="1">
+            <GridPane fx:id="borderedGridPane" GridPane.rowIndex="1">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -73,7 +85,7 @@
                <children>
                   <ListView fx:id="availableAdventurersListView" prefHeight="200.0" prefWidth="200.0">
                      <GridPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </ListView>
                   <GridPane GridPane.rowIndex="1">
@@ -82,32 +94,38 @@
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="chooseAdventurerButton" mnemonicParsing="false" onAction="#chooseAdventurerClicked" prefHeight="26.0" prefWidth="130.0" text="Add" GridPane.halignment="LEFT">
+                        <Button fx:id="chooseAdventurerButton" maxHeight="45.0" mnemonicParsing="false" onAction="#chooseAdventurerClicked" prefHeight="30.0" prefWidth="150.0" text="Add" GridPane.halignment="LEFT">
                            <GridPane.margin>
-                              <Insets left="10.0" right="5.0" />
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="unchooseAdventurerButton" mnemonicParsing="false" onAction="#unchooseAdventurerClicked" prefHeight="26.0" prefWidth="149.0" text="Remove" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                        <Button fx:id="unchooseAdventurerButton" maxHeight="45.0" mnemonicParsing="false" onAction="#unchooseAdventurerClicked" prefHeight="30.0" prefWidth="150.0" text="Remove" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                            <GridPane.margin>
-                              <Insets left="5.0" right="10.0" />
+                              <Insets bottom="5.0" left="5.0" right="5.0" />
                            </GridPane.margin>
                         </Button>
                      </children>
                   </GridPane>
                </children>
-            </GridPane>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cool Game">
                <GridPane.margin>
-                  <Insets left="20.0" />
+                  <Insets left="15.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+            </GridPane>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adventurers Anonymous" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="15.0" top="5.0" />
                </GridPane.margin>
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <GridPane fx:id="borderedGridPane" GridPane.columnIndex="2" GridPane.rowIndex="1">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -122,17 +140,17 @@
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your Guild Name" GridPane.halignment="CENTER">
                            <GridPane.margin>
-                              <Insets right="20.0" />
+                              <Insets left="5.0" right="5.0" />
                            </GridPane.margin></Text>
-                        <TextField fx:id="guildInputTextField" GridPane.rowIndex="1">
+                        <TextField fx:id="guildInputTextField" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                            <GridPane.margin>
-                              <Insets right="20.0" />
+                              <Insets left="5.0" right="5.0" />
                            </GridPane.margin></TextField>
                      </children>
                   </GridPane>
@@ -141,17 +159,17 @@
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Expeditions (3-15):" GridPane.halignment="CENTER">
                            <GridPane.margin>
-                              <Insets right="20.0" />
+                              <Insets left="5.0" right="5.0" />
                            </GridPane.margin></Text>
                         <TextField fx:id="expeditionInputTextField" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                            <GridPane.margin>
-                              <Insets right="20.0" />
+                              <Insets left="5.0" right="5.0" />
                            </GridPane.margin></TextField>
                      </children>
                   </GridPane>
@@ -166,8 +184,14 @@
                      </GridPane.margin>
                   </MenuButton>
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets right="15.0" />
+               </GridPane.margin>
             </GridPane>
-            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <GridPane fx:id="borderedGridPane" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
