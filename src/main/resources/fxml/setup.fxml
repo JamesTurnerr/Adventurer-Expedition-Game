@@ -163,14 +163,16 @@
                       <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Expeditions (5-15):" GridPane.halignment="CENTER">
+                        <Slider fx:id="expeditionCountSlider" majorTickUnit="1.0" max="15.0" min="5.0" minorTickCount="1" snapToTicks="true" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="5.0" right="5.0" />
-                           </GridPane.margin></Text>
-                        <TextField fx:id="expeditionInputTextField" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                           </GridPane.margin>
+                        </Slider>
+                        <Label fx:id="numberOfExpeditionsLabel" text="Number of Expeditions: (5)" GridPane.halignment="CENTER">
                            <GridPane.margin>
                               <Insets left="5.0" right="5.0" />
-                           </GridPane.margin></TextField>
+                           </GridPane.margin>
+                        </Label>
                      </children>
                   </GridPane>
                   <MenuButton fx:id="difficultyMenuButton" maxHeight="200.0" maxWidth="800.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Difficulty" GridPane.halignment="CENTER" GridPane.rowIndex="2">

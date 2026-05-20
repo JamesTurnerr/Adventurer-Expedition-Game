@@ -18,25 +18,11 @@ import seng201.team0.models.Item;
 public class SetupService {
     /**
      * Checks all inputs to make sure they are valid before starting the game
-     * @param expeditionInputTextField the amount of expeditions the user wants to go on
      * @param guildInputTextField the chosen guild name
      * @param difficultyMenuButton the string of the selected difficulty
      * @param chosenAdventurersListView a list of the chosen adventurers
      */
-    public boolean checkInputs(String expeditionInputTextField, String guildInputTextField, String difficultyMenuButton, List<Adventurer> chosenAdventurersListView) {
-        int numberOfExpeditions;
-        try {
-            numberOfExpeditions = Integer.parseInt(expeditionInputTextField);
-        } catch (NumberFormatException e) {
-            System.out.println("Number of expeditions is not an integer");
-            return false;
-        }
-
-        if (numberOfExpeditions > 15 | numberOfExpeditions <5) {
-            System.out.println("Number of expeditions must be between 5 and 15 inclusive");
-            return false;
-        }
-
+    public boolean checkInputs(String guildInputTextField, String difficultyMenuButton, List<Adventurer> chosenAdventurersListView) {
         // need to add guild parameters
         if (guildInputTextField.isEmpty()) {
             System.out.println("Please enter a guild name");
@@ -66,8 +52,6 @@ public class SetupService {
         for (Adventurer adv : chosenAdventurersListView) {
             adventurerListString += adv.getName() + " ";
         }
-        System.out.println(String.format("%s guild is going on %d %s expeditions with %s",
-                guildInputTextField, numberOfExpeditions, difficultyMenuButton, adventurerListString));
         return true;
     }
 

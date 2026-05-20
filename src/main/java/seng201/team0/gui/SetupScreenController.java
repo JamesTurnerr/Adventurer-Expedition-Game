@@ -20,6 +20,8 @@ public class SetupScreenController extends ScreenController {
     @FXML private MenuItem easyMenuItem, normalMenuItem, hardMenuItem;
     @FXML private ListView<Adventurer> availableAdventurersListView;
     @FXML private Button chooseAdventurerButton, unchooseAdventurerButton;
+    @FXML private Slider expeditionCountSlider;
+    @FXML Label numberOfExpeditionsLabel;
 
     private final SetupService setupService = new SetupService();
     private final GuiService guiService = new GuiService(getGameEnvironment());
@@ -51,6 +53,11 @@ public class SetupScreenController extends ScreenController {
      */
     public void initialize() {
         setupService.fillStarterAdventurerList(availableAdventurersListView, 5);
+
+        //Add listener to slider
+        expeditionCountSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            numberOfExpeditionsLabel.setText("Number of Expeditions: (" + newVal.intValue() + ")");
+        });
 
         selectedAdventurerButtons = List.of(slot1Button, slot2Button, slot3Button);
 
@@ -124,7 +131,6 @@ public class SetupScreenController extends ScreenController {
         }
 
         if (!setupService.checkInputs(
-                expeditionInputTextField.getText(),
                 guildInputTextField.getText(),
                 difficultyMenuButton.getText(),
                 mainParty
@@ -137,7 +143,7 @@ public class SetupScreenController extends ScreenController {
         getGameEnvironment().onSetupComplete(chosenAdventurersList,
                 difficultyMenuButton.getText(),
                 guildInputTextField.getText(),
-                Integer.parseInt(expeditionInputTextField.getText()));
+                (int) expeditionCountSlider.getValue());
     }
 
     /**
