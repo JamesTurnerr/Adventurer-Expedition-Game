@@ -75,6 +75,10 @@ GridPane{
     -fx-border-width:2px;
 }
 
+#borderedGridPane{
+    -fx-border-color: #1F2329;
+}
+
 /*-------Setup screen specific elements---------*/
 
 #chooseAdventurerButton{
@@ -109,7 +113,23 @@ GridPane{
     -fx-background-color: #2F3339 !important;
 }
 
-/*--------------Main Screen---------------*/
-#borderedGridPane{
-    -fx-border-color: #1F2329;
+/*------------Guild Hall screen-----------*/
+#hireAdventurerButton{
+    -fx-background-color:#007700;
+}
+#hireAdventurerButton:hover{
+    -fx-background-color:#009900;
+}
+#hireAdventurerButton:pressed{
+    -fx-background-color:#005500;
+}
+
+#retireAdventurerButton{
+    -fx-background-color:#AA0000;
+}
+#retireAdventurerButton:hover{
+    -fx-background-color:#FF0000;
+}
+#retireAdventurerButton:pressed{
+    -fx-background-color:#880000;
 }
