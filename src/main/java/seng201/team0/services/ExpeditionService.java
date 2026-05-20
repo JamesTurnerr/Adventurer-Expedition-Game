@@ -44,9 +44,9 @@ public class ExpeditionService {
         writeLine("-------------");
         writeLine(currEvent.getEventDescription());
         writeLine("What do you do?");
-        for(Choice choice : currEvent.getChoices())
+        for (int i = 0; i < 3; i++)
         {
-            writeLine(choice.getChoice());
+            writeLine("Option " + (i+1) + ": " + currEvent.getChoices()[i].getChoice());
         }
     }
 
