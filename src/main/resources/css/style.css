@@ -139,3 +139,44 @@ GridPane{
 #retireAdventurerButton:pressed{
     -fx-background-color:#880000;
 }
+
+/*----------Guild Overview screen---------*/
+#moveToMainButton{
+    -fx-background-color:#007700;
+}
+#moveToMainButton:hover{
+    -fx-background-color:#009900;
+}
+#moveToMainButton:pressed{
+    -fx-background-color:#005500;
+}
+
+#useItemButton{
+    -fx-background-color:#007700;
+}
+#useItemButton:hover{
+    -fx-background-color:#009900;
+}
+#useItemButton:pressed{
+    -fx-background-color:#005500;
+}
+
+#moveFromMainButton{
+    -fx-background-color:#AA0000;
+}
+#moveFromMainButton:hover{
+    -fx-background-color:#FF0000;
+}
+#moveFromMainButton:pressed{
+    -fx-background-color:#880000;
+}
+
+#deleteItemButton{
+    -fx-background-color:#AA0000;
+}
+#deleteItemButton:hover{
+    -fx-background-color:#FF0000;
+}
+#deleteItemButton:pressed{
+    -fx-background-color:#880000;
+}

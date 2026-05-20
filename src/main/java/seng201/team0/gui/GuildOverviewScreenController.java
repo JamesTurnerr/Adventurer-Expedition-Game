@@ -1,5 +1,6 @@
 package seng201.team0.gui;
 
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -44,6 +45,24 @@ public class GuildOverviewScreenController extends ScreenController {
         return "Guild Overview";
     }
 
+    //Used to update the stat labels when an adventurer is selected from the ReservePartyListView
+    ChangeListener<Adventurer> selectionListener = (obs, oldVal, newVal) -> {
+        if (newVal != null) {
+            selectedAdventurerSlot = -1;
+            displayStatsService.updateStats(
+                    newVal,
+                    nameLabel,
+                    healthLabel,
+                    staminaLabel,
+                    perceptionLabel,
+                    costLabel,
+                    payLabel,
+                    damageLabel
+            );
+        }
+        updateSelectedAdventurerBorder();
+    };
+
     public void initialize()
     {
         guiService.updateTopLabels(goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel);
@@ -59,6 +78,7 @@ public class GuildOverviewScreenController extends ScreenController {
     @FXML
     private void moveToMainButtonClicked()
     {
+        reservePartyListView.getSelectionModel().selectedItemProperty().removeListener(selectionListener);
         guildOverviewService.moveAdventurerToMain(reservePartyListView.getSelectionModel().getSelectedItem());//Move adventurer to main
         updateGUI();
     }
@@ -100,20 +120,15 @@ public class GuildOverviewScreenController extends ScreenController {
     }
 
     /**
-     * Update all the GUI elements
+     * Update the GUI elements
      */
     void updateGUI()
     {
         guiService.populateListView(reservePartyListView, gameEnvironment.getReserveParty());
         guiService.populateListView(itemsListView, gameEnvironment.getPlayerInventory().getAllItems());
         guiService.populateAdventurerSlots(adventurerSlots);
-        if (selectedAdventurerSlot != -1)
-        {
-            adventurerSlots.get(selectedAdventurerSlot).setStyle("-fx-border-width: 3px; -fx-background-color:#1F2228;");
-            displayStatsService.updateStats(
-                    gameEnvironment.getMainParty().get(selectedAdventurerSlot), nameLabel, healthLabel, staminaLabel,
-                    perceptionLabel, costLabel, payLabel, damageLabel);
-        }
+        adventurerSelectionListView(reservePartyListView);
+        updateSelectedAdventurerBorder();
     }
 
     /**
@@ -121,24 +136,7 @@ public class GuildOverviewScreenController extends ScreenController {
      * @param listView the ListView containing adventurers that will have their stats visible on the labels when selected
      */
     private void adventurerSelectionListView(ListView<Adventurer> listView) {
-        listView.getSelectionModel().selectedItemProperty().addListener(
-                (obs, oldVal, newVal) -> {
-                    if (newVal != null) {
-                        selectedAdventurerSlot = -1;
-                        updateGUI();
-                        displayStatsService.updateStats(
-                                newVal,
-                                nameLabel,
-                                healthLabel,
-                                staminaLabel,
-                                perceptionLabel,
-                                costLabel,
-                                payLabel,
-                                damageLabel
-                        );
-                    }
-                }
-        );
+        listView.getSelectionModel().selectedItemProperty().addListener(selectionListener);
     }
 
     /**
@@ -170,4 +168,30 @@ public class GuildOverviewScreenController extends ScreenController {
             });
         }
     }
+
+    /**
+     * Updates the border around the selected adventurer button
+     */
+    void updateSelectedAdventurerBorder()
+    {
+        if (selectedAdventurerSlot != -1)
+        {
+            adventurerSlots.get(selectedAdventurerSlot).setStyle("-fx-border-width: 3px; -fx-background-color:#1F2228;");
+            displayStatsService.updateStats(
+                    gameEnvironment.getMainParty().get(selectedAdventurerSlot), nameLabel, healthLabel, staminaLabel,
+                    perceptionLabel, costLabel, payLabel, damageLabel);
+        }
+        else
+        {
+            for (int i = 0; i < gameEnvironment.getMainParty().size(); i++)
+            {
+                adventurerSlots.get(i).setStyle("-fx-border-width: 1px;");
+                if (gameEnvironment.getMainParty().get(i) != null)
+                {
+                    adventurerSlots.get(i).setStyle("-fx-background-color:#1F2228;");
+                }
+            }
+        }
+    }
+
 }
