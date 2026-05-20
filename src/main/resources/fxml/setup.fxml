@@ -163,7 +163,7 @@
                       <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Expeditions (3-15):" GridPane.halignment="CENTER">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Expeditions (5-15):" GridPane.halignment="CENTER">
                            <GridPane.margin>
                               <Insets left="5.0" right="5.0" />
                            </GridPane.margin></Text>

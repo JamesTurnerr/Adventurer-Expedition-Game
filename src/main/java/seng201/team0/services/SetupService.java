@@ -32,8 +32,8 @@ public class SetupService {
             return false;
         }
 
-        if (numberOfExpeditions > 15 | numberOfExpeditions < 3) {
-            System.out.println("Number of expeditions must be between 3 and 15 inclusive");
+        if (numberOfExpeditions > 15 | numberOfExpeditions <5) {
+            System.out.println("Number of expeditions must be between 5 and 15 inclusive");
             return false;
         }
 
