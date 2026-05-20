@@ -95,3 +95,8 @@ GridPane{
 #slot3Button:hover{
     -fx-background-color: #2F3339 !important;
 }
+
+/*--------------Main Screen---------------*/
+#borderedGridPane{
+    -fx-border-color: #1F2329;
+}

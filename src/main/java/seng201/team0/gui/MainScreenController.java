@@ -15,7 +15,7 @@ import seng201.team0.services.GuiService;
  * From here the user can go to the Guild Hall, Market, Guild Overview, or Expeditions
  */
 public class MainScreenController extends ScreenController {
-    @FXML private Label goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel;
+    @FXML private Label goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel, guildNameLabel;
     @FXML private Button
             goToGuildHallButton,
             goToGuildOverviewButton,
@@ -43,6 +43,7 @@ public class MainScreenController extends ScreenController {
      */
     public void initialize()
     {
+        guildNameLabel.setText(getGameEnvironment().getGuildName() + " Guild");
         guiService.updateTopLabels(
                 goldAmountLabel,
                 currentExpeditionLabel,
