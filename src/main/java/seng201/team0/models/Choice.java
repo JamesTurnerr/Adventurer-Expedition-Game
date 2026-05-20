@@ -22,7 +22,15 @@ public class Choice {
         StringBuilder totalOutcome = new StringBuilder();
         for (EventOutcome eventOutcome : eventOutcomes)
         {
-            totalOutcome.append(eventOutcome.getOutcome()).append(" ");
+            if (totalOutcome.toString().isEmpty())
+            {
+                totalOutcome.append(eventOutcome.getOutcome());
+            }
+            else
+            {
+                totalOutcome.append(" and\n").append(eventOutcome.getOutcome());
+            }
+
         }
         return totalOutcome.toString();
     }
