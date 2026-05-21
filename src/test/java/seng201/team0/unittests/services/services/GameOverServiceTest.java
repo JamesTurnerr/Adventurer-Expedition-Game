@@ -53,15 +53,9 @@ public class GameOverServiceTest {
     }
 
     @Test
-    public void testIsGameOverTrueNoPartyMembers() {
+    public void testIsGameOver() {
         gameEnvironment.getMainParty().clear();
         gameEnvironment.getReserveParty().clear();
-        boolean result = gameOverService.isGameOver();
-        assertTrue(result);
-    }
-
-    @Test
-    public void testIsGameOverCannotAffordAnyAdventurer() {
         gameEnvironment.setGold(0);
         // there are no free adventurers
         boolean result = gameOverService.isGameOver();

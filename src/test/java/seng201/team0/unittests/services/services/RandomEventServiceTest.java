@@ -9,8 +9,7 @@ import seng201.team0.services.RandomEventService;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RandomEventServiceTest {
     private GameEnvironment gameEnvironment;
@@ -43,7 +42,4 @@ public class RandomEventServiceTest {
         assertNotNull(result);
         assertFalse(result.isEmpty());
     }
-
-    // need to add some tests for different event outcomes
-
 }

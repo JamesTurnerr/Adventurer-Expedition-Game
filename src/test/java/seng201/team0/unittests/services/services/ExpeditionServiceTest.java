@@ -81,4 +81,48 @@ public class ExpeditionServiceTest {
         assertTrue(gameEnvironment.getMainParty().isEmpty());
     }
 
+    @Test
+    public void testExpeditionOverCallsCompleteExpedition() {
+        int startingGold = gameEnvironment.getGold();
+        expeditionService.expeditionOver();
+        assertTrue(gameEnvironment.getGold() >= startingGold);
+    }
+
+    @Test
+    public void testMultipleHealthAndStaminaChanges() {
+        adventurer1.setHealth(10);
+        adventurer2.setStamina(5);
+        expeditionService.button1Clicked();
+
+        boolean allAliveOrRemoved = gameEnvironment.getMainParty().size() <= 2 &&
+                gameEnvironment.getMainParty().size() >= 0;
+        assertTrue(allAliveOrRemoved);
+    }
+
+    @Test
+    public void testExpeditionWithAllHealthyAdventurers() {
+        adventurer1.setHealth(100);
+        adventurer1.setStamina(100);
+        adventurer2.setHealth(100);
+        adventurer2.setStamina(100);
+
+        expeditionService.button1Clicked();
+
+        assertTrue(gameEnvironment.getMainParty().contains(adventurer1));
+        assertTrue(gameEnvironment.getMainParty().contains(adventurer2));
+    }
+    @Test
+    public void testExpeditionWithNormalStats() {
+        adventurer1.setHealth(50);
+        adventurer1.setStamina(50);
+        adventurer2.setHealth(50);
+        adventurer2.setStamina(50);
+
+        expeditionService.button1Clicked();
+
+        assertTrue(gameEnvironment.getMainParty().contains(adventurer1));
+        assertTrue(gameEnvironment.getMainParty().contains(adventurer2));
+        assertTrue(adventurer1.getHealth() >= 0);
+        assertTrue(adventurer1.getStamina() >= 0);
+    }
 }

@@ -94,4 +94,37 @@ public class GuildOverviewServiceTest {
         assertFalse(result);
         assertTrue(gameEnvironment.getMainParty().contains(mainAdventurer));
     }
+    @Test
+    public void testMoveAdventurerToMainWhenFull() {
+        while (gameEnvironment.getMainParty().size() < gameEnvironment.MAX_PARTY_SIZE) {
+            gameEnvironment.getMainParty().add(AdventurerCreationService.createRandomAdventurer());
+        }
+
+        boolean result = guildOverviewService.moveAdventurerToMain(reserveAdventurer);
+        assertFalse(result);
+        assertTrue(gameEnvironment.getReserveParty().contains(reserveAdventurer));
+    }
+
+    @Test
+    public void testMoveAdventurerToReserveWhenReserveFull() {
+        // Fill reserve party
+        while (gameEnvironment.getReserveParty().size() < 5) {
+            gameEnvironment.getReserveParty().add(AdventurerCreationService.createRandomAdventurer());
+        }
+        gameEnvironment.getMainParty().clear();
+
+        Adventurer secondMain = AdventurerCreationService.createRandomAdventurer();
+        gameEnvironment.getMainParty().add(secondMain);
+
+        boolean result = guildOverviewService.moveAdventurerToReserve(secondMain);
+        assertFalse(result);
+        assertTrue(gameEnvironment.getMainParty().contains(secondMain));
+    }
+
+    @Test
+    public void testUseItemWithNullAdventurer() {
+        gameEnvironment.getPlayerInventory().addItem(Item.HEALTH_POTION);
+        guildOverviewService.useItem(null, Item.HEALTH_POTION);
+        assertTrue(gameEnvironment.getPlayerInventory().getAllItems().contains(Item.HEALTH_POTION));
+    }
 }
