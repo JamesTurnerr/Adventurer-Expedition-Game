@@ -81,6 +81,22 @@ GridPane{
     -fx-text-fill: #FFFFFF;
 }
 
+.slider .track {
+    -fx-background-color:#AAAAAA;
+    -fx-padding: 1px;
+}
+.slider .thumb {
+    -fx-background-color:AAAAAA, #0D1117;
+    -fx-background-radius:3px;
+}
+.slider .thumb:hover {
+    -fx-background-color:AAAAAA, #1F2228;
+}
+.slider .thumb:pressed {
+    -fx-background-color:#AAAAAA, #1F2228;
+    -fx-background-insets: 0, 2;
+}
+
 #borderedGridPane{
     -fx-border-color: #1F2329;
 }

@@ -161,7 +161,7 @@
                       <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Slider fx:id="expeditionCountSlider" majorTickUnit="1.0" max="15.0" min="5.0" minorTickCount="1" snapToTicks="true" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                        <Slider fx:id="expeditionCountSlider" blockIncrement="15.0" majorTickUnit="1.0" max="15.0" min="5.0" minorTickCount="0" showTickMarks="true" snapToTicks="true" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="5.0" right="5.0" />
                            </GridPane.margin>
