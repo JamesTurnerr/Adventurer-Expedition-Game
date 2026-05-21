@@ -85,8 +85,7 @@ public class GuildHallScreenController extends ScreenController {
                             staminaLabel,
                             perceptionLabel,
                             costLabel,
-                            payLabel,
-                            damageLabel
+                            payLabel
                     );
                 }
             });
@@ -132,8 +131,7 @@ public class GuildHallScreenController extends ScreenController {
                                 staminaLabel,
                                 perceptionLabel,
                                 costLabel,
-                                payLabel,
-                                damageLabel
+                                payLabel
                         );
                     }
                 }

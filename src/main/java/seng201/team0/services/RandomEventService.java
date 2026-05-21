@@ -66,7 +66,7 @@ public class RandomEventService {
             Item item = Item.getRandomItem();
             gameEnvironment.getPlayerInventory().addItem(item);
 
-            return adv + " found a " + item.getName().toLowerCase() + " as you were leaving! What luck!";
+            return adv + " found a " + item.toString().toLowerCase() + " as you were leaving! What luck!";
         }
         else {
             adventurer.setHealth(Math.max(1, adventurer.getHealth() - 20));

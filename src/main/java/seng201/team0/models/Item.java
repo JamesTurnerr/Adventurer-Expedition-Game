@@ -3,8 +3,12 @@ package seng201.team0.models;
 import java.util.Random;
 
 public enum Item {
-    STAMINA_POTION("Stamina Potion", "Moderately increases stamina", 20, 10),
-    HEALTH_POTION("Health Potion", "Moderately increases health", 30, 10),
+    SMALL_STAMINA_POTION("Small Stamina Potion", "Slightly restores stamina", 5, 5),
+    STAMINA_POTION("Stamina Potion", "Moderately restores stamina", 10, 10),
+    LARGE_STAMINA_POTION("Large Stamina Potion", "Fully restores stamina", 1000, 50),
+    SMALL_HEALTH_POTION("Small Health Potion", "Slightly restores Health", 5, 5),
+    HEALTH_POTION("Health Potion", "Moderately increases health", 10, 10),
+    LARGE_HEALTH_POTION("Large Health Potion", "Fully restores Health", 1000, 50),
     RUSTY_SWORD("Rusty Sword", "Pretty useless", 0, 3);
 
     private final String name;
@@ -38,15 +42,6 @@ public enum Item {
     }
 
     /**
-     * Bruh sound effect #2
-     * @return the same as toString()
-     */
-    public String getName()
-    {
-        return name;
-    }
-
-    /**
      * Get the amount the item modifies a stat
      * @return The stat modifier amount
      */
@@ -62,6 +57,17 @@ public enum Item {
     public int getModifier()
     {
         return modifier;
+    }
+
+    /**
+     * Get the amount the item modifies a stat accounting for their current value and max value of that stat
+     * @param maxStat The maximum value that stat could be
+     * @param currentStat The current value of that stat
+     * @return The stat modifier amount
+     */
+    public int getAdjustedModifier(int maxStat, int currentStat)
+    {
+        return Math.min(modifier, maxStat - currentStat);
     }
 
     /**

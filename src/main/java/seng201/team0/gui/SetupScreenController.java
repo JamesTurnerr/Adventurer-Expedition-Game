@@ -80,8 +80,7 @@ public class SetupScreenController extends ScreenController {
                             staminaLabel,
                             perceptionLabel,
                             costLabel,
-                            payLabel,
-                            damageLabel
+                            payLabel
                     );
                 }
             });
@@ -99,8 +98,7 @@ public class SetupScreenController extends ScreenController {
                                 staminaLabel,
                                 perceptionLabel,
                                 costLabel,
-                                payLabel,
-                                damageLabel
+                                payLabel
                         );
                     }
                 }

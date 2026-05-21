@@ -217,13 +217,13 @@ public class GuildOverviewScreenController extends ScreenController {
     {
         displayStatsService.updateStats(
                 adventurer, nameLabel, healthLabel, staminaLabel,
-                perceptionLabel, costLabel, payLabel, damageLabel);
+                perceptionLabel, costLabel, payLabel);
         if (selectedItem != null && getCurrentSelectedAdventurer() != null)
         {
             Label label = guildOverviewService.itemToLabel(selectedItem, healthLabel, staminaLabel);
             if (label != null)
             {
-                label.setText(label.getText() + " + " + selectedItem.getModifier());
+                label.setText(label.getText() + " + " + guildOverviewService.getActualModifier(selectedItem, adventurer));
             }
         }
     }

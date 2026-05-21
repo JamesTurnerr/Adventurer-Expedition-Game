@@ -33,6 +33,12 @@ public class Entity {
     }
 
     /**
+     * Get the max health of an entity
+     * @return The entities max health
+     */
+    public int getMaxHealth() { return maxHealth; }
+
+    /**
      * Set the health of the entity
      * @param health The amount of health to set the entity to
      */

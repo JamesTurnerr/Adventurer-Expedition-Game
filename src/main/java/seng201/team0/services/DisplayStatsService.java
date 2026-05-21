@@ -17,7 +17,6 @@ public class DisplayStatsService {
      * @param perceptionLabel the label that will be changed to the adventurers perception
      * @param costLabel the label that will be changed to the adventurers cost
      * @param payLabel the label that will be changed to the adventurers pay
-     * @param damageLabel the label that will be changed to the adventurers damage
      */
     public void updateStats(
             Adventurer adventurer,
@@ -26,17 +25,15 @@ public class DisplayStatsService {
             Label staminaLabel,
             Label perceptionLabel,
             Label costLabel,
-            Label payLabel,
-            Label damageLabel)
+            Label payLabel)
     {
         if (adventurer != null){
             nameLabel.setText(adventurer.getName());
-            healthLabel.setText(String.valueOf(adventurer.getHealth()));
-            staminaLabel.setText(String.valueOf(adventurer.getStamina()));
+            healthLabel.setText(String.valueOf(adventurer.getHealth()) + "/" + adventurer.getMaxHealth());
+            staminaLabel.setText(String.valueOf(adventurer.getStamina()) +  "/" + adventurer.getMaxStamina());
             perceptionLabel.setText(String.valueOf(adventurer.getPerception()));
             costLabel.setText(String.valueOf(adventurer.getHiringCost()));
             payLabel.setText(String.valueOf(adventurer.getPay()));
-            damageLabel.setText(String.valueOf(adventurer.getDamage()));
         }
         else
         {
@@ -46,7 +43,6 @@ public class DisplayStatsService {
             perceptionLabel.setText("None");
             costLabel.setText("None");
             payLabel.setText("None");
-            damageLabel.setText("None");
         }
 
     }
@@ -59,7 +55,7 @@ public class DisplayStatsService {
      * @param costLabel The cost of the item
      */
     public void updateItemStats(Item item, Label nameLabel, Label effectLabel, Label costLabel){
-        nameLabel.setText(item.getName());
+        nameLabel.setText(item.toString());
         effectLabel.setText(item.getDescription());
         costLabel.setText(String.valueOf(item.getCost()));
     }

@@ -48,7 +48,6 @@ public class Adventurer extends Entity {
     public int getHiringCost() {return hiringCost;}
     public int getPay() { return pay; }
     public int getExpeditionsInARow() { return expeditionsInARow; }
-    public int getMaxHealth() { return maxStamina; }
     public int getMaxStamina() { return maxStamina; }
 
     // setter
