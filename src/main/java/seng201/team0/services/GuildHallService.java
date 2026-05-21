@@ -1,11 +1,7 @@
 package seng201.team0.services;
 
-import javafx.scene.control.ListView;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
-import seng201.team0.models.Item;
-
-import java.util.List;
 
 /**
  * Service class for functionality for the guild hall area where the player can buy adventurers

@@ -6,25 +6,19 @@ import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
 import seng201.team0.services.AdventurerCreationService;
 import seng201.team0.services.DisplayStatsService;
-import seng201.team0.services.GuiService;
 import seng201.team0.services.SetupService;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SetupScreenController extends ScreenController {
-    @FXML private TextField guildInputTextField, expeditionInputTextField;
-    @FXML private Button startButton;
+    @FXML private TextField guildInputTextField;
     @FXML private MenuButton difficultyMenuButton;
-    @FXML private MenuItem easyMenuItem, normalMenuItem, hardMenuItem;
     @FXML private ListView<Adventurer> availableAdventurersListView;
-    @FXML private Button chooseAdventurerButton, unchooseAdventurerButton;
     @FXML private Slider expeditionCountSlider;
     @FXML Label numberOfExpeditionsLabel;
 
     private final SetupService setupService = new SetupService();
-    private final GuiService guiService = new GuiService(getGameEnvironment());
     private final DisplayStatsService displayStatsService = new DisplayStatsService();
 
     //Character stat labels
@@ -72,7 +66,6 @@ public class SetupScreenController extends ScreenController {
 
                 Adventurer adv = mainParty.get(selectedSlotIndex);
                 if (adv != null) {
-                    //updateStats(adv);
                     displayStatsService.updateStats(
                             adv,
                             nameLabel,
@@ -153,7 +146,7 @@ public class SetupScreenController extends ScreenController {
         System.out.println(selectedAdventurer);
 
 
-        // if player doesnt select slot, auto select
+        // if player doesn't select slot, auto select
         if (selectedSlotIndex == -1) {
             for (int i = 0; i < mainParty.size(); i++) {
                 if (mainParty.get(i) == null) {
@@ -198,16 +191,6 @@ public class SetupScreenController extends ScreenController {
         updateSlotButton(selectedSlotIndex, null);
         selectedSlotIndex = -1;
     }
-
-    /*private void updateStats(Adventurer adventurer) {
-        nameLabel.setText(adventurer.getName());
-        healthLabel.setText(String.valueOf(adventurer.getHealth()));
-        staminaLabel.setText(String.valueOf(adventurer.getStamina()));
-        perceptionLabel.setText(String.valueOf(adventurer.getPerception()));
-        costLabel.setText(String.valueOf(adventurer.getHiringCost()));
-        payLabel.setText(String.valueOf(adventurer.getPay()));
-        damageLabel.setText(String.valueOf(adventurer.getDamage()));
-    }*/
 
     /**
      * Update the chosen adventurer slots

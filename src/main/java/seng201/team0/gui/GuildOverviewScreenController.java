@@ -18,8 +18,6 @@ import java.util.List;
  */
 public class GuildOverviewScreenController extends ScreenController {
     @FXML
-    private Button backButton, moveToMainButton, moveFromMainButton, useItemButton;
-    @FXML
     private ListView<Adventurer> reservePartyListView;
     @FXML
     private ListView<Item> itemsListView;
@@ -73,10 +71,18 @@ public class GuildOverviewScreenController extends ScreenController {
         adventurerSelectionListView(reservePartyListView);
         adventurerSelectionButtons();
     }
+
+    /**
+     * returns player to main screen
+     */
     @FXML
     private void backButtonClicked() {
         gameEnvironment.goToMainScreen();
     }
+
+    /**
+     * moves selected adventurer from the reserve party to the main party
+     */
     @FXML
     private void moveToMainButtonClicked()
     {
@@ -84,6 +90,10 @@ public class GuildOverviewScreenController extends ScreenController {
         guildOverviewService.moveAdventurerToMain(reservePartyListView.getSelectionModel().getSelectedItem());//Move adventurer to main
         updateGUI();
     }
+
+    /**
+     * moves selected adventurer from the main party to the reserve party
+     */
     @FXML
     private void moveFromMainButtonClicked()
     {
@@ -95,6 +105,9 @@ public class GuildOverviewScreenController extends ScreenController {
 
     }
 
+    /**
+     * permanently removes an adventurer from the reserve party
+     */
     @FXML
     private void retireButtonClicked(){
         Adventurer selectedAdventurer = reservePartyListView.getSelectionModel().getSelectedItem();
@@ -102,6 +115,9 @@ public class GuildOverviewScreenController extends ScreenController {
         updateGUI();
     }
 
+    /**
+     * permanently removes an item from the players inventory
+     */
     @FXML
     private void deleteItemButtonClicked(){
         Item item = itemsListView.getSelectionModel().getSelectedItem();

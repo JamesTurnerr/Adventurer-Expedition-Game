@@ -132,6 +132,11 @@ public class ExpeditionService {
 
     }
 
+    /**
+     * Performs a check using gameOverService
+     * sends user to main screen if runs out of party and money, otherwise sends
+     * user to the game over screen
+     */
     private void checkFail(){
         if (gameEnvironment.getMainParty().isEmpty())
         {

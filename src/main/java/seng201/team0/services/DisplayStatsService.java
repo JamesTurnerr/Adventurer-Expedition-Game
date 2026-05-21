@@ -29,8 +29,8 @@ public class DisplayStatsService {
     {
         if (adventurer != null){
             nameLabel.setText(adventurer.getName());
-            healthLabel.setText(String.valueOf(adventurer.getHealth()) + "/" + adventurer.getMaxHealth());
-            staminaLabel.setText(String.valueOf(adventurer.getStamina()) +  "/" + adventurer.getMaxStamina());
+            healthLabel.setText(adventurer.getHealth() + "/" + adventurer.getMaxHealth());
+            staminaLabel.setText(adventurer.getStamina() +  "/" + adventurer.getMaxStamina());
             perceptionLabel.setText(String.valueOf(adventurer.getPerception()));
             costLabel.setText(String.valueOf(adventurer.getHiringCost()));
             payLabel.setText(String.valueOf(adventurer.getPay()));

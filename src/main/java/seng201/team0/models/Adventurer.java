@@ -9,7 +9,6 @@ public class Adventurer extends Entity {
     private int perception;
     private final int hiringCost;
     private final int pay;
-    private String skill;
     private int expeditionsInARow;
 
     /**
@@ -32,9 +31,7 @@ public class Adventurer extends Entity {
 
         //set stats
         this.stamina = maxStamina;
-
         this.expeditionsInARow = 0;
-        this.skill = "None";
     }
 
     public int getStamina()
@@ -93,7 +90,6 @@ public class Adventurer extends Entity {
     @Override
     public String toString()
     {
-        //return String.format("Name: %s, Stm: %d, Per: %d, HC: %d, Pay: %d", name, maxStamina, perception, hiringCost, pay);
         return String.format(name);
     }
 }

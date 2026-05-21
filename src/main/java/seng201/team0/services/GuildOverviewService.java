@@ -133,7 +133,7 @@ public class GuildOverviewService {
 
     /**
      * Move an adventurer from the main party to the reserve party
-     * @param adventurer The adventuer to be moved
+     * @param adventurer The adventurer to be moved
      * @return If the moving was successful or not
      */
     public boolean moveAdventurerToReserve(Adventurer adventurer)

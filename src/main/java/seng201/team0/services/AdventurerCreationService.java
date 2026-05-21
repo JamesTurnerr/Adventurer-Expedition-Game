@@ -22,7 +22,7 @@ public class AdventurerCreationService {
             "Julian", "Luke", "Grayson", "Isaac", "Jayden",
             "Theodore", "Gabriel", "Anthony", "Dylan", "Caleb"};
 
-    private static List<String> namesList = new ArrayList<String>(Arrays.asList(names));
+    private static List<String> namesList = new ArrayList<>(Arrays.asList(names));
     private static int averageStatValue = 100;//Average value of Health, Stamina, Perception. Value bound to 33% greater or less than this number
     /**
      * Generate an adventurer with a random name and random stats
@@ -66,7 +66,7 @@ public class AdventurerCreationService {
         namesList.remove(name);
         // check to see if the name list is empty - if so repopulate
         if (namesList.isEmpty()){
-            namesList = new ArrayList<String>(Arrays.asList(names));
+            namesList = new ArrayList<>(Arrays.asList(names));
         }
         return name;
     }

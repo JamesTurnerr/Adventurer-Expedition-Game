@@ -3,7 +3,6 @@ package seng201.team0.gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.io.IOException;
 import java.util.List;
 
 import seng201.team0.GameEnvironment;
@@ -16,11 +15,6 @@ import seng201.team0.services.GuiService;
  */
 public class MainScreenController extends ScreenController {
     @FXML private Label goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel, guildNameLabel;
-    @FXML private Button
-            goToGuildHallButton,
-            goToGuildOverviewButton,
-            goToMarketButton,
-            goOnExpeditionButton;
     @FXML private Button slot1Button, slot2Button, slot3Button, slot4Button, slot5Button;
     private List<Button> adventurerSlots;
 

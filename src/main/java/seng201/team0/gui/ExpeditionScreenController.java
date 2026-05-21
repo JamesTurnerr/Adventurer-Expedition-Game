@@ -5,8 +5,6 @@ import javafx.scene.control.*;
 
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
-import seng201.team0.services.GuiService;
-import seng201.team0.services.SetupService;
 import seng201.team0.services.ExpeditionService;
 
 import java.util.List;
@@ -16,8 +14,6 @@ import java.util.List;
  */
 public class ExpeditionScreenController extends ScreenController {
     @FXML
-    private Button expeditionOption1Button, expeditionOption2Button, expeditionOption3Button;
-    @FXML
     private TextArea expeditionTextArea;
     @FXML
     private  Label adventurerNameLabel1, adventurerStaminaLabel1, adventurerHealthLabel1,
@@ -26,8 +22,6 @@ public class ExpeditionScreenController extends ScreenController {
                     adventurerNameLabel4, adventurerStaminaLabel4, adventurerHealthLabel4,
                     adventurerNameLabel5, adventurerStaminaLabel5, adventurerHealthLabel5;
 
-    private final GuiService guiService = new GuiService(getGameEnvironment());
-    private final SetupService setupService = new SetupService();
     private ExpeditionService expeditionService;
     public ExpeditionScreenController(GameEnvironment gameEnvironment) {super(gameEnvironment);}
 
@@ -42,7 +36,7 @@ public class ExpeditionScreenController extends ScreenController {
     }
 
     /**
-     * Initialise the expedition by setting the text of the labels
+     * Initialize the expedition by setting the text of the labels
      */
     public void initialize()
     {
@@ -50,17 +44,30 @@ public class ExpeditionScreenController extends ScreenController {
         updateLabels();
     }
 
+    /**
+     * selects the 1st choice in expedition service
+     * and update the labels
+     */
     @FXML
     private void expeditionOption1ButtonClicked() {
         expeditionService.button1Clicked();
         updateLabels();
     }
+
+    /**
+     * selects the 2nd choice in expedition service
+     * and update the labels
+     */
     @FXML
     private void expeditionOption2ButtonClicked() {
         expeditionService.button2Clicked();
         updateLabels();
     }
 
+    /**
+     * selects the 3rd choice in expedition service
+     * and update the labels
+     */
     @FXML
     private void expeditionOption3ButtonClicked() {
         expeditionService.button3Clicked();

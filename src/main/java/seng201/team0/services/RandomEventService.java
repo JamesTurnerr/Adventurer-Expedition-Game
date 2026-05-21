@@ -80,6 +80,34 @@ public class RandomEventService {
      * @return the text of what happened in the random event
      */
     private String retirementEvent(Adventurer adventurer) {
+        double retirementChance = getRetirementChance(adventurer);
+
+        boolean retires = rand.nextInt(100) < retirementChance;
+
+        if (retires) {
+
+            gameEnvironment.getMainParty().remove(adventurer);
+            // check if the run is over
+
+            return adventurer.getName()
+                    + " has retired from adventuring.\n\n"
+                    + "After too many consecutive expeditions, injuries, and exhaustion, they leave the party.";
+        }
+        else
+        {
+            int amount = rand.nextInt(30);
+            adventurer.setStamina(adventurer.getStamina() - amount);
+            return adventurer.getName() + " considers retirement...\n" + "But the pay is too good of an incentive.\n\n" + "Stamina decreases by " + amount;
+        }
+    }
+
+    /**
+     * gets the retirement chance by accounting for the adventurers;
+     * health, stamina, and expeditions in a row.
+     * @param adventurer the adventurer who's retirement chance is being calculated
+     * @return the retirement chance (0-100)
+     */
+    private double getRetirementChance(Adventurer adventurer) {
         int health = adventurer.getHealth();
         int stamina = adventurer.getStamina();
         int value = (health + stamina) / 2;
@@ -102,24 +130,7 @@ public class RandomEventService {
                 }
             }
         }
-
-        boolean retires = rand.nextInt(100) < retirementChance;
-
-        if (retires) {
-
-            gameEnvironment.getMainParty().remove(adventurer);
-            // check if the run is over
-
-            return adventurer.getName()
-                    + " has retired from adventuring.\n\n"
-                    + "After too many consecutive expeditions, injuries, and exhaustion, they leave the party.";
-        }
-        else
-        {
-            int amount = rand.nextInt(30);
-            adventurer.setStamina(adventurer.getStamina() - amount);
-            return adventurer.getName() + " considers retirement...\n" + "But the pay is too good of an incentive.\n\n" + "Stamina decreases by " + amount;
-        }
+        return retirementChance;
     }
 
     public void nextScreen(){

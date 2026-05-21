@@ -3,19 +3,14 @@ package seng201.team0.gui;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.io.IOException;
-import java.util.List;
-
 import seng201.team0.GameEnvironment;
-import seng201.team0.models.Adventurer;
 import seng201.team0.services.DisplayStatsService;
 import seng201.team0.services.GuiService;
 import seng201.team0.services.MarketService;
-import seng201.team0.services.SetupService;
 import seng201.team0.models.Item;
 
 public class MarketScreenController extends ScreenController {
-    @FXML private Button backButton, buyItemButton;
+    @FXML private Button buyItemButton;
     @FXML private ListView<Item> marketInventoryListView;
     @FXML private ListView<Item> playerInventoryListView;
 
@@ -52,7 +47,7 @@ public class MarketScreenController extends ScreenController {
     {
         guiService.updateTopLabels(goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel);
 
-        // inintialize the list views
+        // initialize the list views
         updateListViews();
 
         // checks for if item in lists is selected

@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import seng201.team0.GameEnvironment;
 import seng201.team0.services.GameOverService;
-import seng201.team0.services.RandomEventService;
 
 /**
  * Controller class for the game over screen

@@ -11,7 +11,6 @@ import java.util.Random;
  * Expedition class holds data for all expeditions
  */
 public class Expedition {
-    Random rand = new Random();
     int expeditionIndex;
 
     private final Item[] lootPool = {

@@ -1,11 +1,7 @@
 package seng201.team0.services;
 
 import seng201.team0.GameEnvironment;
-import seng201.team0.models.Inventory;
 import seng201.team0.models.Item;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MarketService {
     private final GameEnvironment gameEnvironment;
@@ -27,7 +23,7 @@ public class MarketService {
                 gameEnvironment.setGold(gameEnvironment.getGold()-item.getCost());
                 item.decreaseCost(item.getCost() - (int)(item.getCost() * taxModifier));
                 gameEnvironment.getMarketInventory().removeItem(item);
-                System.out.println(String.format("Item bought, %d gold remaining", gameEnvironment.getGold()));
+                System.out.printf("Item bought, %d gold remaining%n", gameEnvironment.getGold());
                 return true;
             }
             else {
@@ -57,7 +53,7 @@ public class MarketService {
             gameEnvironment.addTotalGold(item.getCost());
             item.increaseCost(item.getCost() - (int)(item.getCost() * taxModifier));
             gameEnvironment.getMarketInventory().addItem(item);
-            System.out.println(String.format("Item sold, new gold value: %d", gameEnvironment.getGold()));
+            System.out.printf("Item sold, new gold value: %d%n", gameEnvironment.getGold());
             return true;
         }
         else

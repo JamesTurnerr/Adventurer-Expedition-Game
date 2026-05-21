@@ -11,7 +11,7 @@ public class Inventory {
      */
     public Inventory()
     {
-        inventory = new ArrayList<Item>();
+        inventory = new ArrayList<>();
     }
 
     /**

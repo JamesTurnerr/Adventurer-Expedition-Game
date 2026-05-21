@@ -1,16 +1,9 @@
 package seng201.team0.services;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-import javafx.stage.Stage;
 import seng201.team0.models.Adventurer;
-import seng201.team0.models.Item;
 
 /**
  * Service class for the games setup screen
@@ -48,10 +41,6 @@ public class SetupService {
             return false;
         }
 
-        String adventurerListString = "";
-        for (Adventurer adv : chosenAdventurersListView) {
-            adventurerListString += adv.getName() + " ";
-        }
         return true;
     }
 

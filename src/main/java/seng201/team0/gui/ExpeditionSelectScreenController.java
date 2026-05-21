@@ -7,7 +7,6 @@ import seng201.team0.GameEnvironment;
 import seng201.team0.models.Expedition;
 import seng201.team0.services.ExpeditionSelectService;
 import java.util.List;
-import java.util.Random;
 
 /**
  * A controller class to handle GUI elements during expedition selection.
@@ -26,7 +25,6 @@ public class ExpeditionSelectScreenController extends ScreenController {
 
     @FXML private Label errorLabel;
 
-    private final Random rand = new Random();
     private final ExpeditionSelectService expeditionSelectService = new ExpeditionSelectService(getGameEnvironment());
     private final Expedition expedition = new Expedition();
 
