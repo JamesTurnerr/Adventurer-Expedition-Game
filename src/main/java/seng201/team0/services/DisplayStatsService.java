@@ -29,14 +29,26 @@ public class DisplayStatsService {
             Label payLabel,
             Label damageLabel)
     {
+        if (adventurer != null){
+            nameLabel.setText(adventurer.getName());
+            healthLabel.setText(String.valueOf(adventurer.getHealth()));
+            staminaLabel.setText(String.valueOf(adventurer.getStamina()));
+            perceptionLabel.setText(String.valueOf(adventurer.getPerception()));
+            costLabel.setText(String.valueOf(adventurer.getHiringCost()));
+            payLabel.setText(String.valueOf(adventurer.getPay()));
+            damageLabel.setText(String.valueOf(adventurer.getDamage()));
+        }
+        else
+        {
+            nameLabel.setText("None");
+            healthLabel.setText("None");
+            staminaLabel.setText("None");
+            perceptionLabel.setText("None");
+            costLabel.setText("None");
+            payLabel.setText("None");
+            damageLabel.setText("None");
+        }
 
-        nameLabel.setText(adventurer.getName());
-        healthLabel.setText(String.valueOf(adventurer.getHealth()));
-        staminaLabel.setText(String.valueOf(adventurer.getStamina()));
-        perceptionLabel.setText(String.valueOf(adventurer.getPerception()));
-        costLabel.setText(String.valueOf(adventurer.getHiringCost()));
-        payLabel.setText(String.valueOf(adventurer.getPay()));
-        damageLabel.setText(String.valueOf(adventurer.getDamage()));
     }
 
     /**

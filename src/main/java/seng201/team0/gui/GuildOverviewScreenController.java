@@ -76,7 +76,7 @@ public class GuildOverviewScreenController extends ScreenController {
     @FXML
     private void moveFromMainButtonClicked()
     {
-        if (selectedAdventurerSlot != -1) {
+        if (selectedAdventurerSlot != -1 && selectedAdventurerSlot < gameEnvironment.getMainParty().size()) {
             guildOverviewService.moveAdventurerToReserve(gameEnvironment.getMainParty().get(selectedAdventurerSlot));//Move adventurer to reserve
             selectedAdventurerSlot -= 1;
             updateGUI();
@@ -118,10 +118,6 @@ public class GuildOverviewScreenController extends ScreenController {
         guildOverviewService.useItem(adventurer, item);
         updateAdventurerStatLabels(adventurer);
         updateGUI();
-        //Adventurer adventurer = mainPartyListView.getSelectionModel().getSelectedItem();
-        //Item item = itemsListView.getSelectionModel().getSelectedItem();
-        //guildOverviewService.useItem(adventurer, item);
-        //updateListViews();
     }
 
     /**
@@ -156,11 +152,17 @@ public class GuildOverviewScreenController extends ScreenController {
             adventurerSlots.get(i).setOnAction(e -> {
                 System.out.println("Selected slot: " + index);
                 selectedAdventurerSlot = finalI;
-                Adventurer adv = mainParty.get(index);
-                if (adv != null) {
-                    updateGUI();
-                    updateAdventurerStatLabels(adv);
+                Adventurer adv;
+                if (finalI < gameEnvironment.getMainParty().size())
+                {
+                    adv = mainParty.get(index);
                 }
+                else
+                {
+                    adv = null;
+                }
+                updateGUI();
+                updateAdventurerStatLabels(adv);
             });
         }
     }
@@ -172,15 +174,24 @@ public class GuildOverviewScreenController extends ScreenController {
     {
         if (selectedAdventurerSlot != -1)
         {
-            adventurerSlots.get(selectedAdventurerSlot).setStyle("-fx-border-width: 3px; -fx-background-color:#1F2228;");
-            updateAdventurerStatLabels(gameEnvironment.getMainParty().get(selectedAdventurerSlot));
+            if (selectedAdventurerSlot < gameEnvironment.getMainParty().size())
+            {
+                adventurerSlots.get(selectedAdventurerSlot).setStyle("-fx-border-width: 3px; -fx-background-color:#1F2228;");
+                updateAdventurerStatLabels(gameEnvironment.getMainParty().get(selectedAdventurerSlot));
+            }
+            else
+            {
+                adventurerSlots.get(selectedAdventurerSlot).setStyle("-fx-border-width: 3px;");
+                updateAdventurerStatLabels(null);
+            }
+
         }
         else
         {
-            for (int i = 0; i < gameEnvironment.getMainParty().size(); i++)
+            for (int i = 0; i < adventurerSlots.size(); i++)
             {
                 adventurerSlots.get(i).setStyle("-fx-border-width: 1px;");
-                if (gameEnvironment.getMainParty().get(i) != null)
+                if (i < gameEnvironment.getMainParty().size())
                 {
                     adventurerSlots.get(i).setStyle("-fx-background-color:#1F2228;");
                 }
@@ -196,6 +207,7 @@ public class GuildOverviewScreenController extends ScreenController {
         displayStatsService.updateStats(
                 adventurer, nameLabel, healthLabel, staminaLabel,
                 perceptionLabel, costLabel, payLabel, damageLabel);
+
     }
 
 }
