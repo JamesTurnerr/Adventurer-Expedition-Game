@@ -171,25 +171,27 @@ public class GuildOverviewScreenController extends ScreenController {
      * Updates stats labels based on the adventurer selected
      */
     private void adventurerSelectionButtons() {
-        List<Adventurer> mainParty = gameEnvironment.getMainParty();
         for (int i = 0; i < adventurerSlots.size(); i++) {
             int index = i;
 
-            int finalI = i;
             adventurerSlots.get(i).setOnAction(e -> {
                 System.out.println("Selected slot: " + index);
-                selectedAdventurerSlot = finalI;
-                Adventurer adv;
-                if (finalI < gameEnvironment.getMainParty().size())
-                {
-                    adv = mainParty.get(index);
+
+                // Check if slot contains an adventurer
+                if (index >= 0 && index < gameEnvironment.getMainParty().size()) {
+                    selectedAdventurerSlot = index;
+
+                    Adventurer adv = gameEnvironment.getMainParty().get(index);
+
+                    updateGUI();
+                    updateAdventurerStatLabels(adv);
+                } else {
+                    // If selected slot is invalid
+                    selectedAdventurerSlot = -1;
+
+                    updateGUI();
+                    updateAdventurerStatLabels(null);
                 }
-                else
-                {
-                    adv = null;
-                }
-                updateGUI();
-                updateAdventurerStatLabels(adv);
             });
         }
     }
