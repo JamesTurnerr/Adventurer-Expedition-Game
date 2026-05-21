@@ -55,7 +55,7 @@
             <Insets left="20.0" top="10.0" />
          </GridPane.margin>
       </Text>
-      <Label fx:id="errorLabel" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Label fx:id="errorLabel" text="You must have at least one adventurer in your main party" textFill="RED" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </GridPane.margin>

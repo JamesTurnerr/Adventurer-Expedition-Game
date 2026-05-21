@@ -54,13 +54,19 @@ public class ExpeditionSelectScreenController extends ScreenController {
     @FXML
     private void location2Pressed()
     {
-        expeditionSelectService.selectLocation(expedition, 1);
+        if(!expeditionSelectService.selectLocation(expedition, 1))
+        {
+            errorLabel.setText("You must have at least one adventurer in your main party");
+        }
     }
 
     @FXML
     private void location3Pressed()
     {
-        expeditionSelectService.selectLocation(expedition, 2);
+        if(!expeditionSelectService.selectLocation(expedition, 2))
+        {
+            errorLabel.setText("You must have at least one adventurer in your main party");
+        }
     }
 
     @FXML

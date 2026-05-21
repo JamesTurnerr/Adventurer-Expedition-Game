@@ -18,7 +18,6 @@ public class ExpeditionService {
     private int currentArea = -1;
     private boolean perceptionCheckPassed = false;
 
-    private boolean expeditionFinished;
     /**
      * Creates a new expedition with a given amount of areas
      * @param gameEnvironment a reference to the gameEnvironment
