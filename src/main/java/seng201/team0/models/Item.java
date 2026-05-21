@@ -67,7 +67,7 @@ public enum Item {
      */
     public int getAdjustedModifier(int maxStat, int currentStat)
     {
-        return Math.min(modifier, maxStat - currentStat);
+        return Math.max(0, Math.min(modifier, maxStat - currentStat));
     }
 
     /**
