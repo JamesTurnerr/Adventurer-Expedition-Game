@@ -56,14 +56,13 @@ public class ExpeditionService {
      */
     public void writeLine(String string)
     {
-        if (expeditionTextArea.getText().isEmpty())
-        {
-            expeditionTextArea.setText(string);
-        }
-        else
-        {
-            // this will append text, keeping position
-            expeditionTextArea.appendText("\n" + string);
+        if (expeditionTextArea != null) {
+            if (expeditionTextArea.getText().isEmpty()) {
+                expeditionTextArea.setText(string);
+            } else {
+                // this will append text, keeping position
+                expeditionTextArea.appendText("\n" + string);
+            }
         }
     }
 
@@ -72,14 +71,7 @@ public class ExpeditionService {
      */
     public void button1Clicked()
     {
-        Adventurer effectedAdventurer = applyEffect(0);//applyEffect before outputting the result as applyEffect does the perception check
-        writeLine(String.format("You %s causing %s to %s", getChoiceText(0), effectedAdventurer.getName(), getChoiceResult(0)));
-        checkAdventurerVitals(effectedAdventurer);
-        if(currentArea < 7)
-        {
-            nextArea();
-        }
-        else {expeditionOver();}
+        handleButtonClick(0);
 
     }
 
@@ -88,14 +80,7 @@ public class ExpeditionService {
      */
     public void button2Clicked()
     {
-        Adventurer effectedAdventurer = applyEffect(1);//applyEffect before outputting the result as applyEffect does the perception check
-        writeLine(String.format("You %s causing %s to %s", getChoiceText(1), effectedAdventurer.getName(), getChoiceResult(1)));
-        checkAdventurerVitals(effectedAdventurer);
-        if(currentArea < 7)
-        {
-            nextArea();
-        }
-        else {expeditionOver();}
+        handleButtonClick(1);
     }
 
     /**
@@ -103,13 +88,24 @@ public class ExpeditionService {
      */
     public void button3Clicked()
     {
-        Adventurer effectedAdventurer = applyEffect(2);//applyEffect before outputting the result as applyEffect does the perception check
-        writeLine(String.format("You %s causing %s to %s", getChoiceText(2).toLowerCase(Locale.ROOT), effectedAdventurer.getName(), getChoiceResult(2)));
-        checkAdventurerVitals(effectedAdventurer);
-        if(currentArea < 7){
-        nextArea();
+        handleButtonClick(2);
+    }
+
+    private void handleButtonClick(int choiceIndex) {
+        Adventurer effectedAdventurer = applyEffect(choiceIndex);
+        writeLine(String.format(
+                "You %s causing %s to %s",
+                getChoiceText(choiceIndex),
+                effectedAdventurer.getName(),
+                getChoiceResult(choiceIndex)
+        ));
+        checkAllAdventurersVitals();
+
+        if (currentArea < 7) {
+            nextArea();
+        } else {
+            expeditionOver();
         }
-        else {expeditionOver();}
     }
 
     /**
@@ -140,6 +136,12 @@ public class ExpeditionService {
             writeLine(String.format("%s is too tired to continue, they have left the party", adventurer.getName()));
         }
 
+    }
+
+    private void checkAllAdventurersVitals(){
+        for (Adventurer adventurer: gameEnvironment.getMainParty()){
+            checkAdventurerVitals(adventurer);
+        }
     }
 
     /**
