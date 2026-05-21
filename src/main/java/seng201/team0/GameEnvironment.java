@@ -46,7 +46,9 @@ public class GameEnvironment {
     public GameEnvironment(ScreenNavigator navigator)
     {
         this.navigator = navigator;
-        navigator.launchSetupScreen(this);
+        if (navigator != null){
+            navigator.launchSetupScreen(this);
+        }
     }
 
     //Getters
@@ -156,35 +158,67 @@ public class GameEnvironment {
     /**
      * Switch to the post expedition event screen
      */
-    public void goToRandomEventScreen(){navigator.launchRandomEventScreen(this);}
+    public void goToRandomEventScreen(){
+        if (navigator != null) {
+        navigator.launchRandomEventScreen(this);
+        }
+    }
     /**
      * Switch to the expedition selection screen
      */
-    public void goToExpeditionSelectScreen(){navigator.launchExpeditionLocationScreen(this);}
+    public void goToExpeditionSelectScreen(){
+        if (navigator != null) {
+            navigator.launchExpeditionLocationScreen(this);
+        }
+    }
     /**
      * Switch to the expedition screen
      */
-    public void goToExpeditionScreen() {navigator.launchExpeditionScreen(this);}
+    public void goToExpeditionScreen() {
+        if (navigator != null) {
+            navigator.launchExpeditionScreen(this);
+        }
+    }
     /**
      * Switch to the guild hall screen
      */
-    public void goToGuildHallScreen() {navigator.launchGuildHallScreen(this);}
+    public void goToGuildHallScreen() {
+        if (navigator != null) {
+            navigator.launchGuildHallScreen(this);
+        }
+    }
     /**
      * Switch to the guild overview screen
      */
-    public void goToGuildOverviewScreen() {navigator.launchGuildOverviewScreen(this);}
+    public void goToGuildOverviewScreen(){
+        if (navigator != null) {
+            navigator.launchGuildOverviewScreen(this);
+        }
+    }
     /**
      * Switch to the market screen
      */
-    public void goToMarketScreen() {navigator.launchMarketScreen(this);}
+    public void goToMarketScreen() {
+        if (navigator != null) {
+            navigator.launchMarketScreen(this);
+        }
+    }
     /**
      * Switch to the main screen
      */
-    public void goToMainScreen() {navigator.launchMainScreen(this);}
+    public void goToMainScreen() {
+        if (navigator != null) {
+            navigator.launchMainScreen(this);
+        }
+    }
     /**
      * Switch to the game over screen
      */
-    public void goToGameOverScreen() {navigator.launchGameOverScreen(this);}
+    public void goToGameOverScreen() {
+        if (navigator != null) {
+            navigator.launchGameOverScreen(this);
+        }
+    }
     /**
      * Exit the game
      */
