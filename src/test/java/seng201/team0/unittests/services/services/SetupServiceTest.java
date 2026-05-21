@@ -1,8 +1,7 @@
-package seng201.team0.unittests.services;
+package seng201.team0.unittests.services.services;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import seng201.team0.services.CounterService;
 import seng201.team0.services.SetupService;
 import seng201.team0.models.Adventurer;
 
