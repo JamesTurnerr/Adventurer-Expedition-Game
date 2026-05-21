@@ -1,5 +1,6 @@
 package seng201.team0.services;
 
+import javafx.scene.control.Label;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
 import seng201.team0.models.Item;
@@ -25,11 +26,11 @@ public class GuildOverviewService {
                 System.out.println("you gave "+ adventurer + " the "+ item);
                 break;
             case STAMINA_POTION:
-                adventurer.setStamina(adventurer.getStamina()+20);
+                adventurer.setStamina(adventurer.getStamina()+item.getModifier());
                 System.out.println("you used the "+item+" on "+adventurer);
                 break;
             case HEALTH_POTION:
-                adventurer.setHealth(adventurer.getHealth()+30);
+                adventurer.setHealth(adventurer.getHealth()+item.getModifier());
                 System.out.println("you used the "+item+" on "+adventurer);
                 break;
 
@@ -155,5 +156,18 @@ public class GuildOverviewService {
         else {
             return false;
         }
+    }
+
+    /**
+     * Match a given item to its respective label
+     * @return The label that matches the item
+     */
+    public Label itemToLabel(Item item, Label healthLabel, Label staminaLabel)
+    {
+        return switch (item) {
+            case HEALTH_POTION -> healthLabel;
+            case STAMINA_POTION -> staminaLabel;
+            default -> null;
+        };
     }
 }

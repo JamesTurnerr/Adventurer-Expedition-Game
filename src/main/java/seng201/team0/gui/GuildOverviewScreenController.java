@@ -27,6 +27,7 @@ public class GuildOverviewScreenController extends ScreenController {
 
     private List<Button> adventurerSlots;
     private int selectedAdventurerSlot = -1;
+    private Item selectedItem = null;
 
     private final GameEnvironment gameEnvironment = getGameEnvironment();
     private final GuiService guiService = new GuiService(gameEnvironment);
@@ -56,6 +57,10 @@ public class GuildOverviewScreenController extends ScreenController {
 
     public void initialize()
     {
+        itemsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedItem = newValue;
+            updateAdventurerStatLabels(getCurrentSelectedAdventurer());
+        });
         guiService.updateTopLabels(goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel);
         adventurerSlots = List.of(slot1Button, slot2Button, slot3Button, slot4Button, slot5Button);
         updateGUI();
@@ -207,7 +212,37 @@ public class GuildOverviewScreenController extends ScreenController {
         displayStatsService.updateStats(
                 adventurer, nameLabel, healthLabel, staminaLabel,
                 perceptionLabel, costLabel, payLabel, damageLabel);
+        if (selectedItem != null && getCurrentSelectedAdventurer() != null)
+        {
+            Label label = guildOverviewService.itemToLabel(selectedItem, healthLabel, staminaLabel);
+            if (label != null)
+            {
+                label.setText(label.getText() + " + " + selectedItem.getModifier());
+            }
+        }
+    }
 
+    /**
+     * Gets the current selected adventurer
+     * @return The selected adventurer if selected, null otherwise
+     */
+    Adventurer getCurrentSelectedAdventurer()
+    {
+        if (selectedAdventurerSlot == -1)
+        {
+            return reservePartyListView.getSelectionModel().getSelectedItem();
+        }
+        else
+        {
+            if (selectedAdventurerSlot < gameEnvironment.getMainParty().size())
+            {
+                return gameEnvironment.getMainParty().get(selectedAdventurerSlot);
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 
 }

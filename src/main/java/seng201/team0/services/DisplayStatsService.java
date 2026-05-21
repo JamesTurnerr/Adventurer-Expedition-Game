@@ -60,7 +60,7 @@ public class DisplayStatsService {
      */
     public void updateItemStats(Item item, Label nameLabel, Label effectLabel, Label costLabel){
         nameLabel.setText(item.getName());
-        effectLabel.setText(item.getModifier());
+        effectLabel.setText(item.getDescription());
         costLabel.setText(String.valueOf(item.getCost()));
     }
 }

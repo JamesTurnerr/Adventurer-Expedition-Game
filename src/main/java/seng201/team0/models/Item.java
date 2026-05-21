@@ -3,24 +3,27 @@ package seng201.team0.models;
 import java.util.Random;
 
 public enum Item {
-    STAMINA_POTION("Stamina Potion", "Moderately increases stamina", 10),
-    HEALTH_POTION("Health Potion", "Moderately increases health", 10),
-    RUSTY_SWORD("Rusty Sword", "Pretty useless", 3);
+    STAMINA_POTION("Stamina Potion", "Moderately increases stamina", 20, 10),
+    HEALTH_POTION("Health Potion", "Moderately increases health", 30, 10),
+    RUSTY_SWORD("Rusty Sword", "Pretty useless", 0, 3);
 
     private final String name;
     private int cost;
-    private final String modifier;
+    private final String description;
+    private final int modifier;
 
     /**
      * Create a new item given the name, modifier and cost of the item
      * @param name The displayed name of the item
      * @param modifier The amount the item modifies a stat
+     * @param description The description of the item
      * @param cost How much the item costs
      */
-    Item(String name, String modifier, int cost)
+    Item(String name, String description, int modifier, int cost)
     {
         this.name = name;
         this.cost = cost;
+        this.description = description;
         this.modifier = modifier;
     }
 
@@ -47,7 +50,16 @@ public enum Item {
      * Get the amount the item modifies a stat
      * @return The stat modifier amount
      */
-    public String getModifier()
+    public String getDescription()
+    {
+        return description;
+    }
+
+    /**
+     * Get the amount the item modifies a stat
+     * @return The stat modifier amount
+     */
+    public int getModifier()
     {
         return modifier;
     }
