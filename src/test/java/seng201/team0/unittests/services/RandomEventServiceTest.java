@@ -44,4 +44,6 @@ public class RandomEventServiceTest {
         assertFalse(result.isEmpty());
     }
 
+    // need to add some tests for different event outcomes
+
 }
