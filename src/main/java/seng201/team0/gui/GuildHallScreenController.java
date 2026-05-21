@@ -72,26 +72,33 @@ public class GuildHallScreenController extends ScreenController {
         for (int i = 0; i < adventurerSlots.size(); i++) {
             int index = i;
 
+            int finalI = i;
             adventurerSlots.get(i).setOnAction(e -> {
                 System.out.println("Selected slot: " + index);
 
-                Adventurer adv = mainParty.get(index);
-                if (adv != null) {
-                    //updateStats(adv);
-                    displayStatsService.updateStats(
-                            adv,
-                            nameLabel,
-                            healthLabel,
-                            staminaLabel,
-                            perceptionLabel,
-                            costLabel,
-                            payLabel
-                    );
+                Adventurer adv;
+                if (finalI < gameEnvironment.getMainParty().size())
+                {
+                    adv = mainParty.get(index);
                 }
+                else
+                {
+                    adv = null;
+                }
+
+                displayStatsService.updateStats(
+                        adv,
+                        nameLabel,
+                        healthLabel,
+                        staminaLabel,
+                        perceptionLabel,
+                        costLabel,
+                        payLabel);
             });
         }
-
     }
+
+
 
     @FXML
     private void backButtonClicked() {
