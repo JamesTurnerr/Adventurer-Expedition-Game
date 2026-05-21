@@ -30,18 +30,9 @@ public class GuildOverviewService {
         }
 
         switch (item) {
-            case RUSTY_SWORD:
-                System.out.println("you gave "+ adventurer + " the "+ item);
-                break;
-            case STAMINA_POTION:
-                adventurer.increaseStamina(item.getModifier());
-                System.out.println("you used the "+item+" on "+adventurer);
-                break;
-            case HEALTH_POTION:
-                adventurer.increaseHealth(item.getModifier());
-                System.out.println("you used the "+item+" on "+adventurer);
-                break;
-
+            case RUSTY_SWORD -> System.out.println("you gave "+ adventurer + " the "+ item);
+            case SMALL_STAMINA_POTION, STAMINA_POTION, LARGE_STAMINA_POTION -> adventurer.increaseStamina(item.getModifier());
+            case SMALL_HEALTH_POTION, HEALTH_POTION, LARGE_HEALTH_POTION -> adventurer.increaseHealth(item.getModifier());
         }
         gameEnvironment.getPlayerInventory().removeItem(item);
     }

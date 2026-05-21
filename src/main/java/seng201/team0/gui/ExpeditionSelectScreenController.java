@@ -48,6 +48,7 @@ public class ExpeditionSelectScreenController extends ScreenController {
         if(!expeditionSelectService.selectLocation(expedition, 0))
         {
             errorLabel.setText("You must have at least one adventurer in your main party");
+            errorLabel.setStyle("-fx-text-fill: red");
         }
     }
 
@@ -57,6 +58,7 @@ public class ExpeditionSelectScreenController extends ScreenController {
         if(!expeditionSelectService.selectLocation(expedition, 1))
         {
             errorLabel.setText("You must have at least one adventurer in your main party");
+            errorLabel.setStyle("-fx-text-fill: red");
         }
     }
 
@@ -66,6 +68,7 @@ public class ExpeditionSelectScreenController extends ScreenController {
         if(!expeditionSelectService.selectLocation(expedition, 2))
         {
             errorLabel.setText("You must have at least one adventurer in your main party");
+            errorLabel.setStyle("-fx-text-fill: red");
         }
     }
 
