@@ -18,6 +18,38 @@ public class AdventurerTest {
     }
 
     @Test
+    public void testAdventurerIncreaseHealthAtMaxHealth() {
+        Adventurer adventurer = new Adventurer(
+                "Maxwell", 1, 1, 1, 1, 1, 1);
+        adventurer.increaseHealth(1);
+        assertEquals(adventurer.getMaxHealth(), adventurer.getHealth());
+    }
+
+    @Test
+    public void testAdventurerDecreaseHealthBelowMinimum() {
+        Adventurer adventurer = new Adventurer(
+                "Maxwell", 1, 1, 1, 1, 1, 1);
+        adventurer.takeHealthDamage(2);
+        assertEquals(0, adventurer.getHealth());
+    }
+
+    @Test
+    public void testAdventurerIncreaseStaminaAtMaxStamina() {
+        Adventurer adventurer = new Adventurer(
+                "Maxwell", 1, 1, 1, 1, 1, 1);
+        adventurer.increaseStamina(1);
+        assertEquals(adventurer.getMaxStamina(), adventurer.getStamina());
+    }
+
+    @Test
+    public void testAdventurerDecreaseStaminaBelowMinimum() {
+        Adventurer adventurer = new Adventurer(
+                "Maxwell", 1, 1, 1, 1, 1, 1);
+        adventurer.takeStaminaDamage(2);
+        assertEquals(0, adventurer.getStamina());
+    }
+
+    @Test
     public void testToString() {
         Adventurer adventurer = new Adventurer(
                 "Bob", 40, 80, 10, 8, 3, 1

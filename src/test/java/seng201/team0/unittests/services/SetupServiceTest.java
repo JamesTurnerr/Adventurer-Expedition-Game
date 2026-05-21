@@ -28,39 +28,28 @@ public class SetupServiceTest {
      */
     @Test
     void testExpectedSetupParameters() {
-        assertTrue(testSetupService.checkInputs("3", "AAA", "Easy", testAventurerList));
-    }
-    /**
-     * Test going through the setup with an invalid number of expeditions value
-     */
-    @Test
-    void testInvaidNumExpedition() {
-        assertFalse(testSetupService.checkInputs("2", "AAA", "Easy", testAventurerList));
-        assertFalse(testSetupService.checkInputs("16", "AAA", "Easy", testAventurerList));
-        assertFalse(testSetupService.checkInputs("3.1", "AAA", "Easy", testAventurerList));
-        assertFalse(testSetupService.checkInputs("Three", "AAA", "Easy", testAventurerList));
-        assertFalse(testSetupService.checkInputs("3!", "AAA", "Easy", testAventurerList));
+        assertTrue(testSetupService.checkInputs("AAA", "Easy", testAventurerList));
     }
     /**
      * Test going through the setup with an empty guild name
      */
     @Test
     void testEmptyGuildName() {
-        assertFalse(testSetupService.checkInputs("3", "", "Easy", testAventurerList));
+        assertFalse(testSetupService.checkInputs("", "Easy", testAventurerList));
     }
     /**
      * Test going through the setup with an invalid guild name
      */
     @Test
     void testInvalidGuildName() {
-        assertFalse(testSetupService.checkInputs("3", "!@#$%^&*", "Easy", testAventurerList));
+        assertFalse(testSetupService.checkInputs("!@#$%^&*", "Easy", testAventurerList));
     }
     /**
      * Test going through the setup with an invalid difficulty
      */
     @Test
     void testInvalidDifficulty() {
-        assertFalse(testSetupService.checkInputs("3", "AAA", "Difficulty", testAventurerList));
+        assertFalse(testSetupService.checkInputs("AAA", "Difficulty", testAventurerList));
     }
     /**
      * Test going through the setup with an invalid number of adventurers
@@ -69,10 +58,10 @@ public class SetupServiceTest {
     void testInvalidNumAdventurers() {
         Adventurer newAdventurer = new Adventurer("DDD", 100, 100, 100, 100, 100, 100);
         testAventurerList.add(newAdventurer);
-        assertFalse(testSetupService.checkInputs("3", "AAA", "Easy", testAventurerList));
+        assertFalse(testSetupService.checkInputs("AAA", "Easy", testAventurerList));
         testAventurerList.remove(newAdventurer);
         Adventurer oldAdventurer = testAventurerList.removeLast();
-        assertFalse(testSetupService.checkInputs("3", "AAA", "Easy", testAventurerList));
+        assertFalse(testSetupService.checkInputs("AAA", "Easy", testAventurerList));
         testAventurerList.add(oldAdventurer);
     }
 }

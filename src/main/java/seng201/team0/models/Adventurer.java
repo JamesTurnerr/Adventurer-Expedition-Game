@@ -33,7 +33,7 @@ public class Adventurer extends Entity {
         this.expeditionsInARow = 0;
         this.skill = "None";
     }
-    //Getters
+
     public int getStamina()
     {
         return stamina;
@@ -43,14 +43,13 @@ public class Adventurer extends Entity {
         return perception;
     }
     public int getHiringCost() {return hiringCost;}
-    public int getPay()
-    {
-        return pay;
-    }
-    public int getExpeditionsInARow() {return expeditionsInARow;}
+    public int getPay() { return pay; }
+    public int getExpeditionsInARow() { return expeditionsInARow; }
+    public int getMaxHealth() { return maxStamina; }
+    public int getMaxStamina() { return maxStamina; }
 
     // setter
-    public void setStamina(int newStamina) {this.stamina = newStamina;}
+    public void setStamina(int newStamina) { this.stamina = newStamina; }
     public void incrementExpeditionsInARow() {
         expeditionsInARow++;
     }
@@ -59,37 +58,27 @@ public class Adventurer extends Entity {
     }
 
     /**
-     * Causes the adventurer to lose some health.
+     * Causes the adventurer to lose some health. Will not decrease below 0.
      * @param healthDamageToTake the amount of health the adventurer will lose
      */
     public void takeHealthDamage(int healthDamageToTake)
     {
-        if (healthDamageToTake > getHealth())
-        {
-            setHealth(0);
-        }
-        else
-        {
-            setHealth(getHealth() - healthDamageToTake);
-        }
+        setHealth(Math.max(0, getHealth() - healthDamageToTake));
     }
 
     /**
-     * Causes the adventurer to lose some stamina.
+     * Causes the adventurer to lose some stamina. Will not decrease below 0.
      * @param staminaDamageToTake the amount of stamina the adventurer will lose
      */
     public void takeStaminaDamage(int staminaDamageToTake)
     {
-        if (staminaDamageToTake > getStamina())
-        {
-            setStamina(0);
-        }
-        else
-        {
-            setStamina(getStamina() - staminaDamageToTake);
-        }
+        setStamina(Math.max(0, stamina - staminaDamageToTake));
     }
 
+    /**
+     * Increases the stamina of an entity but will not increase it over its max stamina
+     * @param amount The amount to have entities stamina increased by
+     */
     public void increaseStamina(int amount)
     {
         setStamina(Math.min(stamina + amount, maxStamina));

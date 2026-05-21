@@ -64,12 +64,4 @@ public class Entity {
     {
         return damage;
     }
-
-    public void attack(Entity target)
-    {
-        if (target.health <= 0)
-        {
-            target.health -= damage;
-        }
-    }
 }
