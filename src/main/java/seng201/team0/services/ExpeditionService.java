@@ -122,20 +122,25 @@ public class ExpeditionService {
     {
         if (adventurer.getHealth() <= 0)
         {
+            if (gameEnvironment.getMainParty().size() == 1)
+            {
+                expeditionFailed();
+                return;
+            }
             gameEnvironment.getMainParty().remove(adventurer);
             writeLine(String.format("%s has fallen from their injuries and left the party", adventurer.getName()));
         }
         else if (adventurer.getStamina() <= 0)
         {
+            if (gameEnvironment.getMainParty().size() == 1)
+            {
+                expeditionFailed();
+                return;
+            }
             gameEnvironment.getMainParty().remove(adventurer);
             writeLine(String.format("%s is too tired to continue, they have left the party", adventurer.getName()));
         }
 
-        //End the expedition if mainparty is empty
-        if (gameEnvironment.getMainParty().isEmpty())
-        {
-            expeditionOver();
-        }
     }
 
     /**
@@ -283,15 +288,16 @@ public class ExpeditionService {
      * and give the player gold for their expedition completed.
      */
     public void expeditionOver() {
-
-        if (expeditionFinished) {
-            return;
-        }
-
-        expeditionFinished = true;
-
         ExpeditionOverService expeditionOverService = new ExpeditionOverService(gameEnvironment);
 
         expeditionOverService.completeExpedition();
+    }
+
+    /**
+     * One adventurer is left and their health/stamina has dropped to 0, return to main menu
+     */
+    private void expeditionFailed()
+    {
+        gameEnvironment.goToMainScreen();
     }
 }

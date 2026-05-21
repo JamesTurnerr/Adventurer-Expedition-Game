@@ -2,6 +2,7 @@ package seng201.team0.gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Expedition;
 import seng201.team0.services.ExpeditionSelectService;
@@ -23,6 +24,8 @@ public class ExpeditionSelectScreenController extends ScreenController {
     @FXML private Button location2Button;
     @FXML private Button location3Button;
 
+    @FXML private Label errorLabel;
+
     private final Random rand = new Random();
     private final ExpeditionSelectService expeditionSelectService = new ExpeditionSelectService(getGameEnvironment());
     private final Expedition expedition = new Expedition();
@@ -36,18 +39,27 @@ public class ExpeditionSelectScreenController extends ScreenController {
         location1Button.setText(expedition.getAreaName(locations.get(0)));
         location2Button.setText(expedition.getAreaName(locations.get(1)));
         location3Button.setText(expedition.getAreaName(locations.get(2)));
+        errorLabel.setText("");
     }
 
     @FXML
-    private void location1Pressed() { expeditionSelectService.selectLocation(expedition, 0); }
+    private void location1Pressed()
+    {
+        if(!expeditionSelectService.selectLocation(expedition, 0))
+        {
+            errorLabel.setText("You must have at least one adventurer in your main party");
+        }
+    }
 
     @FXML
-    private void location2Pressed() {
+    private void location2Pressed()
+    {
         expeditionSelectService.selectLocation(expedition, 1);
     }
 
     @FXML
-    private void location3Pressed() {
+    private void location3Pressed()
+    {
         expeditionSelectService.selectLocation(expedition, 2);
     }
 
