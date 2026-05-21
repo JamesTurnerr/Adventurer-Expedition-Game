@@ -4,6 +4,9 @@ import seng201.team0.GameEnvironment;
 
 import java.util.Random;
 
+/**
+ * Service class to handle the post expedition flow
+ */
 public class ExpeditionOverService {
     private final GameEnvironment gameEnvironment;
     private final Random rand = new Random();

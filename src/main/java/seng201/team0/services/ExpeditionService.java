@@ -21,6 +21,7 @@ public class ExpeditionService {
     private boolean expeditionFinished;
     /**
      * Creates a new expedition with a given amount of areas
+     * @param gameEnvironment a reference to the gameEnvironment
      * @param expeditionTextArea reference to the TextArea that will have information about the expedition written to
      * @param expeditionIndex the different expedition that the player has chosen
      */
@@ -52,6 +53,7 @@ public class ExpeditionService {
 
     /**
      * Write text to the TextArea for the user to see
+     * @param string the string to be written to the TextArea
      */
     public void writeLine(String string)
     {

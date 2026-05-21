@@ -1,5 +1,8 @@
 package seng201.team0.models;
 
+/**
+ * Class for basic game entities, contains their name, health, and damage.
+ */
 public class Entity {
     protected final String name;
     private int health;

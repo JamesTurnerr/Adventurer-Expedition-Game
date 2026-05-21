@@ -23,7 +23,7 @@ public class AdventurerCreationService {
             "Theodore", "Gabriel", "Anthony", "Dylan", "Caleb"};
 
     private static List<String> namesList = new ArrayList<String>(Arrays.asList(names));
-    private static int averageStatValue = 100;
+    private static int averageStatValue = 100;//Average value of Health, Stamina, Perception. Value bound to 33% greater or less than this number
     /**
      * Generate an adventurer with a random name and random stats
      * @return Returns randomly generated adventurer
@@ -31,16 +31,22 @@ public class AdventurerCreationService {
     public static Adventurer createRandomAdventurer()
     {
         String name = generateName();
-        //int averageStatValue = 100;//Average value of Health, Stamina, Perception. Value bound to 33% greater or less than this number
         Random random = new Random();
         int health = random.nextInt(averageStatValue-averageStatValue/3, averageStatValue+averageStatValue/3);
         int stamina = random.nextInt(averageStatValue-averageStatValue/3, averageStatValue+averageStatValue/3);
         int perception = random.nextInt(averageStatValue-averageStatValue/3, averageStatValue+averageStatValue/3);
         return new Adventurer(name, stamina, health, perception, 10, 10, 3);
     }
+
     /**
      * Generate an adventurer with given stats
-     * @return Returns randomly generated adventurer
+     * @param stamina The max and initial stamina of the adventurer
+     * @param health The max and initial health of the adventurer
+     * @param perception The initial perception of the adventurer
+     * @param hiringCost The hiring cost of the adventurer
+     * @param pay The amount that has to be paid after an expedition
+     * @param damage The amount of damage the adventurer does
+     * @return The custom created adventurer
      */
     public static Adventurer createAdventurer(int stamina, int health, int perception, int hiringCost, int pay, int damage)
     {
@@ -66,6 +72,10 @@ public class AdventurerCreationService {
     }
 
     public static int getStatValue(){return averageStatValue;}
-    // this can be used for increasing stats with difficulty
+
+    /**
+     * Used for increasing stats with difficulty
+     * @param newVal The new average stat value
+     */
     public static void setAverageStatValue(int newVal){averageStatValue = newVal;}
 }

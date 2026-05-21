@@ -1,5 +1,8 @@
 package seng201.team0.models;
 
+/**
+ * The adventurer class used for creating/effecting adventurers
+ */
 public class Adventurer extends Entity {
     private int maxStamina;
     private int stamina;

@@ -3,9 +3,16 @@ package seng201.team0.services;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
 
+/**
+ * Service class to handle the game over logic
+ */
 public class GameOverService {
     private final GameEnvironment gameEnvironment;
 
+    /**
+     * Constructor to pass in game data
+     * @param gameEnvironment Reference to the gameEnvironment (game data)
+     */
     public GameOverService(GameEnvironment gameEnvironment) {
         this.gameEnvironment = gameEnvironment;
     }
@@ -21,6 +28,7 @@ public class GameOverService {
 
     /**
      * Checks if the game should end
+     * @return true if game is over (no adventurers left)
      */
     public boolean isGameOver() {
 

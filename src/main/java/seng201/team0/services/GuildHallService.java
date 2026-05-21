@@ -12,6 +12,11 @@ import java.util.List;
  */
 public class GuildHallService {
     private final GameEnvironment gameEnvironment;
+
+    /**
+     * Constructor to pass in game data
+     * @param gameEnvironment reference to game data
+     */
     public GuildHallService(GameEnvironment gameEnvironment) {this.gameEnvironment = gameEnvironment;}
 
     /**

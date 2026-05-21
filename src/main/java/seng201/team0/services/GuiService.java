@@ -30,6 +30,7 @@ public class GuiService {
      * Populate a ListView with given data
      * @param listView the ListView to be populated
      * @param data the elements to be added to the ListView
+     * @param <T> the data type to populate the listview with e.g. Item, Adventurer
      */
     public <T> void populateListView(ListView<T> listView, List<T> data)//Must be same type
     {
@@ -39,17 +40,7 @@ public class GuiService {
             listView.getItems().add(t);
         }
     }
-    /**
-     * Switch to a different scene in the game
-     * @param stage the stage of the window
-     * @param fxmlWindowPath the file path to the fxml window
-     */
-    public void switchWindow(Stage stage, String fxmlWindowPath) throws IOException {
-        FXMLLoader baseLoader = new FXMLLoader(getClass().getResource(fxmlWindowPath));
-        Parent root = baseLoader.load();
-        Scene scene = new Scene(root, 600, 400);
-        stage.setScene(scene);
-    }
+
     /**
      * Updates the Gold, Current expedition number, and Expeditions remaining labels
      * @param gold a reference to the gold label

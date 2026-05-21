@@ -1,5 +1,8 @@
 package seng201.team0.models;
 
+/**
+ * The possible outcomes that can happen during any event
+ */
 public enum EventOutcome {
     SMALL_HEALTH_LOSS("lose a small amount of health"),
     MEDIUM_HEALTH_LOSS("lose a moderate amount of health"),

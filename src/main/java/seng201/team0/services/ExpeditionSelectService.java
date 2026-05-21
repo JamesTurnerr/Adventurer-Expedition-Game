@@ -3,6 +3,9 @@ package seng201.team0.services;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Expedition;
 
+/**
+ * A service class to handle logic during an expedition.
+ */
 public class ExpeditionSelectService {
 
     GameEnvironment gameEnvironment;

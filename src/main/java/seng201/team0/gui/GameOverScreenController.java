@@ -6,6 +6,9 @@ import seng201.team0.GameEnvironment;
 import seng201.team0.services.GameOverService;
 import seng201.team0.services.RandomEventService;
 
+/**
+ * Controller class for the game over screen
+ */
 public class GameOverScreenController extends ScreenController {
     @FXML private Label expeditionsSelectedLabel;
     @FXML private Label expeditionsCompletedLabel;
@@ -27,7 +30,9 @@ public class GameOverScreenController extends ScreenController {
     @Override
     protected String getTitle() { return "Game Over"; }
 
-    @FXML
+    /**
+     * Initialize the game over screen, setting the values of labels to their respective game data value
+     */
     public void initialize() {
         outcomeLabel.setText(gameOverService.getOutcomeString());
         guildLabel.setText("The "+game.getGuildName()+" Guild.");

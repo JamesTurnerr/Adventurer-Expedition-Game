@@ -5,8 +5,16 @@ import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
 import seng201.team0.models.Item;
 
+/**
+ * Service class for guild overview logic
+ */
 public class GuildOverviewService {
     private final GameEnvironment gameEnvironment;
+
+    /**
+     * Constructor allowing game data to be passed in
+     * @param gameEnvironment The game data to be passed in
+     */
     public GuildOverviewService(GameEnvironment gameEnvironment) {this.gameEnvironment = gameEnvironment;}
 
     /**
@@ -160,6 +168,9 @@ public class GuildOverviewService {
 
     /**
      * Match a given item to its respective label
+     * @param item The item to be matched
+     * @param healthLabel The healthLabel to be returned if matched to item
+     * @param staminaLabel The staminaLabel to be returned if matched to item
      * @return The label that matches the item
      */
     public Label itemToLabel(Item item, Label healthLabel, Label staminaLabel)

@@ -1,5 +1,8 @@
 package seng201.team0.models;
 
+/**
+ * Event class for expeditions, contains a description of the event and the choices that can be made.
+ */
 public class Event {
     private String eventDescription;
     private Choice[] choices;

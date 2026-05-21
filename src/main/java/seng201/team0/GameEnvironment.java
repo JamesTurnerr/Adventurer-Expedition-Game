@@ -8,6 +8,9 @@ import seng201.team0.services.AdventurerCreationService;
 
 import java.util.*;
 
+/**
+ * Class where most of the game data is stored
+ */
 public class GameEnvironment {
     private final ScreenNavigator navigator;
     public final int MAX_PARTY_SIZE = 5;
@@ -36,7 +39,10 @@ public class GameEnvironment {
     private int selectedExpeditionIndex;
     private String selectedExpeditionLocation;
 
-
+    /**
+     * Constructor for GameEnvironment, allows screens to be switched
+     * @param navigator The controller for which screen is displayed
+     */
     public GameEnvironment(ScreenNavigator navigator)
     {
         this.navigator = navigator;

@@ -1,8 +1,17 @@
 package seng201.team0.models;
 
+/**
+ * A class used as each choice in an expedition event.
+ */
 public class Choice {
     private final String choiceDescription;
     private final EventOutcome[] eventOutcomes;
+
+    /**
+     * Constructor for choice class, holds the name of the choice and the choice outcome(s).
+     * @param choiceDescription The description of the choice e.g. "Search chest", "Attack enemy"
+     * @param eventOutcomes The outcome(s) of the choice, all effects from the outcome will be applied to an adventurer
+     */
     Choice(String choiceDescription, EventOutcome[] eventOutcomes)
     {
         this.choiceDescription = choiceDescription;

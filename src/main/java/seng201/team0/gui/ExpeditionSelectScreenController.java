@@ -8,7 +8,9 @@ import seng201.team0.services.ExpeditionSelectService;
 import java.util.List;
 import java.util.Random;
 
-
+/**
+ * A controller class to handle GUI elements during expedition selection.
+ */
 public class ExpeditionSelectScreenController extends ScreenController {
     public ExpeditionSelectScreenController(GameEnvironment gameEnvironment) {super(gameEnvironment);}
 

@@ -11,6 +11,9 @@ import seng201.team0.services.ExpeditionService;
 
 import java.util.List;
 
+/**
+ * GUI controller class to handle GUI elements during an expedition
+ */
 public class ExpeditionScreenController extends ScreenController {
     @FXML
     private Button expeditionOption1Button, expeditionOption2Button, expeditionOption3Button;
@@ -38,6 +41,9 @@ public class ExpeditionScreenController extends ScreenController {
         return "Expedition";
     }
 
+    /**
+     * Initialise the expedition by setting the text of the labels
+     */
     public void initialize()
     {
         expeditionService = new ExpeditionService(getGameEnvironment(), expeditionTextArea, getGameEnvironment().getExpeditionIndex());

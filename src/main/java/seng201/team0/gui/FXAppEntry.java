@@ -4,6 +4,9 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import seng201.team0.GameEnvironment;
 
+/**
+ * JavaFX entry class
+ */
 public class FXAppEntry extends Application {
 
     /**

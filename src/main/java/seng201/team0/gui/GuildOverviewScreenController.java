@@ -13,6 +13,9 @@ import seng201.team0.services.GuildOverviewService;
 
 import java.util.List;
 
+/**
+ * Controller class for guild overview screen gui components
+ */
 public class GuildOverviewScreenController extends ScreenController {
     @FXML
     private Button backButton, moveToMainButton, moveFromMainButton, useItemButton;
@@ -55,6 +58,9 @@ public class GuildOverviewScreenController extends ScreenController {
         updateSelectedAdventurerBorder();
     };
 
+    /**
+     * Initialize GUI elements, setting listviews, buttons, labels, and adding listeners
+     */
     public void initialize()
     {
         itemsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {

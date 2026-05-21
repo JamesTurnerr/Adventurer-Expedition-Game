@@ -11,6 +11,9 @@ import seng201.team0.services.GuiService;
 import seng201.team0.services.GuildHallService;
 import seng201.team0.models.Adventurer;
 
+/**
+ * GUI controller class for the guild hall screen
+ */
 public class GuildHallScreenController extends ScreenController {
     @FXML private Button backButton, hireAdventurerButton;
     @FXML private ListView<Adventurer> hireableAdventurersListView;
@@ -28,6 +31,10 @@ public class GuildHallScreenController extends ScreenController {
     private final DisplayStatsService displayStatsService = new DisplayStatsService();
     private List<Adventurer> mainParty = gameEnvironment.getMainParty();
 
+    /**
+     * Constructor to pass in game data
+     * @param gameEnvironment reference to game data
+     */
     public GuildHallScreenController(GameEnvironment gameEnvironment)
     {
         super(gameEnvironment);
