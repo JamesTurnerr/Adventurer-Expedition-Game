@@ -17,6 +17,7 @@ public class ExpeditionService {
     private final int expeditionIndex;
     private int currentArea = -1;
     private boolean perceptionCheckPassed = false;
+    GameOverService gameOverService;
 
     /**
      * Creates a new expedition with a given amount of areas
@@ -27,6 +28,7 @@ public class ExpeditionService {
     public ExpeditionService(GameEnvironment gameEnvironment, TextArea expeditionTextArea, int expeditionIndex)
     {
         this.gameEnvironment = gameEnvironment;
+        gameOverService = new GameOverService(gameEnvironment);
         this.expeditionIndex = expeditionIndex;
         expedition = new Expedition(expeditionIndex);
         this.expeditionTextArea = expeditionTextArea;
@@ -117,29 +119,40 @@ public class ExpeditionService {
     {
         if (adventurer.getHealth() <= 0)
         {
-            if (gameEnvironment.getMainParty().size() == 1)
-            {
-                expeditionFailed();
-                return;
-            }
             gameEnvironment.getMainParty().remove(adventurer);
             writeLine(String.format("%s has fallen from their injuries and left the party", adventurer.getName()));
+            checkFail();
         }
         else if (adventurer.getStamina() <= 0)
         {
-            if (gameEnvironment.getMainParty().size() == 1)
-            {
-                expeditionFailed();
-                return;
-            }
             gameEnvironment.getMainParty().remove(adventurer);
             writeLine(String.format("%s is too tired to continue, they have left the party", adventurer.getName()));
+            checkFail();
         }
 
     }
 
+    private void checkFail(){
+        if (gameEnvironment.getMainParty().isEmpty())
+        {
+            if (gameOverService.isGameOver()){
+                System.out.println("you lost");
+                gameOver();
+            }
+            else
+            {
+                expeditionFailed();
+            }
+        }
+    }
+
+    /**
+     * For bug proofing purposes, call the vital check for every character
+     * Create copy of list to prevent editing the list we are iterating
+     */
     private void checkAllAdventurersVitals(){
-        for (Adventurer adventurer: gameEnvironment.getMainParty()){
+        List<Adventurer> copy = new ArrayList<>(gameEnvironment.getMainParty());
+        for (Adventurer adventurer : copy) {
             checkAdventurerVitals(adventurer);
         }
     }
@@ -300,5 +313,8 @@ public class ExpeditionService {
     private void expeditionFailed()
     {
         gameEnvironment.goToMainScreen();
+    }
+    private void gameOver(){
+        gameEnvironment.goToGameOverScreen();
     }
 }

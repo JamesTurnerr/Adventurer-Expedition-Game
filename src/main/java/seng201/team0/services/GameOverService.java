@@ -33,7 +33,7 @@ public class GameOverService {
     public boolean isGameOver() {
 
         return getTotalPartyMembers() == 0
-                || !canAffordAnyAdventurer();
+                && !canAffordAnyAdventurer();
     }
 
     /**

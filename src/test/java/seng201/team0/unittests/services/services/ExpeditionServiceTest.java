@@ -20,6 +20,7 @@ public class ExpeditionServiceTest {
     private TextArea textArea;
 
     private Adventurer adventurer1;
+
     private Adventurer adventurer2;
 
     @BeforeEach
@@ -27,11 +28,12 @@ public class ExpeditionServiceTest {
 
         gameEnvironment = new GameEnvironment(null);
 
+        adventurer1 = new Adventurer("Name", 10, 100, 100,
+                1,10,1);
+        adventurer2 = new Adventurer("Name2", 10, 100, 0,
+                1,10,1);
+
         ArrayList<Adventurer> mainParty = new ArrayList<>();
-
-        adventurer1 = AdventurerCreationService.createRandomAdventurer();
-        adventurer2 = AdventurerCreationService.createRandomAdventurer();
-
         mainParty.add(adventurer1);
         mainParty.add(adventurer2);
 
@@ -43,13 +45,15 @@ public class ExpeditionServiceTest {
         );
 
         expeditionService = new ExpeditionService(gameEnvironment, null, 0);
+        adventurer1.setHealth(100);
+        adventurer1.setStamina(100);
+        adventurer2.setHealth(100);
+        adventurer2.setStamina(100);
     }
 
-        @Test
-    public void testExpeditionRemovesDeadAdventurer() {
-
-        adventurer1.setHealth(0);
-
+    @Test
+    public void testExpeditionRemovesStaminaAdventurer() {
+        adventurer1.setStamina(0);
         expeditionService.button1Clicked();
 
         assertEquals(1, gameEnvironment.getMainParty().size());
@@ -57,5 +61,24 @@ public class ExpeditionServiceTest {
         assertTrue(gameEnvironment.getMainParty().contains(adventurer2));
     }
 
+    @Test
+    public void testExpeditionRemovesHealthAdventurer() {
+        adventurer1.setHealth(0);
+        expeditionService.button1Clicked();
+
+        assertEquals(1, gameEnvironment.getMainParty().size());
+        assertFalse(gameEnvironment.getMainParty().contains(adventurer1));
+        assertTrue(gameEnvironment.getMainParty().contains(adventurer2));
+    }
+
+    @Test
+    public void testAllAdventurersRemovedEndsExpedition() {
+        adventurer1.setHealth(0);
+        adventurer2.setHealth(0);
+
+        // call vitals check
+        expeditionService.button1Clicked();
+        assertTrue(gameEnvironment.getMainParty().isEmpty());
+    }
 
 }
