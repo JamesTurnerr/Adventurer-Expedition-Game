@@ -50,12 +50,10 @@ public class Adventurer extends Entity {
     public int getExpeditionsInARow() {return expeditionsInARow;}
 
     // setter
-    public void setStamina(int stamina) {this.stamina = Math.max(0, Math.min(stamina, maxStamina));}
-
+    public void setStamina(int newStamina) {this.stamina = newStamina;}
     public void incrementExpeditionsInARow() {
         expeditionsInARow++;
     }
-
     public void resetExpeditionsInARow() {
         expeditionsInARow = 0;
     }
@@ -90,6 +88,11 @@ public class Adventurer extends Entity {
         {
             setStamina(getStamina() - staminaDamageToTake);
         }
+    }
+
+    public void increaseStamina(int amount)
+    {
+        setStamina(Math.min(stamina + amount, maxStamina));
     }
 
     /**

@@ -26,11 +26,11 @@ public class GuildOverviewService {
                 System.out.println("you gave "+ adventurer + " the "+ item);
                 break;
             case STAMINA_POTION:
-                adventurer.setStamina(adventurer.getStamina()+item.getModifier());
+                adventurer.increaseStamina(item.getModifier());
                 System.out.println("you used the "+item+" on "+adventurer);
                 break;
             case HEALTH_POTION:
-                adventurer.setHealth(adventurer.getHealth()+item.getModifier());
+                adventurer.increaseHealth(item.getModifier());
                 System.out.println("you used the "+item+" on "+adventurer);
                 break;
 

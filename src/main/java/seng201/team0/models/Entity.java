@@ -39,6 +39,15 @@ public class Entity {
     }
 
     /**
+     * Increases the health of an entity but will not increase it over its max health
+     * @param amount The amount to have entities health increased by
+     */
+    public void increaseHealth(int amount)
+    {
+        setHealth(Math.min(health + amount, maxHealth));
+    }
+
+    /**
      * Gets the name of the entity
      * @return Entity name
      */
