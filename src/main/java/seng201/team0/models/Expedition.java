@@ -245,14 +245,4 @@ public class Expedition {
     {
         return areaDescriptions[areaIndex];
     }
-
-    /**
-     * Get a sliced array of all possible area names up to the given limit
-     * @param numAreas The limit on the number of area gotten e.g. numAreas=5 will return an array of areas 1,2,3,4,5
-     * @return The sliced array of area name
-     */
-    public String[] getAllAreaNames(int numAreas)
-    {
-        return Arrays.copyOfRange(areaNames, 0, numAreas);
-    }
 }
