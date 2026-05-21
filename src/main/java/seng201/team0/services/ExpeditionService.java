@@ -73,8 +73,9 @@ public class ExpeditionService {
      */
     public void button1Clicked()
     {
-        applyEffect(0);//applyEffect before outputting the result as applyEffect does the perception check
-        writeLine(String.format("You %s causing you to %s", getChoiceText(0), getChoiceResult(0)));
+        Adventurer effectedAdventurer = applyEffect(0);//applyEffect before outputting the result as applyEffect does the perception check
+        writeLine(String.format("You %s causing %s to %s", getChoiceText(0), effectedAdventurer.getName(), getChoiceResult(0)));
+        checkAdventurerVitals(effectedAdventurer);
         if(currentArea < 7)
         {
             nextArea();
@@ -88,8 +89,9 @@ public class ExpeditionService {
      */
     public void button2Clicked()
     {
-        applyEffect(1);//applyEffect before outputting the result as applyEffect does the perception check
-        writeLine(String.format("You %s causing you to %s", getChoiceText(1), getChoiceResult(1)));
+        Adventurer effectedAdventurer = applyEffect(1);//applyEffect before outputting the result as applyEffect does the perception check
+        writeLine(String.format("You %s causing %s to %s", getChoiceText(1), effectedAdventurer.getName(), getChoiceResult(1)));
+        checkAdventurerVitals(effectedAdventurer);
         if(currentArea < 7)
         {
             nextArea();
@@ -102,12 +104,38 @@ public class ExpeditionService {
      */
     public void button3Clicked()
     {
-        applyEffect(2);//applyEffect before outputting the result as applyEffect does the perception check
-        writeLine(String.format("You %s causing you to %s", getChoiceText(2).toLowerCase(Locale.ROOT), getChoiceResult(2)));
+        Adventurer effectedAdventurer = applyEffect(2);//applyEffect before outputting the result as applyEffect does the perception check
+        writeLine(String.format("You %s causing %s to %s", getChoiceText(2).toLowerCase(Locale.ROOT), effectedAdventurer.getName(), getChoiceResult(2)));
+        checkAdventurerVitals(effectedAdventurer);
         if(currentArea < 7){
         nextArea();
         }
         else {expeditionOver();}
+    }
+
+    /**
+     * Checks if the effected adventurer still has health and stamina above 0, removes them otherwise
+     * Ends expedition if no adventurers are left
+     * @param adventurer The effected adventurer
+     */
+    private void checkAdventurerVitals(Adventurer adventurer)
+    {
+        if (adventurer.getHealth() <= 0)
+        {
+            gameEnvironment.getMainParty().remove(adventurer);
+            writeLine(String.format("%s has fallen from their injuries and left the party", adventurer.getName()));
+        }
+        else if (adventurer.getStamina() <= 0)
+        {
+            gameEnvironment.getMainParty().remove(adventurer);
+            writeLine(String.format("%s is too tired to continue, they have left the party", adventurer.getName()));
+        }
+
+        //End the expedition if mainparty is empty
+        if (gameEnvironment.getMainParty().isEmpty())
+        {
+            expeditionOver();
+        }
     }
 
     /**
@@ -163,20 +191,22 @@ public class ExpeditionService {
 
     /**Applies the effect of the choice that the player made
      * @param choiceIndex the index of the button that the player clicked
+     * @return The adventurer that was effected by the event
      */
-    private void applyEffect(int choiceIndex)
+    private Adventurer applyEffect(int choiceIndex)
     {
         EventOutcome[] eventOutcomes = expedition.areaEvents[expeditionIndex][currentArea].getChoices()[choiceIndex].getEventOutcomes();
+        Adventurer targetedAdventurer = gameEnvironment.getRandomAdventurerFromParty();
         for(EventOutcome eventOutcome : eventOutcomes)
         {
             switch (eventOutcome)
             {
-                case SMALL_HEALTH_LOSS -> gameEnvironment.getRandomAdventurerFromParty().takeHealthDamage(5);
-                case MEDIUM_HEALTH_LOSS -> gameEnvironment.getRandomAdventurerFromParty().takeHealthDamage(10);
-                case LARGE_HEALTH_LOSS -> gameEnvironment.getRandomAdventurerFromParty().takeHealthDamage(20);
-                case SMALL_STAMINA_LOSS -> gameEnvironment.getRandomAdventurerFromParty().takeStaminaDamage(5);
-                case MEDIUM_STAMINA_LOSS -> gameEnvironment.getRandomAdventurerFromParty().takeStaminaDamage(10);
-                case LARGE_STAMINA_LOSS -> gameEnvironment.getRandomAdventurerFromParty().takeStaminaDamage(20);
+                case SMALL_HEALTH_LOSS -> targetedAdventurer.takeHealthDamage(5);
+                case MEDIUM_HEALTH_LOSS -> targetedAdventurer.takeHealthDamage(10);
+                case LARGE_HEALTH_LOSS -> targetedAdventurer.takeHealthDamage(20);
+                case SMALL_STAMINA_LOSS -> targetedAdventurer.takeStaminaDamage(5);
+                case MEDIUM_STAMINA_LOSS -> targetedAdventurer.takeStaminaDamage(10);
+                case LARGE_STAMINA_LOSS -> targetedAdventurer.takeStaminaDamage(20);
                 case SMALL_GOLD -> {
                     gameEnvironment.setGold(gameEnvironment.getGold() + 5);
                     gameEnvironment.addTotalGold(5);}
@@ -195,7 +225,7 @@ public class ExpeditionService {
                 default -> System.out.println("Warning: Unknown EventOutcome");
             }
         }
-
+        return targetedAdventurer;
     }
 
     /**

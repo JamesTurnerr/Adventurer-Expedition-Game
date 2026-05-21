@@ -16,12 +16,12 @@ public class ExpeditionSelectService {
     }
 
     /**
-     * Lock in an expedition given its index
+     * Lock in an expedition given its index so long as player has adventurers in their main party
      * @param expedition A reference to get the list of expedition names
      * @param index The index of the chosen expedition
      */
     public void selectLocation(Expedition expedition, int index) {
-        if (!hasPartyToContinue()) {
+        if (gameEnvironment.getMainParty().isEmpty()) {
             System.out.println("You need a party to continue");
             return;
         }
@@ -34,11 +34,4 @@ public class ExpeditionSelectService {
 
     }
 
-    /**
-     * Check if the player has at least one adventurer in either party
-     */
-    private boolean hasPartyToContinue() {
-        return (gameEnvironment.getMainParty().size()
-                + gameEnvironment.getReserveParty().size()) > 0;
-    }
 }
