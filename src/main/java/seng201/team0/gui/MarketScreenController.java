@@ -68,6 +68,7 @@ public class MarketScreenController extends ScreenController {
         errorLabel.setText("");
         if (playerInventoryListView.getSelectionModel().getSelectedIndex() != -1)//Make sure an item is selected
         {
+            guiService.populateListView(marketInventoryListView, getGameEnvironment().getMarketInventory().getAllItems());
             buyMode = false;
             buyItemButton.setText("Sell");
             itemSelection(playerInventoryListView);
@@ -85,6 +86,7 @@ public class MarketScreenController extends ScreenController {
         errorLabel.setText("");
         if (marketInventoryListView.getSelectionModel().getSelectedIndex() != -1)//Make sure an item is selected
         {
+            guiService.populateListView(playerInventoryListView, getGameEnvironment().getPlayerInventory().getAllItems());
             buyMode = true;
             buyItemButton.setText("Buy");
             itemSelection(marketInventoryListView);
