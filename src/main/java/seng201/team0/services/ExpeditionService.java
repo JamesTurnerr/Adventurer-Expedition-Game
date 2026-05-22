@@ -141,7 +141,7 @@ public class ExpeditionService {
         if (gameEnvironment.getMainParty().isEmpty())
         {
             if (gameOverService.isGameOver()){
-                System.out.println("you lost");
+                System.out.println("You Lost");
                 gameOver();
             }
             else
@@ -240,9 +240,9 @@ public class ExpeditionService {
                 case LARGE_GOLD -> {
                     gameEnvironment.setGold(gameEnvironment.getGold() + 20);
                     gameEnvironment.addTotalGold(20);}
-                case RANDOM -> System.out.println("RANDOM");
+                case RANDOM -> System.out.println("Random event takes place!");
                 case LOSE_PROGRESS -> currentArea+=1;//Skip a potential loot room
-                case NOTHING -> System.out.println("NOTHING");
+                case NOTHING -> System.out.println("No event takes place!");
                 case SMALL_PERCEPTION -> perceptionCheck(EventOutcome.SMALL_PERCEPTION);
                 case MEDIUM_PERCEPTION -> perceptionCheck(EventOutcome.MEDIUM_PERCEPTION);
                 case LARGE_PERCEPTION -> perceptionCheck(EventOutcome.LARGE_PERCEPTION);

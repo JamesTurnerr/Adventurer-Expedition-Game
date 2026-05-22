@@ -74,7 +74,7 @@ public class ExpeditionOverService {
             if (gameEnvironment.getGold() < 0) {
 
                 System.out.println(
-                        "you owe " + adventurer.getName() + " money!"
+                        "You owe " + adventurer.getName() + " money!"
                 );
             }
         }

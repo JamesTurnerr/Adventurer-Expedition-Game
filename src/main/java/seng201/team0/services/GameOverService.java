@@ -51,7 +51,6 @@ public class GameOverService {
 
         for (Adventurer adventurer : gameEnvironment.getHireableAdventurers()) {
 
-            System.out.println("can i afford"+adventurer);
             if (gameEnvironment.getGold() >= adventurer.getHiringCost()) {
                 return true;
             }

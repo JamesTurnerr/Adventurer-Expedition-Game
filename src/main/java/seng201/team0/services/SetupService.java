@@ -20,7 +20,6 @@ public class SetupService {
      * @param difficulty        the string of the selected difficulty
      * @param chosenAdventurers a list of the chosen adventurers
      * @param expeditionCount   the number of expeditions to go on
-     * @param errorLabel        The error label to print errors to
      * @return If setup was successful or not
      */
     public String checkInputs(String guildName, String difficulty, List<Adventurer> chosenAdventurers, int expeditionCount) {
@@ -33,7 +32,7 @@ public class SetupService {
         for (int i = 0; i < guildName.length(); i++)
         {
             char c = guildName.charAt(i);
-            if (!Character.isLetterOrDigit(c) && !Character.isWhitespace(c))
+            if (!Character.isLetter(c) && !Character.isWhitespace(c))
             {
                 System.out.println("Please only use letters for guild name");
                 return "Please only use letters for guild name";

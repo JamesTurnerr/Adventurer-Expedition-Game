@@ -24,7 +24,7 @@ public class MarketService {
                 gameEnvironment.setGold(gameEnvironment.getGold()- item.getCost());
                 item.decreaseCost(item.getCost() - (int)(item.getCost() * taxModifier));
                 gameEnvironment.getMarketInventory().removeItem(item);
-                System.out.printf("Item bought, %d gold remaining%n", gameEnvironment.getGold());
+                System.out.printf("You bought a %s, %d gold remaining%n", item, gameEnvironment.getGold());
                 return true;
             }
             else {
@@ -54,7 +54,7 @@ public class MarketService {
             gameEnvironment.addTotalGold(item.getCost());
             item.increaseCost(item.getCost() - (int)(item.getCost() * taxModifier));
             gameEnvironment.getMarketInventory().addItem(item);
-            System.out.printf("Item sold, new gold value: %d%n", gameEnvironment.getGold());
+            System.out.printf("You sold a %s, new gold value: %d%n", gameEnvironment.getGold());
             return true;
         }
         else

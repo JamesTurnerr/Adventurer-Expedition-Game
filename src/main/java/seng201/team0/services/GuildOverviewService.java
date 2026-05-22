@@ -30,7 +30,7 @@ public class GuildOverviewService {
         }
 
         switch (regularItem) {
-            case RUSTY_SWORD -> System.out.println("you gave "+ adventurer + " the "+ regularItem);
+            case RUSTY_SWORD -> System.out.println("You gave "+ adventurer + " the "+ regularItem+"!");
             case SMALL_STAMINA_POTION, STAMINA_POTION, LARGE_STAMINA_POTION -> adventurer.increaseStamina(regularItem.getModifier());
             case SMALL_HEALTH_POTION, HEALTH_POTION, LARGE_HEALTH_POTION -> adventurer.increaseHealth(regularItem.getModifier());
         }
