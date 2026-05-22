@@ -63,4 +63,16 @@ public class SetupServiceTest {
         assertFalse(testSetupService.checkInputs("AAA", "Easy", testAventurerList));
         testAventurerList.add(oldAdventurer);
     }
+
+    @Test
+    void testEmptyAdventurerList() {
+        testAventurerList.clear();
+        assertFalse(testSetupService.checkInputs("Guild", "Easy", testAventurerList));
+    }
+    @Test
+    void testNullAdventurerList() {
+        assertThrows(NullPointerException.class, () -> {
+            testSetupService.checkInputs("Guild", "Easy", null);
+        });
+    }
 }
