@@ -66,11 +66,11 @@ public class RandomEventService {
             Item item = Item.getRandomItem();
             gameEnvironment.getPlayerInventory().addItem(item);
 
-            return adv + " found a " + item.toString().toLowerCase() + " as you were leaving! What luck!";
+            return adv + " found a " + item.toString().toLowerCase() + " as you were leaving!\nWhat luck!";
         }
         else {
             adventurer.setHealth(Math.max(1, adventurer.getHealth() - 20));
-            return adv + " thought they found a rare item in the bushes, but it was a snake!\n\n" + "In a panic, " + adv + " stubbed their toe on a rock.\n\n" + "Also, the snake bit them.";
+            return adv + " thought they found a rare item in the bushes,\nbut it was a snake!\n\n" + "In a panic, " + adv + " stubbed their toe on a rock.\n\n" + "Also, the snake bit them.";
         }
     }
 
