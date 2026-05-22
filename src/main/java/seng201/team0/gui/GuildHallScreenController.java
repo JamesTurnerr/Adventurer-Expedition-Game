@@ -113,13 +113,19 @@ public class GuildHallScreenController extends ScreenController {
     @FXML
     private void reservePartySelected()
     {
-        guiService.populateListView(hireableAdventurersListView,  gameEnvironment.getHireableAdventurers());
+        if(reservePartyListView.getSelectionModel().getSelectedItem() != null)
+        {
+            guiService.populateListView(hireableAdventurersListView,  gameEnvironment.getHireableAdventurers());
+        }
     }
 
     @FXML
     private void hireableListSelected()
     {
-        guiService.populateListView(reservePartyListView,  gameEnvironment.getReserveParty());
+        if(hireableAdventurersListView.getSelectionModel().getSelectedItem() != null)
+        {
+            guiService.populateListView(reservePartyListView,  gameEnvironment.getReserveParty());
+        }
     }
 
     /**
