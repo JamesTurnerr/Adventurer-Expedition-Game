@@ -106,8 +106,17 @@ public class GuildHallScreenController extends ScreenController {
     @FXML
     private void retireAdventurerButtonClicked(){
         Adventurer selectedAdventurer = reservePartyListView.getSelectionModel().getSelectedItem();
-        gameEnvironment.getReserveParty().remove(selectedAdventurer);
-        updateGUI();
+        if (selectedAdventurer == null)
+        {
+            errorLabel.setText("No adventurer selected!");
+            System.out.println("Warning: No adventurer selected!");
+        }
+        else
+        {
+            gameEnvironment.getReserveParty().remove(selectedAdventurer);
+
+            updateGUI();
+        }
     }
 
     /**
