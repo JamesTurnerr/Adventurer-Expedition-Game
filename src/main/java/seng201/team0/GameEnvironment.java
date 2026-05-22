@@ -64,7 +64,7 @@ public class GameEnvironment {
     public List<Adventurer> getHireableAdventurers() {return hireableAdventurers;}
     public Inventory getMarketInventory() {return marketInventory;}
     public List<Integer> getExpeditionLocations(){return expeditionLocations;}
-    public int getEventChance() {System.out.println("the chance is"+ eventChance); return eventChance;}
+    public int getEventChance() {return eventChance;}
     public double getDifficultyModifier(){return difficultyModifier;}
     public String getGuildName(){return guildName;}
     public int getTotalGold() {return totalGold;}
