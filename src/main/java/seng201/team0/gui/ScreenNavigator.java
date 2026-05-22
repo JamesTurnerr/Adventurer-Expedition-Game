@@ -33,7 +33,7 @@ public class ScreenNavigator {
         // Use a border pane as the root component to allow children to be resizable.
         rootPane = new BorderPane();
         rootPane.setPrefHeight(500);
-        rootPane.setPrefWidth(600);
+        rootPane.setPrefWidth(700);
         stage.setScene(new Scene(rootPane));
         stage.show();
     }

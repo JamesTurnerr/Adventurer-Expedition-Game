@@ -87,15 +87,9 @@ public class ExpeditionOverService {
     private void recoverReserveParty() {
 
         for (var adventurer : gameEnvironment.getReserveParty()) {
-
-            int currentStam = adventurer.getStamina();
-
-            int newStam = (int) (
-                    currentStam + 20 / gameEnvironment.getDifficultyModifier()
-            );
             adventurer.resetExpeditionsInARow();
 
-            adventurer.setStamina(newStam);
+            adventurer.setStamina(adventurer.getMaxStamina());
         }
     }
 
