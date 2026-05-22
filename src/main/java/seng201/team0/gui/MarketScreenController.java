@@ -18,9 +18,7 @@ public class MarketScreenController extends ScreenController {
     @FXML private Label currentExpeditionLabel;
     @FXML private Label expeditionsRemainingLabel;
 
-    @FXML private Label nameLabel;
-    @FXML private Label effectLabel;
-    @FXML private Label costLabel;
+    @FXML private Label nameLabel, effectLabel, costLabel, errorLabel;
 
     private final GuiService guiService = new GuiService(getGameEnvironment());
     private final MarketService marketService = new MarketService(getGameEnvironment());
@@ -45,6 +43,7 @@ public class MarketScreenController extends ScreenController {
      */
     public void initialize()
     {
+        errorLabel.setText("");
         guiService.updateTopLabels(goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel);
 
         // initialize the list views
@@ -66,14 +65,13 @@ public class MarketScreenController extends ScreenController {
     @FXML
     private void playerInventorySelected()
     {
+        errorLabel.setText("");
         if (playerInventoryListView.getSelectionModel().getSelectedIndex() != -1)//Make sure an item is selected
         {
             buyMode = false;
             buyItemButton.setText("Sell");
             itemSelection(playerInventoryListView);
         }
-
-        System.out.println("Mouse clicked");
     }
 
     /**
@@ -84,13 +82,13 @@ public class MarketScreenController extends ScreenController {
     @FXML
     private void marketInventorySelected()
     {
+        errorLabel.setText("");
         if (marketInventoryListView.getSelectionModel().getSelectedIndex() != -1)//Make sure an item is selected
         {
             buyMode = true;
             buyItemButton.setText("Buy");
             itemSelection(marketInventoryListView);
         }
-        System.out.println("Mouse clicked");
     }
     /**
      * If an item was successfully purchased update the market inventory ListView and update players gold
@@ -98,7 +96,12 @@ public class MarketScreenController extends ScreenController {
     @FXML
     private void buyItemButtonClicked()
     {
-        if (buyMode) { marketService.buyItem(marketInventoryListView.getSelectionModel().getSelectedItem(), 0.75f); }
+        if (buyMode) {
+            if(!marketService.buyItem(marketInventoryListView.getSelectionModel().getSelectedItem(), 0.75f))
+            {
+                errorLabel.setText("Not enough money");
+            }
+        }
         else { marketService.sellItem(playerInventoryListView.getSelectionModel().getSelectedItem(), 0.75f); }
         updateListViews();
         guiService.updateTopLabels(goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel);
