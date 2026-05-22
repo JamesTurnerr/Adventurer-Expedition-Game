@@ -9,7 +9,7 @@ public class Expedition {
     private final String[] areaNames = {  "Abandoned Mine", "Dense Fog Marsh", "Ancient Ruins", "Frozen Pass", "Bandit Territory",
             "Crystal Caverns", "Burning Wasteland", "Overgrown Jungle", "Haunted Battlefield", "Sunken Temple",
             "Volcanic Crater", "Deserted Fortress", "Crystal Canyon", "Desert Tombs", "Storm Coast"};
-    private final String[] areaDescriptions = {   "Collapsing underground tunnels filled with hidden ore, unstable structures, and dangerous cave systems.",
+    private final String[] areaDescriptions = {   "Collapsing underground tunnels filled with hidden ore, unstable structures,\nand dangerous cave systems.",
             "A swamp covered in thick fog where visibility is poor and danger hides beneath the water.",
             "Forgotten stone ruins packed with traps, puzzles, buried treasure, and remnants of a lost civilization.",
             "A freezing mountain route battered by snowstorms, ice caves, and deadly cold.",

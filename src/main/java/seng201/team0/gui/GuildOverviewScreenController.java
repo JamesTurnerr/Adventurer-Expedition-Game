@@ -23,9 +23,10 @@ public class GuildOverviewScreenController extends ScreenController {
     @FXML
     private ListView<Item> itemsListView;
     @FXML
-    private Label nameLabel, healthLabel, staminaLabel, perceptionLabel, costLabel, payLabel, damageLabel;
+    private Label nameLabel, healthLabel, staminaLabel, perceptionLabel, costLabel, payLabel;
     @FXML Label goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel;
     @FXML Button slot1Button, slot2Button, slot3Button,  slot4Button, slot5Button;
+    @FXML Label errorLabel;
 
     private List<Button> adventurerSlots;
     private int selectedAdventurerSlot = -1;
@@ -62,6 +63,7 @@ public class GuildOverviewScreenController extends ScreenController {
      */
     public void initialize()
     {
+        errorLabel.setText("");
         itemsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selecteditem = newValue;
             updateAdventurerStatLabels(getCurrentSelectedAdventurer());
@@ -88,8 +90,14 @@ public class GuildOverviewScreenController extends ScreenController {
     private void moveToMainButtonClicked()
     {
         reservePartyListView.getSelectionModel().selectedItemProperty().removeListener(selectionListener);
-        guildOverviewService.moveAdventurerToMain(reservePartyListView.getSelectionModel().getSelectedItem());//Move adventurer to main
-        updateGUI();
+        if(guildOverviewService.moveAdventurerToMain(reservePartyListView.getSelectionModel().getSelectedItem()))
+        {
+            updateGUI();
+        }
+        else
+        {
+            errorLabel.setText("Could not move adventurer");
+        }
     }
 
     /**
@@ -99,21 +107,21 @@ public class GuildOverviewScreenController extends ScreenController {
     private void moveFromMainButtonClicked()
     {
         if (selectedAdventurerSlot != -1 && selectedAdventurerSlot < gameEnvironment.getMainParty().size()) {
-            guildOverviewService.moveAdventurerToReserve(gameEnvironment.getMainParty().get(selectedAdventurerSlot));//Move adventurer to reserve
-            selectedAdventurerSlot -= 1;
-            updateGUI();
+            if(!guildOverviewService.moveAdventurerToReserve(gameEnvironment.getMainParty().get(selectedAdventurerSlot)))
+            {
+                errorLabel.setText("Could not move adventurer");
+            }
+            else
+            {
+                selectedAdventurerSlot -= 1;
+                updateGUI();
+            }
+        }
+        else
+        {
+            errorLabel.setText("No adventurer selected");
         }
 
-    }
-
-    /**
-     * permanently removes an adventurer from the reserve party
-     */
-    @FXML
-    private void retireButtonClicked(){
-        Adventurer selectedAdventurer = reservePartyListView.getSelectionModel().getSelectedItem();
-        gameEnvironment.getReserveParty().remove(selectedAdventurer);
-        updateGUI();
     }
 
     /**
@@ -143,12 +151,17 @@ public class GuildOverviewScreenController extends ScreenController {
             adventurer = gameEnvironment.getMainParty().get(selectedAdventurerSlot);
 
         }
-        if (item.getClass() == RegularItem.class)
+        if (item != null && item.getClass() == RegularItem.class)
         {
             guildOverviewService.useItem(adventurer, (RegularItem) item);
+            updateAdventurerStatLabels(adventurer);
+            updateGUI();
         }
-        updateAdventurerStatLabels(adventurer);
-        updateGUI();
+        else
+        {
+            errorLabel.setText("Could not use item");
+        }
+
     }
 
     /**
@@ -156,6 +169,7 @@ public class GuildOverviewScreenController extends ScreenController {
      */
     void updateGUI()
     {
+        errorLabel.setText("");
         guiService.populateListView(reservePartyListView, gameEnvironment.getReserveParty());
         guiService.populateListView(itemsListView, gameEnvironment.getPlayerInventory().getAllItems());
         guiService.populateAdventurerSlots(adventurerSlots);

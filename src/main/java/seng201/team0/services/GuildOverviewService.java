@@ -25,7 +25,7 @@ public class GuildOverviewService {
     public void useItem(Adventurer adventurer, RegularItem regularItem)
     {
         if (adventurer == null || regularItem == null) {
-            System.out.println("Warning: adventurer or regularItem is null");
+            System.out.println("Warning: adventurer or item is null");
             return;
         }
 
@@ -156,6 +156,11 @@ public class GuildOverviewService {
         if (gameEnvironment.getMainParty().size() == 1)
         {
             System.out.println("Warning: Removing this adventurer will cause main party to be empty");
+            return false;
+        }
+        if (gameEnvironment.getReserveParty().size() >= gameEnvironment.MAX_PARTY_SIZE)
+        {
+            System.out.println("Warning: Reserve party at maximum capacity");
             return false;
         }
         if (removeFromMainParty(adventurer))
