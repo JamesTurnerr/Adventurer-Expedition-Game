@@ -146,7 +146,7 @@ public class GameEnvironment {
                 difficultyModifier = 1.2;
                 break;
         }
-        this.guildName = guildName;
+        this.guildName = guildName.substring(0, 1).toUpperCase() + guildName.substring(1);
         this.totalGold = gold;
         this.expeditionsCompleted = 0;
         this.expeditionsRemaining = numberOfExpeditions;

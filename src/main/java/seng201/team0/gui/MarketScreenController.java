@@ -99,10 +99,26 @@ public class MarketScreenController extends ScreenController {
         if (buyMode) {
             if(!marketService.buyItem(marketInventoryListView.getSelectionModel().getSelectedItem(), 0.75f))
             {
-                errorLabel.setText("Not enough money");
+                if (marketInventoryListView.getSelectionModel().getSelectedItem() == null){
+                    errorLabel.setText("No item selected!");
+                }
+                else
+                {
+                    errorLabel.setText("Not enough money");
+                }
             }
         }
-        else { marketService.sellItem(playerInventoryListView.getSelectionModel().getSelectedItem(), 0.75f); }
+        else {
+            if (!marketService.sellItem(playerInventoryListView.getSelectionModel().getSelectedItem(), 0.75f)){
+                if (marketInventoryListView.getSelectionModel().getSelectedItem() == null){
+                    errorLabel.setText("No item selected!");
+                }
+                else
+                {
+                    errorLabel.setText("Warning: Item could not be sold");
+                }
+            }
+        }
         updateListViews();
         guiService.updateTopLabels(goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel);
     }

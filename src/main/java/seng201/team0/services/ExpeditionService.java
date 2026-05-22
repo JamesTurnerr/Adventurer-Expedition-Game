@@ -97,7 +97,7 @@ public class ExpeditionService {
         Adventurer effectedAdventurer = applyEffect(choiceIndex);
         writeLine(String.format(
                 "You %s causing %s to %s",
-                getChoiceText(choiceIndex),
+                getChoiceText(choiceIndex).toLowerCase(Locale.ROOT),
                 effectedAdventurer.getName(),
                 getChoiceResult(choiceIndex)
         ));

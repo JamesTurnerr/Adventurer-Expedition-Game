@@ -138,8 +138,6 @@ public class SetupScreenController extends ScreenController {
     @FXML
     private void chooseAdventurerClicked() {
         Adventurer selectedAdventurer = availableAdventurersListView.getSelectionModel().getSelectedItem();
-        System.out.println(selectedAdventurer);
-
 
         // if player doesn't select slot, auto select
         if (selectedSlotIndex == -1) {
@@ -150,14 +148,14 @@ public class SetupScreenController extends ScreenController {
                 }
             }
             if (selectedSlotIndex == -1) {
-                System.out.println("Party is full!");
+                System.out.println("Your party is full!");
                 return;
             }
         }
 
         if (mainParty.size() >= selectedSlotIndex){
             if ( mainParty.get(selectedSlotIndex) != null) {
-                System.out.println("This slot is already selected!");
+                System.out.println("This slot is already occupied!");
                 return;
             }
         }
@@ -178,7 +176,7 @@ public class SetupScreenController extends ScreenController {
         }
         Adventurer removed = mainParty.get(selectedSlotIndex);
         if (removed == null) {
-            System.out.println("Slot already empty!");
+            System.out.println("This slot is already empty!");
             return;
         }
         availableAdventurersListView.getItems().add(removed);

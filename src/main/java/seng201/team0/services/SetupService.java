@@ -41,8 +41,8 @@ public class SetupService {
 
         if (guildName.length() > 15 || guildName.length() < 3)
         {
-            System.out.println("Name size must be between 3 and 15");
-            return "Name size must be between 3 and 15";
+            System.out.println("Name length must be between 3 and 15");
+            return "Name length must be between 3 and 15";
         }
 
         if (difficulty.equals("Difficulty")) {
