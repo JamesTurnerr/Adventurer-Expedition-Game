@@ -21,7 +21,8 @@ public class GuildHallScreenController extends ScreenController {
     private List<Button> adventurerSlots;
     @FXML private Label goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel;
     //Character stat labels
-    @FXML private Label nameLabel, healthLabel, staminaLabel, perceptionLabel, costLabel, payLabel, damageLabel;
+    @FXML private Label nameLabel, healthLabel, staminaLabel, perceptionLabel, costLabel, payLabel;
+    @FXML private Label errorLabel;
 
 
     private GameEnvironment gameEnvironment = getGameEnvironment();
@@ -113,6 +114,10 @@ public class GuildHallScreenController extends ScreenController {
             gameEnvironment.getHireableAdventurers().remove(selectedAdventurer);
             updateGUI();
         }
+        else
+        {
+            errorLabel.setText("Not enough money");
+        }
     }
 
     @FXML
@@ -149,6 +154,7 @@ public class GuildHallScreenController extends ScreenController {
      */
     private void updateGUI()
     {
+        errorLabel.setText("");
         guiService.populateListView(hireableAdventurersListView,  gameEnvironment.getHireableAdventurers());
         guiService.populateListView(reservePartyListView,  gameEnvironment.getReserveParty());
         goldAmountLabel.setText(String.valueOf(gameEnvironment.getGold()));
