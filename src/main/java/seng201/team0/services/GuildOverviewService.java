@@ -3,6 +3,7 @@ package seng201.team0.services;
 import javafx.scene.control.Label;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
+import seng201.team0.models.Item;
 import seng201.team0.models.RegularItem;
 
 /**
@@ -20,21 +21,37 @@ public class GuildOverviewService {
     /**
      * Use an regularItem on an adventurer, removing it from the players inventory
      * @param adventurer The target adventurer
-     * @param regularItem The regularItem to be used on the target adventurer
+     * @param item The regularItem to be used on the target adventurer
      */
-    public void useItem(Adventurer adventurer, RegularItem regularItem)
+    public boolean useItem(Adventurer adventurer, Item item)
     {
-        if (adventurer == null || regularItem == null) {
-            System.out.println("Warning: adventurer or item is null");
-            return;
+        if (adventurer == null)
+        {
+            System.out.println("Warning: No adventurer selected!");
+            return false;
         }
 
-        switch (regularItem) {
-            case RUSTY_SWORD -> System.out.println("You gave "+ adventurer + " the "+ regularItem+"!");
-            case SMALL_STAMINA_POTION, STAMINA_POTION, LARGE_STAMINA_POTION -> adventurer.increaseStamina(regularItem.getModifier());
-            case SMALL_HEALTH_POTION, HEALTH_POTION, LARGE_HEALTH_POTION -> adventurer.increaseHealth(regularItem.getModifier());
+        if (!(item instanceof RegularItem regularItem))
+        {
+            System.out.println("Warning: Invalid item!");
+            return false;
         }
+
+        switch (regularItem)
+        {
+            case RUSTY_SWORD ->
+                    System.out.println("You gave " + adventurer + " the " + regularItem + "!");
+
+            case SMALL_STAMINA_POTION, STAMINA_POTION, LARGE_STAMINA_POTION ->
+                    adventurer.increaseStamina(regularItem.getModifier());
+
+            case SMALL_HEALTH_POTION, HEALTH_POTION, LARGE_HEALTH_POTION ->
+                    adventurer.increaseHealth(regularItem.getModifier());
+        }
+
         gameEnvironment.getPlayerInventory().removeItem(regularItem);
+
+        return true;
     }
 
     public int getActualModifier(RegularItem selectedRegularItem, Adventurer adventurer)
@@ -187,4 +204,52 @@ public class GuildOverviewService {
             default -> null;
         };
     }
+
+    /**
+     * Gets the currently selected adventurer
+     * @param selectedSlot The selected main-party slot (-1 if reserve selected)
+     * @param reserveSelected The selected reserve adventurer
+     * @return The currently selected adventurer, or null if none selected
+     */
+    public Adventurer getCurrentSelectedAdventurer(int selectedSlot, Adventurer reserveSelected)
+    {
+        if (selectedSlot == -1)
+        {
+            return reserveSelected;
+        }
+
+        if (selectedSlot < gameEnvironment.getMainParty().size())
+        {
+            return gameEnvironment.getMainParty().get(selectedSlot);
+        }
+
+        return null;
+    }
+
+    /**
+     * Updates preview stat labels for a selected item
+     * @param adventurer The target adventurer
+     * @param item The selected item
+     * @param healthLabel Health label
+     * @param staminaLabel Stamina label
+     */
+    public void applyItemPreview(
+            Adventurer adventurer,
+            RegularItem item,
+            Label healthLabel,
+            Label staminaLabel)
+    {
+        if (adventurer == null || item == null)
+        {
+            return;
+        }
+
+        Label label = itemToLabel(item, healthLabel, staminaLabel);
+
+        if (label != null)
+        {
+            label.setText(label.getText() + " + " + getActualModifier(item, adventurer));
+        }
+    }
+
 }

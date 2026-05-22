@@ -94,13 +94,10 @@ public class GuildOverviewScreenController extends ScreenController {
         {
             updateGUI();
         }
-        else if (reservePartyListView.getSelectionModel().getSelectedItem() == null)
+        else
         {
             errorLabel.setText("No adventurer selected");
             System.out.println("Warning: No adventurer selected!");
-        }
-        else{
-            errorLabel.setText("Could not move adventurer");
         }
     }
 
@@ -151,33 +148,18 @@ public class GuildOverviewScreenController extends ScreenController {
     @FXML
     private void useItemButtonClicked()
     {
+        Adventurer adventurer = getCurrentSelectedAdventurer();
         Item item = itemsListView.getSelectionModel().getSelectedItem();
-        Adventurer adventurer;
-        if (selectedAdventurerSlot == -1)//Then selected adventurer is in reserve party
-        {
-            adventurer = reservePartyListView.getSelectionModel().getSelectedItem();
-        }
-        else
-        {
-            adventurer = gameEnvironment.getMainParty().get(selectedAdventurerSlot);
 
-        }
-        if (item != null && item.getClass() == RegularItem.class)
+        if (guildOverviewService.useItem(adventurer, item))
         {
-            guildOverviewService.useItem(adventurer, (RegularItem) item);
             updateAdventurerStatLabels(adventurer);
             updateGUI();
         }
-        else if (item == null){
-            errorLabel.setText("No item selected");
-            System.out.println("Warning: No item selected!");
-        }
         else
         {
-            errorLabel.setText("Could not use item");
-            System.out.println("Warning: Could not use item!");
+            errorLabel.setText("No item selected");
         }
-
     }
 
     /**
@@ -262,19 +244,15 @@ public class GuildOverviewScreenController extends ScreenController {
 
     /**
      * Updates the stat labels to the stats of the given adventurer
+     * @param adventurer the adventurer whose stats are being updated
      */
     void updateAdventurerStatLabels(Adventurer adventurer)
     {
-        displayStatsService.updateStats(
-                adventurer, nameLabel, healthLabel, staminaLabel,
-                perceptionLabel, costLabel, payLabel);
-        if (selecteditem != null && getCurrentSelectedAdventurer() != null && selecteditem.getClass() == RegularItem.class)
+        displayStatsService.updateStats(adventurer, nameLabel, healthLabel, staminaLabel, perceptionLabel, costLabel, payLabel);
+
+        if (selecteditem instanceof RegularItem regularItem)
         {
-            Label label = guildOverviewService.itemToLabel((RegularItem) selecteditem, healthLabel, staminaLabel);
-            if (label != null)
-            {
-                label.setText(label.getText() + " + " + guildOverviewService.getActualModifier((RegularItem) selecteditem, adventurer));
-            }
+            guildOverviewService.applyItemPreview(adventurer, regularItem, healthLabel, staminaLabel);
         }
     }
 
@@ -282,23 +260,12 @@ public class GuildOverviewScreenController extends ScreenController {
      * Gets the current selected adventurer
      * @return The selected adventurer if selected, null otherwise
      */
-    Adventurer getCurrentSelectedAdventurer()
+    private Adventurer getCurrentSelectedAdventurer()
     {
-        if (selectedAdventurerSlot == -1)
-        {
-            return reservePartyListView.getSelectionModel().getSelectedItem();
-        }
-        else
-        {
-            if (selectedAdventurerSlot < gameEnvironment.getMainParty().size())
-            {
-                return gameEnvironment.getMainParty().get(selectedAdventurerSlot);
-            }
-            else
-            {
-                return null;
-            }
-        }
+        return guildOverviewService.getCurrentSelectedAdventurer(
+                selectedAdventurerSlot,
+                reservePartyListView.getSelectionModel().getSelectedItem()
+        );
     }
 
 }
