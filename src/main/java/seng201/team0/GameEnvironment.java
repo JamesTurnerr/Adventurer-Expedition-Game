@@ -119,12 +119,12 @@ public class GameEnvironment {
 
     /**
      * Called after player has gone through game setup, it will set initial values
-     * @param mainParty an ArrayList of the adventurers the player has chosen
+     * @param mainParty an List of the adventurers the player has chosen
      * @param difficulty difficultly the player chose
      * @param guildName the suitable guild name the player has chosen
      * @param numberOfExpeditions the number of expeditions the player wants their game to last
      */
-    public void onSetupComplete(ArrayList<Adventurer> mainParty, String difficulty, String guildName, int numberOfExpeditions) {
+    public void onSetupComplete(List<Adventurer> mainParty, String difficulty, String guildName, int numberOfExpeditions) {
         this.mainParty = mainParty;
         switch (difficulty)//set difficulty modifiers
         {

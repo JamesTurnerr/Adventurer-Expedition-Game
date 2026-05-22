@@ -101,6 +101,10 @@ GridPane{
     -fx-border-color: #1F2329;
 }
 
+#errorLabel {
+    -fx-text-fill: #FF0000;
+}
+
 /*-------Setup screen specific elements---------*/
 
 #chooseAdventurerButton{

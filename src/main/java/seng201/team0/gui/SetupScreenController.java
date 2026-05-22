@@ -16,9 +16,9 @@ public class SetupScreenController extends ScreenController {
     @FXML private MenuButton difficultyMenuButton;
     @FXML private ListView<Adventurer> availableAdventurersListView;
     @FXML private Slider expeditionCountSlider;
-    @FXML Label numberOfExpeditionsLabel;
+    @FXML Label numberOfExpeditionsLabel, errorLabel;
 
-    private final SetupService setupService = new SetupService();
+    private final SetupService setupService = new SetupService(getGameEnvironment());
     private final DisplayStatsService displayStatsService = new DisplayStatsService();
 
     //Character stat labels
@@ -47,7 +47,7 @@ public class SetupScreenController extends ScreenController {
      */
     public void initialize() {
         setupService.fillStarterAdventurerList(availableAdventurersListView, 5);
-
+        errorLabel.setText("");
         //Add listener to slider
         expeditionCountSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
             numberOfExpeditionsLabel.setText("Number of Expeditions: (" + newVal.intValue() + ")");
@@ -116,25 +116,22 @@ public class SetupScreenController extends ScreenController {
      */
     @FXML
     private void startButtonClicked() {
-        if (mainParty.contains(null)) {
-            System.out.println("please select 3");
-            return;
-        }
-
-        if (!setupService.checkInputs(
+        String errorMessage = setupService.checkInputs(
                 guildInputTextField.getText(),
                 difficultyMenuButton.getText(),
-                mainParty
-        )) {
-            return;
+                mainParty,
+                (int)expeditionCountSlider.getValue());
+        if(errorMessage.isEmpty())
+        {
+            getGameEnvironment().onSetupComplete(mainParty,
+                    difficultyMenuButton.getText(),
+                    guildInputTextField.getText(),
+                    (int)expeditionCountSlider.getValue());
         }
-        ArrayList<Adventurer> chosenAdventurersList =
-                new ArrayList<>(mainParty);
-
-        getGameEnvironment().onSetupComplete(chosenAdventurersList,
-                difficultyMenuButton.getText(),
-                guildInputTextField.getText(),
-                (int) expeditionCountSlider.getValue());
+        else
+        {
+            errorLabel.setText(errorMessage);
+        }
     }
 
     /**

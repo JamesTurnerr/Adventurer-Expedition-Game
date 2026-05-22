@@ -2,47 +2,66 @@ package seng201.team0.services;
 
 import java.util.List;
 
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
 
 /**
  * Service class for the games setup screen
  */
 public class SetupService {
+    GameEnvironment gameEnvironment;
+    public SetupService(GameEnvironment gameEnvironment) { this.gameEnvironment = gameEnvironment; }
     /**
      * Checks all inputs to make sure they are valid before starting the game
-     * @param guildInputTextField the chosen guild name
-     * @param difficultyMenuButton the string of the selected difficulty
-     * @param chosenAdventurersListView a list of the chosen adventurers
+     *
+     * @param guildName         the chosen guild name
+     * @param difficulty        the string of the selected difficulty
+     * @param chosenAdventurers a list of the chosen adventurers
+     * @param expeditionCount   the number of expeditions to go on
+     * @param errorLabel        The error label to print errors to
+     * @return If setup was successful or not
      */
-    public boolean checkInputs(String guildInputTextField, String difficultyMenuButton, List<Adventurer> chosenAdventurersListView) {
+    public String checkInputs(String guildName, String difficulty, List<Adventurer> chosenAdventurers, int expeditionCount) {
         // need to add guild parameters
-        if (guildInputTextField.isEmpty()) {
+        if (guildName.isEmpty()) {
             System.out.println("Please enter a guild name");
-            return false;
+            return "Please enter a guild name";
         }
         //check for special characters
-        for (int i = 0; i < guildInputTextField.length(); i++)
+        for (int i = 0; i < guildName.length(); i++)
         {
-            char c = guildInputTextField.charAt(i);
+            char c = guildName.charAt(i);
             if (!Character.isLetterOrDigit(c) && !Character.isWhitespace(c))
             {
-                return false;
+                System.out.println("Please only use letters for guild name");
+                return "Please only use letters for guild name";
             }
         }
 
-        if (difficultyMenuButton.equals("Difficulty")) {
+        if (guildName.length() > 15 || guildName.length() < 3)
+        {
+            System.out.println("Name size must be between 3 and 15");
+            return "Name size must be between 3 and 15";
+        }
+
+        if (difficulty.equals("Difficulty")) {
             System.out.println("Please select a difficulty");
-            return false;
+            return "Please select a difficulty";
         }
 
-        if (chosenAdventurersListView.size() != 3) {
-            System.out.println("Please choose exactly 3 starter adventurers");
-            return false;
+        for (Adventurer adventurer : chosenAdventurers)
+        {
+            if (adventurer == null)
+            {
+                System.out.println("Please choose 3 starter adventurers");
+                return "Please choose 3 starter adventurers";
+            }
         }
-
-        return true;
+        return "";
     }
+
 
     /**
      * Fills a ListView of type Adventurer with x amount of randomly generated adventurers

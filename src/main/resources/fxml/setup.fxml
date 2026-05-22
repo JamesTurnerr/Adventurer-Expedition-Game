@@ -38,7 +38,7 @@
             </GridPane>
             <Button fx:id="startButton" maxHeight="500.0" maxWidth="1000.0" mnemonicParsing="false" onAction="#startButtonClicked" prefHeight="108.0" prefWidth="161.0" text="Start" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER">
                <GridPane.margin>
-                  <Insets bottom="5.0" left="30.0" right="30.0" top="15.0" />
+                  <Insets bottom="5.0" left="30.0" right="30.0" top="25.0" />
                </GridPane.margin>
             </Button>
             <Button fx:id="slot1Button" maxHeight="300.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Empty" GridPane.halignment="CENTER">
@@ -51,6 +51,11 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
+            <Label fx:id="errorLabel" text="Label" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </Label>
             <Button fx:id="slot2Button" maxHeight="300.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Empty" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
