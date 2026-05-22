@@ -3,7 +3,7 @@ package seng201.team0;
 import seng201.team0.gui.ScreenNavigator;
 import seng201.team0.models.Adventurer;
 import seng201.team0.models.Inventory;
-import seng201.team0.models.Item;
+import seng201.team0.models.RegularItem;
 import seng201.team0.services.AdventurerCreationService;
 
 import java.util.*;
@@ -86,7 +86,7 @@ public class GameEnvironment {
         int numberOfItems = random.nextInt(3)+3;
         for (int i = 0; i < numberOfItems; i++)
         {
-            marketInventory.addItem(Item.getRandomItem());
+            marketInventory.addItem(RegularItem.getRandomItem());
         }
     }
 

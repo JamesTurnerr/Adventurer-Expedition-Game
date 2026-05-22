@@ -2,7 +2,8 @@ package seng201.team0.services;
 
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
-import seng201.team0.models.Item;
+import seng201.team0.models.RegularItem;
+import seng201.team0.models.ValuableItem;
 
 import java.util.List;
 import java.util.Random;
@@ -63,10 +64,10 @@ public class RandomEventService {
         String adv = adventurer.getName();
 
         if (roll < 70 / gameEnvironment.getDifficultyModifier()) {
-            Item item = Item.getRandomItem();
-            gameEnvironment.getPlayerInventory().addItem(item);
+            ValuableItem valuableItem = ValuableItem.getRandomItem();
+            gameEnvironment.getPlayerInventory().addItem(valuableItem);
 
-            return adv + " found a " + item.toString().toLowerCase() + " as you were leaving!\nWhat luck!";
+            return adv + " found a " + valuableItem.toString().toLowerCase() + " as you were leaving!\nWhat luck!";
         }
         else {
             adventurer.setHealth(Math.max(1, adventurer.getHealth() - 20));
@@ -91,7 +92,7 @@ public class RandomEventService {
 
             return adventurer.getName()
                     + " has retired from adventuring.\n\n"
-                    + "After too many consecutive expeditions, injuries, and exhaustion, they leave the party.";
+                    + "After too many consecutive expeditions, injuries,\nand exhaustion, they leave the party.";
         }
         else
         {

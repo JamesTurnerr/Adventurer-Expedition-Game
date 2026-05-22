@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
-import seng201.team0.models.Item;
+import seng201.team0.models.RegularItem;
 import seng201.team0.services.AdventurerCreationService;
 import seng201.team0.services.GuildOverviewService;
 
@@ -37,24 +37,24 @@ public class GuildOverviewServiceTest {
 
         mainAdventurer.takeHealthDamage(20);
         int before = mainAdventurer.getHealth();
-        gameEnvironment.getPlayerInventory().addItem(Item.HEALTH_POTION);
+        gameEnvironment.getPlayerInventory().addItem(RegularItem.HEALTH_POTION);
 
-        guildOverviewService.useItem(mainAdventurer, Item.HEALTH_POTION);
+        guildOverviewService.useItem(mainAdventurer, RegularItem.HEALTH_POTION);
 
         assertTrue(mainAdventurer.getHealth() > before);
-        assertFalse(gameEnvironment.getPlayerInventory().getAllItems().contains(Item.HEALTH_POTION));
+        assertFalse(gameEnvironment.getPlayerInventory().getAllItems().contains(RegularItem.HEALTH_POTION));
     }
 
     @Test
     public void testUseStaminaPotion() {
         mainAdventurer.takeStaminaDamage(20);
         int before = mainAdventurer.getStamina();
-        gameEnvironment.getPlayerInventory().addItem(Item.STAMINA_POTION);
+        gameEnvironment.getPlayerInventory().addItem(RegularItem.STAMINA_POTION);
 
-        guildOverviewService.useItem(mainAdventurer, Item.STAMINA_POTION);
+        guildOverviewService.useItem(mainAdventurer, RegularItem.STAMINA_POTION);
 
         assertTrue(mainAdventurer.getStamina() > before);
-        assertFalse(gameEnvironment.getPlayerInventory().getAllItems().contains(Item.STAMINA_POTION));
+        assertFalse(gameEnvironment.getPlayerInventory().getAllItems().contains(RegularItem.STAMINA_POTION));
     }
 
     @Test
@@ -123,8 +123,8 @@ public class GuildOverviewServiceTest {
 
     @Test
     public void testUseItemWithNullAdventurer() {
-        gameEnvironment.getPlayerInventory().addItem(Item.HEALTH_POTION);
-        guildOverviewService.useItem(null, Item.HEALTH_POTION);
-        assertTrue(gameEnvironment.getPlayerInventory().getAllItems().contains(Item.HEALTH_POTION));
+        gameEnvironment.getPlayerInventory().addItem(RegularItem.HEALTH_POTION);
+        guildOverviewService.useItem(null, RegularItem.HEALTH_POTION);
+        assertTrue(gameEnvironment.getPlayerInventory().getAllItems().contains(RegularItem.HEALTH_POTION));
     }
 }

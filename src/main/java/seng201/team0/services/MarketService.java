@@ -2,6 +2,7 @@ package seng201.team0.services;
 
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Item;
+import seng201.team0.models.RegularItem;
 
 public class MarketService {
     private final GameEnvironment gameEnvironment;
@@ -20,7 +21,7 @@ public class MarketService {
             if (item.getCost() <= gameEnvironment.getGold())
             {
                 gameEnvironment.getPlayerInventory().addItem(item);
-                gameEnvironment.setGold(gameEnvironment.getGold()-item.getCost());
+                gameEnvironment.setGold(gameEnvironment.getGold()- item.getCost());
                 item.decreaseCost(item.getCost() - (int)(item.getCost() * taxModifier));
                 gameEnvironment.getMarketInventory().removeItem(item);
                 System.out.printf("Item bought, %d gold remaining%n", gameEnvironment.getGold());

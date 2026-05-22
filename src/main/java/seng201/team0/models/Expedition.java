@@ -1,23 +1,10 @@
 package seng201.team0.models;
 
-import seng201.team0.GameEnvironment;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-
 /**
  * Expedition class holds data for all expeditions
  */
 public class Expedition {
     int expeditionIndex;
-
-    private final Item[] lootPool = {
-            Item.RUSTY_SWORD,
-            Item.HEALTH_POTION,
-            Item.STAMINA_POTION,
-    };
 
     private final String[] areaNames = {  "Abandoned Mine", "Dense Fog Marsh", "Ancient Ruins", "Frozen Pass", "Bandit Territory",
             "Crystal Caverns", "Burning Wasteland", "Overgrown Jungle", "Haunted Battlefield", "Sunken Temple",

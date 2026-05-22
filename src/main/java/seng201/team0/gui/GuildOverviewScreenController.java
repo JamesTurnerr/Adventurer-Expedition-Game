@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
 import seng201.team0.models.Item;
+import seng201.team0.models.RegularItem;
 import seng201.team0.services.DisplayStatsService;
 import seng201.team0.services.GuiService;
 import seng201.team0.services.GuildOverviewService;
@@ -28,7 +29,7 @@ public class GuildOverviewScreenController extends ScreenController {
 
     private List<Button> adventurerSlots;
     private int selectedAdventurerSlot = -1;
-    private Item selectedItem = null;
+    private Item selecteditem = null;
 
     private final GameEnvironment gameEnvironment = getGameEnvironment();
     private final GuiService guiService = new GuiService(gameEnvironment);
@@ -62,7 +63,7 @@ public class GuildOverviewScreenController extends ScreenController {
     public void initialize()
     {
         itemsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            selectedItem = newValue;
+            selecteditem = newValue;
             updateAdventurerStatLabels(getCurrentSelectedAdventurer());
         });
         guiService.updateTopLabels(goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel);
@@ -142,7 +143,10 @@ public class GuildOverviewScreenController extends ScreenController {
             adventurer = gameEnvironment.getMainParty().get(selectedAdventurerSlot);
 
         }
-        guildOverviewService.useItem(adventurer, item);
+        if (item.getClass() == RegularItem.class)
+        {
+            guildOverviewService.useItem(adventurer, (RegularItem) item);
+        }
         updateAdventurerStatLabels(adventurer);
         updateGUI();
     }
@@ -236,12 +240,12 @@ public class GuildOverviewScreenController extends ScreenController {
         displayStatsService.updateStats(
                 adventurer, nameLabel, healthLabel, staminaLabel,
                 perceptionLabel, costLabel, payLabel);
-        if (selectedItem != null && getCurrentSelectedAdventurer() != null)
+        if (selecteditem != null && getCurrentSelectedAdventurer() != null && selecteditem.getClass() == RegularItem.class)
         {
-            Label label = guildOverviewService.itemToLabel(selectedItem, healthLabel, staminaLabel);
+            Label label = guildOverviewService.itemToLabel((RegularItem) selecteditem, healthLabel, staminaLabel);
             if (label != null)
             {
-                label.setText(label.getText() + " + " + guildOverviewService.getActualModifier(selectedItem, adventurer));
+                label.setText(label.getText() + " + " + guildOverviewService.getActualModifier((RegularItem) selecteditem, adventurer));
             }
         }
     }

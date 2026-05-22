@@ -3,6 +3,7 @@ package seng201.team0.services;
 import javafx.scene.control.Label;
 import seng201.team0.models.Adventurer;
 import seng201.team0.models.Item;
+import seng201.team0.models.RegularItem;
 
 /**
  * Service class to update the UI labels containing adventurer stats

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
-import seng201.team0.models.Item;
+import seng201.team0.models.RegularItem;
 import seng201.team0.services.AdventurerCreationService;
 import seng201.team0.services.MarketService;
 
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MarketServiceTest {
     private GameEnvironment gameEnvironment;
     private MarketService marketService;
-    private Item testItem;
+    private RegularItem testRegularItem;
 
     @BeforeEach
     public void setup() {
@@ -32,8 +32,8 @@ public class MarketServiceTest {
         );
 
         marketService = new MarketService(gameEnvironment);
-        testItem = Item.getRandomItem();
-        gameEnvironment.getMarketInventory().addItem(testItem);
+        testRegularItem = RegularItem.getRandomItem();
+        gameEnvironment.getMarketInventory().addItem(testRegularItem);
 
     }
 
@@ -41,39 +41,39 @@ public class MarketServiceTest {
     public void testBuyItemSuccess() {
         gameEnvironment.setGold(100);
 
-        int cost = testItem.getCost();
+        int cost = testRegularItem.getCost();
 
-        boolean result = marketService.buyItem(testItem, .8f);
+        boolean result = marketService.buyItem(testRegularItem, .8f);
 
         assertTrue(result);
         assertEquals(100 - cost, gameEnvironment.getGold());
-        assertTrue(gameEnvironment.getPlayerInventory().getAllItems().contains(testItem));
+        assertTrue(gameEnvironment.getPlayerInventory().getAllItems().contains(testRegularItem));
         }
 
     @Test
     public void testBuyItemNotEnoughGold() {
         gameEnvironment.setGold(0);
 
-        boolean result = marketService.buyItem(testItem, 0.8f);
+        boolean result = marketService.buyItem(testRegularItem, 0.8f);
 
         assertFalse(result);
-        assertFalse(gameEnvironment.getPlayerInventory().getAllItems().contains(testItem));
-        assertTrue(gameEnvironment.getMarketInventory().getAllItems().contains(testItem));
+        assertFalse(gameEnvironment.getPlayerInventory().getAllItems().contains(testRegularItem));
+        assertTrue(gameEnvironment.getMarketInventory().getAllItems().contains(testRegularItem));
         assertEquals(0, gameEnvironment.getGold());
     }
 
     @Test
     public void testSellItemSuccess() {
         gameEnvironment.setGold(50);
-        gameEnvironment.getPlayerInventory().addItem(testItem);
+        gameEnvironment.getPlayerInventory().addItem(testRegularItem);
 
-        int sellPrice = testItem.getCost();
+        int sellPrice = testRegularItem.getCost();
 
-        boolean result = marketService.sellItem(testItem, 0.8f);
+        boolean result = marketService.sellItem(testRegularItem, 0.8f);
 
         assertTrue(result);
-        assertFalse(gameEnvironment.getPlayerInventory().getAllItems().contains(testItem));
-        assertTrue(gameEnvironment.getMarketInventory().getAllItems().contains(testItem));
+        assertFalse(gameEnvironment.getPlayerInventory().getAllItems().contains(testRegularItem));
+        assertTrue(gameEnvironment.getMarketInventory().getAllItems().contains(testRegularItem));
         assertEquals(50 + sellPrice, gameEnvironment.getGold());
     }
 }

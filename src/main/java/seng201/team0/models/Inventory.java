@@ -15,7 +15,7 @@ public class Inventory {
     }
 
     /**
-     * Add a specific Item to this inventory
+     * Add a specific item to this inventory
      * @param item The specific item to be added
      */
     public void addItem(Item item)
@@ -24,7 +24,7 @@ public class Inventory {
     }
 
     /**
-     * Remove a specific Item from this inventory
+     * Remove a specific item from this inventory
      * @param item The specific item to be removed
      */
     public void removeItem(Item item)

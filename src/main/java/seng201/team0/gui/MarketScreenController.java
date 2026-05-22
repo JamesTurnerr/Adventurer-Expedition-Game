@@ -4,10 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import seng201.team0.GameEnvironment;
+import seng201.team0.models.Item;
 import seng201.team0.services.DisplayStatsService;
 import seng201.team0.services.GuiService;
 import seng201.team0.services.MarketService;
-import seng201.team0.models.Item;
 
 public class MarketScreenController extends ScreenController {
     @FXML private Button buyItemButton;

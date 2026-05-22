@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import seng201.team0.models.Adventurer;
-import seng201.team0.models.Item;
+import seng201.team0.models.RegularItem;
 import seng201.team0.services.SetupService;
 import seng201.team0.services.GuiService;
 import seng201.team0.models.UserData;
@@ -59,7 +59,7 @@ public class SetupScreenController implements Initializable {
         {
             ArrayList<Adventurer> chosenAdventurersList = new ArrayList<Adventurer>(chosenAdventurersListView.getItems());
             UserData userData = new UserData(chosenAdventurersList, difficultyMenuButton.getText(), guildInputTextField.getText(), Integer.parseInt(expeditionInputTextField.getText()));
-            userData.addItem(Item.HEALTH_POTION);
+            userData.addItem(RegularItem.HEALTH_POTION);
 
             Stage stage = (Stage) startButton.getScene().getWindow();
             guiService.switchWindow(stage, "/fxml/main_screen.fxml");

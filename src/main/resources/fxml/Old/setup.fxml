@@ -50,11 +50,11 @@
          </GridPane.margin>
       </TextField>
       <MenuButton fx:id="difficultyMenuButton" mnemonicParsing="false" text="Difficulty" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-        <items>
+        <regularItems>
           <MenuItem fx:id="easyMenuItem" mnemonicParsing="false" onAction="#easyModeSelected" text="Easy" />
           <MenuItem fx:id="normalMenuItem" mnemonicParsing="false" onAction="#normalModeSelected" text="Normal" />
             <MenuItem fx:id="hardMenuItem" mnemonicParsing="false" onAction="#hardModeSelected" text="Hard" />
-        </items>
+        </regularItems>
       </MenuButton>
       <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonClicked" text="Start" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <ListView fx:id="availableAdventurersListView" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="4" />

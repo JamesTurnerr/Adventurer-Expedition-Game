@@ -447,7 +447,7 @@ Rusted Armory
 Broken weapons litter the area.
 
 Search everything — Loot chance
-Take useful items only — Small reward
+Take useful regularItems only — Small reward
 Inspect for hidden compartments — Perception check
 Battlefield Explosion
 
@@ -604,7 +604,7 @@ Empty Barracks
 Dusty beds line the room.
 
 Search thoroughly — Supply chance
-Take visible items only — Small reward
+Take visible regularItems only — Small reward
 Search for hidden compartments — Perception check
 Collapsing Courtyard
 

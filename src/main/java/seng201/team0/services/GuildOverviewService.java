@@ -3,7 +3,7 @@ package seng201.team0.services;
 import javafx.scene.control.Label;
 import seng201.team0.GameEnvironment;
 import seng201.team0.models.Adventurer;
-import seng201.team0.models.Item;
+import seng201.team0.models.RegularItem;
 
 /**
  * Service class for guild overview logic
@@ -18,30 +18,30 @@ public class GuildOverviewService {
     public GuildOverviewService(GameEnvironment gameEnvironment) {this.gameEnvironment = gameEnvironment;}
 
     /**
-     * Use an item on an adventurer, removing it from the players inventory
+     * Use an regularItem on an adventurer, removing it from the players inventory
      * @param adventurer The target adventurer
-     * @param item The item to be used on the target adventurer
+     * @param regularItem The regularItem to be used on the target adventurer
      */
-    public void useItem(Adventurer adventurer, Item item)
+    public void useItem(Adventurer adventurer, RegularItem regularItem)
     {
-        if (adventurer == null || item == null) {
-            System.out.println("Warning: adventurer or item is null");
+        if (adventurer == null || regularItem == null) {
+            System.out.println("Warning: adventurer or regularItem is null");
             return;
         }
 
-        switch (item) {
-            case RUSTY_SWORD -> System.out.println("you gave "+ adventurer + " the "+ item);
-            case SMALL_STAMINA_POTION, STAMINA_POTION, LARGE_STAMINA_POTION -> adventurer.increaseStamina(item.getModifier());
-            case SMALL_HEALTH_POTION, HEALTH_POTION, LARGE_HEALTH_POTION -> adventurer.increaseHealth(item.getModifier());
+        switch (regularItem) {
+            case RUSTY_SWORD -> System.out.println("you gave "+ adventurer + " the "+ regularItem);
+            case SMALL_STAMINA_POTION, STAMINA_POTION, LARGE_STAMINA_POTION -> adventurer.increaseStamina(regularItem.getModifier());
+            case SMALL_HEALTH_POTION, HEALTH_POTION, LARGE_HEALTH_POTION -> adventurer.increaseHealth(regularItem.getModifier());
         }
-        gameEnvironment.getPlayerInventory().removeItem(item);
+        gameEnvironment.getPlayerInventory().removeItem(regularItem);
     }
 
-    public int getActualModifier(Item selectedItem, Adventurer adventurer)
+    public int getActualModifier(RegularItem selectedRegularItem, Adventurer adventurer)
     {
-        return switch (selectedItem) {
-            case SMALL_STAMINA_POTION, STAMINA_POTION, LARGE_STAMINA_POTION -> selectedItem.getAdjustedModifier(adventurer.getMaxStamina(), adventurer.getStamina());
-            case SMALL_HEALTH_POTION, HEALTH_POTION, LARGE_HEALTH_POTION -> selectedItem.getAdjustedModifier(adventurer.getMaxHealth(), adventurer.getHealth());
+        return switch (selectedRegularItem) {
+            case SMALL_STAMINA_POTION, STAMINA_POTION, LARGE_STAMINA_POTION -> selectedRegularItem.getAdjustedModifier(adventurer.getMaxStamina(), adventurer.getStamina());
+            case SMALL_HEALTH_POTION, HEALTH_POTION, LARGE_HEALTH_POTION -> selectedRegularItem.getAdjustedModifier(adventurer.getMaxHealth(), adventurer.getHealth());
             default -> 0;
         };
 
@@ -168,15 +168,15 @@ public class GuildOverviewService {
     }
 
     /**
-     * Match a given item to its respective label
-     * @param item The item to be matched
-     * @param healthLabel The healthLabel to be returned if matched to item
-     * @param staminaLabel The staminaLabel to be returned if matched to item
-     * @return The label that matches the item
+     * Match a given regularItem to its respective label
+     * @param regularItem The regularItem to be matched
+     * @param healthLabel The healthLabel to be returned if matched to regularItem
+     * @param staminaLabel The staminaLabel to be returned if matched to regularItem
+     * @return The label that matches the regularItem
      */
-    public Label itemToLabel(Item item, Label healthLabel, Label staminaLabel)
+    public Label itemToLabel(RegularItem regularItem, Label healthLabel, Label staminaLabel)
     {
-        return switch (item) {
+        return switch (regularItem) {
             case SMALL_HEALTH_POTION, HEALTH_POTION, LARGE_HEALTH_POTION -> healthLabel;
             case SMALL_STAMINA_POTION, STAMINA_POTION, LARGE_STAMINA_POTION -> staminaLabel;
             default -> null;
