@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import seng201.team0.GameEnvironment;
 
+import javafx.scene.image.Image;
+
 /**
  * JavaFX entry class
  */
@@ -15,6 +17,15 @@ public class FXAppEntry extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-        new GameEnvironment(new ScreenNavigator(primaryStage));
+        var stream = getClass().getResourceAsStream("/images/test.png");
+
+        if (stream == null) {
+            System.out.println("ICON NOT FOUND");
+        } else {
+            primaryStage.getIcons().add(new Image(stream));
+            System.out.println("ICON FOUND");
+        }
+        ScreenNavigator navigator = new ScreenNavigator(primaryStage);
+        new GameEnvironment(navigator);
     }
 }
