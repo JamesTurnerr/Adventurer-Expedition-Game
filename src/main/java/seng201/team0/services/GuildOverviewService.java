@@ -25,7 +25,7 @@ public class GuildOverviewService {
     public void useItem(Adventurer adventurer, RegularItem regularItem)
     {
         if (adventurer == null || regularItem == null) {
-            System.out.println("Warning: adventurer or regularItem is null");
+            System.out.println("Warning: adventurer or item is null");
             return;
         }
 

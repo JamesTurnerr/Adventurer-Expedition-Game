@@ -143,7 +143,7 @@ public class GuildOverviewScreenController extends ScreenController {
             adventurer = gameEnvironment.getMainParty().get(selectedAdventurerSlot);
 
         }
-        if (item.getClass() == RegularItem.class)
+        if (item != null && item.getClass() == RegularItem.class)
         {
             guildOverviewService.useItem(adventurer, (RegularItem) item);
         }
