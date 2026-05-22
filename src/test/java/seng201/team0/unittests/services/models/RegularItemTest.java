@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RegularItemTest {
     @Test
     public void testToStringReturnsTheName() {
-        assertEquals("Health Potion", RegularItem.HEALTH_POTION.toString());
+        assertEquals("Medium Health", RegularItem.HEALTH_POTION.toString());
         assertEquals("Rusty Sword", RegularItem.RUSTY_SWORD.toString());
     }
     @Test
