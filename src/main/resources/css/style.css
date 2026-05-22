@@ -34,6 +34,7 @@ GridPane{
 .list-view .list-cell {
     -fx-background-color: #0D1117;
     -fx-text-fill: #FFFFFF;
+    -fx-padding:3px;
 }
 .list-view .list-cell:selected {
     -fx-background-color: #1F2228;
