@@ -38,8 +38,8 @@ public class GuildHallServiceTest {
     public void testHireAdventurerSuccess() {
         gameEnvironment.setGold(1000);
         int cost = testAdventurer.getHiringCost();
-        boolean result = guildHallService.hireAdventurer(testAdventurer);
-        assertTrue(result);
+        String result = guildHallService.hireAdventurer(testAdventurer);
+        assertNull(result);
         assertTrue(gameEnvironment.getReserveParty().contains(testAdventurer));
         assertEquals(1000 - cost, gameEnvironment.getGold());
     }
@@ -47,24 +47,21 @@ public class GuildHallServiceTest {
     @Test
     public void testHireAdventurerNotEnoughGold() {
         gameEnvironment.setGold(0);
-        boolean result = guildHallService.hireAdventurer(testAdventurer);
-        assertFalse(result);
+        String result = guildHallService.hireAdventurer(testAdventurer);
+        assertEquals("Not enough money", result);
         assertFalse(gameEnvironment.getReserveParty().contains(testAdventurer));
     }
     @Test
     public void testHireAdventurerToMainPartyWhenReserveFull() {
         gameEnvironment.setGold(1000);
 
-        // fill the reserve party
+        // fill reserve party
         for (int i = 0; i < 5; i++) {
-            gameEnvironment.getReserveParty().add(
-                    AdventurerCreationService.createRandomAdventurer()
-            );
+            gameEnvironment.getReserveParty().add(AdventurerCreationService.createRandomAdventurer());
         }
         int mainPartyBefore = gameEnvironment.getMainParty().size();
-        boolean result = guildHallService.hireAdventurer(testAdventurer);
-
-        assertTrue(result);
+        String result = guildHallService.hireAdventurer(testAdventurer);
+        assertNull(result);
         assertEquals(mainPartyBefore + 1, gameEnvironment.getMainParty().size());
         assertTrue(gameEnvironment.getMainParty().contains(testAdventurer));
     }
@@ -72,25 +69,19 @@ public class GuildHallServiceTest {
     @Test
     public void testHireAdventurerFailsWhenAllPartiesFull() {
         gameEnvironment.setGold(1000);
-        // fill the reserve party
+
+        // fill reserve party
         for (int i = 0; i < 5; i++) {
-            gameEnvironment.getReserveParty().add(
-                    AdventurerCreationService.createRandomAdventurer()
-            );
+            gameEnvironment.getReserveParty().add(AdventurerCreationService.createRandomAdventurer());
         }
 
-        // fill the main party
-        while (gameEnvironment.getMainParty().size()
-                < gameEnvironment.MAX_PARTY_SIZE) {
-
-            gameEnvironment.getMainParty().add(
-                    AdventurerCreationService.createRandomAdventurer()
-            );
+        // fill main party
+        while (gameEnvironment.getMainParty().size() < gameEnvironment.MAX_PARTY_SIZE) {
+            gameEnvironment.getMainParty().add(AdventurerCreationService.createRandomAdventurer());
         }
 
-        boolean result = guildHallService.hireAdventurer(testAdventurer);
-
-        assertFalse(result);
+        String result = guildHallService.hireAdventurer(testAdventurer);
+        assertEquals("Main and reserve party full", result);
         assertFalse(gameEnvironment.getMainParty().contains(testAdventurer));
         assertFalse(gameEnvironment.getReserveParty().contains(testAdventurer));
     }

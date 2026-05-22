@@ -79,43 +79,34 @@ public class GuildHallScreenController extends ScreenController {
     @FXML
     private void hireAdventurerButtonClicked()
     {
-        Adventurer selectedAdventurer = hireableAdventurersListView.getSelectionModel().getSelectedItem();
-        if (guildHallService.hireAdventurer(selectedAdventurer))
+        Adventurer selectedAdventurer =
+                hireableAdventurersListView.getSelectionModel().getSelectedItem();
+
+        String error = guildHallService.hireAdventurer(selectedAdventurer);
+
+        if (error == null)
         {
             gameEnvironment.getHireableAdventurers().remove(selectedAdventurer);
             updateGUI();
         }
         else
         {
-            if (selectedAdventurer == null)
-            {
-                errorLabel.setText("No adventurer selected");
-            }
-            else if (gameEnvironment.getMainParty().size() == gameEnvironment.MAX_PARTY_SIZE && gameEnvironment.getReserveParty().size() == gameEnvironment.MAX_PARTY_SIZE)
-            {
-                errorLabel.setText("Main and reserve party full");
-            }
-            else
-            {
-                errorLabel.setText("Not enough money");
-            }
-
+            errorLabel.setText(error);
         }
     }
 
     @FXML
-    private void retireAdventurerButtonClicked(){
+    private void retireAdventurerButtonClicked()
+    {
         Adventurer selectedAdventurer = reservePartyListView.getSelectionModel().getSelectedItem();
-        if (selectedAdventurer == null)
+
+        if (guildHallService.retireAdventurer(selectedAdventurer))
         {
-            errorLabel.setText("No adventurer selected!");
-            System.out.println("Warning: No adventurer selected!");
+            updateGUI();
         }
         else
         {
-            gameEnvironment.getReserveParty().remove(selectedAdventurer);
-
-            updateGUI();
+            errorLabel.setText("No adventurer selected");
         }
     }
 
@@ -156,20 +147,14 @@ public class GuildHallScreenController extends ScreenController {
 
     private void updateSlots()
     {
-        for (int i = 0; i < adventurerSlots.size(); i++) {
+        for (int i = 0; i < adventurerSlots.size(); i++)
+        {
             int index = i;
 
-            int finalI = i;
             adventurerSlots.get(i).setOnAction(e -> {
-                Adventurer adv;
-                if (finalI < gameEnvironment.getMainParty().size())
-                {
-                    adv = mainParty.get(index);
-                }
-                else
-                {
-                    adv = null;
-                }
+
+                Adventurer adv =
+                        guildHallService.getMainPartyAdventurer(index);
 
                 displayStatsService.updateStats(
                         adv,
@@ -178,7 +163,8 @@ public class GuildHallScreenController extends ScreenController {
                         staminaLabel,
                         perceptionLabel,
                         costLabel,
-                        payLabel);
+                        payLabel
+                );
             });
         }
     }

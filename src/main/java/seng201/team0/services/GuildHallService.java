@@ -18,44 +18,39 @@ public class GuildHallService {
     /**
      * Attempt to hire a new adventurer into the party prioritizing the reserve party, otherwise it will try to add the adventurer to the main party
      * @param adventurer the adventurer to be added
-     * @return returns true if the adventurer was added, and false if there was no space in the reserve or main party
+     * @return returns potential error string, with null dictating success
      */
-    public boolean hireAdventurer(Adventurer adventurer)
+    public String hireAdventurer(Adventurer adventurer)
     {
-        if (adventurer != null)
+        if (adventurer == null)
         {
-            if (adventurer.getHiringCost() <= gameEnvironment.getGold())
-            {
-                if (addToReserveParty(adventurer))//Try to add new adventurer to reserves
-                {
-                    gameEnvironment.setGold(gameEnvironment.getGold() - adventurer.getHiringCost());
-                    return true;
-                }
-                else//Try to add new adventurer to main party
-                {
-                    System.out.println("Warning: Reserve party full, attempting to add to main party");
-                    if (addToMainParty(adventurer))
-                    {
-                        gameEnvironment.setGold(gameEnvironment.getGold() - adventurer.getHiringCost());
-                        return true;
-                    }
-                    else
-                    {
-                        System.out.println("Warning: Main party full, could not hire new adventurer");
-                        return false;
-                    }
+            return "No adventurer selected";
+        }
 
-                }
-            }
-            else {
-                System.out.println("Warning: Not enough gold, could not hire new adventurer");
-                return false;
-            }
+        if (adventurer.getHiringCost() > gameEnvironment.getGold())
+        {
+            return "Not enough money";
         }
-        else {
-            System.out.println("Warning: No adventurer selected!");
-            return false;
+
+        if (addToReserveParty(adventurer))
+        {
+            gameEnvironment.setGold(
+                    gameEnvironment.getGold() - adventurer.getHiringCost()
+            );
+
+            return null;
         }
+
+        if (addToMainParty(adventurer))
+        {
+            gameEnvironment.setGold(
+                    gameEnvironment.getGold() - adventurer.getHiringCost()
+            );
+
+            return null;
+        }
+
+        return "Main and reserve party full";
     }
 
     /**
@@ -90,6 +85,40 @@ public class GuildHallService {
         }
         gameEnvironment.getReserveParty().add(adventurer);
         return true;
+    }
+
+    /**
+     * Retire an adventurer from the reserve party
+     * @param adventurer The adventurer to retire
+     * @return true if successful
+     */
+    public boolean retireAdventurer(Adventurer adventurer)
+    {
+        if (adventurer == null)
+        {
+            System.out.println("Warning: No adventurer selected!");
+            return false;
+        }
+
+        if (!gameEnvironment.getReserveParty().contains(adventurer))
+        {
+            System.out.println("Warning: Adventurer not found in reserve party!");
+            return false;
+        }
+
+        gameEnvironment.getReserveParty().remove(adventurer);
+
+        return true;
+    }
+
+    public Adventurer getMainPartyAdventurer(int index)
+    {
+        if (index < 0 || index >= gameEnvironment.getMainParty().size())
+        {
+            return null;
+        }
+
+        return gameEnvironment.getMainParty().get(index);
     }
 
 }
