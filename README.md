@@ -33,3 +33,6 @@ Extract this file, and open it with IntelliJ. At this point, in the bottom right
 1. Open a command line interface inside the project directory and run `./gradlew jar` to create a packaged Jar. The Jar file is located at build/libs/
 2. Navigate to the build/libs/ directory (you can do this with `cd build/libs`)
 3. Run the command `java -jar seng201_team0-1.0-SNAPSHOT.jar` to open the application.
+
+## Declaration of AI Use
+During the project, we used AI tools such as ChatGPT for tasks such as generating the expedition events and locations.
