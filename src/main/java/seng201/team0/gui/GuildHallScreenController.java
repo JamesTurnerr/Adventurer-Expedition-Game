@@ -55,7 +55,7 @@ public class GuildHallScreenController extends ScreenController {
      */
     public void initialize()
     {
-        updateGUI();
+
 
         guiService.updateTopLabels(
                 goldAmountLabel,
@@ -63,39 +63,10 @@ public class GuildHallScreenController extends ScreenController {
                 expeditionsRemainingLabel
         );
         adventurerSlots = List.of(slot1Button, slot2Button, slot3Button, slot4Button, slot5Button);
-        guiService.populateAdventurerSlots(adventurerSlots);
-
+        updateSlots();
+        updateGUI();
         adventurerSelection(reservePartyListView);
         adventurerSelection(hireableAdventurersListView);
-
-        // same as in setup
-        for (int i = 0; i < adventurerSlots.size(); i++) {
-            int index = i;
-
-            int finalI = i;
-            adventurerSlots.get(i).setOnAction(e -> {
-                System.out.println("Selected slot: " + index);
-
-                Adventurer adv;
-                if (finalI < gameEnvironment.getMainParty().size())
-                {
-                    adv = mainParty.get(index);
-                }
-                else
-                {
-                    adv = null;
-                }
-
-                displayStatsService.updateStats(
-                        adv,
-                        nameLabel,
-                        healthLabel,
-                        staminaLabel,
-                        perceptionLabel,
-                        costLabel,
-                        payLabel);
-            });
-        }
     }
 
 
@@ -116,7 +87,19 @@ public class GuildHallScreenController extends ScreenController {
         }
         else
         {
-            errorLabel.setText("Not enough money");
+            if (selectedAdventurer == null)
+            {
+                errorLabel.setText("No adventurer selected");
+            }
+            else if (gameEnvironment.getMainParty().size() == gameEnvironment.MAX_PARTY_SIZE && gameEnvironment.getReserveParty().size() == gameEnvironment.MAX_PARTY_SIZE)
+            {
+                errorLabel.setText("Main and reserve party full");
+            }
+            else
+            {
+                errorLabel.setText("Not enough money");
+            }
+
         }
     }
 
@@ -158,5 +141,38 @@ public class GuildHallScreenController extends ScreenController {
         guiService.populateListView(hireableAdventurersListView,  gameEnvironment.getHireableAdventurers());
         guiService.populateListView(reservePartyListView,  gameEnvironment.getReserveParty());
         goldAmountLabel.setText(String.valueOf(gameEnvironment.getGold()));
+        guiService.populateAdventurerSlots(adventurerSlots);
+    }
+
+
+    private void updateSlots()
+    {
+        for (int i = 0; i < adventurerSlots.size(); i++) {
+            int index = i;
+
+            int finalI = i;
+            adventurerSlots.get(i).setOnAction(e -> {
+                System.out.println("Selected slot: " + index);
+
+                Adventurer adv;
+                if (finalI < gameEnvironment.getMainParty().size())
+                {
+                    adv = mainParty.get(index);
+                }
+                else
+                {
+                    adv = null;
+                }
+
+                displayStatsService.updateStats(
+                        adv,
+                        nameLabel,
+                        healthLabel,
+                        staminaLabel,
+                        perceptionLabel,
+                        costLabel,
+                        payLabel);
+            });
+        }
     }
 }

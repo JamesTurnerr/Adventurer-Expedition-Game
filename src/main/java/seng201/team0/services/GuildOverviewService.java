@@ -158,6 +158,11 @@ public class GuildOverviewService {
             System.out.println("Warning: Removing this adventurer will cause main party to be empty");
             return false;
         }
+        if (gameEnvironment.getReserveParty().size() >= gameEnvironment.MAX_PARTY_SIZE)
+        {
+            System.out.println("Warning: Reserve party at maximum capacity");
+            return false;
+        }
         if (removeFromMainParty(adventurer))
         {
             return addToReserveParty(adventurer);
