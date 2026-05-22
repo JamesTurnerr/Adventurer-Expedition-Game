@@ -110,6 +110,18 @@ public class GuildHallScreenController extends ScreenController {
         }
     }
 
+    @FXML
+    private void reservePartySelected()
+    {
+        guiService.populateListView(hireableAdventurersListView,  gameEnvironment.getHireableAdventurers());
+    }
+
+    @FXML
+    private void hireableListSelected()
+    {
+        guiService.populateListView(reservePartyListView,  gameEnvironment.getReserveParty());
+    }
+
     /**
      * Updates stats labels based on the adventurer selected
      * @param listView the ListView containing adventurers that will have their stats visible on the labels when selected
@@ -150,9 +162,9 @@ public class GuildHallScreenController extends ScreenController {
         for (int i = 0; i < adventurerSlots.size(); i++)
         {
             int index = i;
-
             adventurerSlots.get(i).setOnAction(e -> {
-
+                guiService.populateListView(hireableAdventurersListView,  gameEnvironment.getHireableAdventurers());
+                guiService.populateListView(reservePartyListView,  gameEnvironment.getReserveParty());
                 Adventurer adv =
                         guildHallService.getMainPartyAdventurer(index);
 
