@@ -20,10 +20,9 @@ public class FXAppEntry extends Application {
         var stream = getClass().getResourceAsStream("/images/test.png");
 
         if (stream == null) {
-            System.out.println("ICON NOT FOUND");
+            System.out.println("Warning: Icon not found");
         } else {
             primaryStage.getIcons().add(new Image(stream));
-            System.out.println("ICON FOUND");
         }
         ScreenNavigator navigator = new ScreenNavigator(primaryStage);
         new GameEnvironment(navigator);

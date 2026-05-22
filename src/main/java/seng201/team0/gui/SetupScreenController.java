@@ -62,8 +62,6 @@ public class SetupScreenController extends ScreenController {
             selectedAdventurerButtons.get(i).setOnAction(e -> {
                 selectedSlotIndex = index;
 
-                System.out.println("Selected slot: " + selectedSlotIndex);
-
                 Adventurer adv = mainParty.get(selectedSlotIndex);
                 if (adv != null) {
                     displayStatsService.updateStats(
@@ -152,14 +150,14 @@ public class SetupScreenController extends ScreenController {
                 }
             }
             if (selectedSlotIndex == -1) {
-                System.out.println("party is full");
+                System.out.println("Party is full!");
                 return;
             }
         }
 
         if (mainParty.size() >= selectedSlotIndex){
             if ( mainParty.get(selectedSlotIndex) != null) {
-                System.out.println("already active");
+                System.out.println("This slot is already selected!");
                 return;
             }
         }
@@ -175,12 +173,12 @@ public class SetupScreenController extends ScreenController {
     @FXML
     private void unchooseAdventurerClicked() {
         if (selectedSlotIndex == -1) {
-            System.out.println("nothing selected");
+            System.out.println("No slot selected!");
             return;
         }
         Adventurer removed = mainParty.get(selectedSlotIndex);
         if (removed == null) {
-            System.out.println("slot already empty");
+            System.out.println("Slot already empty!");
             return;
         }
         availableAdventurersListView.getItems().add(removed);

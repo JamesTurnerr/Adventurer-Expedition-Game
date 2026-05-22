@@ -193,8 +193,6 @@ public class GuildOverviewScreenController extends ScreenController {
             int index = i;
 
             adventurerSlots.get(i).setOnAction(e -> {
-                System.out.println("Selected slot: " + index);
-
                 // Check if slot contains an adventurer
                 if (index >= 0 && index < gameEnvironment.getMainParty().size()) {
                     selectedAdventurerSlot = index;

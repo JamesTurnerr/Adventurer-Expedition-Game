@@ -152,8 +152,6 @@ public class GuildHallScreenController extends ScreenController {
 
             int finalI = i;
             adventurerSlots.get(i).setOnAction(e -> {
-                System.out.println("Selected slot: " + index);
-
                 Adventurer adv;
                 if (finalI < gameEnvironment.getMainParty().size())
                 {
