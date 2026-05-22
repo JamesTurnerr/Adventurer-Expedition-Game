@@ -53,7 +53,7 @@ public class GuildHallService {
             }
         }
         else {
-            System.out.println("Warning: Adventurer is null");
+            System.out.println("Warning: No adventurer selected!");
             return false;
         }
     }

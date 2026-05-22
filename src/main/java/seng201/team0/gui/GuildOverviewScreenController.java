@@ -94,8 +94,12 @@ public class GuildOverviewScreenController extends ScreenController {
         {
             updateGUI();
         }
-        else
+        else if (reservePartyListView.getSelectionModel().getSelectedItem() == null)
         {
+            errorLabel.setText("No adventurer selected");
+            System.out.println("Warning: No adventurer selected!");
+        }
+        else{
             errorLabel.setText("Could not move adventurer");
         }
     }
@@ -120,6 +124,7 @@ public class GuildOverviewScreenController extends ScreenController {
         else
         {
             errorLabel.setText("No adventurer selected");
+            System.out.println("Warning: No adventurer selected!");
         }
 
     }
@@ -130,8 +135,14 @@ public class GuildOverviewScreenController extends ScreenController {
     @FXML
     private void deleteItemButtonClicked(){
         Item item = itemsListView.getSelectionModel().getSelectedItem();
-        gameEnvironment.getPlayerInventory().removeItem(item);
-        updateGUI();
+        if (item != null){
+            gameEnvironment.getPlayerInventory().removeItem(item);
+            updateGUI();
+        }
+        else{
+            System.out.println("Warning: No item selected!");
+            errorLabel.setText("No item selected");
+        }
     }
 
     /**
@@ -157,9 +168,14 @@ public class GuildOverviewScreenController extends ScreenController {
             updateAdventurerStatLabels(adventurer);
             updateGUI();
         }
+        else if (item == null){
+            errorLabel.setText("No item selected");
+            System.out.println("Warning: No item selected!");
+        }
         else
         {
             errorLabel.setText("Could not use item");
+            System.out.println("Warning: Could not use item!");
         }
 
     }

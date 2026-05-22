@@ -34,7 +34,7 @@ public class MarketService {
         }
         else
         {
-            System.out.println("Warning: Null item could not be bought");
+            System.out.println("Warning: Item not selected!");
             return false;
         }
     }
@@ -59,7 +59,7 @@ public class MarketService {
         }
         else
         {
-            System.out.println("Warning: Null item could not be sold");
+            System.out.println("Warning: Item not selected!");
             return false;
         }
     }

@@ -56,17 +56,17 @@ public class GuildOverviewService {
     {
         if (adventurer == null)
         {
-            System.out.println("Warning: No adventurer selected");
+            System.out.println("Warning: No adventurer selected!");
             return false;
         }
         if (gameEnvironment.getMainParty().contains(adventurer))
         {
-            System.out.println("Warning: Main party already contains this adventurer");
+            System.out.println("Warning: Main party already contains this adventurer!");
             return false;
         }
         if (!gameEnvironment.getReserveParty().contains(adventurer))
         {
-            System.out.println("Warning: Adventurer not found in reserve party");
+            System.out.println("Warning: Adventurer not found in reserve party!");
             return false;
         }
         if (addToMainParty(adventurer))
@@ -87,7 +87,7 @@ public class GuildOverviewService {
     private boolean addToMainParty(Adventurer adventurer) {
         if (gameEnvironment.getMainParty().size() >= gameEnvironment.MAX_PARTY_SIZE)
         {
-            System.out.println("Warning: Main party at maximum capacity");
+            System.out.println("Warning: Main party at maximum capacity!");
             return false;
         }
         else
@@ -106,7 +106,7 @@ public class GuildOverviewService {
     {
         if (gameEnvironment.getReserveParty().size() >= 5)
         {
-            System.out.println("Warning: Reserve party at maximum capacity");
+            System.out.println("Warning: Reserve party at maximum capacity!");
             return false;
         }
         gameEnvironment.getReserveParty().add(adventurer);
@@ -122,7 +122,7 @@ public class GuildOverviewService {
     {
         if (gameEnvironment.getMainParty().size() == 1)
         {
-            System.out.println("Warning: Removing this adventurer will cause main party to be empty");
+            System.out.println("Warning: Removing this adventurer will cause main party to be empty!");
             return false;
         }
         else {
@@ -140,27 +140,27 @@ public class GuildOverviewService {
     {
         if (adventurer == null)
         {
-            System.out.println("Warning: No adventurer selected");
+            System.out.println("Warning: No adventurer selected!");
             return false;
         }
         if (gameEnvironment.getReserveParty().contains(adventurer))
         {
-            System.out.println("Warning: Reserve party already contains this adventurer");
+            System.out.println("Warning: Reserve party already contains this adventurer!");
             return false;
         }
         if (!gameEnvironment.getMainParty().contains(adventurer))
         {
-            System.out.println("Warning: Adventurer not found in main party");
+            System.out.println("Warning: Adventurer not found in main party!");
             return false;
         }
         if (gameEnvironment.getMainParty().size() == 1)
         {
-            System.out.println("Warning: Removing this adventurer will cause main party to be empty");
+            System.out.println("Warning: Removing this adventurer will cause main party to be empty!");
             return false;
         }
         if (gameEnvironment.getReserveParty().size() >= gameEnvironment.MAX_PARTY_SIZE)
         {
-            System.out.println("Warning: Reserve party at maximum capacity");
+            System.out.println("Warning: Reserve party at maximum capacity!");
             return false;
         }
         if (removeFromMainParty(adventurer))
