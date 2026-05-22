@@ -134,6 +134,12 @@ GridPane{
 #slot3Button:hover{
     -fx-background-color: #2F3339 !important;
 }
+#slot4Button:hover{
+    -fx-background-color: #2F3339 !important;
+}
+#slot5Button:hover{
+    -fx-background-color: #2F3339 !important;
+}
 
 /*------------Guild Hall screen-----------*/
 #hireAdventurerButton{

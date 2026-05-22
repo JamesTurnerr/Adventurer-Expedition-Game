@@ -60,7 +60,7 @@ public class GuiService {
 
             if (party != null && i < party.size() && party.get(i) != null) {
                 slot.setText(party.get(i).getName());
-                slot.setStyle("-fx-background-color:#1F2228");
+                slot.setStyle("-fx-background-color:#1F2227");
             } else {
                 slot.setText("Empty");
                 slot.setStyle("-fx-background-color:#0D1117");

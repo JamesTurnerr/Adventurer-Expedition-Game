@@ -15,7 +15,7 @@ import seng201.team0.services.GuiService;
  */
 public class MainScreenController extends ScreenController {
     @FXML private Label goldAmountLabel, currentExpeditionLabel, expeditionsRemainingLabel, guildNameLabel;
-    @FXML private Button slot1Button, slot2Button, slot3Button, slot4Button, slot5Button;
+    @FXML private Button mainSlot1Button, mainSlot2Button, mainSlot3Button, mainSlot4Button, mainSlot5Button;
     private List<Button> adventurerSlots;
 
     private final GuiService guiService = new GuiService(getGameEnvironment());
@@ -43,7 +43,7 @@ public class MainScreenController extends ScreenController {
                 currentExpeditionLabel,
                 expeditionsRemainingLabel
         );
-        adventurerSlots = List.of(slot1Button, slot2Button, slot3Button, slot4Button, slot5Button);
+        adventurerSlots = List.of(mainSlot1Button, mainSlot2Button, mainSlot3Button, mainSlot4Button, mainSlot5Button);
         guiService.populateAdventurerSlots(adventurerSlots);
     }
 

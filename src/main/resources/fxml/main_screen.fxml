@@ -26,27 +26,27 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="slot3Button" maxHeight="300.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Empty" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+            <Button fx:id="mainSlot3Button" maxHeight="300.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Empty" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="slot2Button" maxHeight="300.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Empty" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Button fx:id="mainSlot2Button" maxHeight="300.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Empty" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="slot1Button" maxHeight="300.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Empty" GridPane.halignment="CENTER">
+            <Button fx:id="mainSlot1Button" maxHeight="300.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Empty" GridPane.halignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="slot4Button" maxHeight="300.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Empty" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+            <Button fx:id="mainSlot4Button" maxHeight="300.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Empty" GridPane.columnIndex="3" GridPane.halignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="slot5Button" maxHeight="300.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Empty" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+            <Button fx:id="mainSlot5Button" maxHeight="300.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="196.0" prefWidth="158.0" text="Empty" GridPane.columnIndex="4" GridPane.halignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
