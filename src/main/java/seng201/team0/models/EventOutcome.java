@@ -1,5 +1,7 @@
 package seng201.team0.models;
 
+import java.util.Random;
+
 /**
  * The possible outcomes that can happen during any event
  */
@@ -15,8 +17,7 @@ public enum EventOutcome {
     LARGE_PERCEPTION("LARGE_PERCEPTION_CHECK"),
     SMALL_GOLD("find a little bit of gold"),
     MEDIUM_GOLD("find a substantial amount of gold"),
-    LARGE_GOLD("find 1 million dollar"),
-    RANDOM("RANDOM_EVENT"),
+    LARGE_GOLD("find almost 1 million dollar"),
     LOSE_PROGRESS("lose progress"),
     NOTHING("have nothing happen to you");
 

@@ -116,7 +116,7 @@ public class Expedition {
                         new Choice("Look for hidden compartments", new EventOutcome[]{EventOutcome.MEDIUM_PERCEPTION}),}),
                 new Event("Faded symbols cover the walls.", new Choice[]{
                         new Choice("Ignore them", new EventOutcome[]{EventOutcome.NOTHING}),
-                        new Choice("Trace the symbols", new EventOutcome[]{EventOutcome.RANDOM}),
+                        new Choice("Trace the symbols", new EventOutcome[]{EventOutcome.MEDIUM_GOLD}),
                         new Choice("Study them carefully", new EventOutcome[]{EventOutcome.MEDIUM_PERCEPTION}),}),
                 new Event("The floor shakes violently.", new Choice[]{
                         new Choice("Run through", new EventOutcome[]{EventOutcome.MEDIUM_STAMINA_LOSS}),

@@ -240,7 +240,6 @@ public class ExpeditionService {
                 case LARGE_GOLD -> {
                     gameEnvironment.setGold(gameEnvironment.getGold() + 20);
                     gameEnvironment.addTotalGold(20);}
-                case RANDOM -> System.out.println("Random event takes place!");
                 case LOSE_PROGRESS -> currentArea+=1;//Skip a potential loot room
                 case NOTHING -> System.out.println("No event takes place!");
                 case SMALL_PERCEPTION -> perceptionCheck(EventOutcome.SMALL_PERCEPTION);
