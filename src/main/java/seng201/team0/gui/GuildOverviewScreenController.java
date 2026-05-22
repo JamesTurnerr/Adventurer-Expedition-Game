@@ -64,6 +64,8 @@ public class GuildOverviewScreenController extends ScreenController {
     public void initialize()
     {
         errorLabel.setText("");
+        guiService.populateListView(reservePartyListView, gameEnvironment.getReserveParty());
+        guiService.populateListView(itemsListView, gameEnvironment.getPlayerInventory().getAllItems());
         itemsListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selecteditem = newValue;
             updateAdventurerStatLabels(getCurrentSelectedAdventurer());
@@ -92,6 +94,7 @@ public class GuildOverviewScreenController extends ScreenController {
         reservePartyListView.getSelectionModel().selectedItemProperty().removeListener(selectionListener);
         if(guildOverviewService.moveAdventurerToMain(reservePartyListView.getSelectionModel().getSelectedItem()))
         {
+            guiService.populateListView(reservePartyListView, gameEnvironment.getReserveParty());
             updateGUI();
         }
         else
@@ -115,6 +118,7 @@ public class GuildOverviewScreenController extends ScreenController {
             else
             {
                 selectedAdventurerSlot -= 1;
+                guiService.populateListView(reservePartyListView, gameEnvironment.getReserveParty());
                 updateGUI();
             }
         }
@@ -134,6 +138,7 @@ public class GuildOverviewScreenController extends ScreenController {
         Item item = itemsListView.getSelectionModel().getSelectedItem();
         if (item != null){
             gameEnvironment.getPlayerInventory().removeItem(item);
+            guiService.populateListView(itemsListView, gameEnvironment.getPlayerInventory().getAllItems());
             updateGUI();
         }
         else{
@@ -153,6 +158,7 @@ public class GuildOverviewScreenController extends ScreenController {
 
         if (guildOverviewService.useItem(adventurer, item))
         {
+            guiService.populateListView(itemsListView, gameEnvironment.getPlayerInventory().getAllItems());
             updateAdventurerStatLabels(adventurer);
             updateGUI();
         }
@@ -168,8 +174,6 @@ public class GuildOverviewScreenController extends ScreenController {
     void updateGUI()
     {
         errorLabel.setText("");
-        guiService.populateListView(reservePartyListView, gameEnvironment.getReserveParty());
-        guiService.populateListView(itemsListView, gameEnvironment.getPlayerInventory().getAllItems());
         guiService.populateAdventurerSlots(adventurerSlots);
         adventurerSelectionListView(reservePartyListView);
         updateSelectedAdventurerBorder();
@@ -192,7 +196,8 @@ public class GuildOverviewScreenController extends ScreenController {
 
             adventurerSlots.get(i).setOnAction(e -> {
                 // Check if slot contains an adventurer
-                if (index >= 0 && index < gameEnvironment.getMainParty().size()) {
+                if (index < gameEnvironment.getMainParty().size()) {
+                    guiService.populateListView(reservePartyListView, gameEnvironment.getReserveParty());
                     selectedAdventurerSlot = index;
 
                     Adventurer adv = gameEnvironment.getMainParty().get(index);
